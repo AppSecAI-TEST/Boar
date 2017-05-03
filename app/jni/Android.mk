@@ -1,0 +1,7 @@
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
+TARGET_PLATFORM := android-3
+LOCAL_MODULE    := serial_port
+LOCAL_SRC_FILES := SerialPort.cpp
+LOCAL_LDLIBS:=-L$(SYSROOT)/usr/lib -llog
+include $(BUILD_SHARED_LIBRARY)
