@@ -15,7 +15,10 @@ public class OperationDao {
      * @param storage
      */
     public static void addData(Storage storage) {
-        BaseApplication.getDaoInstant().getStorageDao().insertOrReplace(storage);
+        //如果有ID Unique 重复了就替换
+        // BaseApplication.getDaoInstant().getStorageDao().insertOrReplace(storage);
+        //如果ID unique重复了就报错
+        BaseApplication.getDaoInstant().getStorageDao().insert(storage);
     }
 
     /**

@@ -3,6 +3,7 @@ package com.join;
 import android.Manifest;
 import android.app.Activity;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -10,6 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.Thing;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
 
@@ -17,17 +22,25 @@ import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private Button add, delete, update, query;
-    Storage storage;
+    Storage storage, storage1, storage2;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(MainActivity.this, new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_CHECKIN_PROPERTIES}, 1);
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_CHECKIN_PROPERTIES}, 1);
         }
         init();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void init() {
@@ -39,7 +52,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         delete.setOnClickListener(this);
         update.setOnClickListener(this);
         query.setOnClickListener(this);
-        storage = new Storage(0L, 001, "2017/05/", null, "jj", null, null, null, null, null, null, null, null);
+        storage = new Storage(5L,006, "2017/05/", null, "jj", null, null, null, null, null, null, null, null);
+        storage1 = new Storage(5L,001, "2017/05/", null, "jj2", null, null, null, null, null, null, null, null);
+        storage2 = new Storage( 6L,001, "2017/05/", null, "jj3", null, null, null, null, null, null, null, null);
     }
 
     @Override
@@ -47,21 +62,66 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.bu_add:
                 OperationDao.addData(storage);
+
+
                 break;
             case R.id.bu_delete:
-
+               OperationDao.deleteData(0L);
+                OperationDao.deleteData(1L);
+                OperationDao.deleteData(2L);
+                OperationDao.deleteData(4L);
+                OperationDao.deleteData(6L);
                 break;
             case R.id.bu_update:
 
                 break;
             case R.id.bu_query:
-                List<Storage> jj = OperationDao.queryLove("jj");
-                Storage storage = jj.get(0);
-                Long id = storage.getId();
-                Log.e("jjj", "" + id);
-                String type = storage.getType();
-                Log.e("jjj",type);
+                List<Storage> jj = OperationDao.queryAll();
+                Log.e("jjj",jj.size()+"");
+                for (int i=0;i<jj.size();i++) {
+                    Storage storage = jj.get(i);
+                    Long id = storage.getId();
+                    Log.e("jjj", "" + id);
+                    String type = storage.getType();
+                    Log.e("jjj", type);
+                }
                 break;
         }
+    }
+
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    public Action getIndexApiAction() {
+        Thing object = new Thing.Builder()
+                .setName("Main Page") // TODO: Define a title for the content shown.
+                // TODO: Make sure this auto-generated URL is correct.
+                .setUrl(Uri.parse("http://host/path"))
+                .build();
+        return new Action.Builder(Action.TYPE_VIEW)
+                .setObject(object)
+                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
+                .build();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        AppIndex.AppIndexApi.start(client, getIndexApiAction());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        AppIndex.AppIndexApi.end(client, getIndexApiAction());
+        client.disconnect();
     }
 }
