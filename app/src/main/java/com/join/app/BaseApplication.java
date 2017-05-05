@@ -1,6 +1,7 @@
 package com.join.app;
 
 import android.app.Application;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.join.greenDaoUtils.DaoMaster;
@@ -13,12 +14,14 @@ import com.join.greenDaoUtils.DaoSession;
 public class BaseApplication extends Application {
 
     private static DaoSession daoSession;
+    private static Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
         //配置数据库
         setupDatabase();
+        context = getApplicationContext();
     }
 
     /**
@@ -35,7 +38,16 @@ public class BaseApplication extends Application {
         daoSession = daoMaster.newSession();
     }
 
+    /**
+     * 得到数据库的会话类
+     *
+     * @return
+     */
     public static DaoSession getDaoInstant() {
         return daoSession;
+    }
+
+    public static Context getContext() {
+        return context;
     }
 }
