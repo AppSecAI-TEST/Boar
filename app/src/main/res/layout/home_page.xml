@@ -4,13 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/circle_loading_view"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerInParent="true"
-        android:background="#ff0f"
-        app:mainColor="#fff"
+        android:background="#fff"
+        app:mainColor="#f0ff"
         app:secondaryColor="#fff0"
         app:textColor="@android:color/white" />
 </LinearLayout>
