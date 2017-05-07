@@ -1,6 +1,7 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
@@ -34,6 +35,11 @@ public class HomePage extends Activity {
                     for (int i = 0; i <= 100; i++) {
                         Thread.sleep(65);
                         changePercent(i);
+                        if (i==100){
+                            Intent intent = new Intent();
+                            intent.setAction("com.join.greet");
+                            startActivity(intent);
+                        }
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
