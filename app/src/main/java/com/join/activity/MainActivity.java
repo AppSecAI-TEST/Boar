@@ -1,4 +1,4 @@
-package com.join;
+package com.join.activity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.join.R;
 import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
 
