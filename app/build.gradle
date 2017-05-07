@@ -42,5 +42,7 @@ dependencies {
     androidTestCompile 'com.android.support:support-annotations:25.2.0'
     //greendao依赖
     compile 'org.greenrobot:greendao:3.2.0'
+    //百分比适配
+    compile 'com.zhy:percent-support-extends:1.0.1'
     compile project(':progress')
 }
