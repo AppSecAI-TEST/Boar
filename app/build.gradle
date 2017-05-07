@@ -2,8 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao' //使用greendao
 
 
-
-
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -15,7 +13,7 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
- //greendao配置
+    //greendao配置
     greendao {
         //版本号，升级时可配置
         schemaVersion 1
@@ -29,6 +27,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //代替findViewbyId
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
@@ -38,7 +40,7 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support:support-annotations:25.2.0'
-    compile 'org.greenrobot:greendao:3.2.0'
     //greendao依赖
+    compile 'org.greenrobot:greendao:3.2.0'
     compile project(':progress')
 }
