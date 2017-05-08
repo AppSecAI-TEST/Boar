@@ -14,6 +14,7 @@ import com.join.R;
 public class HomePage extends Activity {
 
     private AnimatedCircleLoadingView animatedCircleLoadingView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +23,7 @@ public class HomePage extends Activity {
         startLoading();
         startPercentMockThread();
     }
+
     private void startLoading() {
         animatedCircleLoadingView.startDeterminate();
     }
@@ -35,7 +37,7 @@ public class HomePage extends Activity {
                     for (int i = 0; i <= 100; i++) {
                         Thread.sleep(65);
                         changePercent(i);
-                        if (i==100){
+                        if (i == 100) {
                             Intent intent = new Intent();
                             intent.setAction("com.join.greet");
                             startActivity(intent);
@@ -49,6 +51,11 @@ public class HomePage extends Activity {
         new Thread(runnable).start();
     }
 
+    /**
+     * 改变进度条的值,必须要在UI线程
+     *
+     * @param percent
+     */
     private void changePercent(final int percent) {
         runOnUiThread(new Runnable() {
             @Override
