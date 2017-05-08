@@ -50,6 +50,7 @@
             app:layout_widthPercent="50%w">
 
             <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/one"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
@@ -60,6 +61,7 @@
                 app:layout_widthPercent="78%w">
 
                 <ImageView
+                    android:id="@+id/icon_click"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
@@ -69,6 +71,7 @@
                     app:layout_widthPercent="12%w" />
 
                 <EditText
+                    android:id="@+id/input"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="19dp"
@@ -84,6 +87,7 @@
             </com.zhy.android.percent.support.PercentLinearLayout>
 
             <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/two"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
@@ -94,6 +98,7 @@
                 app:layout_widthPercent="78%w">
 
                 <TextView
+                    android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -102,6 +107,7 @@
                     android:textSize="25dp" />
 
                 <TextView
+                    android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -111,6 +117,7 @@
             </com.zhy.android.percent.support.PercentLinearLayout>
 
             <Button
+                android:id="@+id/affirm"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"

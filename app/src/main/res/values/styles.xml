@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AnimationFade">
+
+        <!-- PopupWindow左右弹出的效果 -->
+        <item name="android:windowEnterAnimation">@anim/click_show</item>
+        <item name="android:windowExitAnimation">@anim/click_out</item>
+    </style>
 </resources>
