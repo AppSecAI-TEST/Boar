@@ -22,8 +22,9 @@ public class PercentIndicatorView extends TextView {
   }
 
   private void init() {
-    int textSize = (35 * parentWidth) / 700;
-    setTextSize(textSize);
+    //int textSize = (35 * parentWidth) / 700;
+    //setTextSize(textSize);
+    setTextSize(23);
     setTextColor(this.textColor);
     setGravity(Gravity.CENTER);
     setAlpha(0.8f);

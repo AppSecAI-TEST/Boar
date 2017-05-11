@@ -45,8 +45,9 @@ public class HomePage extends Activity {
                         changePercent(i);
                         if (i == 100) {
                             Intent intent = new Intent();
-                            intent.setAction("com.join.greet");
+                            intent.setAction("com.join.idselect");
                             startActivity(intent);
+                            finish();
                         }
                     }
                 } catch (InterruptedException e) {
@@ -82,4 +83,5 @@ public class HomePage extends Activity {
             }
         });
     }
+
 }

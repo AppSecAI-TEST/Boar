@@ -7,10 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.join.R;
@@ -29,10 +30,10 @@ public class PopupWindowUtil {
     private View view;
     private ListView lv_group;
     private PopupWindow popupWindow;
-    private EditText editText;
+    private TextView editText;
     private ImageView icon;
 
-    public PopupWindowUtil(Context context, EditText editText, ImageView icon) {
+    public PopupWindowUtil(Context context, TextView editText, ImageView icon) {
         this.context = context;
         this.editText = editText;
         this.icon = icon;
@@ -44,6 +45,8 @@ public class PopupWindowUtil {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             view = layoutInflater.inflate(R.layout.two_list_window, null);
+            LinearLayout linear = (LinearLayout) view.findViewById(R.id.listview_background);
+            linear.getBackground().setAlpha(255);
 
             lv_group = (ListView) view.findViewById(R.id.lvGroup);
             // 加载数据
@@ -53,13 +56,12 @@ public class PopupWindowUtil {
             list.add("003");
             list.add("004");
             list.add("005");
-            //list.add("朋友");
-            //  list.add("陌生人");
+
 
             TwoAdapter groupAdapter = new TwoAdapter(context, list);
             lv_group.setAdapter(groupAdapter);
             // 创建一个PopuWidow对象 设置高,宽
-            popupWindow = new PopupWindow(view, 150, 180);
+            popupWindow = new PopupWindow(view, 150, 210);
         }
         popupWindow.setFocusable(false); // 获取焦点
         popupWindow.setTouchable(true); // 设置popupwindow可点击

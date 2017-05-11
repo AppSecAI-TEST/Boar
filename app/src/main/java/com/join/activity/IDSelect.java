@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,8 +22,7 @@ public class IDSelect extends Activity implements View.OnClickListener {
 
     private Button affirm;
     private ImageView icon;
-    private EditText input;
-    private TextView date, time;
+    private TextView date, time,input;
     private PopupWindowUtil util;
 
     @Override
@@ -43,7 +41,7 @@ public class IDSelect extends Activity implements View.OnClickListener {
     private void initView() {
         icon = (ImageView) findViewById(R.id.icon_click);
         icon.setOnClickListener(this);
-        input = (EditText) findViewById(R.id.input);
+        input = (TextView) findViewById(R.id.input);
         date = (TextView) findViewById(R.id.date);
         time = (TextView) findViewById(R.id.time);
         affirm = (Button) findViewById(R.id.affirm);
@@ -58,7 +56,9 @@ public class IDSelect extends Activity implements View.OnClickListener {
                 icon.setBackgroundResource(R.drawable.top);
                 break;
             case R.id.affirm:
-
+      /*          Intent intent = new Intent();
+                intent.setAction("com.join.function");
+                startActivity(intent);*/
                 break;
         }
     }
@@ -77,7 +77,6 @@ public class IDSelect extends Activity implements View.OnClickListener {
             public void onClick(DialogInterface dialog, int which) {
                 // 隐藏dialog
                 dialog.dismiss();
-                System.out.println("------------------点击确定----------------");
             }
         });
 

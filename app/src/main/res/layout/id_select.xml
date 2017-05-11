@@ -70,19 +70,15 @@
                     app:layout_heightPercent="50%h"
                     app:layout_widthPercent="12%w" />
 
-                <EditText
+                <TextView
                     android:id="@+id/input"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="19dp"
-                    android:background="@null"
-                    android:digits="1234567890"
+                    android:layout_gravity="center"
                     android:hint="请选择检测员ID!"
-                    android:inputType="phone"
-                    android:maxLength="4"
-                    android:singleLine="true"
                     android:textSize="25dp"
-                    app:layout_heightPercent="100%h"
+                    app:layout_heightPercent="80%h"
                     app:layout_widthPercent="80%w" />
             </com.zhy.android.percent.support.PercentLinearLayout>
 

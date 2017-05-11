@@ -13,20 +13,36 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.IDSelect">
+        <activity android:name=".activity.StosteDetection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        <activity android:name=".activity.Greet">
-            <intent-filter>
-                //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.greet"></action>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>-->
+
+        <!--        <activity android:name=".activity.IDSelect">
+                    <intent-filter>
+                        //http://www.cnblogs.com/feng9exe/p/5699233.html
+                        <action android:name="com.join.idselect"></action>
+                        <category android:name="android.intent.category.DEFAULT" />
+                    </intent-filter>
+                </activity>-->
+        //主功能
+        <!--        <activity android:name=".activity.Function">
+                    <intent-filter>
+                        //http://www.cnblogs.com/feng9exe/p/5699233.html
+                        <action android:name="com.join.function"></action>
+                        <category android:name="android.intent.category.DEFAULT" />
+                    </intent-filter>
+                </activity>-->
+        <!--       <activity android:name=".activity.StosteDetection">
+                   <intent-filter>
+                       //http://www.cnblogs.com/feng9exe/p/5699233.html
+                       <action android:name="com.join.stostedetection"></action>
+                       <category android:name="android.intent.category.DEFAULT" />
+                   </intent-filter>
+               </activity>-->
     </application>
 
 </manifest>

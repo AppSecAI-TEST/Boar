@@ -3,12 +3,14 @@ package com.join.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.join.R;
 
@@ -139,7 +141,7 @@ public class ManageDialog extends Dialog {
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             // 设置标题
 
-           // ((TextView) layout.findViewById(R.id.title)).setText(title);
+            // ((TextView) layout.findViewById(R.id.title)).setText(title);
             // 设置确认按钮
             if (positiveButtonText != null) {
                 //设置按钮字体
@@ -150,12 +152,20 @@ public class ManageDialog extends Dialog {
                     ((Button) layout.findViewById(R.id.confirm))
                             .setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
-                                    positiveButtonClickListener.onClick(dialog,
-                                            DialogInterface.BUTTON_POSITIVE);
-                                    //得到输入的内容
                                     EditText viewById = (EditText) layout.findViewById(R.id.input);
-                                    String s = viewById.getText().toString();
-                                    Log.e("jjj", s);
+                                    Editable text = viewById.getText();
+                                    int length = text.length();
+
+                                    if (length == 11) {
+                                        positiveButtonClickListener.onClick(dialog,
+                                                DialogInterface.BUTTON_POSITIVE);
+                                    }else {
+                                        Toast.makeText(context,"请输入11位手机号码",Toast.LENGTH_LONG).show();
+                                    }
+
+                                    //得到输入的内容
+
+                                    Log.e("jjj", length + "");
                                 }
                             });
                 }
