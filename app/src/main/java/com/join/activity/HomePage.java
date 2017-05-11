@@ -8,7 +8,7 @@ import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.join.R;
 
 /**
- * Created by join on 2017/5/7.
+ * 欢迎界面
  */
 
 public class HomePage extends Activity {
@@ -24,10 +24,16 @@ public class HomePage extends Activity {
         startPercentMockThread();
     }
 
+    /**
+     * 加载动漫
+     */
     private void startLoading() {
         animatedCircleLoadingView.startDeterminate();
     }
 
+    /**
+     * 改变进度的线程
+     */
     private void startPercentMockThread() {
         Runnable runnable = new Runnable() {
             @Override
@@ -65,6 +71,9 @@ public class HomePage extends Activity {
         });
     }
 
+    /**
+     * 重置进度
+     */
     public void resetLoading() {
         runOnUiThread(new Runnable() {
             @Override

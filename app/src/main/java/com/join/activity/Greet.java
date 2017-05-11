@@ -16,4 +16,6 @@ public class Greet extends Activity {
         setContentView(R.layout.manage_dialog);
 
     }
+
+
 }

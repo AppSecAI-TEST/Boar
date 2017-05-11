@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000">
+    android:background="@drawable/backgroud_3">
 
     <ListView
+        android:layout_marginTop="20dp"
         android:id="@+id/lvGroup"
+        android:dividerHeight="25dp"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
 

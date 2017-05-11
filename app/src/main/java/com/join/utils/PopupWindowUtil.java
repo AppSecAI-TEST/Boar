@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
@@ -27,10 +29,13 @@ public class PopupWindowUtil {
     private View view;
     private ListView lv_group;
     private PopupWindow popupWindow;
+    private EditText editText;
+    private ImageView icon;
 
-    public PopupWindowUtil(Context context) {
+    public PopupWindowUtil(Context context, EditText editText, ImageView icon) {
         this.context = context;
-
+        this.editText = editText;
+        this.icon = icon;
     }
 
     public void showWindow(View parent) {
@@ -43,24 +48,23 @@ public class PopupWindowUtil {
             lv_group = (ListView) view.findViewById(R.id.lvGroup);
             // 加载数据
             list = new ArrayList<String>();
-            list.add("全部");
-            list.add("我的微博");
-            list.add("好友");
-            list.add("亲人");
-            list.add("同学");
-            list.add("朋友");
-            list.add("陌生人");
+            list.add("001");
+            list.add("002");
+            list.add("003");
+            list.add("004");
+            list.add("005");
+            //list.add("朋友");
+            //  list.add("陌生人");
 
             TwoAdapter groupAdapter = new TwoAdapter(context, list);
             lv_group.setAdapter(groupAdapter);
             // 创建一个PopuWidow对象 设置高,宽
-            popupWindow = new PopupWindow(view, 100, 100);
+            popupWindow = new PopupWindow(view, 150, 180);
         }
+        popupWindow.setFocusable(false); // 获取焦点
+        popupWindow.setTouchable(true); // 设置popupwindow可点击
+        popupWindow.setOutsideTouchable(false); // 设置popupwindow外部可点击
 
-        // 使其聚集
-        popupWindow.setFocusable(true);
-        // 设置允许在外点击消失
-        popupWindow.setOutsideTouchable(true);
 
         // 这个是为了点击“返回Back”也能使其消失，并且并不会影响你的背景
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
@@ -69,7 +73,7 @@ public class PopupWindowUtil {
         int xPos = windowManager.getDefaultDisplay().getWidth();
         Log.i("coder", "xPos:" + xPos);
         //以parent 为开始的x,y轴
-        popupWindow.showAsDropDown(parent, -50, 0);
+        popupWindow.showAsDropDown(parent, -5, 0);
 
         lv_group.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -78,6 +82,8 @@ public class PopupWindowUtil {
                                     int position, long id) {
 
                 Toast.makeText(context, list.get(position), Toast.LENGTH_LONG).show();
+                editText.setText(list.get(position));
+                icon.setBackgroundResource(R.drawable.yiti_2);
 
                 if (popupWindow != null) {
                     popupWindow.dismiss();

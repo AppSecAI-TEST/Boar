@@ -1,4 +1,3 @@
-/*
 package com.join.dialog;
 
 import android.app.Dialog;
@@ -10,15 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.join.R;
 
-*/
 /**
  * Created by join on 2017/5/9.
- *//*
+ */
 
 
 public class ManageDialog extends Dialog {
@@ -48,40 +44,28 @@ public class ManageDialog extends Dialog {
             return this;
         }
 
-        */
-/**
+        /**
          * 设置的内容
          *
          * @param message
          * @return
-         *//*
-
+         */
         public Builder setMessage(int message) {
             this.message = (String) context.getText(message);
             return this;
         }
 
-        */
-/**
+        /**
          * 设置标题
          *
          * @param title
          * @return
-         *//*
+         */
 
         public Builder setTitle(int title) {
             this.title = (String) context.getText(title);
             return this;
         }
-
-        */
-/**
-         * 设置标题
-         *
-         * @param title
-         * @return
-         *//*
-
 
         public Builder setTitle(String title) {
             this.title = title;
@@ -93,14 +77,14 @@ public class ManageDialog extends Dialog {
             return this;
         }
 
-        */
-/**
-         * 设置确定按钮
+        /**
+         * 设置确定按钮的监听
          *
          * @param positiveButtonText
          * @param listener
          * @return
-         *//*
+         */
+
 
         public Builder setPositiveButton(int positiveButtonText,
                                          DialogInterface.OnClickListener listener) {
@@ -117,6 +101,13 @@ public class ManageDialog extends Dialog {
             return this;
         }
 
+        /**
+         * 设置取消按钮的监听
+         *
+         * @param negativeButtonText
+         * @param listener
+         * @return
+         */
         public Builder setNegativeButton(int negativeButtonText,
                                          DialogInterface.OnClickListener listener) {
             this.negativeButtonText = (String) context
@@ -139,36 +130,39 @@ public class ManageDialog extends Dialog {
             // instantiate the dialog with the custom Theme
             final ManageDialog dialog = new ManageDialog(context,
                     R.style.Dialog);
-            final View layout = inflater.inflate(R.layout.activity_main, null);
-            View v = layout.findViewById(R.id.title);
+            final View layout = inflater.inflate(R.layout.manage_dialog, null);
+            //View v = layout.findViewById(R.id.title);
             //设置背景透明度
-            v.getBackground().setAlpha(150);
+            //v.getBackground().setAlpha(150);
             //关联布局
             dialog.addContentView(layout, new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             // 设置标题
 
-            ((TextView) layout.findViewById(R.id.title)).setText(title);
+           // ((TextView) layout.findViewById(R.id.title)).setText(title);
             // 设置确认按钮
             if (positiveButtonText != null) {
-                ((Button) layout.findViewById(R.id.positiveButton))
+                //设置按钮字体
+                ((Button) layout.findViewById(R.id.confirm))
                         .setText(positiveButtonText);
                 if (positiveButtonClickListener != null) {
-                    ((Button) layout.findViewById(R.id.positiveButton))
+                    //设置按钮
+                    ((Button) layout.findViewById(R.id.confirm))
                             .setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
                                     positiveButtonClickListener.onClick(dialog,
                                             DialogInterface.BUTTON_POSITIVE);
-                                    EditText viewById = (EditText) layout.findViewById(R.id.message);
+                                    //得到输入的内容
+                                    EditText viewById = (EditText) layout.findViewById(R.id.input);
                                     String s = viewById.getText().toString();
                                     Log.e("jjj", s);
                                 }
                             });
                 }
-            } else {
+            } /*else {
                 //如果没有确认按钮则隐藏
-                layout.findViewById(R.id.positiveButton).setVisibility(
-                        View.GONE);
+             *//*   layout.findViewById(R.id.positiveButton).setVisibility(
+                        View.GONE);*//*
             }
             // 设置取消按钮
             if (negativeButtonText != null) {
@@ -197,11 +191,10 @@ public class ManageDialog extends Dialog {
                 ((LinearLayout) layout.findViewById(R.id.content)).addView(
                         contentView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                                 ViewGroup.LayoutParams.MATCH_PARENT));
-            }
+            }*/
             // 把设置好的View加载到弹出框
             dialog.setContentView(layout);
             return dialog;
         }
     }
 }
-*/

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,10 +10,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="33dp"
         android:background="@drawable/background_1"
         android:orientation="vertical"
-        app:layout_heightPercent="90%h"
+        app:layout_heightPercent="80%h"
         app:layout_widthPercent="50%w">
 
         <com.zhy.android.percent.support.PercentLinearLayout
@@ -28,12 +29,13 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:background="#3fc3b6"
                 android:text="请输入您的手机号,作为系统设置密码"
                 android:textColor="#e0e5e5"
+                android:textSize="22dp"
                 app:layout_heightPercent="22%h"
-                app:layout_widthPercent="90%w" />
+                app:layout_widthPercent="76%w" />
 
             <TextView
                 android:layout_width="0dp"
@@ -43,8 +45,9 @@
                 android:background="#3fc3b6"
                 android:text="请记住您的密码."
                 android:textColor="#e0e5e5"
+                android:textSize="22dp"
                 app:layout_heightPercent="22%h"
-                app:layout_widthPercent="50%w" />
+                app:layout_widthPercent="45%w" />
         </com.zhy.android.percent.support.PercentLinearLayout>
 
 
@@ -65,8 +68,8 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
-                android:src="@drawable/yiti_2"
-                app:layout_heightPercent="50%h"
+                android:src="@drawable/shouji_2"
+                app:layout_heightPercent="40%h"
                 app:layout_widthPercent="12%w" />
 
             <EditText
@@ -76,9 +79,9 @@
                 android:layout_marginLeft="19dp"
                 android:background="@null"
                 android:digits="1234567890"
-                android:hint="请选择检测员ID!"
+                android:hint="请输入您的手机号码!"
                 android:inputType="phone"
-                android:maxLength="4"
+                android:maxLength="11"
                 android:singleLine="true"
                 android:textSize="25dp"
                 app:layout_heightPercent="100%h"
@@ -86,14 +89,15 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
         <Button
+            android:id="@+id/confirm"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginTop="35dp"
             android:background="@drawable/yiti_26"
             android:text="确认"
-            android:textSize="25dp"
             android:textColor="#e0e5e5"
+            android:textSize="25dp"
             app:layout_heightPercent="22%h"
             app:layout_widthPercent="78%w" />
     </com.zhy.android.percent.support.PercentLinearLayout>
