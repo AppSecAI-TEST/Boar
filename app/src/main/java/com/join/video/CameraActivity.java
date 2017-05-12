@@ -176,6 +176,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             mRecorder.setVideoFrameRate(30);
             //设置要捕获的视频的宽度和高度
             mSurfaceHolder.setFixedSize(320, 240);//最高只能设置640x480
+
             mRecorder.setVideoSize(320, 240);//最高只能设置640x480
             //设置记录会话的最大持续时间（毫秒）
             mRecorder.setMaxDuration(60 * 1000);
