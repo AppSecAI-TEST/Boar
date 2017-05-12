@@ -57,7 +57,7 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
-            android:background="@drawable/yiti_14"
+            android:background="@drawable/aa_05"
             android:orientation="horizontal"
             app:layout_heightPercent="22%h"
             app:layout_widthPercent="78%w">
@@ -68,7 +68,7 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
-                android:src="@drawable/shouji_2"
+                android:src="@drawable/aa_12"
                 app:layout_heightPercent="40%h"
                 app:layout_widthPercent="12%w" />
 
@@ -94,7 +94,7 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginTop="35dp"
-            android:background="@drawable/yiti_26"
+            android:background="@drawable/aa_17"
             android:text="确认"
             android:textColor="#e0e5e5"
             android:textSize="25dp"

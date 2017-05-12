@@ -62,8 +62,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/yiti_43" />
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/aa_34" />
             </com.zhy.android.percent.support.PercentLinearLayout>
 
             <TextView
@@ -102,8 +102,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/yiti_3" />
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/aa_28" />
             </com.zhy.android.percent.support.PercentLinearLayout>
 
             <TextView
@@ -141,8 +141,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/yiti_4" />
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/aa_31" />
             </com.zhy.android.percent.support.PercentLinearLayout>
 
             <TextView
@@ -180,8 +180,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/yiti_46" />
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/aa_37" />
             </com.zhy.android.percent.support.PercentLinearLayout>
 
             <TextView

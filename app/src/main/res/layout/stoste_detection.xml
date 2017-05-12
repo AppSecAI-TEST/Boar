@@ -91,7 +91,8 @@
                             android:textSize="20dp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/id_Gong"
+                            android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
@@ -120,7 +121,8 @@
                             android:textSize="20dp" />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/id_Cai"
+                            android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
@@ -183,7 +185,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
-                            android:text="公猪ID:"
+                            android:text="采精时间:"
                             android:textSize="20dp" />
 
                         <TextView
@@ -191,7 +193,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
-                            android:text="公猪ID:"
+                            android:text="14:30"
+                            android:textColor="#078d82"
                             android:textSize="20dp" />
 
                     </com.zhy.android.percent.support.PercentLinearLayout>
@@ -289,6 +292,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="28dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/yiti_1" />
+        android:src="@drawable/aa_19" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

@@ -164,15 +164,15 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             mRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
             //设置视频的采集方式
             mRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-            //设置文件的输出格式
-            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);//aac_adif， aac_adts， output_format_rtp_avp， output_format_mpeg2ts ，webm
+            //设置文件的输出格式 MPEG_4
+            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4 );//aac_adif， aac_adts， output_format_rtp_avp， output_format_mpeg2ts ，webm
             //设置audio的编码格式
             mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             //设置video的编码格式
-            mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
+            mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT );
             //设置录制的视频编码比特率
             mRecorder.setVideoEncodingBitRate(1024 * 1024);
-            //设置录制的视频帧率,注意文档的说明:
+            // 设置录制的视频帧率。必须放在设置编码和格式的后面，否则报错
             mRecorder.setVideoFrameRate(30);
             //设置要捕获的视频的宽度和高度
             mSurfaceHolder.setFixedSize(320, 240);//最高只能设置640x480
@@ -180,14 +180,16 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             //设置记录会话的最大持续时间（毫秒）
             mRecorder.setMaxDuration(60 * 1000);
             mRecorder.setPreviewDisplay(mSurfaceHolder.getSurface());
-            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES).getPath();
+            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath();
+
             if (path != null) {
                 File dir = new File(path + "/videos");
                 if (!dir.exists()) {
                     dir.mkdir();
                 }
-                path = dir + "/" + System.currentTimeMillis() + ".mp4";
-                Log.e("jjj",path);
+               /* path = dir + "/" + System.currentTimeMillis() + ".avi";*/
+                path = dir + "/" + "HEVC" + ".avi";
+                Log.e("jjj", path);
                 //设置输出文件的路径
                 mRecorder.setOutputFile(path);
                 //准备录制
@@ -201,6 +203,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             e.printStackTrace();
         }
     }
+
     /**
      * 停止录制
      */

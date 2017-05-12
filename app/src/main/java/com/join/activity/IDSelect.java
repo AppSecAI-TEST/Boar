@@ -53,7 +53,7 @@ public class IDSelect extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.icon_click:
                 util.showWindow(v);
-                icon.setBackgroundResource(R.drawable.top);
+                icon.setBackgroundResource(R.drawable.aa_49);
                 break;
             case R.id.affirm:
       /*          Intent intent = new Intent();

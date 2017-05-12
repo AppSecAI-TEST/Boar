@@ -85,7 +85,7 @@ public class PopupWindowUtil {
 
                 Toast.makeText(context, list.get(position), Toast.LENGTH_LONG).show();
                 editText.setText(list.get(position));
-                icon.setBackgroundResource(R.drawable.yiti_2);
+                icon.setBackgroundResource(R.drawable.aa_24);
 
                 if (popupWindow != null) {
                     popupWindow.dismiss();
