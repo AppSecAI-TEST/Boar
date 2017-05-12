@@ -33,6 +33,8 @@ import java.util.List;
  */
 
 public class CameraActivity extends Activity implements SurfaceHolder.Callback {
+    //http://stackoverflow.com/questions/10102242/getting-frames-from-videos-android   视频分解库
+    //http://blog.csdn.net/feifeiwendao/article/details/52527824    ffmpeg
     private SurfaceView mSurfaceView;
     private SurfaceHolder mSurfaceHolder;
     private Button btnStartStop;
@@ -165,11 +167,11 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             //设置视频的采集方式
             mRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
             //设置文件的输出格式 MPEG_4
-            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4 );//aac_adif， aac_adts， output_format_rtp_avp， output_format_mpeg2ts ，webm
+            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);//aac_adif， aac_adts， output_format_rtp_avp， output_format_mpeg2ts ，webm
             //设置audio的编码格式
             mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             //设置video的编码格式
-            mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT );
+            mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
             //设置录制的视频编码比特率
             mRecorder.setVideoEncodingBitRate(1024 * 1024);
             // 设置录制的视频帧率。必须放在设置编码和格式的后面，否则报错
