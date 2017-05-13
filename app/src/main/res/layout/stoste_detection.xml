@@ -19,22 +19,24 @@
             app:layout_widthPercent="100%w">
 
             <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="500dp"
+                android:text="精液原液检测"
+                android:textColor="#fff"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="390dp"
-                android:text="精液原液检测"
-                android:textColor="#fff"
-                android:textSize="25dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="220dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
 
             <TextView
                 android:id="@+id/temp"
@@ -44,7 +46,7 @@
                 android:layout_marginLeft="7dp"
                 android:text="27℃"
                 android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textSize="25dp" />
         </com.zhy.android.percent.support.PercentLinearLayout>
 
         <com.zhy.android.percent.support.PercentLinearLayout
@@ -57,17 +59,17 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="62dp"
                 android:background="@drawable/background_1"
                 android:orientation="vertical"
-                app:layout_heightPercent="92%h"
+                app:layout_heightPercent="90%h"
                 app:layout_widthPercent="90%w">
 
                 <com.zhy.android.percent.support.PercentLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="48dp"
+                    android:layout_marginTop="56dp"
                     android:orientation="horizontal"
                     app:layout_heightPercent="18%h"
                     app:layout_widthPercent="80%w">
@@ -80,7 +82,7 @@
                         android:background="@drawable/background_2"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="40%w">
+                        app:layout_widthPercent="45%w">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -88,17 +90,17 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
                             android:text="公猪ID:"
-                            android:textSize="20dp" />
+                            android:textSize="27dp" />
 
                         <TextView
                             android:id="@+id/id_Gong"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginLeft="20dp"
                             android:text="12345"
                             android:textColor="#078d82"
-                            android:textSize="20dp" />
+                            android:textSize="23dp" />
 
                     </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -110,7 +112,7 @@
                         android:background="@drawable/background_2"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="40%w">
+                        app:layout_widthPercent="45%w">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -118,17 +120,17 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
                             android:text="采精量:"
-                            android:textSize="20dp" />
+                            android:textSize="27dp" />
 
                         <TextView
                             android:id="@+id/id_Cai"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginLeft="20dp"
                             android:text="567ml"
                             android:textColor="#078d82"
-                            android:textSize="20dp" />
+                            android:textSize="23dp" />
 
                     </com.zhy.android.percent.support.PercentLinearLayout>
                 </com.zhy.android.percent.support.PercentLinearLayout>
@@ -150,7 +152,7 @@
                         android:background="@drawable/background_2"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="40%w">
+                        app:layout_widthPercent="45%w">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -158,15 +160,15 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
                             android:text="采精日期:"
-                            android:textSize="20dp" />
+                            android:textSize="27dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginLeft="20dp"
                             android:text="2017-05-13"
-                            android:textSize="20dp" />
+                            android:textSize="23dp" />
 
                     </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -178,7 +180,7 @@
                         android:background="@drawable/background_2"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="40%w">
+                        app:layout_widthPercent="45%w">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -186,16 +188,16 @@
                             android:layout_gravity="center"
                             android:layout_marginLeft="15dp"
                             android:text="采精时间:"
-                            android:textSize="20dp" />
+                            android:textSize="27dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginLeft="20dp"
                             android:text="14:30"
                             android:textColor="#078d82"
-                            android:textSize="20dp" />
+                            android:textSize="23dp" />
 
                     </com.zhy.android.percent.support.PercentLinearLayout>
                 </com.zhy.android.percent.support.PercentLinearLayout>
@@ -214,19 +216,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="30dp"
                         android:text="颜    色:"
                         android:textSize="30dp" />
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/background_2"
                         android:text="正 常"
                         android:textColor="#b6b7bb"
-                        android:textSize="20dp" />
+                        android:textSize="25dp"
+                        app:layout_heightPercent="60%h"
+                        app:layout_widthPercent="15%w"
+                        android:id="@+id/button3" />
 
                     <Button
                         android:layout_width="wrap_content"
@@ -236,35 +241,42 @@
                         android:background="@drawable/background_2"
                         android:text="异 常"
                         android:textColor="#b6b7bb"
-                        android:textSize="20dp" />
+                        android:textSize="25dp"
+                        app:layout_heightPercent="60%h"
+                        app:layout_widthPercent="15%w" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="80dp"
+                        android:layout_marginLeft="50dp"
                         android:text="气   味:"
-                        android:textSize="25dp" />
+                        android:textSize="30dp" />
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/background_2"
                         android:text="正 常"
                         android:textColor="#b6b7bb"
-                        android:textSize="20dp" />
+                        android:textSize="25dp"
+                        app:layout_heightPercent="60%h"
+                        app:layout_widthPercent="15%w"/>
 
                     <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/button"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/background_2"
                         android:text="异 常"
                         android:textColor="#b6b7bb"
-                        android:textSize="20dp" />
+                        android:textSize="25dp"
+                        app:layout_heightPercent="60%h"
+                        app:layout_widthPercent="15%w"/>
 
                 </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -272,13 +284,14 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="35dp"
                     android:background="@drawable/background_3"
                     android:text="开始检测"
                     android:textColor="#fff"
-                    android:textSize="20dp"
+                    android:textSize="30dp"
                     app:layout_heightPercent="18%h"
-                    app:layout_widthPercent="40%w" />
+                    app:layout_widthPercent="40%w"
+                    android:id="@+id/button2" />
 
             </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -290,8 +303,9 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/aa_19" />
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="42dp"
+        android:src="@drawable/aa_19"
+        android:id="@+id/imageView3" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

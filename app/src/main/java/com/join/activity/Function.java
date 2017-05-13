@@ -1,6 +1,7 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -37,7 +38,9 @@ public class Function extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.function_1:
-
+                Intent intent = new Intent();
+                intent.setAction("com.join.stostedetection");
+                startActivity(intent);
                 break;
             case R.id.function_2:
 

@@ -2,6 +2,7 @@ package com.join.activity;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -56,9 +57,9 @@ public class IDSelect extends Activity implements View.OnClickListener {
                 icon.setBackgroundResource(R.drawable.aa_49);
                 break;
             case R.id.affirm:
-      /*          Intent intent = new Intent();
+                Intent intent = new Intent();
                 intent.setAction("com.join.function");
-                startActivity(intent);*/
+                startActivity(intent);
                 break;
         }
     }

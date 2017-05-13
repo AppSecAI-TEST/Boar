@@ -29,25 +29,24 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="#3fc3b6"
+                android:layout_marginTop="30dp"
                 android:text="请输入您的手机号,作为系统设置密码"
                 android:textColor="#e0e5e5"
-                android:textSize="22dp"
+                android:textSize="26dp"
                 app:layout_heightPercent="22%h"
-                app:layout_widthPercent="76%w" />
+                app:layout_widthPercent="60%w" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:background="#3fc3b6"
+                android:gravity="center"
                 android:text="请记住您的密码."
                 android:textColor="#e0e5e5"
-                android:textSize="22dp"
+                android:textSize="26dp"
                 app:layout_heightPercent="22%h"
-                app:layout_widthPercent="45%w" />
+                app:layout_widthPercent="38%w" />
         </com.zhy.android.percent.support.PercentLinearLayout>
 
 

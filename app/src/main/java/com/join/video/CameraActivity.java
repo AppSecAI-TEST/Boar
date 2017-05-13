@@ -82,7 +82,10 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             @Override
             public void onClick(View v) {
                 if (!isRecording) {
+
                     startRecord();
+
+
                 } else {
                     stopRecord();
                 }
@@ -157,7 +160,8 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             mRecorder = new MediaRecorder(); // 创建MediaRecorder
         }
         if (mCamera != null) {
-            mCamera.stopPreview();
+            // mCamera.stopPreview();
+            mCamera.startPreview();
             mCamera.unlock();
             mRecorder.setCamera(mCamera);
         }
@@ -172,37 +176,42 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             //设置video的编码格式
             mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
-            //设置录制的视频编码比特率
-            mRecorder.setVideoEncodingBitRate(1024 * 1024);
             // 设置录制的视频帧率。必须放在设置编码和格式的后面，否则报错
             mRecorder.setVideoFrameRate(30);
+            //设置录制的视频编码比特率
+            mRecorder.setVideoEncodingBitRate(1024 * 1024);
+
             //设置要捕获的视频的宽度和高度
-            mSurfaceHolder.setFixedSize(320, 240);//最高只能设置640x480
+            //   mSurfaceHolder.setFixedSize(640, 480);//最高只能设置640x480
 
             mRecorder.setVideoSize(320, 240);//最高只能设置640x480
             //设置记录会话的最大持续时间（毫秒）
             mRecorder.setMaxDuration(60 * 1000);
             mRecorder.setPreviewDisplay(mSurfaceHolder.getSurface());
-            String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath();
+           // String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath();
+            String path1 = Environment.getExternalStorageDirectory().getPath()+"/"+"DCIM"+"/"+"Camera";
+            Log.e("jjj",path1);
 
-            if (path != null) {
-                File dir = new File(path + "/videos");
+            if (path1 != null) {
+                File dir = new File(path1);
                 if (!dir.exists()) {
                     dir.mkdir();
                 }
                /* path = dir + "/" + System.currentTimeMillis() + ".avi";*/
-                path = dir + "/" + "HEVC" + ".avi";
-                Log.e("jjj", path);
+                path1 = dir + "/" + "HEVC" + ".3gp";
+                Log.e("jjj", path1);
                 //设置输出文件的路径
-                mRecorder.setOutputFile(path);
+                mRecorder.setOutputFile(path1);
                 //准备录制
                 mRecorder.prepare();
                 //开始录制
                 mRecorder.start();
                 isRecording = true;
-                btnStartStop.setText("停止");
+
+                // btnStartStop.setText("停止");
             }
         } catch (Exception e) {
+            Log.e("jjjj", "jjjjjjj");
             e.printStackTrace();
         }
     }
@@ -216,7 +225,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             mRecorder.stop();
             //重置
             mRecorder.reset();
-            btnStartStop.setText("开始");
+            // btnStartStop.setText("开始");
         } catch (Exception e) {
             e.printStackTrace();
         }
