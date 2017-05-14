@@ -75,6 +75,7 @@
                     app:layout_widthPercent="80%w">
 
                     <com.zhy.android.percent.support.PercentLinearLayout
+                        android:id="@+id/id_Gong"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
@@ -93,7 +94,7 @@
                             android:textSize="27dp" />
 
                         <TextView
-                            android:id="@+id/id_Gong"
+                            android:id="@+id/id_Gong_1"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -123,7 +124,7 @@
                             android:textSize="27dp" />
 
                         <TextView
-                            android:id="@+id/id_Cai"
+                            android:id="@+id/id_ml"
                             android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -163,6 +164,7 @@
                             android:textSize="27dp" />
 
                         <TextView
+                            android:id="@+id/date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -191,6 +193,7 @@
                             android:textSize="27dp" />
 
                         <TextView
+                            android:id="@+id/time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -221,6 +224,7 @@
                         android:textSize="30dp" />
 
                     <Button
+                        android:id="@+id/normal_1"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
@@ -230,10 +234,10 @@
                         android:textColor="#b6b7bb"
                         android:textSize="25dp"
                         app:layout_heightPercent="60%h"
-                        app:layout_widthPercent="15%w"
-                        android:id="@+id/button3" />
+                        app:layout_widthPercent="15%w" />
 
                     <Button
+                        android:id="@+id/abnormal_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -254,6 +258,7 @@
                         android:textSize="30dp" />
 
                     <Button
+                        android:id="@+id/normal_2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
@@ -263,10 +268,10 @@
                         android:textColor="#b6b7bb"
                         android:textSize="25dp"
                         app:layout_heightPercent="60%h"
-                        app:layout_widthPercent="15%w"/>
+                        app:layout_widthPercent="15%w" />
 
                     <Button
-                        android:id="@+id/button"
+                        android:id="@+id/abnormal_2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
@@ -276,11 +281,12 @@
                         android:textColor="#b6b7bb"
                         android:textSize="25dp"
                         app:layout_heightPercent="60%h"
-                        app:layout_widthPercent="15%w"/>
+                        app:layout_widthPercent="15%w" />
 
                 </com.zhy.android.percent.support.PercentLinearLayout>
 
                 <Button
+                    android:id="@+id/start"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
@@ -290,8 +296,7 @@
                     android:textColor="#fff"
                     android:textSize="30dp"
                     app:layout_heightPercent="18%h"
-                    app:layout_widthPercent="40%w"
-                    android:id="@+id/button2" />
+                    app:layout_widthPercent="40%w" />
 
             </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -301,11 +306,11 @@
     </com.zhy.android.percent.support.PercentLinearLayout>
 
     <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="42dp"
-        android:src="@drawable/aa_19"
-        android:id="@+id/imageView3" />
+        android:src="@drawable/aa_19" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

@@ -32,8 +32,9 @@ public class IDSelect extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.id_select);
         initView();
-        util = new PopupWindowUtil(IDSelect.this, input, icon);
         showDialog();
+        util = new PopupWindowUtil(IDSelect.this, input, icon);
+
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd    hh:mm");
         String tateFormat = sDateFormat.format(new java.util.Date());
         date.setText(tateFormat);

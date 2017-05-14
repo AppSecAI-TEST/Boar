@@ -15,12 +15,27 @@
         <item name="android:windowExitAnimation">@anim/click_out</item>
     </style>
 
-
+    <!--ManageDialog-->
     <style name="Dialog" parent="android:style/Theme.Dialog">
         <item name="android:background">#808080</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">false</item>
         <item name="android:windowIsFloating">false</item>
     </style>
+
+
+<!--    <style name="dialog_style" parent="Theme.AppCompat.Dialog">
+
+        &lt;!&ndash;是否悬浮在activity上&ndash;&gt;
+        <item name="android:windowIsFloating">true</item>
+        &lt;!&ndash;透明是否&ndash;&gt;
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:height">10dp</item>
+        &lt;!&ndash;没有标题&ndash;&gt;
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>&lt;!&ndash; activity点击空白部分不消失 &ndash;&gt;
+
+    </style>-->
 
 </resources>

@@ -13,7 +13,7 @@ public class Greet extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.manage_dialog);
+        setContentView(R.layout.keyboard);
 
     }
 
