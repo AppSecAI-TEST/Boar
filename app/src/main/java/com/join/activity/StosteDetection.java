@@ -1,6 +1,7 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -77,6 +78,11 @@ public class StosteDetection extends Activity implements View.OnClickListener {
                     abnormal_2.setBackgroundResource(R.drawable.background_2);
                     abnormal_2_tab = true;
                 }
+                break;
+            case R.id.start:
+                Intent intent = new Intent();
+                intent.setAction("com.join.stostedetection1");
+                startActivity(intent);
                 break;
         }
     }
