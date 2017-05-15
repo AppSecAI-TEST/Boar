@@ -8,7 +8,6 @@ public class IDQuery {
     private String date;
     private String time;
     private String type;
-    private String id;
     private String density;
     private String vitality;
     private String motilityRate;
@@ -16,12 +15,11 @@ public class IDQuery {
     private String result;
     private String check;
 
-    public IDQuery(String date, String time, String type, String id, String density, String vitality,
+    public IDQuery(String date, String time, String type, String density, String vitality,
                    String motilityRate, String operator, String result, String check) {
         this.date = date;
         this.time = time;
         this.type = type;
-        this.id = id;
         this.density = density;
         this.vitality = vitality;
         this.motilityRate = motilityRate;
@@ -52,14 +50,6 @@ public class IDQuery {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getDensity() {

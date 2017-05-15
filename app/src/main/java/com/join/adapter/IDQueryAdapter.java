@@ -55,7 +55,15 @@ public class IDQueryAdapter extends BaseAdapter {
 
             convertView.setTag(holder);
 
-            holder.date = (TextView) convertView.findViewById(R.id.two_item);
+            holder.date = (TextView) convertView.findViewById(R.id.date);
+            holder.time = (TextView) convertView.findViewById(R.id.time);
+            holder.type = (TextView) convertView.findViewById(R.id.type);
+            holder.density = (TextView) convertView.findViewById(R.id.density);
+            holder.vitality = (TextView) convertView.findViewById(R.id.vitality);
+            holder.motilityRate = (TextView) convertView.findViewById(R.id.motilityRate);
+            holder.operator = (TextView) convertView.findViewById(R.id.operator);
+            holder.result = (TextView) convertView.findViewById(R.id.result);
+            holder.check = (TextView) convertView.findViewById(R.id.check);
 
         } else {
             holder = (ViewHolder) convertView.getTag();

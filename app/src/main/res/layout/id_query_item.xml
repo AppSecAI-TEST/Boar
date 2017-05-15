@@ -9,7 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_heightPercent="20%h"
+        app:layout_heightPercent="12%h"
         app:layout_widthPercent="100%w">
 
         <TextView
@@ -26,8 +26,8 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="83dp"
-            android:background="#000" />
+            android:layout_height="89dp"
+            android:background="#089285" />
 
         <TextView
             android:id="@+id/time"
@@ -42,8 +42,8 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="83dp"
-            android:background="#000" />
+            android:layout_height="89dp"
+            android:background="#089285" />
 
         <TextView
             android:id="@+id/type"
@@ -58,8 +58,8 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="83dp"
-            android:background="#000" />
+            android:layout_height="89dp"
+            android:background="#089285" />
 
 
         <TextView
@@ -76,8 +76,8 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="83dp"
-            android:background="#000" />
+            android:layout_height="89dp"
+            android:background="#089285" />
 
         <TextView
             android:id="@+id/vitality"
@@ -92,8 +92,8 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="83dp"
-            android:background="#000" />
+            android:layout_height="89dp"
+            android:background="#089285" />
 
         <TextView
             android:id="@+id/motilityRate"
@@ -108,8 +108,8 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="83dp"
-            android:background="#000" />
+            android:layout_height="89dp"
+            android:background="#089285" />
 
         <TextView
             android:id="@+id/operator"
@@ -124,14 +124,14 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="83dp"
-            android:background="#000" />
+            android:layout_height="89dp"
+            android:background="#089285" />
 
         <TextView
             android:id="@+id/result"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:paddingLeft="10dp"
             android:text="结果"
             android:textColor="#089285"
@@ -141,8 +141,8 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="83dp"
-            android:background="#000" />
+            android:layout_height="89dp"
+            android:background="#089285" />
 
         <TextView
             android:id="@+id/check"
@@ -160,5 +160,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#000" />
+        android:background="#089285"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"/>
 </com.zhy.android.percent.support.PercentLinearLayout>
