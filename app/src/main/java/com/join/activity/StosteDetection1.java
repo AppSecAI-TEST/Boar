@@ -1,6 +1,7 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +20,13 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.bu_enter:
+                Intent intent = new Intent();
+                intent.setAction("com.join.stostedetection2");
+                startActivity(intent);
+                break;
+        }
     }
 
     private void init() {
@@ -60,7 +67,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
                     for (int i = 0; i <= 100; i++) {
                         Thread.sleep(20);
                         changePercent(i);
-                        Log.e("jjjj","jjjj");
+                        Log.e("jjjj", "jjjj");
                         if (i == 100) {
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -74,7 +81,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
 
                         }
                     }
-                    Log.e("jjjj","jjjj");
+                    Log.e("jjjj", "jjjj");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
