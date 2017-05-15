@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!--欢迎界面-->
-        <activity android:name=".activity.StosteDetection1">
+        <activity android:name=".activity.IDQuery">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,20 +48,27 @@
             </intent-filter>
         </activity>
         <!--开始检测-->
-<!--        <activity android:name=".activity.StosteDetection1">
-            <intent-filter>
-                //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.stostedetection1"></action>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>-->
-        <activity android:name=".activity.StosteDetection2">
-            <intent-filter>
-                //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.stostedetection2"></action>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <!--        <activity android:name=".activity.StosteDetection1">
+                    <intent-filter>
+                        //http://www.cnblogs.com/feng9exe/p/5699233.html
+                        <action android:name="com.join.stostedetection1"></action>
+                        <category android:name="android.intent.category.DEFAULT" />
+                    </intent-filter>
+                </activity>-->
+        <!--        <activity android:name=".activity.StosteDetection2">
+                    <intent-filter>
+                        //http://www.cnblogs.com/feng9exe/p/5699233.html
+                        <action android:name="com.join.stostedetection2"></action>
+                        <category android:name="android.intent.category.DEFAULT" />
+                    </intent-filter>
+                </activity>
+                <activity android:name=".activity.IDQuery">
+                    <intent-filter>
+                        //http://www.cnblogs.com/feng9exe/p/5699233.html
+                        <action android:name="com.join.IDQuery"></action>
+                        <category android:name="android.intent.category.DEFAULT" />
+                    </intent-filter>
+                </activity>-->
     </application>
 
 </manifest>
