@@ -81,7 +81,6 @@ public class Keyboard1 implements View.OnClickListener {
         //以parent 为开始的x,y轴
         popupWindow.showAsDropDown(parent, -170, -240);
 
-
     }
     StringBuffer buffer = new StringBuffer();
     @Override
