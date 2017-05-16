@@ -10,10 +10,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.join.R;
 import com.join.adapter.IDQueryAdapter;
+import com.join.utils.CustomToast;
 import com.join.utils.Keyboard1;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
@@ -76,7 +76,7 @@ public class IDQuery extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.input:
-                Toast.makeText(this, "正在完善中.........", Toast.LENGTH_LONG).show();
+                CustomToast.showToast(this,"正.............");
                 break;
             case R.id.bu_return:
                 finish();
