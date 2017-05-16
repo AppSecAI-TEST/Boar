@@ -46,10 +46,14 @@ public class Function extends Activity implements View.OnClickListener {
 
                 break;
             case R.id.function_3:
-
+                Intent intent2 = new Intent();
+                intent2.setAction("com.join.IDQuery");
+                startActivity(intent2);
                 break;
             case R.id.function_4:
-
+                Intent intent3 = new Intent();
+                intent3.setAction("com.join.SystemSet");
+                startActivity(intent3);
                 break;
         }
     }

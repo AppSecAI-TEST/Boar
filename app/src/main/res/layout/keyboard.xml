@@ -65,14 +65,14 @@
 
                 <Button
                     android:id="@+id/out"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:background="@drawable/aa_44"
+                    android:background="@drawable/background_3"
                     android:text="退出"
                     android:textColor="#fff"
                     android:textSize="30dp"
-                    app:layout_heightPercent="95%h"
+                    app:layout_heightPercent="90%h"
                     app:layout_widthPercent="35%w" />
                 <!--1-->
             </com.zhy.android.percent.support.PercentLinearLayout>

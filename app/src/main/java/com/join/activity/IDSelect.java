@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.join.R;
 import com.join.dialog.ManageDialog;
 import com.join.utils.PopupWindowUtil;
+import com.zhy.android.percent.support.PercentLinearLayout;
 
 import java.text.SimpleDateFormat;
 
@@ -23,8 +24,9 @@ public class IDSelect extends Activity implements View.OnClickListener {
 
     private Button affirm;
     private ImageView icon;
-    private TextView date, time,input;
+    private TextView date, time, input;
     private PopupWindowUtil util;
+    private PercentLinearLayout one;
 
     @Override
 
@@ -41,8 +43,9 @@ public class IDSelect extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
+        one = (PercentLinearLayout) findViewById(R.id.one);
+        one.setOnClickListener(this);
         icon = (ImageView) findViewById(R.id.icon_click);
-        icon.setOnClickListener(this);
         input = (TextView) findViewById(R.id.input);
         date = (TextView) findViewById(R.id.date);
         time = (TextView) findViewById(R.id.time);
@@ -53,9 +56,9 @@ public class IDSelect extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.icon_click:
-                util.showWindow(v);
-                icon.setBackgroundResource(R.drawable.aa_49);
+            case R.id.one:
+                util.showWindow(icon);
+                icon.setBackgroundResource(R.drawable.a_05);
                 break;
             case R.id.affirm:
                 Intent intent = new Intent();

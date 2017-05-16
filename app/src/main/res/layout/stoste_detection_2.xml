@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.android.percent.support.PercentFrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.android.percent.support.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -24,17 +23,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="460dp"
+                android:layout_marginLeft="480dp"
                 android:text="精液原液检测结果"
                 android:textColor="#fff"
-                android:textSize="30dp" />
+                android:textSize="40dp" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="390dp"
+                android:layout_marginLeft="280dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -60,10 +59,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/background_5"
                 android:orientation="horizontal"
-                app:layout_heightPercent="85%h"
+                app:layout_heightPercent="82%h"
                 app:layout_widthPercent="90%w">
                 <!--2.2.1-->
                 <com.zhy.android.percent.support.PercentLinearLayout
@@ -335,6 +334,7 @@
                         app:layout_widthPercent="100%w">
 
                         <Button
+                            android:id="@+id/print"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -347,6 +347,7 @@
                             app:layout_widthPercent="40%w" />
 
                         <Button
+                            android:id="@+id/bu_return"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -594,7 +595,7 @@
                 android:text="结果提示:精液等级 不合格,异常项目:XXX"
                 android:textColor="#078d82"
                 android:textSize="30dp"
-                app:layout_heightPercent="10%h"
+                app:layout_heightPercent="15%h"
                 app:layout_widthPercent="90%w">
                 <!--2.1-->
             </TextView>
@@ -604,11 +605,11 @@
     </com.zhy.android.percent.support.PercentLinearLayout>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="42dp"
-        android:src="@drawable/aa_19" />
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/a_000" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

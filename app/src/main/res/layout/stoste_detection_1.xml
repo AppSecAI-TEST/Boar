@@ -23,17 +23,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="500dp"
+                android:layout_marginLeft="480dp"
                 android:text="精液原液检测"
                 android:textColor="#fff"
-                android:textSize="30dp" />
+                android:textSize="40dp" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="390dp"
+                android:layout_marginLeft="360dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -134,11 +134,11 @@
     </com.zhy.android.percent.support.PercentLinearLayout>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="42dp"
-        android:src="@drawable/aa_19" />
+        android:layout_marginTop="18dp"
+        android:src="@drawable/a_000" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

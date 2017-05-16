@@ -23,17 +23,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="500dp"
+                android:layout_marginLeft="520dp"
                 android:text="系统参数"
                 android:textColor="#fff"
-                android:textSize="35dp" />
+                android:textSize="40dp" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="420dp"
+                android:layout_marginLeft="400dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -70,8 +70,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="70dp"
                     android:orientation="horizontal"
-                    app:layout_heightPercent="20%h"
-                    app:layout_widthPercent="80%w">
+                    app:layout_heightPercent="19%h"
+                    app:layout_widthPercent="85%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
@@ -98,9 +98,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="30dp"
-                                android:src="@drawable/aa_69" />
+                                android:src="@drawable/a_006" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
-
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#A9A9A9" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -138,9 +141,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="30dp"
-                                android:src="@drawable/aa_74" />
+                                android:src="@drawable/a_008" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
-
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#A9A9A9" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -160,8 +166,8 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="65dp"
                     android:orientation="horizontal"
-                    app:layout_heightPercent="20%h"
-                    app:layout_widthPercent="80%w">
+                    app:layout_heightPercent="19%h"
+                    app:layout_widthPercent="85%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
@@ -188,9 +194,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="35dp"
-                                android:src="@drawable/aa_72" />
+                                android:src="@drawable/a_007" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
-
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#A9A9A9" />
                         <TextView
                             android:id="@+id/textView4"
                             android:layout_width="wrap_content"
@@ -229,8 +238,13 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="30dp"
-                                android:src="@drawable/aa_67" />
+                                android:src="@drawable/a_005" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#A9A9A9" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -246,6 +260,7 @@
                 </com.zhy.android.percent.support.PercentLinearLayout>
 
                 <Button
+                    android:id="@+id/bu_return"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -253,7 +268,7 @@
                     android:background="@drawable/aa_52"
                     android:text="返回"
                     android:textColor="#fff"
-                    android:textSize="32dp" />
+                    android:textSize="35dp" />
                 <!--2.1-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -263,11 +278,11 @@
     </com.zhy.android.percent.support.PercentLinearLayout>
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/aa_19" />
+        android:layout_marginTop="18dp"
+        android:src="@drawable/a_000" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

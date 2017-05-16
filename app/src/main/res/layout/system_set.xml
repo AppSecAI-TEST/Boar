@@ -20,7 +20,7 @@
             android:layout_marginLeft="520dp"
             android:text="平台温度:"
             android:textColor="#fff"
-            android:textSize="30dp" />
+            android:textSize="40dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
                 android:background="@drawable/aa_17"
                 android:text="检测参数"
                 android:textColor="#fff"
-                android:textSize="25dp"
+                android:textSize="30dp"
                 app:layout_heightPercent="22%h"
                 app:layout_widthPercent="78%w" />
 
@@ -81,7 +81,7 @@
                 android:background="@drawable/aa_17"
                 android:text="系统参数"
                 android:textColor="#fff"
-                android:textSize="25dp"
+                android:textSize="30dp"
                 app:layout_heightPercent="22%h"
                 app:layout_widthPercent="78%w" />
 
@@ -95,7 +95,7 @@
                 android:background="@drawable/aa_17"
                 android:text="返回"
                 android:textColor="#fff"
-                android:textSize="25dp"
+                android:textSize="30dp"
                 app:layout_heightPercent="22%h"
                 app:layout_widthPercent="78%w" />
 

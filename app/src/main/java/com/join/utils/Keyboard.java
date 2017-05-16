@@ -9,20 +9,24 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.join.R;
 
 
 public class Keyboard implements View.OnClickListener {
     private Button bu_0, bu_1, bu_2, bu_3, bu_4, bu_5, bu_6, bu_7, bu_8, bu_9, bu_w, delete, out;
-    private TextView input, id_Gong;
+    private int tab;
+    private TextView input, id_Gong_1, id_ml, time;
     private Context context;
     private View view;
     private PopupWindow popupWindow;
 
-    public Keyboard(Context context, TextView id_Gong) {
+    public Keyboard(Context context, TextView id_Gong, TextView id_ml, TextView time) {
         this.context = context;
-        this.id_Gong = id_Gong;
+        this.id_Gong_1 = id_Gong;
+        this.id_ml = id_ml;
+        this.time = time;
     }
 
     private void init() {
@@ -56,15 +60,16 @@ public class Keyboard implements View.OnClickListener {
 
     }
 
-    public void showWindow(View parent) {
-
+    public void showWindow(View parent, int tab) {
+        this.tab = tab;
         if (popupWindow == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             view = layoutInflater.inflate(R.layout.keyboard, null);
             init();
-            // 创建一个PopuWidow对象 设置高,宽
-            popupWindow = new PopupWindow(view, 900, 760);
+
+            // 创建一个PopuWidow对象 设置宽,高,
+            popupWindow = new PopupWindow(view, 1200, 760);
         }
         popupWindow.setFocusable(false); // 获取焦点
         popupWindow.setTouchable(true); // 设置popupwindow可点击
@@ -78,7 +83,7 @@ public class Keyboard implements View.OnClickListener {
         int xPos = windowManager.getDefaultDisplay().getWidth();
         Log.i("coder", "xPos:" + xPos);
         //以parent 为开始的x,y轴
-        popupWindow.showAsDropDown(parent, -70, -220);
+        popupWindow.showAsDropDown(parent, -170, -260);
 
 
     }
@@ -91,63 +96,133 @@ public class Keyboard implements View.OnClickListener {
         int length1 = buffer.length();
         switch (v.getId()) {
             case R.id.bu_0:
-                if (length1 != 5) {
-                    buffer.append("0");
-                    input.setText(buffer.toString());
-                }
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("0");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("0");
+                        input.setText(buffer.toString());
+                    }
+                    }
                 break;
             case R.id.bu_1:
-                if (length1 != 5) {
-                    buffer.append("1");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("1");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("1");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.bu_2:
-                if (length1 != 5) {
-                    buffer.append("2");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("2");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("2");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.bu_3:
-                if (length1 != 5) {
-                    buffer.append("3");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("3");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("3");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.bu_4:
-                if (length1 != 5) {
-                    buffer.append("4");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("4");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("4");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.bu_5:
-                if (length1 != 5) {
-                    buffer.append("5");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("5");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("5");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.bu_6:
-                if (length1 != 5) {
-                    buffer.append("6");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("6");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("6");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.bu_7:
-                if (length1 != 5) {
-                    buffer.append("7");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("7");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("7");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.bu_8:
-                if (length1 != 5) {
-                    buffer.append("8");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("8");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("8");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.bu_9:
-                if (length1 != 5) {
-                    buffer.append("9");
-                    input.setText(buffer.toString());
+                if (tab==1||tab==2) {
+                    if (length1 != 5) {
+                        buffer.append("9");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==3){
+                    if (length1 != 4) {
+                        buffer.append("9");
+                        input.setText(buffer.toString());
+                    }
                 }
                 break;
             case R.id.delete:
@@ -159,16 +234,49 @@ public class Keyboard implements View.OnClickListener {
                 }
                 break;
             case R.id.out:
+                if (length1>=0){
+                    buffer.delete(0,length1);
+                    input.setText(null);
+                }
                 if (popupWindow != null) {
                     popupWindow.dismiss();
                 }
                 break;
             case R.id.bu_w:
                 if (length1 > 0) {
-                    id_Gong.setText(buffer);
+                    if (tab == 1) {
+                        id_Gong_1.setText(buffer);
+                        buffer.delete(0, length1);
+                        input.setText(buffer);
+                    } else if (tab == 2) {
+                        id_ml.setText(buffer+"ml");
+                        buffer.delete(0, length1);
+                        input.setText(buffer);
+                    } else if (tab == 3) {
+                        String substring = buffer.substring(0, 2);
+                        String substring1 = buffer.substring(2, length1);
+                        String s = substring + ":" + substring1;
+                        Integer integer = Integer.valueOf(substring);
+                        Integer integer2 = Integer.valueOf(substring1);
+                        if (integer>24){
+                            Toast.makeText(context,"你设置的小时不对...",Toast.LENGTH_LONG).show();
+                        }else if (integer2>60){
+                            Toast.makeText(context,"你设置的分钟数不对...",Toast.LENGTH_LONG).show();
+                        }else {
+                            time.setText(s);
+                            buffer.delete(0, length1);
+                            input.setText(buffer);
+                            if (popupWindow != null) {
+                                popupWindow.dismiss();
+                            }
+                        }
+                    }
+
                 }
-                if (popupWindow != null) {
-                    popupWindow.dismiss();
+                if (tab==1||tab==2) {
+                    if (popupWindow != null) {
+                        popupWindow.dismiss();
+                    }
                 }
                 break;
         }

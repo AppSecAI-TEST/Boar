@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.join.R;
@@ -17,14 +18,23 @@ import com.join.R;
 public class StosteDetection1 extends Activity implements View.OnClickListener {
     private AnimatedCircleLoadingView animatedCircleLoadingView;
     private Button bu_return, bu_enter;
+    private ImageView icon_1;
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bu_enter:
+            case R.id.icon_1:
                 Intent intent = new Intent();
-                intent.setAction("com.join.stostedetection2");
+                intent.setAction("com.join.function");
                 startActivity(intent);
+                break;
+            case R.id.bu_enter:
+                Intent intent2 = new Intent();
+                intent2.setAction("com.join.stostedetection2");
+                startActivity(intent2);
+                break;
+            case R.id.bu_return:
+                finish();
                 break;
         }
     }
@@ -35,6 +45,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
         bu_return.setOnClickListener(this);
         bu_enter = (Button) findViewById(R.id.bu_enter);
         bu_enter.setOnClickListener(this);
+        icon_1 = (ImageView) findViewById(R.id.icon_1);
+        icon_1.setOnClickListener(this);
 
     }
 

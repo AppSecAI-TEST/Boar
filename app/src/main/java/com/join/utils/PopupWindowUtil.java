@@ -25,8 +25,8 @@ import java.util.List;
  */
 
 public class PopupWindowUtil {
-    Context context;
-    List<String> list;
+    private Context context;
+    private List<String> list;
     private View view;
     private ListView lv_group;
     private PopupWindow popupWindow;
@@ -60,8 +60,8 @@ public class PopupWindowUtil {
 
             TwoAdapter groupAdapter = new TwoAdapter(context, list);
             lv_group.setAdapter(groupAdapter);
-            // 创建一个PopuWidow对象 设置高,宽
-            popupWindow = new PopupWindow(view, 150, 210);
+            // 创建一个PopuWidow对象 设置宽,高
+            popupWindow = new PopupWindow(view, 270, 360);
         }
         popupWindow.setFocusable(false); // 获取焦点
         popupWindow.setTouchable(true); // 设置popupwindow可点击
@@ -75,7 +75,7 @@ public class PopupWindowUtil {
         int xPos = windowManager.getDefaultDisplay().getWidth();
         Log.i("coder", "xPos:" + xPos);
         //以parent 为开始的x,y轴
-        popupWindow.showAsDropDown(parent, -5, 0);
+        popupWindow.showAsDropDown(parent, -25, 0);
 
         lv_group.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -85,7 +85,7 @@ public class PopupWindowUtil {
 
                 Toast.makeText(context, list.get(position), Toast.LENGTH_LONG).show();
                 editText.setText(list.get(position));
-                icon.setBackgroundResource(R.drawable.aa_24);
+                icon.setBackgroundResource(R.drawable.a_04);
 
                 if (popupWindow != null) {
                     popupWindow.dismiss();

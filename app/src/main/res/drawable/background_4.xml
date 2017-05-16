@@ -3,7 +3,7 @@
     android:shape="rectangle">
 
     <!-- 填充的颜色 -->
-    <solid android:color="#f0f0f0" />
+    <solid android:color="#C0C0C0" />
 
     <!-- 设置进度条的四个角为弧形 -->
     <!-- android:radius 弧形的半径 -->
