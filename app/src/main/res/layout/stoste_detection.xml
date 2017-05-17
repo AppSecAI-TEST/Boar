@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="460dp"
+                android:layout_marginLeft="490dp"
                 android:text="精液原液检测"
                 android:textColor="#fff"
                 android:textSize="40dp" />
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="380dp"
+                android:layout_marginLeft="350dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -234,8 +234,7 @@
                         android:background="@drawable/a_020"
                         android:text="正 常"
                         android:textColor="#b6b7bb"
-                        android:textSize="25dp"
-                      />
+                        android:textSize="25dp" />
 
                     <Button
                         android:id="@+id/abnormal_1"
@@ -289,8 +288,7 @@
                     android:background="@drawable/a_015"
                     android:text="开始检测"
                     android:textColor="#fff"
-                    android:textSize="30dp"
-                 />
+                    android:textSize="30dp" />
 
             </com.zhy.android.percent.support.PercentLinearLayout>
 
