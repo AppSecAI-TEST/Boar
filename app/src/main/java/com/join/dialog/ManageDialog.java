@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.join.R;
+import com.join.utils.CustomToast;
 
 /**
  * Created by join on 2017/5/9.
@@ -160,7 +160,8 @@ public class ManageDialog extends Dialog {
                                         positiveButtonClickListener.onClick(dialog,
                                                 DialogInterface.BUTTON_POSITIVE);
                                     }else {
-                                        Toast.makeText(context,"请输入11位手机号码",Toast.LENGTH_LONG).show();
+
+                                        CustomToast.showToast(context,"请输入11位手机号码.....");
                                     }
 
                                     //得到输入的内容

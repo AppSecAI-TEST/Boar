@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.join.R;
+import com.join.utils.CustomToast;
 
 /**
  * Created by join on 2017/5/15.
@@ -37,7 +37,8 @@ public class SystemSet extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.affirm1:
-                Toast.makeText(this, "正在完善中", Toast.LENGTH_LONG).show();
+
+                CustomToast.showToast(this,"正在完善中....");
                 break;
             case R.id.affirm2:
                 Intent intent = new Intent();
