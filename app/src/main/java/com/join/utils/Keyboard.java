@@ -95,130 +95,180 @@ public class Keyboard implements View.OnClickListener {
         int length1 = buffer.length();
         switch (v.getId()) {
             case R.id.bu_0:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("0");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("0");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("0");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_1:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("1");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("1");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("1");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_2:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("2");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("2");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("2");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_3:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("3");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("3");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("3");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_4:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("4");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("4");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("4");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_5:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("5");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("5");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("5");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_6:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("6");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("6");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("6");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_7:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("7");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("7");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("7");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_8:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("8");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("8");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("8");
                         input.setText(buffer.toString());
                     }
                 }
                 break;
             case R.id.bu_9:
-                if (tab == 1 || tab == 2) {
+                if (tab == 1) {
                     if (length1 != 5) {
                         buffer.append("9");
                         input.setText(buffer.toString());
                     }
                 } else if (tab == 3) {
                     if (length1 != 4) {
+                        buffer.append("9");
+                        input.setText(buffer.toString());
+                    }
+                }else if (tab==2){
+                    if (length1 != 3) {
                         buffer.append("9");
                         input.setText(buffer.toString());
                     }
@@ -260,7 +310,6 @@ public class Keyboard implements View.OnClickListener {
                                 Integer integer = Integer.valueOf(substring);
                                 Integer integer2 = Integer.valueOf(substring1);
                                 if (integer > 24) {
-
                                     CustomToast.showToast(context, "您设置的小时不对.....");
                                 } else if (integer2 > 60) {
 
