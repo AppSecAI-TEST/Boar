@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.join.R;
 import com.join.dialog.ManageDialog;
+import com.join.utils.CustomToast;
 import com.join.utils.PopupWindowUtil;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
@@ -35,11 +37,8 @@ public class IDSelect extends Activity implements View.OnClickListener {
         setContentView(R.layout.id_select);
         initView();
         showDialog();
-        util = new PopupWindowUtil(IDSelect.this, input, icon);
 
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd    hh:mm");
-        String tateFormat = sDateFormat.format(new java.util.Date());
-        date.setText(tateFormat);
+
     }
 
     private void initView() {
@@ -51,6 +50,10 @@ public class IDSelect extends Activity implements View.OnClickListener {
         time = (TextView) findViewById(R.id.time);
         affirm = (Button) findViewById(R.id.affirm);
         affirm.setOnClickListener(this);
+        util = new PopupWindowUtil(IDSelect.this, input, icon);
+        SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy-MM-dd    hh:mm");
+        String tateFormat = sDateFormat.format(new java.util.Date());
+        date.setText(tateFormat);
     }
 
     @Override
@@ -58,12 +61,17 @@ public class IDSelect extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.one:
                 util.showWindow(icon);
-                icon.setBackgroundResource(R.drawable.a_05);
+                icon.setBackgroundResource(R.drawable.a_012);
                 break;
             case R.id.affirm:
-                Intent intent = new Intent();
-                intent.setAction("com.join.function");
-                startActivity(intent);
+                if (input.length() > 0) {
+                    Log.e("jjj",input+"");
+                    Intent intent = new Intent();
+                    intent.setAction("com.join.function");
+                    startActivity(intent);
+                }else {
+                    CustomToast.showToast(this,"请选择管理员ID......");
+                }
                 break;
         }
     }

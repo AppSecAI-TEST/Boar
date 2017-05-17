@@ -76,7 +76,7 @@ public class IDQuery extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.input:
-                CustomToast.showToast(this,"正.............");
+                CustomToast.showToast(this,"正开发中......");
                 break;
             case R.id.bu_return:
                 finish();

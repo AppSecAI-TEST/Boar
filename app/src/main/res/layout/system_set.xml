@@ -17,8 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="520dp"
-            android:text="平台温度:"
+            android:layout_marginLeft="530dp"
+            android:text="平台温度"
             android:textColor="#fff"
             android:textSize="40dp" />
 
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="390dp"
+            android:layout_marginLeft="380dp"
             android:text="平台温度:"
             android:textColor="#fff"
             android:textSize="25dp" />
@@ -53,7 +53,7 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_marginTop="55dp"
-            android:background="@drawable/background_1"
+            android:background="@drawable/background_white_3"
             android:orientation="vertical"
             app:layout_heightPercent="80%h"
             app:layout_widthPercent="45%w">
@@ -65,7 +65,7 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="55dp"
-                android:background="@drawable/aa_17"
+                android:background="@drawable/a_015"
                 android:text="检测参数"
                 android:textColor="#fff"
                 android:textSize="30dp"
@@ -77,8 +77,8 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/aa_17"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/a_015"
                 android:text="系统参数"
                 android:textColor="#fff"
                 android:textSize="30dp"
@@ -91,12 +91,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="55dp"
-                android:background="@drawable/aa_17"
-                android:text="返回"
-                android:textColor="#fff"
-                android:textSize="30dp"
-                app:layout_heightPercent="22%h"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/a_021"
+                android:text="返   回"
+                android:textColor="#078e80"
+                android:textSize="32dp"
+                app:layout_heightPercent="20%h"
                 app:layout_widthPercent="78%w" />
 
 

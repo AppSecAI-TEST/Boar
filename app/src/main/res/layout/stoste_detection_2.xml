@@ -60,7 +60,7 @@
                 android:layout_height="0dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/background_5"
+                android:background="@drawable/background_white"
                 android:orientation="horizontal"
                 app:layout_heightPercent="82%h"
                 app:layout_widthPercent="90%w">
@@ -70,7 +70,7 @@
                     android:layout_height="0dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="70dp"
-                    android:background="@drawable/background_6"
+                    android:background="@drawable/background_white_1"
                     android:orientation="horizontal"
                     app:layout_heightPercent="80%h"
                     app:layout_widthPercent="40%w">
@@ -335,11 +335,11 @@
 
                         <Button
                             android:id="@+id/print"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="18dp"
-                            android:background="#3fc2b5"
+                            android:background="@drawable/background_green"
                             android:text="打印"
                             android:textColor="#f4f4f4"
                             android:textSize="25dp"
@@ -348,11 +348,11 @@
 
                         <Button
                             android:id="@+id/bu_return"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="40dp"
-                            android:background="#3fc2b5"
+                            android:background="@drawable/background_green"
                             android:text="返回"
                             android:textColor="#f4f4f4"
                             android:textSize="25dp"
@@ -364,7 +364,7 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_vertical"
-                        android:background="@drawable/background_6"
+                        android:background="@drawable/background_white_1"
                         android:orientation="horizontal"
                         app:layout_heightPercent="66%h"
                         app:layout_widthPercent="100%w">
@@ -590,7 +590,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:background="@drawable/background_4"
+                android:background="@drawable/background_grey"
                 android:gravity="center_vertical"
                 android:text="结果提示:精液等级 不合格,异常项目:XXX"
                 android:textColor="#078d82"

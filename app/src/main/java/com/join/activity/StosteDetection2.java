@@ -7,9 +7,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.join.R;
+import com.join.utils.CustomToast;
 
 /**
  * Created by join on 2017/5/15.
@@ -43,7 +43,8 @@ public class StosteDetection2 extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.print:
-                Toast.makeText(this, "正在完善中......", Toast.LENGTH_LONG).show();
+                CustomToast.showToast(this,"正在完善中......");
+
                 break;
             case R.id.bu_return:
                 finish();

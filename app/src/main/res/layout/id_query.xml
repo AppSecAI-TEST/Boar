@@ -79,7 +79,7 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginLeft="33dp"
-                        android:background="@drawable/background_1"
+                        android:background="@drawable/background_white_3"
                         android:orientation="horizontal"
                         app:layout_heightPercent="90%h"
                         app:layout_widthPercent="35%w">
@@ -98,7 +98,7 @@
                             android:layout_height="0dp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="20dp"
-                            android:background="@drawable/background_2"
+                            android:background="@drawable/background_white_2"
                             android:gravity="center_vertical"
                             android:paddingLeft="18dp"
                             android:text="12345"
@@ -122,11 +122,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/background_3"
+                            android:background="@drawable/background_green"
                             android:text="数据导出"
                             android:textColor="#f4f4f4"
                             android:textSize="30dp"
-                            app:layout_heightPercent="82%h"
+                            app:layout_heightPercent="80%h"
                             app:layout_widthPercent="45%w" />
 
                         <Button
@@ -135,11 +135,11 @@
                             android:layout_height="0dp"
                             android:layout_gravity="center"
                             android:layout_marginLeft="25dp"
-                            android:background="@drawable/background_3"
+                            android:background="@drawable/background_green"
                             android:text="返回"
                             android:textColor="#f4f4f4"
                             android:textSize="30dp"
-                            app:layout_heightPercent="82%h"
+                            app:layout_heightPercent="80%h"
                             app:layout_widthPercent="45%w" />
 
                     </com.zhy.android.percent.support.PercentLinearLayout>
@@ -152,7 +152,7 @@
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="50dp"
-                    android:background="@drawable/background_1"
+                    android:background="@drawable/background_white_3"
                     android:orientation="vertical"
                     app:layout_heightPercent="59%h"
                     app:layout_widthPercent="97%w">

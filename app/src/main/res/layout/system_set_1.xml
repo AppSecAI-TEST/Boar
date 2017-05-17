@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="520dp"
+                android:layout_marginLeft="530dp"
                 android:text="系统参数"
                 android:textColor="#fff"
                 android:textSize="40dp" />
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="400dp"
+                android:layout_marginLeft="390dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -78,7 +78,7 @@
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="120dp"
-                        android:background="@drawable/background_1"
+                        android:background="@drawable/background_white_3"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
                         app:layout_widthPercent="40%w">
@@ -121,7 +121,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="190dp"
                         android:layout_marginTop="120dp"
-                        android:background="@drawable/background_1"
+                        android:background="@drawable/background_white_3"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
                         app:layout_widthPercent="40%w">
@@ -174,7 +174,7 @@
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="120dp"
-                        android:background="@drawable/background_1"
+                        android:background="@drawable/background_white_3"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
                         app:layout_widthPercent="40%w">
@@ -218,7 +218,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginLeft="190dp"
                         android:layout_marginTop="120dp"
-                        android:background="@drawable/background_1"
+                        android:background="@drawable/background_white_3"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
                         app:layout_widthPercent="40%w">
@@ -251,7 +251,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="55dp"
-                            android:text="关于"
+                            android:text="关  于"
                             android:textColor="#078d82"
                             android:textSize="35dp" />
                         <!--2.1-->
@@ -265,7 +265,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="60dp"
-                    android:background="@drawable/aa_52"
+                    android:background="@drawable/a_017"
                     android:text="返回"
                     android:textColor="#fff"
                     android:textSize="35dp" />
