@@ -1,9 +1,12 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 
 import com.join.R;
 import com.join.dialog.ManageDialog;
+import com.join.service.Humidity;
 import com.join.utils.CustomToast;
 import com.join.utils.PopupWindowUtil;
 import com.zhy.android.percent.support.PercentLinearLayout;
@@ -22,13 +26,14 @@ import java.text.SimpleDateFormat;
  * 检测员ID选择   管理员手机号码
  */
 
-public class IDSelect extends Activity implements View.OnClickListener {
+public class IDSelect extends Activity implements View.OnClickListener, ServiceConnection {
 
     private Button affirm;
     private ImageView icon;
-    private TextView date, time, input;
+    private TextView date, time, input, humidity;
     private PopupWindowUtil util;
     private PercentLinearLayout one;
+    private Humidity.HumidityBinder humidityBinder;
 
     @Override
 
@@ -37,11 +42,13 @@ public class IDSelect extends Activity implements View.OnClickListener {
         setContentView(R.layout.id_select);
         initView();
         showDialog();
-
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
 
     }
 
     private void initView() {
+        humidity = (TextView) findViewById(R.id.humidity);
         one = (PercentLinearLayout) findViewById(R.id.one);
         one.setOnClickListener(this);
         icon = (ImageView) findViewById(R.id.icon_click);
@@ -65,12 +72,12 @@ public class IDSelect extends Activity implements View.OnClickListener {
                 break;
             case R.id.affirm:
                 if (input.length() > 0) {
-                    Log.e("jjj",input+"");
+                    Log.e("jjj", input + "");
                     Intent intent = new Intent();
                     intent.setAction("com.join.function");
                     startActivity(intent);
-                }else {
-                    CustomToast.showToast(this,"请选择管理员ID......");
+                } else {
+                    CustomToast.showToast(this, "请选择管理员ID......");
                 }
                 break;
         }
@@ -105,4 +112,38 @@ public class IDSelect extends Activity implements View.OnClickListener {
     }
 
 
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        humidityBinder = (Humidity.HumidityBinder) service;
+        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
+            @Override
+            public void onHumidityChange(final int data) {
+                Log.e("jjjj",data+"");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText("" + data);
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 }
