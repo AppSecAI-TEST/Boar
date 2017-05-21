@@ -34,6 +34,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
     private PopupWindowUtil util;
     private PercentLinearLayout one;
     private Humidity.HumidityBinder humidityBinder;
+    public static String id_manage;
 
     @Override
 
@@ -73,6 +74,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
             case R.id.affirm:
                 if (input.length() > 0) {
                     Log.e("jjj", input + "");
+                    id_manage = input.getText().toString();
                     Intent intent = new Intent();
                     intent.setAction("com.join.function");
                     startActivity(intent);
@@ -119,7 +121,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
             public void onHumidityChange(final int data) {
-                Log.e("jjjj",data+"");
+                Log.e("jjjj", data + "");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

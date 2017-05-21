@@ -4,9 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.join.greenDaoUtils.DaoMaster;
-import com.join.greenDaoUtils.DaoSession;
-
 /**
  * Created by join on 2017/5/3.
  */

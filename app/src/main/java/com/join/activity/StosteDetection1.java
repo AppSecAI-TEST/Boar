@@ -19,6 +19,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
     private AnimatedCircleLoadingView animatedCircleLoadingView;
     private Button bu_return, bu_enter;
     private ImageView icon_1;
+    String[] StosteDetectionData;
 
     @Override
     public void onClick(View v) {
@@ -57,6 +58,19 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
         init();
         startLoading();
         startPercentMockThread();
+        StosteDetectionData = this.getIntent().getStringArrayExtra("data");
+    }
+
+    private boolean addToDAO() {
+        if (StosteDetectionData.length > 0) {
+            String color = StosteDetectionData[0];
+            String smell = StosteDetectionData[1];
+            String dateC = StosteDetectionData[2];
+            String timeC = StosteDetectionData[3];
+            String number = StosteDetectionData[4];
+            String operator = IDSelect.id_manage;
+        }
+        return true;
     }
 
 

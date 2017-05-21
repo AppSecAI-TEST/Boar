@@ -30,6 +30,7 @@ public class StosteDetection extends Activity implements View.OnClickListener {
     private boolean normal_1_tab = true;
     private boolean abnormal_1_tab = true;
 
+
     private boolean normal_2_tab = true;
     private boolean abnormal_2_tab = true;
 
@@ -99,7 +100,29 @@ public class StosteDetection extends Activity implements View.OnClickListener {
                 break;
             case R.id.start:
                 if ((!normal_1_tab || !abnormal_1_tab) && (!normal_2_tab || !abnormal_2_tab)) {
+                    String color;
+                    String smell;
+                    String dateC;
+                    String timeC;
+                    String number;
+                    if (normal_1_tab) {
+                        color = "正常";
+                    } else {
+                        color = "异常";
+                    }
+                    if (normal_2_tab) {
+                        smell = "正常";
+                    } else {
+                        smell = "异常";
+                    }
+                    dateC = date.getText().toString();
+                    timeC = time.getText().toString();
+                    number = id_Gong_1.getText().toString();
+                    String[] dataArray = new String[]{color, smell, dateC, timeC, number};
                     Intent intent2 = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArray("data", dataArray);
+                    intent2.putExtras(bundle);
                     intent2.setAction("com.join.stostedetection1");
                     startActivity(intent2);
                 } else {
@@ -109,6 +132,7 @@ public class StosteDetection extends Activity implements View.OnClickListener {
                 break;
         }
     }
+
 
     private void init() {
 
