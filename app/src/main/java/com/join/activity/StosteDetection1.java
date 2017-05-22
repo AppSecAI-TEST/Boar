@@ -10,12 +10,14 @@ import android.widget.ImageView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.join.R;
+import com.zhy.android.percent.support.PercentLinearLayout;
 
 /**
  * Created by join on 2017/5/14.
  */
 
 public class StosteDetection1 extends Activity implements View.OnClickListener {
+    private PercentLinearLayout camera_su;
     private AnimatedCircleLoadingView animatedCircleLoadingView;
     private Button bu_return, bu_enter;
     private ImageView icon_1;
@@ -41,6 +43,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
     }
 
     private void init() {
+        camera_su = (PercentLinearLayout) findViewById(R.id.camera_su);
         animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
         bu_return = (Button) findViewById(R.id.bu_return);
         bu_return.setOnClickListener(this);
