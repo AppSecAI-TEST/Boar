@@ -1,32 +1,26 @@
 package com.join.activity;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.join.R;
-import com.join.service.Humidity;
 
 /**
  * Created by join on 2017/5/14.
  */
 
-public class StosteDetection1 extends Activity implements View.OnClickListener , ServiceConnection {
+public class StosteDetection1 extends Activity implements View.OnClickListener {
     private AnimatedCircleLoadingView animatedCircleLoadingView;
     private Button bu_return, bu_enter;
     private ImageView icon_1;
     String[] StosteDetectionData;
-    private TextView humidity;
-    private Humidity.HumidityBinder humidityBinder;
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -47,7 +41,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener ,
     }
 
     private void init() {
-        humidity = (TextView) findViewById(R.id.humidity);
         animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
         bu_return = (Button) findViewById(R.id.bu_return);
         bu_return.setOnClickListener(this);
@@ -68,39 +61,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener ,
         StosteDetectionData = this.getIntent().getStringArrayExtra("data");
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Intent intentHumidity = new Intent(this, Humidity.class);
-        bindService(intentHumidity, this, BIND_AUTO_CREATE);
-    }
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unbindService(this);
-    }
-    @Override
-    public void onServiceConnected(ComponentName name, IBinder service) {
-        humidityBinder = (Humidity.HumidityBinder) service;
-        Humidity humidityClass = humidityBinder.getHumidity();
-        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
-            @Override
-            public void onHumidityChange(final int data) {
-                Log.e("jjjj", data + "");
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        humidity.setText("" + data);
-                    }
-                });
-            }
-        });
-    }
-
-    @Override
-    public void onServiceDisconnected(ComponentName name) {
-
-    }
     private boolean addToDAO() {
         if (StosteDetectionData.length > 0) {
             String color = StosteDetectionData[0];
