@@ -43,9 +43,15 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
         setContentView(R.layout.id_select);
         initView();
         showDialog();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
-
     }
 
     private void initView() {

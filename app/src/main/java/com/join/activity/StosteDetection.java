@@ -1,15 +1,20 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.join.R;
+import com.join.service.Humidity;
 import com.join.utils.CustomToast;
 import com.join.utils.Keyboard;
 import com.zhy.android.percent.support.PercentLinearLayout;
@@ -21,7 +26,7 @@ import java.text.SimpleDateFormat;
  * Created by join on 2017/5/11.
  */
 
-public class StosteDetection extends Activity implements View.OnClickListener {
+public class StosteDetection extends Activity implements View.OnClickListener , ServiceConnection {
     private PercentLinearLayout id_Gong, id_Gong_2, id_Gong_3;
     private TextView id_Gong_1, id_ml, time, date;
     private ImageView icon_1;
@@ -33,7 +38,8 @@ public class StosteDetection extends Activity implements View.OnClickListener {
 
     private boolean normal_2_tab = true;
     private boolean abnormal_2_tab = true;
-
+    private TextView humidity;
+    private Humidity.HumidityBinder humidityBinder;
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -135,7 +141,7 @@ public class StosteDetection extends Activity implements View.OnClickListener {
 
 
     private void init() {
-
+        humidity = (TextView) findViewById(R.id.humidity);
         date = (TextView) findViewById(R.id.date);
         time = (TextView) findViewById(R.id.time);
         id_ml = (TextView) findViewById(R.id.id_ml);
@@ -175,5 +181,37 @@ public class StosteDetection extends Activity implements View.OnClickListener {
         setContentView(R.layout.stoste_detection);
         init();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
+    }
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        humidityBinder = (Humidity.HumidityBinder) service;
+        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
+            @Override
+            public void onHumidityChange(final int data) {
+                Log.e("jjjj", data + "");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText("" + data);
+                    }
+                });
+            }
+        });
+    }
 
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
+    }
 }

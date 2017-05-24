@@ -1,9 +1,13 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 
 import com.join.R;
 import com.join.adapter.IDQueryAdapter;
+import com.join.service.Humidity;
 import com.join.utils.CustomToast;
 import com.join.utils.Keyboard1;
 import com.zhy.android.percent.support.PercentLinearLayout;
@@ -24,7 +29,7 @@ import java.util.List;
  * Created by join on 2017/5/15.
  */
 
-public class IDQuery extends Activity implements View.OnClickListener {
+public class IDQuery extends Activity implements View.OnClickListener, ServiceConnection {
     private TextView id_Gong_1;
     private ListView listView;
     private IDQueryAdapter idQueryAdapter;
@@ -32,14 +37,15 @@ public class IDQuery extends Activity implements View.OnClickListener {
     private Button input, bu_return;
     private PercentLinearLayout ll_Gong;
     private Keyboard1 keyboard1;
-
+    private TextView humidity;
+    private Humidity.HumidityBinder humidityBinder;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.id_query);
         init();
         listView.setAdapter(idQueryAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
@@ -50,6 +56,7 @@ public class IDQuery extends Activity implements View.OnClickListener {
     }
 
     private void init() {
+        humidity = (TextView) findViewById(R.id.humidity);
         id_Gong_1 = (TextView) findViewById(R.id.id_Gong_1);
         ll_Gong = (PercentLinearLayout) findViewById(R.id.ll_Gong);
         ll_Gong.setOnClickListener(this);
@@ -90,5 +97,38 @@ public class IDQuery extends Activity implements View.OnClickListener {
                 keyboard1.showWindow(ll_Gong);
                 break;
         }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
+    }
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        humidityBinder = (Humidity.HumidityBinder) service;
+        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
+            @Override
+            public void onHumidityChange(final int data) {
+                Log.e("jjjj", data + "");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText("" + data);
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
     }
 }

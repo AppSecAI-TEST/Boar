@@ -2,7 +2,6 @@ package com.join.app;
 
 import android.app.Application;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 /**
  * Created by join on 2017/5/3.
@@ -10,7 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class BaseApplication extends Application {
 
-    private static DaoSession daoSession;
+  //  private static DaoSession daoSession;
     private static Context context;
 
     @Override
@@ -26,13 +25,13 @@ public class BaseApplication extends Application {
      */
     private void setupDatabase() {
         //创建数据库shop.db"
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "boar.db", null);
+       // DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "boar.db", null);
         //获取可写数据库
-        SQLiteDatabase db = helper.getWritableDatabase();
+      //  SQLiteDatabase db = helper.getWritableDatabase();
         //获取数据库对象
-        DaoMaster daoMaster = new DaoMaster(db);
+       // DaoMaster daoMaster = new DaoMaster(db);
         //获取Dao对象管理者
-        daoSession = daoMaster.newSession();
+        //daoSession = daoMaster.newSession();
     }
 
     /**
@@ -40,9 +39,9 @@ public class BaseApplication extends Application {
      *
      * @return
      */
-    public static DaoSession getDaoInstant() {
+/*    public static DaoSession getDaoInstant() {
         return daoSession;
-    }
+    }*/
 
     public static Context getContext() {
         return context;
