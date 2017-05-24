@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.android.percent.support.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.zhy.android.percent.support.PercentLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.zhy.android.percent.support.PercentLinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#078e80"
+            android:orientation="horizontal"
+            app:layout_heightPercent="11%h"
+            app:layout_widthPercent="100%w">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="490dp"
+                android:text="按公猪ID查询"
+                android:textColor="#fff"
+                android:textSize="40dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="350dp"
+                android:text="平台温度:"
+                android:textColor="#fff"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="7dp"
+                android:text="27℃"
+                android:textColor="#fff"
+                android:textSize="25dp" />
+        </com.zhy.android.percent.support.PercentLinearLayout>
+        <!--1.1-->
+        <com.zhy.android.percent.support.PercentLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e0f3f1"
+            android:orientation="horizontal">
+            <!--2.1-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:background="#fff"
+                android:orientation="vertical"
+                app:layout_heightPercent="100%h"
+                app:layout_widthPercent="100%w">
+                <!--2.2.1-->
+                <com.zhy.android.percent.support.PercentLinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
+                    android:orientation="horizontal"
+                    app:layout_heightPercent="20%h"
+                    app:layout_widthPercent="97%w">
+
+                    <com.zhy.android.percent.support.PercentLinearLayout
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/ll_Gong"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="33dp"
+                        android:background="@drawable/background_white_3"
+                        android:orientation="horizontal"
+                        app:layout_heightPercent="90%h"
+                        app:layout_widthPercent="35%w">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="15dp"
+                            android:text="公猪ID:"
+                            android:textSize="30dp" />
+
+                        <TextView
+                            android:id="@+id/id_Gong_1"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:background="@drawable/background_white_2"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="18dp"
+                            android:text="12345"
+                            android:textColor="#078d82"
+                            android:textSize="23dp"
+                            app:layout_heightPercent="82%h"
+                            app:layout_widthPercent="65%w" />
+
+                    </com.zhy.android.percent.support.PercentLinearLayout>
+
+                    <com.zhy.android.percent.support.PercentLinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="130dp"
+                        android:orientation="horizontal"
+                        app:layout_heightPercent="100%h"
+                        app:layout_widthPercent="52%w">
+
+                        <Button
+                            android:id="@+id/input"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/background_green"
+                            android:text="数据导出"
+                            android:textColor="#f4f4f4"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="80%h"
+                            app:layout_widthPercent="45%w" />
+
+                        <Button
+                            android:id="@+id/bu_return"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="25dp"
+                            android:background="@drawable/background_green"
+                            android:text="返回"
+                            android:textColor="#f4f4f4"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="80%h"
+                            app:layout_widthPercent="45%w" />
+
+                    </com.zhy.android.percent.support.PercentLinearLayout>
+
+                    <!--2.2.1-->
+                </com.zhy.android.percent.support.PercentLinearLayout>
+                <!--2.3.1-->
+                <com.zhy.android.percent.support.PercentLinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/background_white_3"
+                    android:orientation="vertical"
+                    app:layout_heightPercent="59%h"
+                    app:layout_widthPercent="97%w">
+
+                    <com.zhy.android.percent.support.PercentLinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="#daeeed"
+                        android:orientation="horizontal"
+                        app:layout_heightPercent="24%h"
+                        app:layout_widthPercent="100%w">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="10dp"
+                            android:text="日期"
+                            android:textColor="#089285"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="15%w" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="95dp"
+                            android:background="#089285" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:text="时间"
+                            android:textColor="#089285"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="11%w" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="95dp"
+                            android:background="#089285" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:text="类型"
+                            android:textColor="#089285"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="12%w" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="95dp"
+                            android:background="#089285" />
+
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="12%w">
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="18dp"
+                                android:text="密度"
+                                android:textColor="#089285"
+                                android:textSize="30dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="(百万/毫升)"
+                                android:textColor="#089285"
+                                android:textSize="14dp" />
+                        </com.zhy.android.percent.support.PercentLinearLayout>
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="95dp"
+                            android:background="#089285" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:text="活力"
+                            android:textColor="#089285"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="10%w" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="95dp"
+                            android:background="#089285" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:text="活率"
+                            android:textColor="#089285"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="10%w" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="95dp"
+                            android:background="#089285" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:text="操作员"
+                            android:textColor="#089285"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="10%w" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="95dp"
+                            android:background="#089285" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:paddingLeft="10dp"
+                            android:text="结果"
+                            android:textColor="#089285"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="10%w" />
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="95dp"
+                            android:background="#089285" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:gravity="center"
+                            android:paddingLeft="10dp"
+                            android:text=""
+                            android:textColor="#089285"
+                            android:textSize="30dp"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="10%w" />
+
+
+                    </com.zhy.android.percent.support.PercentLinearLayout>
+
+                    <ListView
+                        android:id="@+id/lv_content"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_heightPercent="76%h"
+                        app:layout_widthPercent="100%w">
+
+                    </ListView>
+
+                    <!--2.3.1-->
+                </com.zhy.android.percent.support.PercentLinearLayout>
+
+                <!--2.1-->
+            </com.zhy.android.percent.support.PercentLinearLayout>
+
+            <!--1.1-->
+        </com.zhy.android.percent.support.PercentLinearLayout>
+
+    </com.zhy.android.percent.support.PercentLinearLayout>
+
+    <ImageView
+        android:id="@+id/icon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/a_000" />
+</com.zhy.android.percent.support.PercentFrameLayout>
+
