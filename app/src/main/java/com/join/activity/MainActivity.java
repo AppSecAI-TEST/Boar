@@ -6,11 +6,15 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.join.R;
+import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
+
+import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener {
     private Button add, delete, update, query;
@@ -47,30 +51,28 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bu_add:
-               // OperationDao.addData(storage);
+               OperationDao.addData(storage);
 
 
                 break;
             case R.id.bu_delete:
-/*               OperationDao.deleteData(0L);
+               OperationDao.deleteData(0L);
                 OperationDao.deleteData(1L);
                 OperationDao.deleteData(2L);
                 OperationDao.deleteData(4L);
-                OperationDao.deleteData(6L);*/
+                OperationDao.deleteData(6L);
                 break;
             case R.id.bu_update:
 
                 break;
             case R.id.bu_query:
- /*               List<Storage> jj = OperationDao.queryAll();
+                List<Storage> jj = OperationDao.queryAll();
                 Log.e("jjj",jj.size()+"");
                 for (int i=0;i<jj.size();i++) {
                     Storage storage = jj.get(i);
-                    Long id = storage.getId();
-                    Log.e("jjj", "" + id);
                     String type = storage.getType();
                     Log.e("jjj", type);
-                }*/
+                }
                 break;
         }
     }

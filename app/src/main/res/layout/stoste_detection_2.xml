@@ -210,6 +210,7 @@
 
 
                         <TextView
+                            android:id="@+id/number"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginLeft="22dp"
@@ -226,6 +227,7 @@
                             android:background="#d8d8d8" />
 
                         <TextView
+                            android:id="@+id/operator"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginLeft="22dp"
@@ -242,6 +244,7 @@
                             android:background="#d8d8d8" />
 
                         <TextView
+                            android:id="@+id/milliliter"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginLeft="22dp"
@@ -258,11 +261,12 @@
                             android:background="#d8d8d8" />
 
                         <TextView
+                            android:id="@+id/dateC"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginLeft="22dp"
                             android:gravity="center_vertical"
-                            android:text="12:30"
+                            android:text="2017/5/16"
                             android:textSize="22dp"
                             app:layout_heightPercent="14%h"
                             app:layout_widthPercent="90%w" />
@@ -274,11 +278,12 @@
                             android:background="#d8d8d8" />
 
                         <TextView
+                            android:id="@+id/timeC"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_marginLeft="22dp"
                             android:gravity="center_vertical"
-                            android:text="2017/5/16"
+                            android:text="12:30"
                             android:textSize="22dp"
                             app:layout_heightPercent="14%h"
                             app:layout_widthPercent="90%w" />
@@ -554,6 +559,7 @@
                                 android:background="#d8d8d8" />
 
                             <TextView
+                                android:id="@+id/smell"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_marginLeft="22dp"
@@ -570,6 +576,7 @@
                                 android:background="#d8d8d8" />
 
                             <TextView
+                                android:id="@+id/color"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_marginLeft="22dp"

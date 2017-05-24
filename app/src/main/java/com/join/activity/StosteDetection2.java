@@ -14,26 +14,74 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.join.R;
+import com.join.greenDaoUtils.OperationDao;
+import com.join.greenDaoUtils.Storage;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
 
+import java.util.List;
+
+import static com.join.R.id.operator;
+
 /**
- * Created by join on 2017/5/15.
+ * 单次结果
  */
 
 public class StosteDetection2 extends Activity implements View.OnClickListener, ServiceConnection {
     private Button print, bu_return;
     private ImageView icon_1;
-    private TextView humidity;
+    private TextView humidity, color_1, smell_1, dateC_1, timeC_1, number_1, milliliter_1, operator_1;
     private Humidity.HumidityBinder humidityBinder;
+    String[] stosteDetectionData;
+    private int tab;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stoste_detection_2);
         init();
+
+
+
     }
 
     private void init() {
+        color_1 = (TextView) findViewById(R.id.color);
+        smell_1 = (TextView) findViewById(R.id.smell);
+        dateC_1 = (TextView) findViewById(R.id.dateC);
+        timeC_1 = (TextView) findViewById(R.id.timeC);
+        number_1 = (TextView) findViewById(R.id.number);
+        milliliter_1 = (TextView) findViewById(R.id.milliliter);
+        operator_1 = (TextView) findViewById(operator);
+        int action = getIntent().getFlags();
+        Log.e("jjj",action+"");
+        if (action==1) {
+            stosteDetectionData = getIntent().getStringArrayExtra("data");
+
+            String color = stosteDetectionData[0];
+            String smell = stosteDetectionData[1];
+            String dateC = stosteDetectionData[2];
+            String timeC = stosteDetectionData[3];
+            String number = stosteDetectionData[4];
+            String milliliter = stosteDetectionData[5];
+            String operator = IDSelect.id_manage;
+            color_1.setText(color);
+            smell_1.setText(smell);
+            dateC_1.setText(dateC);
+            timeC_1.setText(timeC);
+            number_1.setText(number);
+            milliliter_1.setText(milliliter);
+            operator_1.setText(operator);
+            Storage storage = new Storage(color, smell, dateC, timeC, number, operator, null, null, null, null, null);
+            OperationDao.addData(storage);
+            List<Storage> storages = OperationDao.queryAll();
+            int size = storages.size();
+            for (int i = 1; i < size; i++) {
+                Storage storage1 = storages.get(i);
+                String smell1 = storage1.getSmell();
+                Log.e("jjjj", smell1);
+            }
+        }
         humidity = (TextView) findViewById(R.id.humidity);
         print = (Button) findViewById(R.id.print);
         print.setOnClickListener(this);
@@ -52,7 +100,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
                 startActivity(intent);
                 break;
             case R.id.print:
-                CustomToast.showToast(this,"正在完善中......");
+                CustomToast.showToast(this, "正在完善中......");
 
                 break;
             case R.id.bu_return:
@@ -60,17 +108,20 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
                 break;
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         unbindService(this);
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;
@@ -78,7 +129,6 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
             public void onHumidityChange(final int data) {
-                Log.e("jjjj", data + "");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

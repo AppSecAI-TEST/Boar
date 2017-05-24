@@ -127,7 +127,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
             public void onHumidityChange(final int data) {
-                Log.e("jjjj", data + "");
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

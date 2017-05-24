@@ -4,7 +4,6 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
- *
  * id 不能自动增长(只能用long),
  *
  * @Unique 不能重复(唯一)
@@ -15,17 +14,17 @@ public class Storage {
     private String smell;
     private String date;
     private String time;
-    private int number; //公猪编号
-    private String operator;
+    private String number; //公猪编号
+    private String operator;//操作员
     private String type;  //精液类型
     private String density; //密度
     private String vitality; //活力
     private String motilityRate;//活率
     private String result;
-    @Generated(hash = 1454293531)
-    public Storage(String color, String smell, String date, String time, int number,
-            String operator, String type, String density, String vitality,
-            String motilityRate, String result) {
+    @Generated(hash = 1289024819)
+    public Storage(String color, String smell, String date, String time,
+            String number, String operator, String type, String density,
+            String vitality, String motilityRate, String result) {
         this.color = color;
         this.smell = smell;
         this.date = date;
@@ -65,10 +64,10 @@ public class Storage {
     public void setTime(String time) {
         this.time = time;
     }
-    public int getNumber() {
+    public String getNumber() {
         return this.number;
     }
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
     public String getOperator() {
@@ -107,6 +106,5 @@ public class Storage {
     public void setResult(String result) {
         this.result = result;
     }
-
 
 }

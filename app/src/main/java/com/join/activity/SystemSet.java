@@ -20,7 +20,7 @@ import com.join.utils.CustomToast;
  * Created by join on 2017/5/15.
  */
 
-public class SystemSet extends Activity implements View.OnClickListener, ServiceConnection {
+public class SystemSet extends Activity implements View.OnClickListener,ServiceConnection {
     private Button affirm1, affirm2, affirm3;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;

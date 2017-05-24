@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.join.R;
 import com.join.adapter.IDQueryAdapter;
+import com.join.greenDaoUtils.OperationDao;
+import com.join.greenDaoUtils.Storage;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
 import com.join.utils.Keyboard1;
@@ -39,13 +41,14 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     private Keyboard1 keyboard1;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.id_query);
         init();
         listView.setAdapter(idQueryAdapter);
-        listView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent();
@@ -67,14 +70,22 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         bu_return = (Button) findViewById(R.id.bu_return);
         bu_return.setOnClickListener(this);
         listView = (ListView) findViewById(R.id.lv_content);
-        com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery("2017/02/12", "12:30", "精液原液", "300", "0.8", "0.9", "001", "合格", "查看");
+
+
+        String s = id_Gong_1.getText().toString();
+        List<Storage> storages = OperationDao.queryLove(s);
+        int size = storages.size();
+        Log.e("jj",size+"");
         List<com.join.entity.IDQuery> list = new ArrayList<>();
-        list.add(idQuery);
-        list.add(idQuery);
-        list.add(idQuery);
-        list.add(idQuery);
-        list.add(idQuery);
-        list.add(idQuery);
+        for (int i = 0; i < size; i++) {
+            Storage storage = storages.get(i);
+            String date = storage.getDate();
+            String time = storage.getTime();
+            String number = storage.getNumber();
+            com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(date, time, "精液原液", "300", "0.8", "0.9", number, "合格", "查看");
+            list.add(idQuery);
+
+        }
         idQueryAdapter = new IDQueryAdapter(this, list);
         keyboard1 = new Keyboard1(IDQuery.this, id_Gong_1);
     }
@@ -83,7 +94,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.input:
-                CustomToast.showToast(this,"正开发中......");
+                CustomToast.showToast(this, "正开发中......");
                 break;
             case R.id.bu_return:
                 finish();
@@ -98,17 +109,20 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
                 break;
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         unbindService(this);
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;
@@ -116,7 +130,6 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
             public void onHumidityChange(final int data) {
-                Log.e("jjjj", data + "");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

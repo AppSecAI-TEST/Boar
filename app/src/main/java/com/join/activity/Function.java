@@ -7,7 +7,6 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -88,7 +87,7 @@ public class Function extends Activity implements View.OnClickListener , Service
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
             public void onHumidityChange(final int data) {
-                Log.e("jjjj", data + "");
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

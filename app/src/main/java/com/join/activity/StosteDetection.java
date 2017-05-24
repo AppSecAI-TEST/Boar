@@ -7,7 +7,6 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,14 +22,14 @@ import java.text.SimpleDateFormat;
 
 
 /**
- * Created by join on 2017/5/11.
+ * 准备检测
  */
 
-public class StosteDetection extends Activity implements View.OnClickListener , ServiceConnection {
+public class StosteDetection extends Activity implements View.OnClickListener, ServiceConnection {
     private PercentLinearLayout id_Gong, id_Gong_2, id_Gong_3;
     private TextView id_Gong_1, id_ml, time, date;
     private ImageView icon_1;
-    private Keyboard keyboard;
+    private Keyboard keyboard;//自定义键盘
     private Button normal_1, abnormal_1, normal_2, abnormal_2, start;
     private boolean normal_1_tab = true;
     private boolean abnormal_1_tab = true;
@@ -40,6 +39,7 @@ public class StosteDetection extends Activity implements View.OnClickListener , 
     private boolean abnormal_2_tab = true;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -111,20 +111,24 @@ public class StosteDetection extends Activity implements View.OnClickListener , 
                     String dateC;
                     String timeC;
                     String number;
+                    String milliliter;
                     if (normal_1_tab) {
-                        color = "正常";
-                    } else {
                         color = "异常";
+                    } else {
+
+                        color = "正常";
                     }
                     if (normal_2_tab) {
-                        smell = "正常";
-                    } else {
                         smell = "异常";
+                    } else {
+
+                        smell = "正常";
                     }
                     dateC = date.getText().toString();
                     timeC = time.getText().toString();
                     number = id_Gong_1.getText().toString();
-                    String[] dataArray = new String[]{color, smell, dateC, timeC, number};
+                    milliliter = id_ml.getText().toString();
+                    String[] dataArray = new String[]{color, smell, dateC, timeC, number, milliliter};
                     Intent intent2 = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
@@ -181,17 +185,20 @@ public class StosteDetection extends Activity implements View.OnClickListener , 
         setContentView(R.layout.stoste_detection);
         init();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         unbindService(this);
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;
@@ -199,7 +206,6 @@ public class StosteDetection extends Activity implements View.OnClickListener , 
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
             public void onHumidityChange(final int data) {
-                Log.e("jjjj", data + "");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

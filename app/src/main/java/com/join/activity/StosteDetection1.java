@@ -1,25 +1,31 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.IBinder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.join.R;
+import com.join.service.Humidity;
+
 
 /**
- * Created by join on 2017/5/14.
+ * 开始检测
  */
-
-public class StosteDetection1 extends Activity implements View.OnClickListener {
-    private AnimatedCircleLoadingView animatedCircleLoadingView;
+public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection {
+    private AnimatedCircleLoadingView animatedCircleLoadingView;  //进度条
     private Button bu_return, bu_enter;
     private ImageView icon_1;
-    String[] StosteDetectionData;
+    private TextView humidity;
+    private Humidity.HumidityBinder humidityBinder;
+    String[] stosteDetectionData;
 
     @Override
     public void onClick(View v) {
@@ -31,7 +37,11 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
                 break;
             case R.id.bu_enter:
                 Intent intent2 = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putStringArray("data", stosteDetectionData);
+                intent2.putExtras(bundle);
                 intent2.setAction("com.join.stostedetection2");
+                intent2.addFlags(1);
                 startActivity(intent2);
                 break;
             case R.id.bu_return:
@@ -41,6 +51,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
     }
 
     private void init() {
+        humidity = (TextView) findViewById(R.id.humidity);
         animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
         bu_return = (Button) findViewById(R.id.bu_return);
         bu_return.setOnClickListener(this);
@@ -58,19 +69,44 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
         init();
         startLoading();
         startPercentMockThread();
-        StosteDetectionData = this.getIntent().getStringArrayExtra("data");
+        stosteDetectionData = this.getIntent().getStringArrayExtra("data");
+
     }
 
-    private boolean addToDAO() {
-        if (StosteDetectionData.length > 0) {
-            String color = StosteDetectionData[0];
-            String smell = StosteDetectionData[1];
-            String dateC = StosteDetectionData[2];
-            String timeC = StosteDetectionData[3];
-            String number = StosteDetectionData[4];
-            String operator = IDSelect.id_manage;
-        }
-        return true;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        humidityBinder = (Humidity.HumidityBinder) service;
+        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
+            @Override
+            public void onHumidityChange(final int data) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText("" + data);
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
     }
 
 
@@ -93,7 +129,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
                     for (int i = 0; i <= 100; i++) {
                         Thread.sleep(20);
                         changePercent(i);
-                        Log.e("jjjj", "jjjj");
                         if (i == 100) {
                             runOnUiThread(new Runnable() {
                                 @Override
@@ -101,13 +136,11 @@ public class StosteDetection1 extends Activity implements View.OnClickListener {
                                     animatedCircleLoadingView.setVisibility(View.GONE);
                                     bu_return.setVisibility(View.GONE);
                                     bu_enter.setVisibility(View.VISIBLE);
-
                                 }
                             });
 
                         }
                     }
-                    Log.e("jjjj", "jjjj");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

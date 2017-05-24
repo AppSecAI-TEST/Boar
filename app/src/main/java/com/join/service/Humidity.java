@@ -6,13 +6,16 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import com.join.serialport.SerialPortUtil;
+
 import java.util.Random;
 
 
-public class Humidity extends Service {
+public class Humidity extends Service  {
     private HumidityCallback humidityCallback;
     private boolean connect;
     private Random random;
+    private SerialPortUtil instance;
 
     @Override
     public void onCreate() {
@@ -26,6 +29,8 @@ public class Humidity extends Service {
     public IBinder onBind(Intent intent) {
         return new HumidityBinder();
     }
+
+
 
     public class HumidityBinder extends Binder {
         public Humidity getHumidity() {
@@ -55,7 +60,7 @@ public class Humidity extends Service {
     }
 
     public int getHumidiy() {
-        int s = random.nextInt((40)%(40-30+1) + 30);
+        int s = random.nextInt((40) % (40 - 30 + 1) + 30);
         return s;
     }
 
