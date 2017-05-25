@@ -2,30 +2,176 @@ package com.join.activity;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.join.R;
+import com.join.camera.CertifyCameraManager;
+import com.join.camera.IPictureCallback2;
+import com.join.camera.MsgCons;
 import com.join.service.Humidity;
+import com.zhy.android.percent.support.PercentLinearLayout;
 
 
 /**
  * 开始检测
  */
-public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection {
+public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection, IPictureCallback2 {
     private AnimatedCircleLoadingView animatedCircleLoadingView;  //进度条
     private Button bu_return, bu_enter;
     private ImageView icon_1;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
-    String[] stosteDetectionData;
+    private String[] stosteDetectionData;
+    private PercentLinearLayout camera_ll;
+    private CameraSurfaceView cameraSurfaceView = null;
+    private Camera camera;
+    private CertifyCameraManager mCameraManager;
+    private SurfaceHolder holder = null;
+    public static final int TAKE_PHOTO = 1;//第一次照相
+    public static final int JUMP_FRAGMENT = 4;//之后的照相 照完之后回调通知再次照相
+    private int count = 1; //控制照相的张数
+    MyHandler handler = new MyHandler();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.stoste_detection_1);
+        init();
+        initParam();
+        startLoading();
+        startPercentMockThread();
+        stosteDetectionData = this.getIntent().getStringArrayExtra("data");
+
+    }
+
+    /**
+     * 初始化相机,增加回调
+     */
+    private void initParam() {
+        mCameraManager = new CertifyCameraManager();
+        camera = mCameraManager.getCamera(this);
+        mCameraManager.addCallback2(this);
+        if (camera == null) {
+
+        } else {
+            initSurafceView();
+            handler.sendEmptyMessageDelayed(MsgCons.CAMERA_TIMEOUT, 15000);
+        }
+    }
+
+    private void takePicture() {
+        mCameraManager.takePhoto();
+    }
+
+    @Override
+    public void photoPrepared() {
+        handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 2000L);
+    }
+
+    /**
+     * 增加相机到布局
+     */
+    private void initSurafceView() {
+        camera_ll.removeAllViews();
+        cameraSurfaceView = new CameraSurfaceView(this);
+
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        camera_ll.addView(cameraSurfaceView, params);
+
+        mCameraManager.initSurfaceView(cameraSurfaceView);
+    }
+
+
+    class CameraSurfaceView extends SurfaceView {
+
+        public CameraSurfaceView(Context context) {
+            super(context);
+            holder = this.getHolder();
+            holder.addCallback(surfaceCallback);
+        }
+    }
+
+    SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
+
+        public void surfaceCreated(SurfaceHolder holder) {
+            if (mCameraManager != null) {
+                mCameraManager.startPreview(holder);
+            }
+            // handler.sendEmptyMessageDelayed(TAKE_PHOTO, 2000L);
+            //已经预览的时候通知照相
+            handler.sendEmptyMessage(TAKE_PHOTO);
+        }
+
+        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+        }
+
+        public void surfaceDestroyed(SurfaceHolder holder) {
+            closeCamera();
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        closeCamera();
+    }
+
+    /**
+     * 关闭相机
+     */
+    private void closeCamera() {
+        if (mCameraManager != null) {
+            mCameraManager.closeCamera();
+            mCameraManager.delCallback();
+            mCameraManager = null;
+        }
+        if (holder != null) {
+            holder.removeCallback(surfaceCallback);
+            holder = null;
+        }
+    }
+
+    private class MyHandler extends Handler {
+        Boolean isPrepared = false;
+
+        MyHandler() {
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case JUMP_FRAGMENT:
+                    if (count == 10) {
+                        isPrepared = true;
+                        removeMessages(MsgCons.CAMERA_TIMEOUT);
+                        mCameraManager.delCallback();
+                    } else {
+                        takePicture();
+                        count++;
+                    }
+                    break;
+                case TAKE_PHOTO:
+                    takePicture();
+                    break;
+            }
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -51,6 +197,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     }
 
     private void init() {
+        camera_ll = (PercentLinearLayout) findViewById(R.id.camera_ll);
         humidity = (TextView) findViewById(R.id.humidity);
         animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
         bu_return = (Button) findViewById(R.id.bu_return);
@@ -62,16 +209,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.stoste_detection_1);
-        init();
-        startLoading();
-        startPercentMockThread();
-        stosteDetectionData = this.getIntent().getStringArrayExtra("data");
-
-    }
 
     @Override
     protected void onResume() {
