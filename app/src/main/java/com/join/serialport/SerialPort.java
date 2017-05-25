@@ -1,6 +1,5 @@
 package com.join.serialport;
 
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -24,7 +23,6 @@ public class SerialPort {
 
     public SerialPort(File device, int baudrate) throws SecurityException, IOException {
         mFd = open(device.getAbsolutePath(), baudrate);
-        Log.e("jjjj",mFd.toString());
         if (mFd == null) {
             throw new IOException();
         }

@@ -51,6 +51,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
     protected void onResume() {
         super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
+        intentHumidity.addFlags(1);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
     }
 

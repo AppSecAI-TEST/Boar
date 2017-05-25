@@ -40,7 +40,6 @@ public class CertifyCameraManager implements ErrorCallback {
     public Camera getCamera(Context context) {
         this.context = context;
         if (camera == null) {
-            // LogUtil.wInfo("init Camera");
             camera = openCamera();
         }
         return camera;
@@ -52,7 +51,6 @@ public class CertifyCameraManager implements ErrorCallback {
      * @return
      */
     private Camera openCamera() {
-        //LogUtil.wInfo("openCamera");
         try {
             camera = findCamera();
             if (camera != null) {
@@ -72,19 +70,17 @@ public class CertifyCameraManager implements ErrorCallback {
      * @return
      */
     public Camera findCamera() {
+        //得到相机的数目
         int numberOfCameras = Camera.getNumberOfCameras();
         if (numberOfCameras == 0) {
             return null;
         }
-        // LogUtil.wInfo("find Camera number:" + numberOfCameras);
         CameraInfo cameraInfo = new CameraInfo();
         for (int i = 0; i < numberOfCameras; i++) {
             Camera.getCameraInfo(i, cameraInfo);
             if (cameraInfo.facing == CameraInfo.CAMERA_FACING_BACK) {
-                // LogUtil.wInfo("FACING BACK CAMERA");
                 return Camera.open(i);
             } else if (cameraInfo.facing == CameraInfo.CAMERA_FACING_FRONT) {
-                //  LogUtil.wInfo("FACING FRONT CAMERA");
                 return Camera.open(i);
             }
         }
@@ -105,7 +101,6 @@ public class CertifyCameraManager implements ErrorCallback {
 
         }
     }
-
 
     public void initSurfaceView(SurfaceView surfaceView) {
         holder = surfaceView.getHolder();
@@ -148,9 +143,7 @@ public class CertifyCameraManager implements ErrorCallback {
 
     public void takePhoto() {
         if (camera != null) {
-
             camera.takePicture(null, null, pictureCallback);
-
         } else {
 
         }
@@ -160,10 +153,8 @@ public class CertifyCameraManager implements ErrorCallback {
      * 拍照之后返回的字节
      */
     private Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
-
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
-
 
             stopPreview();
             String photo_name = "";
@@ -213,7 +204,7 @@ public class CertifyCameraManager implements ErrorCallback {
                 }
 
             }
-            LogUtil.info("pictureCallback", "onPictureTaken ============= 2");
+
         }
     };
 
@@ -225,7 +216,7 @@ public class CertifyCameraManager implements ErrorCallback {
      */
     public void addCallback2(IPictureCallback2 iPictureCallback) {
         this.iPictureCallback2 = iPictureCallback;
-        LogUtil.info("pictureCallback", "addCallback ============= 1");
+
     }
 
     /**
@@ -233,7 +224,7 @@ public class CertifyCameraManager implements ErrorCallback {
      */
     public void delCallback() {
         this.iPictureCallback2 = null;
-        LogUtil.info("pictureCallback", "addCallback ============= 1");
+
     }
 
     /**
@@ -242,8 +233,7 @@ public class CertifyCameraManager implements ErrorCallback {
      * @param holder
      */
     public void startPreview(SurfaceHolder holder) {
-        // LogUtil.wInfo("startPreview");
-        LogUtil.info("pictureCallback", "startPreview ============= 1");
+
         if (!mPreviewing) {
             try {
                 if (camera != null) {
@@ -264,8 +254,6 @@ public class CertifyCameraManager implements ErrorCallback {
      * 停止预览
      */
     public void stopPreview() {
-        // LogUtil.info("pictureCallback", "stopPreview ============= 1");
-        //  LogUtil.wInfo("stopPreview");
         if (camera != null) {
             camera.stopPreview();
             camera.setPreviewCallback(null);
@@ -277,8 +265,6 @@ public class CertifyCameraManager implements ErrorCallback {
      * 关闭相机
      */
     public void closeCamera() {
-        // LogUtil.wInfo("closeCamera");
-        // LogUtil.info("pictureCallback", "closeCamera ============= 1");
         if (camera == null) {
             return;
         } else {
@@ -290,10 +276,9 @@ public class CertifyCameraManager implements ErrorCallback {
             camera = null;
         }
     }
+
     @Override
     public void onError(int error, Camera camera) {
-
     }
-
 
 }

@@ -17,7 +17,7 @@ public class SerialPortUtil {
     private OutputStream mOutputStream;
     private InputStream mInputStream;
     private ReadThread mReadThread;
-    private String path = "/dev/ttyAMA2";
+    private String path = "/dev/ttyUSB0";
     private int baudrate = 9600;
     private static SerialPortUtil portUtil;
     private OnDataReceiveListener onDataReceiveListener = null;
@@ -27,7 +27,7 @@ public class SerialPortUtil {
      * 用于接收串口返回的数据
      */
     public interface OnDataReceiveListener {
-         void onDataReceive(byte[] buffer, int size);
+        public void onDataReceive(byte[] buffer, int size);
     }
 
     /**
@@ -63,7 +63,7 @@ public class SerialPortUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // initBle();
+
     }
 
     /**
@@ -95,7 +95,7 @@ public class SerialPortUtil {
         //byte[] tailBuffer = tail.getBytes();
         // byte[] mBufferTemp = new byte[mBuffer.length + tailBuffer.length];
         byte[] mBufferTemp = new byte[mBuffer.length];
-       // Log.e("jj", mBufferTemp.length + "");
+        // Log.e("jj", mBufferTemp.length + "");
         System.arraycopy(mBuffer, 0, mBufferTemp, 0, mBuffer.length);
         //System.arraycopy(tailBuffer, 0, mBufferTemp, mBuffer.length, tailBuffer.length);
 
@@ -114,11 +114,12 @@ public class SerialPortUtil {
         return result;
     }
 
-    private class ReadThread extends Thread {
+    private class  ReadThread extends Thread {
 
         @Override
-        public void run() {
+        public synchronized void run() {
             super.run();
+
             while (!isStop && !isInterrupted()) {
                 int size;
                 try {
@@ -126,16 +127,18 @@ public class SerialPortUtil {
                         return;
                     byte[] buffer = new byte[11];
                     size = mInputStream.read(buffer);
-                   // Log.e("JJ",""+size);
+
+                    // Log.e("JJ",""+size);
                     if (size > 0) {
                    /*     if(MyLog.isDyeLevel()){
                             MyLog.log(TAG, MyLog.DYE_LOG_LEVEL, "length is:"+size+",data is:"+new String(buffer, 0, size));
                         }*/
                         if (null != onDataReceiveListener) {
                             onDataReceiveListener.onDataReceive(buffer, size);
+
                         }
                     }
-                    Thread.sleep(10);
+                    Thread.sleep(1000);
                 } catch (Exception e) {
                     e.printStackTrace();
                     return;
