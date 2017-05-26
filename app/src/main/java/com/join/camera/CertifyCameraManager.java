@@ -1,6 +1,5 @@
 package com.join.camera;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.ImageFormat;
@@ -13,14 +12,9 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import static android.content.ContentValues.TAG;
 
 
 public class CertifyCameraManager implements ErrorCallback {
@@ -30,7 +24,7 @@ public class CertifyCameraManager implements ErrorCallback {
     private Parameters cameraParameters = null;
     private SurfaceHolder holder;
     private Context context;
-    IPictureCallback2 iPictureCallback2;
+    private IPictureCallback2 iPictureCallback2;
 
 
     /**
@@ -155,24 +149,26 @@ public class CertifyCameraManager implements ErrorCallback {
      * 拍照之后返回的字节
      */
     private Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
-       private String pathName = "000";
+
+        private int i;
 
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
-
+            String format = String.format("%03d", i++);
             stopPreview();
             String photo_name = "";
             String path = Settings.get().getCertifyPath();
+            Log.e(TAG, "onPictureTaken: " + path);
             File file = new File(path);
             if (!file.exists()) {
                 file.mkdir();
             }
             try {
-                Date date = new Date();
-
-                String save_name = (pathName + ".jpg");
+                //   Date date = new Date();
+                Log.e(TAG, "onPictureTaken: format" + format);
+                String save_name = (format + ".jpg");
                 File saveFile = new File(path + File.separator + save_name);
-                Log.e(TAG, "onPictureTaken: " + pathName);
+
 
               /*  BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(saveFile));
                 Bitmap mBitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
@@ -194,18 +190,18 @@ public class CertifyCameraManager implements ErrorCallback {
                 fos.close();
                 fos.flush();
                 startPreview(holder);
-                photo_name = saveFile.getAbsolutePath();
+                // photo_name = saveFile.getAbsolutePath();
             } catch (Exception e) {
                 closeCamera();
             } finally {
                 if (iPictureCallback2 != null) {
 
-                 /*  /Log.e("jjjjj","jjjjjjjjjjjj");
+                 /*
                     Message message = Message.obtain();
                     message.what = MsgCons.CAMERA_PHOTO_PREPARED;
                     message.obj = photo_name;*/
-                    pathName = iPictureCallback2.photoPrepared();
-                    Log.e(TAG, "onPictureTaken: "+pathName);
+                    iPictureCallback2.photoPrepared(i);
+
                 }
 
             }
@@ -223,6 +219,7 @@ public class CertifyCameraManager implements ErrorCallback {
         this.iPictureCallback2 = iPictureCallback;
 
     }
+
 
     /**
      * 删除回调

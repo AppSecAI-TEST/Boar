@@ -23,15 +23,17 @@ import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
 import com.join.R;
 import com.join.camera.CertifyCameraManager;
 import com.join.camera.IPictureCallback2;
+import com.join.camera.IPictureCallback3;
 import com.join.camera.MsgCons;
 import com.join.service.Humidity;
+import com.join.utils.Arithmetic;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 
 /**
  * 开始检测
  */
-public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection, IPictureCallback2 {
+public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection, IPictureCallback2, IPictureCallback3 {
     private String TAG = "jjjStosteDetection1";
     private AnimatedCircleLoadingView animatedCircleLoadingView;  //进度条
     private Button bu_return, bu_enter;
@@ -47,7 +49,10 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     public static final int TAKE_PHOTO = 1;//第一次照相
     public static final int JUMP_FRAGMENT = 4;//之后的照相 照完之后回调通知再次照相
     private int count = 1; //控制照相的张数
-    MyHandler handler = new MyHandler();
+    private MyHandler handler = new MyHandler();
+    private float[] arithmeticData;
+    private Arithmetic arithmetic;
+    private boolean boolTag = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         initParam();
         startLoading();
         startPercentMockThread();
+
         stosteDetectionData = this.getIntent().getStringArrayExtra("data");
 
     }
@@ -79,14 +85,16 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private void takePicture() {
         mCameraManager.takePhoto();
     }
-    int i;
-    @Override
-    public String photoPrepared() {
 
-        handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 2000L);
-        String format = String.format("%03d", ++i);
-        return format;
+
+    @Override
+    public void photoPrepared(int tag) {
+        handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+        if (tag == 19) {
+            arithmetic.getArithmetic();
+        }
     }
+
 
     /**
      * 增加相机到布局
@@ -99,6 +107,13 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         camera_ll.addView(cameraSurfaceView, params);
 
         mCameraManager.initSurfaceView(cameraSurfaceView);
+    }
+
+    @Override
+    public void photoPrepared3(float[] arithmetic) {
+        this.arithmeticData = arithmetic;
+        boolTag = false;
+
     }
 
 
@@ -117,9 +132,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             if (mCameraManager != null) {
                 mCameraManager.startPreview(holder);
             }
-            // handler.sendEmptyMessageDelayed(TAKE_PHOTO, 2000L);
+            handler.sendEmptyMessageDelayed(TAKE_PHOTO, 200L);
             //已经预览的时候通知照相
-            handler.sendEmptyMessage(TAKE_PHOTO);
+            // handler.sendEmptyMessage(TAKE_PHOTO);
         }
 
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
@@ -161,7 +176,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case JUMP_FRAGMENT:
-                    if (count == 20) {
+                    if (count == 10) {
                         isPrepared = true;
                         removeMessages(MsgCons.CAMERA_TIMEOUT);
                         mCameraManager.delCallback();
@@ -189,6 +204,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 Intent intent2 = new Intent();
                 Bundle bundle = new Bundle();
                 bundle.putStringArray("data", stosteDetectionData);
+                bundle.putFloatArray("arithmetic", arithmeticData);
                 intent2.putExtras(bundle);
                 intent2.setAction("com.join.stostedetection2");
                 intent2.addFlags(1);
@@ -210,7 +226,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         bu_enter.setOnClickListener(this);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(this);
-
+        arithmetic = new Arithmetic();
     }
 
 
@@ -219,6 +235,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
+        arithmetic.setiPictureCallback3(this);
     }
 
     @Override
@@ -268,10 +285,13 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 try {
                     // Thread.sleep(1500);
                     for (int i = 0; i <= 100; i++) {
-                        Thread.sleep(800);
+                        if (boolTag) {
+                            Thread.sleep(1500);
+                        }
                         changePercent(i);
-                        Thread.sleep(1000);
+
                         if (i == 100) {
+                            Thread.sleep(5000);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {

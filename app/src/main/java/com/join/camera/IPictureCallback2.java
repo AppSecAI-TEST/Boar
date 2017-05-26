@@ -6,5 +6,5 @@ public interface IPictureCallback2 {
      *
      *
      */
-    public String photoPrepared();
+    public void photoPrepared(int tag);
 }
