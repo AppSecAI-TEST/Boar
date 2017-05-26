@@ -1,3 +1,4 @@
+
 package com.join.serialport;
 
 import android.util.Log;
@@ -7,9 +8,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+
 /**
  * Created by join on 2017/4/19.
  */
+
 
 public class SerialPortUtil {
     private String TAG = SerialPortUtil.class.getSimpleName();
@@ -23,18 +26,22 @@ public class SerialPortUtil {
     private OnDataReceiveListener onDataReceiveListener = null;
     private boolean isStop = false;
 
-    /**
+
+/**
      * 用于接收串口返回的数据
      */
+
     public interface OnDataReceiveListener {
         public void onDataReceive(byte[] buffer, int size);
     }
 
-    /**
+
+/**
      * 设置接收串口的数据的监听器
      *
      * @param dataReceiveListener
      */
+
     public void setOnDataReceiveListener(
             OnDataReceiveListener dataReceiveListener) {
         onDataReceiveListener = dataReceiveListener;
@@ -48,9 +55,11 @@ public class SerialPortUtil {
         return portUtil;
     }
 
-    /**
+
+/**
      * 初始化串口信息
      */
+
     public void onCreate() {
         try {
             mSerialPort = new SerialPort(new File(path), baudrate);
@@ -66,12 +75,14 @@ public class SerialPortUtil {
 
     }
 
-    /**
+
+/**
      * 发送指令到串口
      *
      * @param cmd
      * @return
      */
+
     public boolean sendCmds(String cmd) {
         boolean result = true;
         byte[] mBuffer = (cmd + "\r\n").getBytes();
@@ -130,9 +141,11 @@ public class SerialPortUtil {
 
                     // Log.e("JJ",""+size);
                     if (size > 0) {
-                   /*     if(MyLog.isDyeLevel()){
+
+/*     if(MyLog.isDyeLevel()){
                             MyLog.log(TAG, MyLog.DYE_LOG_LEVEL, "length is:"+size+",data is:"+new String(buffer, 0, size));
                         }*/
+
                         if (null != onDataReceiveListener) {
                             onDataReceiveListener.onDataReceive(buffer, size);
 
@@ -147,9 +160,11 @@ public class SerialPortUtil {
         }
     }
 
-    /**
+
+/**
      * 关闭串口
      */
+
     public void closeSerialPort() {
         //sendShellCommond1();
         isStop = true;
@@ -162,3 +177,4 @@ public class SerialPortUtil {
     }
 
 }
+

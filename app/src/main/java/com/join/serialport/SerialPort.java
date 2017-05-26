@@ -41,8 +41,7 @@ public class SerialPort {
     private native FileDescriptor open(String path, int baudrate);
     public native int close();
 
-    static {
+   static {
         System.loadLibrary("serial_port");
-       // System.loadLibrary("mainSperm");
     }
 }

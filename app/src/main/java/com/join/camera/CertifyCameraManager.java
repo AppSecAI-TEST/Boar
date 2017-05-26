@@ -9,6 +9,7 @@ import android.hardware.Camera;
 import android.hardware.Camera.CameraInfo;
 import android.hardware.Camera.ErrorCallback;
 import android.hardware.Camera.Parameters;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -19,17 +20,18 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static android.content.ContentValues.TAG;
+
 
 public class CertifyCameraManager implements ErrorCallback {
-
+    private String TAG = "jjjCertifyCameraManager";
     private Camera camera = null;
     private boolean mPreviewing = false;
     private Parameters cameraParameters = null;
     private SurfaceHolder holder;
     private Context context;
     IPictureCallback2 iPictureCallback2;
-    @SuppressLint({"SimpleDateFormat"})
-    SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+
 
     /**
      * 拿到相机
@@ -58,7 +60,7 @@ public class CertifyCameraManager implements ErrorCallback {
             }
         } catch (Exception e) {
             camera = null;
-            LogUtil.wError(e);
+
             closeCamera();
         }
         return camera;
@@ -153,6 +155,8 @@ public class CertifyCameraManager implements ErrorCallback {
      * 拍照之后返回的字节
      */
     private Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
+       private String pathName = "000";
+
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
 
@@ -166,9 +170,9 @@ public class CertifyCameraManager implements ErrorCallback {
             try {
                 Date date = new Date();
 
-                String save_name = (format.format(date) + ".jpg");
+                String save_name = (pathName + ".jpg");
                 File saveFile = new File(path + File.separator + save_name);
-
+                Log.e(TAG, "onPictureTaken: " + pathName);
 
               /*  BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(saveFile));
                 Bitmap mBitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
@@ -200,7 +204,8 @@ public class CertifyCameraManager implements ErrorCallback {
                     Message message = Message.obtain();
                     message.what = MsgCons.CAMERA_PHOTO_PREPARED;
                     message.obj = photo_name;*/
-                    iPictureCallback2.photoPrepared();
+                    pathName = iPictureCallback2.photoPrepared();
+                    Log.e(TAG, "onPictureTaken: "+pathName);
                 }
 
             }

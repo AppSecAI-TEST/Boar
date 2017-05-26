@@ -32,6 +32,7 @@ import com.zhy.android.percent.support.PercentLinearLayout;
  * 开始检测
  */
 public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection, IPictureCallback2 {
+    private String TAG = "jjjStosteDetection1";
     private AnimatedCircleLoadingView animatedCircleLoadingView;  //进度条
     private Button bu_return, bu_enter;
     private ImageView icon_1;
@@ -78,10 +79,13 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private void takePicture() {
         mCameraManager.takePhoto();
     }
-
+    int i;
     @Override
-    public void photoPrepared() {
+    public String photoPrepared() {
+
         handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 2000L);
+        String format = String.format("%03d", ++i);
+        return format;
     }
 
     /**
@@ -157,7 +161,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case JUMP_FRAGMENT:
-                    if (count == 10) {
+                    if (count == 20) {
                         isPrepared = true;
                         removeMessages(MsgCons.CAMERA_TIMEOUT);
                         mCameraManager.delCallback();
@@ -264,8 +268,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 try {
                     // Thread.sleep(1500);
                     for (int i = 0; i <= 100; i++) {
-                        Thread.sleep(20);
+                        Thread.sleep(800);
                         changePercent(i);
+                        Thread.sleep(1000);
                         if (i == 100) {
                             runOnUiThread(new Runnable() {
                                 @Override

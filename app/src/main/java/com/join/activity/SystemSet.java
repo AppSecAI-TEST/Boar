@@ -7,7 +7,6 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -77,7 +76,7 @@ public class SystemSet extends Activity implements View.OnClickListener,ServiceC
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
             public void onHumidityChange(final int data) {
-                Log.e("jjjj", data + "");
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
