@@ -32,7 +32,9 @@ public class StorageDao extends AbstractDao<Storage, Void> {
         public final static Property Density = new Property(7, String.class, "density", false, "DENSITY");
         public final static Property Vitality = new Property(8, String.class, "vitality", false, "VITALITY");
         public final static Property MotilityRate = new Property(9, String.class, "motilityRate", false, "MOTILITY_RATE");
-        public final static Property Result = new Property(10, String.class, "result", false, "RESULT");
+        public final static Property Copies = new Property(10, String.class, "copies", false, "COPIES");
+        public final static Property Add = new Property(11, String.class, "add", false, "ADD");
+        public final static Property Result = new Property(12, String.class, "result", false, "RESULT");
     }
 
 
@@ -58,7 +60,9 @@ public class StorageDao extends AbstractDao<Storage, Void> {
                 "\"DENSITY\" TEXT," + // 7: density
                 "\"VITALITY\" TEXT," + // 8: vitality
                 "\"MOTILITY_RATE\" TEXT," + // 9: motilityRate
-                "\"RESULT\" TEXT);"); // 10: result
+                "\"COPIES\" TEXT," + // 10: copies
+                "\"ADD\" TEXT," + // 11: add
+                "\"RESULT\" TEXT);"); // 12: result
     }
 
     /** Drops the underlying database table. */
@@ -121,9 +125,19 @@ public class StorageDao extends AbstractDao<Storage, Void> {
             stmt.bindString(10, motilityRate);
         }
  
+        String copies = entity.getCopies();
+        if (copies != null) {
+            stmt.bindString(11, copies);
+        }
+ 
+        String add = entity.getAdd();
+        if (add != null) {
+            stmt.bindString(12, add);
+        }
+ 
         String result = entity.getResult();
         if (result != null) {
-            stmt.bindString(11, result);
+            stmt.bindString(13, result);
         }
     }
 
@@ -181,9 +195,19 @@ public class StorageDao extends AbstractDao<Storage, Void> {
             stmt.bindString(10, motilityRate);
         }
  
+        String copies = entity.getCopies();
+        if (copies != null) {
+            stmt.bindString(11, copies);
+        }
+ 
+        String add = entity.getAdd();
+        if (add != null) {
+            stmt.bindString(12, add);
+        }
+ 
         String result = entity.getResult();
         if (result != null) {
-            stmt.bindString(11, result);
+            stmt.bindString(13, result);
         }
     }
 
@@ -205,7 +229,9 @@ public class StorageDao extends AbstractDao<Storage, Void> {
             cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // density
             cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // vitality
             cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // motilityRate
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // result
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // copies
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // add
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12) // result
         );
         return entity;
     }
@@ -222,7 +248,9 @@ public class StorageDao extends AbstractDao<Storage, Void> {
         entity.setDensity(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
         entity.setVitality(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
         entity.setMotilityRate(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setResult(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setCopies(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setAdd(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setResult(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
      }
     
     @Override

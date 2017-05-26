@@ -96,9 +96,8 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             String substring = milliliter.substring(0, length - 2);
             Integer integer = Integer.valueOf(substring);
             float copies = integer * motilityRate * vitality / 30;
-            Log.e(TAG, "init: " + copies);
-            int round = Math.round(copies);
-            String copiesS = String.valueOf(round);
+            Log.e(TAG, "init: " + substring);
+            String copiesS = String.valueOf(Math.round(copies));
             String operator = IDSelect.id_manage;
             copies_1.setText(copiesS);
             density_1.setText(densityS);
@@ -111,14 +110,15 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             number_1.setText(number);
             milliliter_1.setText(milliliter);
             operator_1.setText(operator);
-            Storage storage = new Storage(color, smell, dateC, timeC, number, operator, null, densityS, vitalityS, motilityRateS, null);
+            Storage storage = new Storage(color, smell, dateC, timeC, number, operator, null, densityS, vitalityS, motilityRateS, copiesS, null, null);
             OperationDao.addData(storage);
             List<Storage> storages = OperationDao.queryAll();
             int size = storages.size();
             for (int i = 1; i < size; i++) {
                 Storage storage1 = storages.get(i);
                 String smell1 = storage1.getSmell();
-                Log.e("jjjj", smell1);
+                String copies1 = storage1.getCopies();
+                Log.e(TAG, smell1+copies1);
             }
         }
         humidity = (TextView) findViewById(R.id.humidity);

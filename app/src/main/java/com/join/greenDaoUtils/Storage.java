@@ -20,11 +20,14 @@ public class Storage {
     private String density; //密度
     private String vitality; //活力
     private String motilityRate;//活率
+    private String copies;
+    private String add;
     private String result;
-    @Generated(hash = 1289024819)
+    @Generated(hash = 46239288)
     public Storage(String color, String smell, String date, String time,
             String number, String operator, String type, String density,
-            String vitality, String motilityRate, String result) {
+            String vitality, String motilityRate, String copies, String add,
+            String result) {
         this.color = color;
         this.smell = smell;
         this.date = date;
@@ -35,6 +38,8 @@ public class Storage {
         this.density = density;
         this.vitality = vitality;
         this.motilityRate = motilityRate;
+        this.copies = copies;
+        this.add = add;
         this.result = result;
     }
     @Generated(hash = 2114225574)
@@ -100,6 +105,18 @@ public class Storage {
     public void setMotilityRate(String motilityRate) {
         this.motilityRate = motilityRate;
     }
+    public String getCopies() {
+        return this.copies;
+    }
+    public void setCopies(String copies) {
+        this.copies = copies;
+    }
+    public String getAdd() {
+        return this.add;
+    }
+    public void setAdd(String add) {
+        this.add = add;
+    }
     public String getResult() {
         return this.result;
     }
@@ -107,4 +124,5 @@ public class Storage {
         this.result = result;
     }
 
+   
 }

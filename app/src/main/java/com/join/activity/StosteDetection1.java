@@ -90,7 +90,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     public void photoPrepared(int tag) {
         handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
-        if (tag == 19) {
+        if (tag == 9) {
             arithmetic.getArithmetic();
         }
     }
