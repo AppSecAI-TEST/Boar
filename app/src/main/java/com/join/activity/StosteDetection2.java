@@ -73,11 +73,13 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         number_1 = (TextView) findViewById(R.id.number);
         milliliter_1 = (TextView) findViewById(R.id.milliliter);
         operator_1 = (TextView) findViewById(operator);
-        int action = getIntent().getFlags();
-        Log.e("jjj", action + "");
+        int action = getIntent().getFlags();//区别由那个页面进入本页面
+        Log.e(TAG, action + "");
         if (action == 1) {
+
             stosteDetectionData = getIntent().getStringArrayExtra("data");
             arithmetic = getIntent().getFloatArrayExtra("arithmetic");
+
             float valid = arithmetic[7];
             float density = arithmetic[1];
             float vitality = arithmetic[5];
@@ -92,17 +94,27 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             String timeC = stosteDetectionData[3];
             String number = stosteDetectionData[4];
             String milliliter = stosteDetectionData[5];
+            String flagType = stosteDetectionData[6];
+            String type = null;
+            if (flagType.equals("1")) {
+                type = "精液原液";
+            } else if (flagType.equals("2")) {
+                type = "稀释精液";
+            }
             int length = milliliter.length();
-            String substring = milliliter.substring(0, length - 2);
-            Integer integer = Integer.valueOf(substring);
+            String milliliterSubstring = milliliter.substring(0, length - 2);
+            Integer integer = Integer.valueOf(milliliterSubstring);
             float copies = integer * motilityRate * vitality / 30;
-            Log.e(TAG, "init: " + substring);
+            float add = copies * 80 - integer;
             String copiesS = String.valueOf(Math.round(copies));
+            String addS = String.valueOf(add);
             String operator = IDSelect.id_manage;
+            add_1.setText(addS);
             copies_1.setText(copiesS);
             density_1.setText(densityS);
             vitality_1.setText(vitalityS);
             motilityRate_1.setText(motilityRateS);
+
             color_1.setText(color);
             smell_1.setText(smell);
             dateC_1.setText(dateC);
@@ -110,7 +122,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             number_1.setText(number);
             milliliter_1.setText(milliliter);
             operator_1.setText(operator);
-            Storage storage = new Storage(color, smell, dateC, timeC, number, operator, null, densityS, vitalityS, motilityRateS, copiesS, null, null);
+            Storage storage = new Storage(color, smell, dateC, timeC, number, operator, type, densityS, vitalityS, motilityRateS, copiesS, addS, null);
             OperationDao.addData(storage);
             List<Storage> storages = OperationDao.queryAll();
             int size = storages.size();
@@ -118,7 +130,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
                 Storage storage1 = storages.get(i);
                 String smell1 = storage1.getSmell();
                 String copies1 = storage1.getCopies();
-                Log.e(TAG, smell1+copies1);
+                Log.e(TAG, smell1 + copies1);
             }
         }
         humidity = (TextView) findViewById(R.id.humidity);

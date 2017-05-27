@@ -266,7 +266,7 @@ public class StorageDao extends AbstractDao<Storage, Void> {
 
     @Override
     public boolean hasKey(Storage entity) {
-
+        // TODO
         return false;
     }
 

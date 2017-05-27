@@ -38,7 +38,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private AnimatedCircleLoadingView animatedCircleLoadingView;  //进度条
     private Button bu_return, bu_enter;
     private ImageView icon_1;
-    private TextView humidity;
+    private TextView humidity, title;
     private Humidity.HumidityBinder humidityBinder;
     private String[] stosteDetectionData;
     private PercentLinearLayout camera_ll;
@@ -53,6 +53,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private float[] arithmeticData;
     private Arithmetic arithmetic;
     private boolean boolTag = true;
+    private String flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         startPercentMockThread();
 
         stosteDetectionData = this.getIntent().getStringArrayExtra("data");
-
+        flag = stosteDetectionData[6];
     }
 
     /**
@@ -217,6 +218,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     }
 
     private void init() {
+        title = (TextView) findViewById(R.id.title);
         camera_ll = (PercentLinearLayout) findViewById(R.id.camera_ll);
         humidity = (TextView) findViewById(R.id.humidity);
         animatedCircleLoadingView = (AnimatedCircleLoadingView) findViewById(R.id.circle_loading_view);
@@ -236,6 +238,10 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
         arithmetic.setiPictureCallback3(this);
+        if (flag.equals(2)) {
+            
+        }
+
     }
 
     @Override

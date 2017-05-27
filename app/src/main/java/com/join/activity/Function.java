@@ -18,10 +18,11 @@ import com.zhy.android.percent.support.PercentLinearLayout;
  * Created by join on 2017/5/11.
  */
 
-public class Function extends Activity implements View.OnClickListener , ServiceConnection {
+public class Function extends Activity implements View.OnClickListener, ServiceConnection {
     private PercentLinearLayout function_1, function_2, function_3, function_4;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +60,13 @@ public class Function extends Activity implements View.OnClickListener , Service
         switch (v.getId()) {
             case R.id.function_1:
                 Intent intent = new Intent();
+                intent.addFlags(1);
                 intent.setAction("com.join.stostedetection");
                 startActivity(intent);
                 break;
             case R.id.function_2:
                 Intent intent2 = new Intent();
+                intent2.addFlags(2);
                 intent2.setAction("com.join.stostedetection");
                 startActivity(intent2);
                 break;

@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -37,8 +38,10 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
 
     private boolean normal_2_tab = true;
     private boolean abnormal_2_tab = true;
-    private TextView humidity;
+    private TextView humidity, title;
     private Humidity.HumidityBinder humidityBinder;
+    private String TAG = "jjjStosteDetection";
+    private int flags; //区分主菜单是精液原液还是稀释精液
 
     @Override
     public void onClick(View v) {
@@ -128,7 +131,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                     timeC = time.getText().toString();
                     number = id_Gong_1.getText().toString();
                     milliliter = id_ml.getText().toString();
-                    String[] dataArray = new String[]{color, smell, dateC, timeC, number, milliliter};
+                    String[] dataArray = new String[]{color, smell, dateC, timeC, number, milliliter, String.valueOf(flags)};
                     Intent intent2 = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
@@ -145,6 +148,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
 
 
     private void init() {
+        title = (TextView) findViewById(R.id.title);
         humidity = (TextView) findViewById(R.id.humidity);
         date = (TextView) findViewById(R.id.date);
         time = (TextView) findViewById(R.id.time);
@@ -184,13 +188,20 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stoste_detection);
         init();
+        flags = getIntent().getFlags();
+        Log.e(TAG, "onCreate: " + flags);
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
+        if (flags == 2) {
+            title.setText("稀释精液检测");
+        }
+
     }
 
     @Override
