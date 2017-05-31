@@ -59,7 +59,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <!--详情结果显示-->
         <activity android:name=".activity.StosteDetection2">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
@@ -68,7 +68,7 @@
             </intent-filter>
         </activity>
 
-
+        <!--按ID查询-->
         <activity android:name=".activity.IDQuery">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
@@ -77,7 +77,7 @@
             </intent-filter>
         </activity>
 
-
+        <!--标准参数,系统参数设置入口-->
         <activity android:name=".activity.SystemSet">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
@@ -86,6 +86,15 @@
             </intent-filter>
         </activity>
 
+        <!--标准参数-->
+        <activity android:name=".activity.ParameterSetting">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.ParameterSetting"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--系统时间,管理员设置-->
 
         <activity android:name=".activity.SystemSet1">
             <intent-filter>

@@ -13,16 +13,16 @@ import android.widget.TextView;
 
 import com.join.R;
 import com.join.service.Humidity;
-import com.join.utils.CustomToast;
 
 /**
- * Created by join on 2017/5/15.
+ * 标准参数,系统参数设置入口
  */
 
 public class SystemSet extends Activity implements View.OnClickListener,ServiceConnection {
     private Button affirm1, affirm2, affirm3;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
+    private Intent intent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,17 +38,18 @@ public class SystemSet extends Activity implements View.OnClickListener,ServiceC
         affirm2.setOnClickListener(this);
         affirm3 = (Button) findViewById(R.id.affirm3);
         affirm3.setOnClickListener(this);
+        intent = new Intent();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.affirm1:
+                intent.setAction("com.join.ParameterSetting");
+                startActivity(intent);
 
-                CustomToast.showToast(this,"正在完善中....");
                 break;
             case R.id.affirm2:
-                Intent intent = new Intent();
                 intent.setAction("com.join.SystemSet1");
                 startActivity(intent);
                 break;
