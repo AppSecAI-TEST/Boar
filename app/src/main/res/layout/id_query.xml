@@ -23,8 +23,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="490dp"
-                android:text="按公猪ID查询"
+                android:layout_marginLeft="380dp"
+                android:text="按公猪ID/批号ID查询"
                 android:textColor="#fff"
                 android:textSize="40dp" />
 
@@ -88,9 +88,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="15dp"
-                            android:text="公猪ID:"
-                            android:textSize="30dp" />
+                            android:layout_marginLeft="20dp"
+                            android:text="ID:"
+                            android:textSize="35dp" />
 
                         <TextView
                             android:id="@+id/id_Gong_1"
@@ -234,7 +234,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="(百万/毫升)"
+                                android:text="(亿/毫升)"
                                 android:textColor="#089285"
                                 android:textSize="14dp" />
                         </com.zhy.android.percent.support.PercentLinearLayout>

@@ -16,7 +16,7 @@ import com.join.R;
 public class Keyboard implements View.OnClickListener {
     private Button bu_0, bu_1, bu_2, bu_3, bu_4, bu_5, bu_6, bu_7, bu_8, bu_9, bu_w, delete, out;
     private int tab;
-    private TextView input, id_Gong_1, id_ml, time;
+    private TextView input, id_Gong_1, id_ml, time, tv_id;
     private Context context;
     private View view;
     private PopupWindow popupWindow;
@@ -26,9 +26,17 @@ public class Keyboard implements View.OnClickListener {
         this.id_Gong_1 = id_Gong;
         this.id_ml = id_ml;
         this.time = time;
+
     }
 
+
     private void init() {
+        tv_id = (TextView) view.findViewById(R.id.tv_id);
+        if (tab == 2) {
+            tv_id.setText("采精量:");
+        } else if (tab == 3) {
+            tv_id.setText("时间:");
+        }
         bu_0 = (Button) view.findViewById(R.id.bu_0);
         bu_0.setOnClickListener(this);
         bu_1 = (Button) view.findViewById(R.id.bu_1);
@@ -105,7 +113,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("0");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("0");
                         input.setText(buffer.toString());
@@ -123,7 +131,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("1");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("1");
                         input.setText(buffer.toString());
@@ -141,7 +149,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("2");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("2");
                         input.setText(buffer.toString());
@@ -159,7 +167,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("3");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("3");
                         input.setText(buffer.toString());
@@ -177,7 +185,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("4");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("4");
                         input.setText(buffer.toString());
@@ -195,7 +203,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("5");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("5");
                         input.setText(buffer.toString());
@@ -213,7 +221,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("6");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("6");
                         input.setText(buffer.toString());
@@ -231,7 +239,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("7");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("7");
                         input.setText(buffer.toString());
@@ -249,7 +257,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("8");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("8");
                         input.setText(buffer.toString());
@@ -267,7 +275,7 @@ public class Keyboard implements View.OnClickListener {
                         buffer.append("9");
                         input.setText(buffer.toString());
                     }
-                }else if (tab==2){
+                } else if (tab == 2) {
                     if (length1 != 3) {
                         buffer.append("9");
                         input.setText(buffer.toString());
@@ -325,7 +333,7 @@ public class Keyboard implements View.OnClickListener {
                             } else {
                                 CustomToast.showToast(context, "您没有设置分钟数......");
                             }
-                        }else {
+                        } else {
                             CustomToast.showToast(context, "您设置时间不对.......");
                         }
                     }

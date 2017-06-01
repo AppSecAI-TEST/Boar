@@ -42,11 +42,19 @@
             </intent-filter>
         </activity>
 
-        <!--准备检测-->
+        <!--精液原液准备检测-->
         <activity android:name=".activity.StosteDetection">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
                 <action android:name="com.join.stostedetection"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <!--稀释精液准备检测-->
+        <activity android:name=".activity.StosteDetectionDiluent">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.StosteDetectionDiluent"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -59,7 +67,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--详情结果显示-->
+        <!--精液原液详情结果显示-->
         <activity android:name=".activity.StosteDetection2">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
@@ -67,7 +75,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <!--稀释精液详情结果显示-->
+        <activity android:name=".activity.StosteDetection22">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.stostedetection22"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!--按ID查询-->
         <activity android:name=".activity.IDQuery">
             <intent-filter>

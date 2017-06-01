@@ -11,29 +11,35 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.join.R;
+import com.join.entity.StosteDetectionDiluentE;
 import com.join.interface_callback.IDQueryKeyboard1;
 
 
-public class Keyboard1 implements View.OnClickListener {
+public class Keyboard2 implements View.OnClickListener {
     private Button bu_0, bu_1, bu_2, bu_3, bu_4, bu_5, bu_6, bu_7, bu_8, bu_9, bu_w, delete, out;
-    private TextView input, id_Gong_1;
+    private TextView input, tv_id;
     private Context context;
     private View view;
     private PopupWindow popupWindow;
     private IDQueryKeyboard1 idQueryKeyboard1;
-
+    private StosteDetectionDiluentE diluentE;
+    private int tag;
 
     public void setIdQueryKeyboard1(IDQueryKeyboard1 idQueryKeyboard1) {
         this.idQueryKeyboard1 = idQueryKeyboard1;
     }
 
-    public Keyboard1(Context context, TextView id_Gong_1) {
+    public Keyboard2(Context context, StosteDetectionDiluentE e, int tag) {
         this.context = context;
-        this.id_Gong_1 = id_Gong_1;
-
+        this.diluentE = e;
+        this.tag = tag;
     }
 
     private void init() {
+        tv_id = (TextView) view.findViewById(R.id.tv_id);
+        if (tag==2){
+            tv_id.setText("剂量:");
+        }
         bu_0 = (Button) view.findViewById(R.id.bu_0);
         bu_0.setOnClickListener(this);
         bu_1 = (Button) view.findViewById(R.id.bu_1);
@@ -87,11 +93,11 @@ public class Keyboard1 implements View.OnClickListener {
         int xPos = windowManager.getDefaultDisplay().getWidth();
         Log.i("coder", "xPos:" + xPos);
         //以parent 为开始的x,y轴
-        popupWindow.showAsDropDown(parent, -170, -240);
+        popupWindow.showAsDropDown(parent, -170, -275);
 
     }
 
-    StringBuffer buffer = new StringBuffer();
+    private StringBuffer buffer = new StringBuffer();
 
     @Override
     public void onClick(View v) {
@@ -175,13 +181,18 @@ public class Keyboard1 implements View.OnClickListener {
                 break;
             case R.id.bu_w:
                 if (length1 > 0) {
-                    id_Gong_1.setText(buffer);
+                    if (tag == 1) {
+                        diluentE.setId_Gong_1(buffer.toString());
+                    } else if (tag == 2) {
+                        diluentE.setId_ml(buffer.toString() + "ml");
+                    }
+
                     buffer.delete(0, length1);
                     input.setText(buffer);
 
                     if (popupWindow != null) {
                         popupWindow.dismiss();
-                        idQueryKeyboard1.start();
+
                     }
                 }
                 break;

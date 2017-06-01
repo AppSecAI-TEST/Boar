@@ -22,6 +22,7 @@ public class Function extends Activity implements View.OnClickListener, ServiceC
     private PercentLinearLayout function_1, function_2, function_3, function_4;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
+    private Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,32 +54,30 @@ public class Function extends Activity implements View.OnClickListener, ServiceC
         function_3.setOnClickListener(this);
         function_4 = (PercentLinearLayout) findViewById(R.id.function_4);
         function_4.setOnClickListener(this);
+        intent = new Intent();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.function_1:
-                Intent intent = new Intent();
-                intent.addFlags(1);
+
                 intent.setAction("com.join.stostedetection");
                 startActivity(intent);
                 break;
             case R.id.function_2:
-                Intent intent2 = new Intent();
-                intent2.addFlags(2);
-                intent2.setAction("com.join.stostedetection");
-                startActivity(intent2);
+
+                intent.setAction("com.join.StosteDetectionDiluent");
+                startActivity(intent);
                 break;
             case R.id.function_3:
-                Intent intent3 = new Intent();
-                intent3.setAction("com.join.IDQuery");
-                startActivity(intent3);
+
+                intent.setAction("com.join.IDQuery");
+                startActivity(intent);
                 break;
             case R.id.function_4:
-                Intent intent4 = new Intent();
-                intent4.setAction("com.join.SystemSet");
-                startActivity(intent4);
+                intent.setAction("com.join.SystemSet");
+                startActivity(intent);
                 break;
         }
     }

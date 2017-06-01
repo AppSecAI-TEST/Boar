@@ -53,7 +53,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private float[] arithmeticData;
     private Arithmetic arithmetic;
     private boolean boolTag = true;
-    private String flag;
+    private int flag;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         startPercentMockThread();
 
         stosteDetectionData = this.getIntent().getStringArrayExtra("data");
-        flag = stosteDetectionData[6];
+        flag = getIntent().getFlags();
     }
 
     /**
@@ -197,19 +198,30 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.icon_1:
-                Intent intent = new Intent();
+                intent = new Intent();
                 intent.setAction("com.join.function");
                 startActivity(intent);
                 break;
             case R.id.bu_enter:
-                Intent intent2 = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putStringArray("data", stosteDetectionData);
-                bundle.putFloatArray("arithmetic", arithmeticData);
-                intent2.putExtras(bundle);
-                intent2.setAction("com.join.stostedetection2");
-                intent2.addFlags(1);
-                startActivity(intent2);
+                if (flag==1) {
+                    intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArray("data", stosteDetectionData);
+                    bundle.putFloatArray("arithmetic", arithmeticData);
+                    intent.putExtras(bundle);
+                    intent.setAction("com.join.stostedetection2");
+                    intent.addFlags(1);
+                    startActivity(intent);
+                } else if (flag==2) {
+                    intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putStringArray("data", stosteDetectionData);
+                    bundle.putFloatArray("arithmetic", arithmeticData);
+                    intent.putExtras(bundle);
+                    intent.setAction("com.join.stostedetection22");
+                    intent.addFlags(1);
+                    startActivity(intent);
+                }
                 break;
             case R.id.bu_return:
                 finish();
@@ -229,6 +241,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(this);
         arithmetic = new Arithmetic();
+        intent = new Intent();
     }
 
 
@@ -238,8 +251,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
         arithmetic.setiPictureCallback3(this);
-        if (flag.equals(2)) {
-            
+        if (flag==2) {
+            title.setText("稀释精液检测");
         }
 
     }
