@@ -26,7 +26,7 @@ import static com.join.R.id.operator;
 import static com.join.R.id.vitality;
 
 /**
- * 单次结果
+ * 精液原液详情结果
  */
 
 public class StosteDetection2 extends Activity implements View.OnClickListener, ServiceConnection {
@@ -76,8 +76,9 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         int action = getIntent().getFlags();//区别由那个页面进入本页面
         Log.e(TAG, action + "");
         if (action == 1) {
-
+            //得到上一个Activity的数据
             stosteDetectionData = getIntent().getStringArrayExtra("data");
+            //得到算法的数据
             arithmetic = getIntent().getFloatArrayExtra("arithmetic");
 
             float valid = arithmetic[7];
@@ -94,13 +95,8 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             String timeC = stosteDetectionData[3];
             String number = stosteDetectionData[4];
             String milliliter = stosteDetectionData[5];
-            String flagType = stosteDetectionData[6];
-            String type = null;
-            if (flagType.equals("1")) {
-                type = "精液原液";
-            } else if (flagType.equals("2")) {
-                type = "稀释精液";
-            }
+            String type = "精液原液";
+
             int length = milliliter.length();
             String milliliterSubstring = milliliter.substring(0, length - 2);
             Integer integer = Integer.valueOf(milliliterSubstring);
@@ -122,8 +118,11 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             number_1.setText(number);
             milliliter_1.setText(milliliter);
             operator_1.setText(operator);
-            Storage storage = new Storage(color, smell, dateC, timeC, number, operator, type, densityS, vitalityS, motilityRateS, copiesS, addS, null);
+
+            //保存到数据库
+            Storage storage = new Storage(color, smell, dateC, timeC, number, operator, type, densityS, vitalityS, motilityRateS, copiesS, addS, null,null,null);
             OperationDao.addData(storage);
+
             List<Storage> storages = OperationDao.queryAll();
             int size = storages.size();
             for (int i = 1; i < size; i++) {

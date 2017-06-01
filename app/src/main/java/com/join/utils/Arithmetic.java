@@ -21,7 +21,7 @@ public class Arithmetic {
     public void getArithmetic() {
 
         new Thread(new Runnable() {
-            float[] returnData = new float[6];
+
 
             @Override
             public void run() {

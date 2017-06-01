@@ -305,7 +305,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     // Thread.sleep(1500);
                     for (int i = 0; i <= 100; i++) {
                         if (boolTag) {
-                            Thread.sleep(1500);
+                           // Thread.sleep(1500);
+                            Thread.sleep(15);
                         }
                         changePercent(i);
 

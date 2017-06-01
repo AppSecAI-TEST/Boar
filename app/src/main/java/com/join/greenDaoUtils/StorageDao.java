@@ -35,6 +35,8 @@ public class StorageDao extends AbstractDao<Storage, Void> {
         public final static Property Copies = new Property(10, String.class, "copies", false, "COPIES");
         public final static Property Add = new Property(11, String.class, "add", false, "ADD");
         public final static Property Result = new Property(12, String.class, "result", false, "RESULT");
+        public final static Property Capacity = new Property(13, String.class, "capacity", false, "CAPACITY");
+        public final static Property MotileSperms = new Property(14, String.class, "motileSperms", false, "MOTILE_SPERMS");
     }
 
 
@@ -62,7 +64,9 @@ public class StorageDao extends AbstractDao<Storage, Void> {
                 "\"MOTILITY_RATE\" TEXT," + // 9: motilityRate
                 "\"COPIES\" TEXT," + // 10: copies
                 "\"ADD\" TEXT," + // 11: add
-                "\"RESULT\" TEXT);"); // 12: result
+                "\"RESULT\" TEXT," + // 12: result
+                "\"CAPACITY\" TEXT," + // 13: capacity
+                "\"MOTILE_SPERMS\" TEXT);"); // 14: motileSperms
     }
 
     /** Drops the underlying database table. */
@@ -139,6 +143,16 @@ public class StorageDao extends AbstractDao<Storage, Void> {
         if (result != null) {
             stmt.bindString(13, result);
         }
+ 
+        String capacity = entity.getCapacity();
+        if (capacity != null) {
+            stmt.bindString(14, capacity);
+        }
+ 
+        String motileSperms = entity.getMotileSperms();
+        if (motileSperms != null) {
+            stmt.bindString(15, motileSperms);
+        }
     }
 
     @Override
@@ -209,6 +223,16 @@ public class StorageDao extends AbstractDao<Storage, Void> {
         if (result != null) {
             stmt.bindString(13, result);
         }
+ 
+        String capacity = entity.getCapacity();
+        if (capacity != null) {
+            stmt.bindString(14, capacity);
+        }
+ 
+        String motileSperms = entity.getMotileSperms();
+        if (motileSperms != null) {
+            stmt.bindString(15, motileSperms);
+        }
     }
 
     @Override
@@ -231,7 +255,9 @@ public class StorageDao extends AbstractDao<Storage, Void> {
             cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // motilityRate
             cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // copies
             cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // add
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12) // result
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // result
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // capacity
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14) // motileSperms
         );
         return entity;
     }
@@ -251,6 +277,8 @@ public class StorageDao extends AbstractDao<Storage, Void> {
         entity.setCopies(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
         entity.setAdd(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
         entity.setResult(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setCapacity(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
+        entity.setMotileSperms(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
      }
     
     @Override

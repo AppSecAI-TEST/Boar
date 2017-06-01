@@ -83,7 +83,7 @@
                         android:layout_marginLeft="70dp"
                         android:background="@drawable/background_white_1"
                         android:orientation="horizontal"
-                        app:layout_heightPercent="40%h"
+                        app:layout_heightPercent="70%h"
                         app:layout_widthPercent="40%w">
 
                         <com.zhy.android.percent.support.PercentLinearLayout
@@ -104,7 +104,7 @@
                                 android:text="密度"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
-                                app:layout_heightPercent="24%h"
+                                app:layout_heightPercent="16%h"
                                 app:layout_widthPercent="90%w" />
 
                             <View
@@ -122,7 +122,7 @@
                                 android:text="活率"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
-                                app:layout_heightPercent="24%h"
+                                app:layout_heightPercent="16%h"
                                 app:layout_widthPercent="90%w" />
 
                             <View
@@ -139,7 +139,7 @@
                                 android:text="检测日期"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
-                                app:layout_heightPercent="24%h"
+                                app:layout_heightPercent="16%h"
                                 app:layout_widthPercent="90%w" />
 
                             <View
@@ -156,9 +156,42 @@
                                 android:text="检测时间"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
-                                app:layout_heightPercent="24%h"
+                                app:layout_heightPercent="16%h"
                                 app:layout_widthPercent="90%w" />
 
+                            <View
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_marginLeft="25dp"
+                                android:background="#d8d8d8" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="22dp"
+                                android:gravity="center_vertical"
+                                android:text="气   味"
+                                android:textColor="#099185"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="90%w" />
+
+                            <View
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_marginLeft="25dp"
+                                android:background="#d8d8d8" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="22dp"
+                                android:gravity="center_vertical"
+                                android:text="颜   色"
+                                android:textColor="#099185"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="90%w" />
 
                         </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -172,14 +205,13 @@
 
 
                             <TextView
-                                android:id="@+id/density"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.density}"
                                 android:textSize="22dp"
-                                app:layout_heightPercent="24%h"
+                                app:layout_heightPercent="16%h"
                                 app:layout_widthPercent="90%w" />
 
                             <View
@@ -189,14 +221,13 @@
                                 android:background="#d8d8d8" />
 
                             <TextView
-                                android:id="@+id/motilityRate"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.motilityRate}"
                                 android:textSize="22dp"
-                                app:layout_heightPercent="24%h"
+                                app:layout_heightPercent="16%h"
                                 app:layout_widthPercent="90%w" />
 
                             <View
@@ -213,7 +244,7 @@
                                 android:gravity="center_vertical"
                                 android:text="@{result1.date}"
                                 android:textSize="22dp"
-                                app:layout_heightPercent="24%h"
+                                app:layout_heightPercent="16%h"
                                 app:layout_widthPercent="90%w" />
 
                             <View
@@ -223,14 +254,45 @@
                                 android:background="#d8d8d8" />
 
                             <TextView
-                                android:id="@+id/time"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.time}"
                                 android:textSize="22dp"
-                                app:layout_heightPercent="24%h"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="90%w" />
+
+                            <View
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_marginRight="22dp"
+                                android:background="#d8d8d8" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="22dp"
+                                android:gravity="center_vertical"
+                                android:text="@{result1.smell}"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="90%w" />
+
+                            <View
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_marginRight="22dp"
+                                android:background="#d8d8d8" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="22dp"
+                                android:gravity="center_vertical"
+                                android:text="@{result1.color}"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
                                 app:layout_widthPercent="90%w" />
 
                         </com.zhy.android.percent.support.PercentLinearLayout>
@@ -248,7 +310,7 @@
                         <com.zhy.android.percent.support.PercentLinearLayout
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            app:layout_heightPercent="34%h"
+                            app:layout_heightPercent="30%h"
                             app:layout_widthPercent="100%w">
 
                             <Button
@@ -261,7 +323,7 @@
                                 android:text="打印"
                                 android:textColor="#f4f4f4"
                                 android:textSize="25dp"
-                                app:layout_heightPercent="40%h"
+                                app:layout_heightPercent="45%h"
                                 app:layout_widthPercent="40%w" />
 
                             <Button
@@ -274,7 +336,7 @@
                                 android:text="返回"
                                 android:textColor="#f4f4f4"
                                 android:textSize="25dp"
-                                app:layout_heightPercent="40%h"
+                                app:layout_heightPercent="45%h"
                                 app:layout_widthPercent="40%w" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -285,7 +347,7 @@
                             android:layout_marginTop="10dp"
                             android:background="@drawable/background_white_1"
                             android:orientation="horizontal"
-                            app:layout_heightPercent="42%h"
+                            app:layout_heightPercent="68%h"
                             app:layout_widthPercent="100%w">
 
                             <!--2.3.1-->
@@ -307,7 +369,7 @@
                                     android:text="活   力"
                                     android:textColor="#099185"
                                     android:textSize="22dp"
-                                    app:layout_heightPercent="24%h"
+                                    app:layout_heightPercent="19.3%h"
                                     app:layout_widthPercent="90%w" />
 
                                 <View
@@ -324,7 +386,7 @@
                                     android:text="有效精子数(亿/剂)"
                                     android:textColor="#099185"
                                     android:textSize="22dp"
-                                    app:layout_heightPercent="24%h"
+                                    app:layout_heightPercent="19.3%h"
                                     app:layout_widthPercent="90%w" />
 
                                 <View
@@ -342,7 +404,7 @@
                                     android:text="每剂容量"
                                     android:textColor="#099185"
                                     android:textSize="22dp"
-                                    app:layout_heightPercent="24%h"
+                                    app:layout_heightPercent="19.3%h"
                                     app:layout_widthPercent="90%w" />
 
                                 <View
@@ -352,7 +414,6 @@
                                     android:background="#d8d8d8" />
 
                                 <TextView
-                                    android:id="@+id/textView8"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:layout_marginLeft="22dp"
@@ -360,7 +421,24 @@
                                     android:text="操作员"
                                     android:textColor="#099185"
                                     android:textSize="22dp"
-                                    app:layout_heightPercent="24%h"
+                                    app:layout_heightPercent="19.3%h"
+                                    app:layout_widthPercent="90%w" />
+
+                                <View
+                                    android:layout_width="205dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginLeft="25dp"
+                                    android:background="#d8d8d8" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginLeft="22dp"
+                                    android:gravity="center_vertical"
+                                    android:text="批号"
+                                    android:textColor="#099185"
+                                    android:textSize="22dp"
+                                    app:layout_heightPercent="19.3%h"
                                     app:layout_widthPercent="90%w" />
 
                                 <!--2.3.1-->
@@ -377,14 +455,13 @@
 
 
                                 <TextView
-                                    android:id="@+id/vitality"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.vitality}"
                                     android:textSize="22dp"
-                                    app:layout_heightPercent="24%h"
+                                    app:layout_heightPercent="19.3%h"
                                     app:layout_widthPercent="90%w" />
 
                                 <View
@@ -394,14 +471,13 @@
                                     android:background="#d8d8d8" />
 
                                 <TextView
-                                    android:id="@+id/motileSperms"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.motileSperms}"
                                     android:textSize="22dp"
-                                    app:layout_heightPercent="24%h"
+                                    app:layout_heightPercent="19.3%h"
                                     app:layout_widthPercent="90%w" />
 
                                 <View
@@ -411,14 +487,13 @@
                                     android:background="#d8d8d8" />
 
                                 <TextView
-                                    android:id="@+id/capacity"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.capacity}"
                                     android:textSize="22dp"
-                                    app:layout_heightPercent="24%h"
+                                    app:layout_heightPercent="19.3%h"
                                     app:layout_widthPercent="90%w" />
 
                                 <View
@@ -428,14 +503,29 @@
                                     android:background="#d8d8d8" />
 
                                 <TextView
-                                    android:id="@+id/operator"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
                                     android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.operator}"
                                     android:textSize="22dp"
-                                    app:layout_heightPercent="24%h"
+                                    app:layout_heightPercent="19.3%h"
+                                    app:layout_widthPercent="90%w" />
+
+                                <View
+                                    android:layout_width="205dp"
+                                    android:layout_height="2dp"
+                                    android:layout_marginRight="22dp"
+                                    android:background="#d8d8d8" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_marginLeft="22dp"
+                                    android:gravity="center_vertical"
+                                    android:text="@{result1.batch}"
+                                    android:textSize="22dp"
+                                    app:layout_heightPercent="19.3%h"
                                     app:layout_widthPercent="90%w" />
                                 <!--2.3.1-->
                             </com.zhy.android.percent.support.PercentLinearLayout>
@@ -465,7 +555,6 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
         <ImageView
-            android:id="@+id/icon_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="45dp"

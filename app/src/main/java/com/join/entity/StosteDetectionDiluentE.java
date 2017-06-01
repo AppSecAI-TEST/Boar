@@ -14,6 +14,17 @@ public class StosteDetectionDiluentE extends BaseObservable {
     private String id_ml;
     private String date;
     private String time;
+    private String humidity;
+
+    @Bindable
+    public String getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
+        notifyPropertyChanged(BR.humidity);
+    }
 
     @Bindable
     public String getDate() {

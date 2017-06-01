@@ -22,7 +22,7 @@ import java.text.SimpleDateFormat;
 
 
 /**
- * 准备检测
+ * 精液原液检测参数设置
  */
 
 public class StosteDetection extends Activity implements View.OnClickListener, ServiceConnection {
@@ -33,7 +33,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
     private Button normal_1, abnormal_1, normal_2, abnormal_2, start;
     private boolean normal_1_tab = true;
     private boolean abnormal_1_tab = true;
-
+    private Intent intent;
 
     private boolean normal_2_tab = true;
     private boolean abnormal_2_tab = true;
@@ -45,21 +45,20 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.icon_1:
-                Intent intent = new Intent();
                 intent.setAction("com.join.function");
                 startActivity(intent);
                 break;
             case R.id.id_Gong:
-
-                keyboard.showWindow(id_Gong, 1);
+                keyboard = new Keyboard(StosteDetection.this, id_Gong_1, id_ml, time, 1);
+                keyboard.showWindow(id_Gong);
                 break;
             case R.id.id_Gong_2:
-
-                keyboard.showWindow(id_Gong, 2);
+                keyboard = new Keyboard(StosteDetection.this, id_Gong_1, id_ml, time, 2);
+                keyboard.showWindow(id_Gong);
                 break;
             case R.id.id_Gong_3:
-
-                keyboard.showWindow(id_Gong, 3);
+                keyboard = new Keyboard(StosteDetection.this, id_Gong_1, id_ml, time, 3);
+                keyboard.showWindow(id_Gong);
                 break;
 
             case R.id.normal_1:
@@ -112,7 +111,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                     String smell;
                     String dateC;
                     String timeC;
-                    String number;
+                    String numberGong;
                     String milliliter;
                     if (normal_1_tab) {
                         color = "异常";
@@ -128,15 +127,15 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                     }
                     dateC = date.getText().toString();
                     timeC = time.getText().toString();
-                    number = id_Gong_1.getText().toString();
+                    numberGong = id_Gong_1.getText().toString();
                     milliliter = id_ml.getText().toString();
-                    String[] dataArray = new String[]{color, smell, dateC, timeC, number, milliliter};
-                    Intent intent2 = new Intent();
+                    String[] dataArray = new String[]{color, smell, dateC, timeC, numberGong, milliliter};
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
-                    intent2.putExtras(bundle);
-                    intent2.setAction("com.join.stostedetection1");
-                    startActivity(intent2);
+                    intent.putExtras(bundle);
+                    intent.setAction("com.join.stostedetection1");
+                    intent.addFlags(1);
+                    startActivity(intent);
                 } else {
                     CustomToast.showToast(this, "请选择是否正常........");
                 }
@@ -147,6 +146,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
 
 
     private void init() {
+        intent = new Intent();
         title = (TextView) findViewById(R.id.title);
         humidity = (TextView) findViewById(R.id.humidity);
         date = (TextView) findViewById(R.id.date);
@@ -171,7 +171,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
         abnormal_2.setOnClickListener(this);
         start = (Button) findViewById(R.id.start);
         start.setOnClickListener(this);
-        keyboard = new Keyboard(StosteDetection.this, id_Gong_1, id_ml, time);
+
 
         SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
         String dateFormat = sdate.format(new java.util.Date());

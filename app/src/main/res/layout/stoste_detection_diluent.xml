@@ -56,12 +56,11 @@
                     android:textSize="25dp" />
 
                 <TextView
-                    android:id="@+id/humidity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="7dp"
-                    android:text="27℃"
+                    android:text="@{diluentE.humidity}"
                     android:textColor="#fff"
                     android:textSize="25dp" />
             </com.zhy.android.percent.support.PercentLinearLayout>
@@ -316,7 +315,7 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
         <ImageView
-            android:id="@+id/icon_1"
+         android:onClick="@{diluent.startActivityC}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
