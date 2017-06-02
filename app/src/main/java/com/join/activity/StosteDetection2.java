@@ -47,7 +47,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             copies_1;//推荐分装份数
     private Humidity.HumidityBinder humidityBinder;
     private String[] stosteDetectionData;
-    private float[] arithmetic;
+    private double[] arithmetic;
     private int tab;
     private String TAG = "jjjStosteDetection2";
 
@@ -79,15 +79,14 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             //得到上一个Activity的数据
             stosteDetectionData = getIntent().getStringArrayExtra("data");
             //得到算法的数据
-            arithmetic = getIntent().getFloatArrayExtra("arithmetic");
+            arithmetic = getIntent().getDoubleArrayExtra("arithmetic");
 
-            float valid = arithmetic[7];
-            float density = arithmetic[1];
-            float vitality = arithmetic[5];
-            float motilityRate = arithmetic[4];
-            String densityS = String.valueOf(Float.parseFloat(String.format("%.3f", density)));
-            String vitalityS = String.valueOf(Float.parseFloat(String.format("%.3f", vitality)));
-            String motilityRateS = String.valueOf(Float.parseFloat(String.format("%.3f", motilityRate)));
+            double density = arithmetic[1];
+            double vitality = arithmetic[5];
+            double motilityRate = arithmetic[4];
+            String densityS = String.valueOf(Double.parseDouble(String.format("%.3f", density)));
+            String vitalityS = String.valueOf(Double.parseDouble(String.format("%.3f", vitality)));
+            String motilityRateS = String.valueOf(Double.parseDouble(String.format("%.3f", motilityRate)));
 
             String color = stosteDetectionData[0];
             String smell = stosteDetectionData[1];
@@ -100,17 +99,24 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             int length = milliliter.length();
             String milliliterSubstring = milliliter.substring(0, length - 2);
             Integer integer = Integer.valueOf(milliliterSubstring);
-            float copies = integer * motilityRate * vitality / 30;
-            float add = copies * 80 - integer;
+
+            double copies = integer * motilityRate * vitality / 30;
+            double add = copies * 80 - integer;
+
             String copiesS = String.valueOf(Math.round(copies));
             String addS = String.valueOf(add);
             String operator = IDSelect.id_manage;
+
+
+            //保存到数据库
+            Storage storage = new Storage();
+            //  DaoUtil.sD2(storage,number,operator,ca);
+
             add_1.setText(addS);
             copies_1.setText(copiesS);
             density_1.setText(densityS);
             vitality_1.setText(vitalityS);
             motilityRate_1.setText(motilityRateS);
-
             color_1.setText(color);
             smell_1.setText(smell);
             dateC_1.setText(dateC);
@@ -119,9 +125,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             milliliter_1.setText(milliliter);
             operator_1.setText(operator);
 
-            //保存到数据库
-            Storage storage = new Storage(color, smell, dateC, timeC, number, operator, type, densityS, vitalityS, motilityRateS, copiesS, addS, null,null,null);
-            OperationDao.addData(storage);
+
 
             List<Storage> storages = OperationDao.queryAll();
             int size = storages.size();

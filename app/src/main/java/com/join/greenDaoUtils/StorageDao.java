@@ -13,7 +13,7 @@ import org.greenrobot.greendao.database.DatabaseStatement;
 /** 
  * DAO for table "STORAGE".
 */
-public class StorageDao extends AbstractDao<Storage, Void> {
+public class StorageDao extends AbstractDao<Storage, Long> {
 
     public static final String TABLENAME = "STORAGE";
 
@@ -22,21 +22,22 @@ public class StorageDao extends AbstractDao<Storage, Void> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Color = new Property(0, String.class, "color", false, "COLOR");
-        public final static Property Smell = new Property(1, String.class, "smell", false, "SMELL");
-        public final static Property Date = new Property(2, String.class, "date", false, "DATE");
-        public final static Property Time = new Property(3, String.class, "time", false, "TIME");
-        public final static Property Number = new Property(4, String.class, "number", false, "NUMBER");
-        public final static Property Operator = new Property(5, String.class, "operator", false, "OPERATOR");
-        public final static Property Type = new Property(6, String.class, "type", false, "TYPE");
-        public final static Property Density = new Property(7, String.class, "density", false, "DENSITY");
-        public final static Property Vitality = new Property(8, String.class, "vitality", false, "VITALITY");
-        public final static Property MotilityRate = new Property(9, String.class, "motilityRate", false, "MOTILITY_RATE");
-        public final static Property Copies = new Property(10, String.class, "copies", false, "COPIES");
-        public final static Property Add = new Property(11, String.class, "add", false, "ADD");
-        public final static Property Result = new Property(12, String.class, "result", false, "RESULT");
-        public final static Property Capacity = new Property(13, String.class, "capacity", false, "CAPACITY");
-        public final static Property MotileSperms = new Property(14, String.class, "motileSperms", false, "MOTILE_SPERMS");
+        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property Color = new Property(1, String.class, "color", false, "COLOR");
+        public final static Property Smell = new Property(2, String.class, "smell", false, "SMELL");
+        public final static Property Date = new Property(3, String.class, "date", false, "DATE");
+        public final static Property Time = new Property(4, String.class, "time", false, "TIME");
+        public final static Property Number = new Property(5, String.class, "number", false, "NUMBER");
+        public final static Property Operator = new Property(6, String.class, "operator", false, "OPERATOR");
+        public final static Property Type = new Property(7, String.class, "type", false, "TYPE");
+        public final static Property Density = new Property(8, String.class, "density", false, "DENSITY");
+        public final static Property Vitality = new Property(9, String.class, "vitality", false, "VITALITY");
+        public final static Property MotilityRate = new Property(10, String.class, "motilityRate", false, "MOTILITY_RATE");
+        public final static Property Copies = new Property(11, String.class, "copies", false, "COPIES");
+        public final static Property Add = new Property(12, String.class, "add", false, "ADD");
+        public final static Property Result = new Property(13, String.class, "result", false, "RESULT");
+        public final static Property Capacity = new Property(14, String.class, "capacity", false, "CAPACITY");
+        public final static Property MotileSperms = new Property(15, String.class, "motileSperms", false, "MOTILE_SPERMS");
     }
 
 
@@ -52,21 +53,22 @@ public class StorageDao extends AbstractDao<Storage, Void> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"STORAGE\" (" + //
-                "\"COLOR\" TEXT," + // 0: color
-                "\"SMELL\" TEXT," + // 1: smell
-                "\"DATE\" TEXT," + // 2: date
-                "\"TIME\" TEXT," + // 3: time
-                "\"NUMBER\" TEXT," + // 4: number
-                "\"OPERATOR\" TEXT," + // 5: operator
-                "\"TYPE\" TEXT," + // 6: type
-                "\"DENSITY\" TEXT," + // 7: density
-                "\"VITALITY\" TEXT," + // 8: vitality
-                "\"MOTILITY_RATE\" TEXT," + // 9: motilityRate
-                "\"COPIES\" TEXT," + // 10: copies
-                "\"ADD\" TEXT," + // 11: add
-                "\"RESULT\" TEXT," + // 12: result
-                "\"CAPACITY\" TEXT," + // 13: capacity
-                "\"MOTILE_SPERMS\" TEXT);"); // 14: motileSperms
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
+                "\"COLOR\" TEXT," + // 1: color
+                "\"SMELL\" TEXT," + // 2: smell
+                "\"DATE\" TEXT," + // 3: date
+                "\"TIME\" TEXT," + // 4: time
+                "\"NUMBER\" TEXT," + // 5: number
+                "\"OPERATOR\" TEXT," + // 6: operator
+                "\"TYPE\" TEXT," + // 7: type
+                "\"DENSITY\" TEXT," + // 8: density
+                "\"VITALITY\" TEXT," + // 9: vitality
+                "\"MOTILITY_RATE\" TEXT," + // 10: motilityRate
+                "\"COPIES\" TEXT," + // 11: copies
+                "\"ADD\" TEXT," + // 12: add
+                "\"RESULT\" TEXT," + // 13: result
+                "\"CAPACITY\" TEXT," + // 14: capacity
+                "\"MOTILE_SPERMS\" TEXT);"); // 15: motileSperms
     }
 
     /** Drops the underlying database table. */
@@ -79,79 +81,84 @@ public class StorageDao extends AbstractDao<Storage, Void> {
     protected final void bindValues(DatabaseStatement stmt, Storage entity) {
         stmt.clearBindings();
  
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
+ 
         String color = entity.getColor();
         if (color != null) {
-            stmt.bindString(1, color);
+            stmt.bindString(2, color);
         }
  
         String smell = entity.getSmell();
         if (smell != null) {
-            stmt.bindString(2, smell);
+            stmt.bindString(3, smell);
         }
  
         String date = entity.getDate();
         if (date != null) {
-            stmt.bindString(3, date);
+            stmt.bindString(4, date);
         }
  
         String time = entity.getTime();
         if (time != null) {
-            stmt.bindString(4, time);
+            stmt.bindString(5, time);
         }
  
         String number = entity.getNumber();
         if (number != null) {
-            stmt.bindString(5, number);
+            stmt.bindString(6, number);
         }
  
         String operator = entity.getOperator();
         if (operator != null) {
-            stmt.bindString(6, operator);
+            stmt.bindString(7, operator);
         }
  
         String type = entity.getType();
         if (type != null) {
-            stmt.bindString(7, type);
+            stmt.bindString(8, type);
         }
  
         String density = entity.getDensity();
         if (density != null) {
-            stmt.bindString(8, density);
+            stmt.bindString(9, density);
         }
  
         String vitality = entity.getVitality();
         if (vitality != null) {
-            stmt.bindString(9, vitality);
+            stmt.bindString(10, vitality);
         }
  
         String motilityRate = entity.getMotilityRate();
         if (motilityRate != null) {
-            stmt.bindString(10, motilityRate);
+            stmt.bindString(11, motilityRate);
         }
  
         String copies = entity.getCopies();
         if (copies != null) {
-            stmt.bindString(11, copies);
+            stmt.bindString(12, copies);
         }
  
         String add = entity.getAdd();
         if (add != null) {
-            stmt.bindString(12, add);
+            stmt.bindString(13, add);
         }
  
         String result = entity.getResult();
         if (result != null) {
-            stmt.bindString(13, result);
+            stmt.bindString(14, result);
         }
  
         String capacity = entity.getCapacity();
         if (capacity != null) {
-            stmt.bindString(14, capacity);
+            stmt.bindString(15, capacity);
         }
  
         String motileSperms = entity.getMotileSperms();
         if (motileSperms != null) {
-            stmt.bindString(15, motileSperms);
+            stmt.bindString(16, motileSperms);
         }
     }
 
@@ -159,143 +166,153 @@ public class StorageDao extends AbstractDao<Storage, Void> {
     protected final void bindValues(SQLiteStatement stmt, Storage entity) {
         stmt.clearBindings();
  
+        Long id = entity.getId();
+        if (id != null) {
+            stmt.bindLong(1, id);
+        }
+ 
         String color = entity.getColor();
         if (color != null) {
-            stmt.bindString(1, color);
+            stmt.bindString(2, color);
         }
  
         String smell = entity.getSmell();
         if (smell != null) {
-            stmt.bindString(2, smell);
+            stmt.bindString(3, smell);
         }
  
         String date = entity.getDate();
         if (date != null) {
-            stmt.bindString(3, date);
+            stmt.bindString(4, date);
         }
  
         String time = entity.getTime();
         if (time != null) {
-            stmt.bindString(4, time);
+            stmt.bindString(5, time);
         }
  
         String number = entity.getNumber();
         if (number != null) {
-            stmt.bindString(5, number);
+            stmt.bindString(6, number);
         }
  
         String operator = entity.getOperator();
         if (operator != null) {
-            stmt.bindString(6, operator);
+            stmt.bindString(7, operator);
         }
  
         String type = entity.getType();
         if (type != null) {
-            stmt.bindString(7, type);
+            stmt.bindString(8, type);
         }
  
         String density = entity.getDensity();
         if (density != null) {
-            stmt.bindString(8, density);
+            stmt.bindString(9, density);
         }
  
         String vitality = entity.getVitality();
         if (vitality != null) {
-            stmt.bindString(9, vitality);
+            stmt.bindString(10, vitality);
         }
  
         String motilityRate = entity.getMotilityRate();
         if (motilityRate != null) {
-            stmt.bindString(10, motilityRate);
+            stmt.bindString(11, motilityRate);
         }
  
         String copies = entity.getCopies();
         if (copies != null) {
-            stmt.bindString(11, copies);
+            stmt.bindString(12, copies);
         }
  
         String add = entity.getAdd();
         if (add != null) {
-            stmt.bindString(12, add);
+            stmt.bindString(13, add);
         }
  
         String result = entity.getResult();
         if (result != null) {
-            stmt.bindString(13, result);
+            stmt.bindString(14, result);
         }
  
         String capacity = entity.getCapacity();
         if (capacity != null) {
-            stmt.bindString(14, capacity);
+            stmt.bindString(15, capacity);
         }
  
         String motileSperms = entity.getMotileSperms();
         if (motileSperms != null) {
-            stmt.bindString(15, motileSperms);
+            stmt.bindString(16, motileSperms);
         }
     }
 
     @Override
-    public Void readKey(Cursor cursor, int offset) {
-        return null;
+    public Long readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
 
     @Override
     public Storage readEntity(Cursor cursor, int offset) {
         Storage entity = new Storage( //
-            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // color
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // smell
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // date
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // time
-            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // number
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // operator
-            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // type
-            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // density
-            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // vitality
-            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // motilityRate
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // copies
-            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // add
-            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // result
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // capacity
-            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14) // motileSperms
+            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // color
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // smell
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // date
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // time
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // number
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // operator
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // type
+            cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // density
+            cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // vitality
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // motilityRate
+            cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // copies
+            cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // add
+            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13), // result
+            cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14), // capacity
+            cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15) // motileSperms
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, Storage entity, int offset) {
-        entity.setColor(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
-        entity.setSmell(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setDate(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setTime(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setNumber(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setOperator(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
-        entity.setType(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setDensity(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
-        entity.setVitality(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
-        entity.setMotilityRate(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
-        entity.setCopies(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
-        entity.setAdd(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
-        entity.setResult(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
-        entity.setCapacity(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
-        entity.setMotileSperms(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
+        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setColor(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setSmell(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setDate(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setTime(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setNumber(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setOperator(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setType(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
+        entity.setDensity(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
+        entity.setVitality(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
+        entity.setMotilityRate(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setCopies(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
+        entity.setAdd(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
+        entity.setResult(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
+        entity.setCapacity(cursor.isNull(offset + 14) ? null : cursor.getString(offset + 14));
+        entity.setMotileSperms(cursor.isNull(offset + 15) ? null : cursor.getString(offset + 15));
      }
     
     @Override
-    protected final Void updateKeyAfterInsert(Storage entity, long rowId) {
-        // Unsupported or missing PK type
-        return null;
+    protected final Long updateKeyAfterInsert(Storage entity, long rowId) {
+        entity.setId(rowId);
+        return rowId;
     }
     
     @Override
-    public Void getKey(Storage entity) {
-        return null;
+    public Long getKey(Storage entity) {
+        if(entity != null) {
+            return entity.getId();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public boolean hasKey(Storage entity) {
-        // TODO
-        return false;
+        return entity.getId() != null;
     }
 
     @Override

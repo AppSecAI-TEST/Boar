@@ -12,22 +12,21 @@ extern "C" {
 using namespace cv;
 using namespace std;
 
-
-
-JNIEXPORT jfloatArray JNICALL Java_com_join_utils_Arithmetic_countSperm
-        (JNIEnv *jev, jobject obj, jstring photoPath, jstring path,jfloatArray params_map)
+JNIEXPORT jint JNICALL Java_com_join_utils_Arithmetic_countSperm
+        (JNIEnv *jev, jobject obj, jstring photoPath, jstring path,jdoubleArray params_in_map, jdoubleArray params_out_map)
 
 {
 jboolean bo = 1;
 const char *photoP = jev->GetStringUTFChars(photoPath,&bo);
 const char *pa = jev->GetStringUTFChars(path,&bo);
-jfloat *pathini = jev->GetFloatArrayElements(params_map,&bo);
+jdouble *parain = jev->GetDoubleArrayElements(params_in_map,&bo);
+jdouble *paraout = jev->GetDoubleArrayElements(params_out_map,&bo);
 
-int iNumOutputs = 22;
-jfloatArray jintarr = jev->NewFloatArray(22);
-float *arr = getSpermCountMain((char *)photoP, (char *)pa, (float *)pathini);
-jev->SetFloatArrayRegion(jintarr,0,22,arr);
-return jintarr;
+int nStatus = getSpermCountMain((char *)photoP, (char *)pa, (double *)parain, (double *)paraout);
+
+jev->SetDoubleArrayRegion(params_out_map,0,22,paraout);
+
+return nStatus;
 }
 
 

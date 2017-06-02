@@ -5,6 +5,14 @@
     android:layout_height="match_parent">
 
 
+    <ImageView
+        android:id="@+id/icon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/a_000" />
+
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -439,8 +447,6 @@
                                 android:background="#d8d8d8" />
 
 
-
-
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
@@ -488,7 +494,7 @@
                                 android:layout_height="0dp"
                                 android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
-                                android:text="300百万/毫升"
+                                android:text="3亿/毫升"
                                 android:textSize="22dp"
                                 app:layout_heightPercent="19%h"
                                 app:layout_widthPercent="90%w" />
@@ -585,13 +591,5 @@
 
 
     </com.zhy.android.percent.support.PercentLinearLayout>
-
-    <ImageView
-        android:id="@+id/icon_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/a_000" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

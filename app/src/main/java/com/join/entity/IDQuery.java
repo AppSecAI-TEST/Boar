@@ -5,6 +5,7 @@ package com.join.entity;
  */
 
 public class IDQuery {
+    private long id;
     private String date;
     private String time;
     private String type;
@@ -15,8 +16,9 @@ public class IDQuery {
     private String result;
     private String check;
 
-    public IDQuery(String date, String time, String type, String density, String vitality,
-                   String motilityRate, String operator, String result, String check) {
+    public IDQuery(long id, String date, String time,
+                   String type, String density, String vitality, String motilityRate, String operator, String result, String check) {
+        this.id = id;
         this.date = date;
         this.time = time;
         this.type = type;
@@ -26,6 +28,14 @@ public class IDQuery {
         this.operator = operator;
         this.result = result;
         this.check = check;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDate() {

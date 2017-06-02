@@ -50,7 +50,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     public static final int JUMP_FRAGMENT = 4;//之后的照相 照完之后回调通知再次照相
     private int count = 1; //控制照相的张数
     private MyHandler handler = new MyHandler();
-    private float[] arithmeticData;
+    private double[] arithmeticData;
     private Arithmetic arithmetic;
     private boolean boolTag = true;
     private int flag;
@@ -112,7 +112,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     }
 
     @Override
-    public void photoPrepared3(float[] arithmetic) {
+    public void photoPrepared3(double[] arithmetic, int returnState) {
         this.arithmeticData = arithmetic;
         boolTag = false;
 
@@ -203,20 +203,20 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 startActivity(intent);
                 break;
             case R.id.bu_enter:
-                if (flag==1) {
+                if (flag == 1) {
                     intent = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", stosteDetectionData);
-                    bundle.putFloatArray("arithmetic", arithmeticData);
+                    bundle.putDoubleArray("arithmetic", arithmeticData);
                     intent.putExtras(bundle);
                     intent.setAction("com.join.stostedetection2");
                     intent.addFlags(1);
                     startActivity(intent);
-                } else if (flag==2) {
+                } else if (flag == 2) {
                     intent = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", stosteDetectionData);
-                    bundle.putFloatArray("arithmetic", arithmeticData);
+                    bundle.putDoubleArray("arithmetic", arithmeticData);
                     intent.putExtras(bundle);
                     intent.setAction("com.join.stostedetection22");
                     intent.addFlags(1);
@@ -251,7 +251,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
         arithmetic.setiPictureCallback3(this);
-        if (flag==2) {
+        if (flag == 2) {
             title.setText("稀释精液检测");
         }
 
@@ -305,7 +305,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     // Thread.sleep(1500);
                     for (int i = 0; i <= 100; i++) {
                         if (boolTag) {
-                           // Thread.sleep(1500);
+                            // Thread.sleep(1500);
                             Thread.sleep(15);
                         }
                         changePercent(i);

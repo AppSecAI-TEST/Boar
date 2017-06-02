@@ -33,6 +33,7 @@ import java.util.List;
  */
 
 public class IDQuery extends Activity implements View.OnClickListener, ServiceConnection {
+    private String TAG = "jjjIDQuery";
     private TextView id_Gong_1;
     private ListView listView;
     private IDQueryAdapter idQueryAdapter;
@@ -52,12 +53,17 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                com.join.entity.IDQuery idQuery = list.get(position);
+                String time = idQuery.getTime();
+                Log.e(TAG, "onItemClick: " + time);
                 Intent intent = new Intent();
                 intent.setAction("com.join.stostedetection2");
                 startActivity(intent);
             }
         });
     }
+
+    List<com.join.entity.IDQuery> list;
 
     private void init() {
         humidity = (TextView) findViewById(R.id.humidity);
@@ -76,20 +82,21 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         keyboard1.setIdQueryKeyboard1(new IDQueryKeyboard1() {
             @Override
             public void start() {
-                final List<com.join.entity.IDQuery> list = new ArrayList<>();
+                list = new ArrayList<>();
                 String s = id_Gong_1.getText().toString();
                 List<Storage> storages = OperationDao.queryLove(s);
                 int size = storages.size();
-                Log.e("jj", size + "ddd");
 
+                Log.e(TAG, "start:" + size);
                 for (int i = 0; i < size; i++) {
                     Storage storage = storages.get(i);
                     String date = storage.getDate();
                     String time = storage.getTime();
                     String number = storage.getNumber();
                     String operator = storage.getOperator();
+                    Long id = storage.getId();
                     Log.e("jjjj", number + "");
-                    com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(date, time, "精液原液", "300", "0.8", "0.9", operator, "合格", "查看");
+                    com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(id,date, time, "精液原液", "300", "0.8", "0.9", operator, "合格", "查看");
                     list.add(idQuery);
 
                 }

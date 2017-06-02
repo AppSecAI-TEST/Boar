@@ -1,6 +1,7 @@
 package com.join.greenDaoUtils;
 
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
@@ -10,6 +11,8 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class Storage {
+    @Id(autoincrement = true)
+    private long id;
     private String color;
     private String smell;
     private String date;
@@ -25,11 +28,12 @@ public class Storage {
     private String result;
     private String capacity; //每剂容量
     private String motileSperms;//有效精子数(稀释)
-    @Generated(hash = 799329748)
-    public Storage(String color, String smell, String date, String time,
+    @Generated(hash = 1387764676)
+    public Storage(Long id, String color, String smell, String date, String time,
             String number, String operator, String type, String density,
             String vitality, String motilityRate, String copies, String add,
             String result, String capacity, String motileSperms) {
+        this.id = id;
         this.color = color;
         this.smell = smell;
         this.date = date;
@@ -48,6 +52,12 @@ public class Storage {
     }
     @Generated(hash = 2114225574)
     public Storage() {
+    }
+    public Long getId() {
+        return this.id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
     public String getColor() {
         return this.color;
