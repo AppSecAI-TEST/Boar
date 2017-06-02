@@ -43,7 +43,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     private Keyboard1 keyboard1;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
-
+    private List<com.join.entity.IDQuery> list;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,7 +55,8 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 com.join.entity.IDQuery idQuery = list.get(position);
                 String time = idQuery.getTime();
-                Log.e(TAG, "onItemClick: " + time);
+                long id1 = idQuery.getId();
+                Log.e(TAG, "onItemClick: " + time+"\n"+id1);
                 Intent intent = new Intent();
                 intent.setAction("com.join.stostedetection2");
                 startActivity(intent);
@@ -63,7 +64,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         });
     }
 
-    List<com.join.entity.IDQuery> list;
+
 
     private void init() {
         humidity = (TextView) findViewById(R.id.humidity);
@@ -86,17 +87,19 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
                 String s = id_Gong_1.getText().toString();
                 List<Storage> storages = OperationDao.queryLove(s);
                 int size = storages.size();
-
                 Log.e(TAG, "start:" + size);
                 for (int i = 0; i < size; i++) {
                     Storage storage = storages.get(i);
                     String date = storage.getDate();
                     String time = storage.getTime();
-                    String number = storage.getNumber();
                     String operator = storage.getOperator();
                     Long id = storage.getId();
-                    Log.e("jjjj", number + "");
-                    com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(id,date, time, "精液原液", "300", "0.8", "0.9", operator, "合格", "查看");
+                    String type = storage.getType();
+                    String density = storage.getDensity();
+                    String vitality = storage.getVitality();
+                    String motilityRate = storage.getMotilityRate();
+                    String result = storage.getResult();
+                    com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(id, date, time, type, density, vitality, motilityRate, operator, result, "查看");
                     list.add(idQuery);
 
                 }

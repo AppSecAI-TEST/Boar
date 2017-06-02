@@ -92,7 +92,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     public void photoPrepared(int tag) {
         handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
-        if (tag == 9) {
+        if (tag == 14) {
             arithmetic.getArithmetic();
         }
     }
@@ -178,7 +178,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case JUMP_FRAGMENT:
-                    if (count == 10) {
+                    if (count == 15) {
                         isPrepared = true;
                         removeMessages(MsgCons.CAMERA_TIMEOUT);
                         mCameraManager.delCallback();
@@ -305,13 +305,13 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     // Thread.sleep(1500);
                     for (int i = 0; i <= 100; i++) {
                         if (boolTag) {
-                            // Thread.sleep(1500);
-                            Thread.sleep(15);
+                             Thread.sleep(1500);
+                           // Thread.sleep(15);
                         }
                         changePercent(i);
 
                         if (i == 100) {
-                            Thread.sleep(5000);
+                            Thread.sleep(4000);
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {

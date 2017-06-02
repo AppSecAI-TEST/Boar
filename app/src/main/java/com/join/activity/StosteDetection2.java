@@ -18,6 +18,7 @@ import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
+import com.join.utils.DaoUtil;
 
 import java.util.List;
 
@@ -44,7 +45,8 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
             density_1,//密度
             vitality_1,//活力
             motilityRate_1,//活率
-            copies_1;//推荐分装份数
+            copies_1,//推荐分装份数
+            result_1;
     private Humidity.HumidityBinder humidityBinder;
     private String[] stosteDetectionData;
     private double[] arithmetic;
@@ -57,10 +59,10 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         setContentView(R.layout.stoste_detection_2);
         init();
 
-
     }
 
     private void init() {
+        result_1 = (TextView) findViewById(R.id.result);
         add_1 = (TextView) findViewById(R.id.add);
         density_1 = (TextView) findViewById(R.id.density);
         vitality_1 = (TextView) findViewById(vitality);
@@ -76,65 +78,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         int action = getIntent().getFlags();//区别由那个页面进入本页面
         Log.e(TAG, action + "");
         if (action == 1) {
-            //得到上一个Activity的数据
-            stosteDetectionData = getIntent().getStringArrayExtra("data");
-            //得到算法的数据
-            arithmetic = getIntent().getDoubleArrayExtra("arithmetic");
-
-            double density = arithmetic[1];
-            double vitality = arithmetic[5];
-            double motilityRate = arithmetic[4];
-            String densityS = String.valueOf(Double.parseDouble(String.format("%.3f", density)));
-            String vitalityS = String.valueOf(Double.parseDouble(String.format("%.3f", vitality)));
-            String motilityRateS = String.valueOf(Double.parseDouble(String.format("%.3f", motilityRate)));
-
-            String color = stosteDetectionData[0];
-            String smell = stosteDetectionData[1];
-            String dateC = stosteDetectionData[2];
-            String timeC = stosteDetectionData[3];
-            String number = stosteDetectionData[4];
-            String milliliter = stosteDetectionData[5];
-            String type = "精液原液";
-
-            int length = milliliter.length();
-            String milliliterSubstring = milliliter.substring(0, length - 2);
-            Integer integer = Integer.valueOf(milliliterSubstring);
-
-            double copies = integer * motilityRate * vitality / 30;
-            double add = copies * 80 - integer;
-
-            String copiesS = String.valueOf(Math.round(copies));
-            String addS = String.valueOf(add);
-            String operator = IDSelect.id_manage;
-
-
-            //保存到数据库
-            Storage storage = new Storage();
-            //  DaoUtil.sD2(storage,number,operator,ca);
-
-            add_1.setText(addS);
-            copies_1.setText(copiesS);
-            density_1.setText(densityS);
-            vitality_1.setText(vitalityS);
-            motilityRate_1.setText(motilityRateS);
-            color_1.setText(color);
-            smell_1.setText(smell);
-            dateC_1.setText(dateC);
-            timeC_1.setText(timeC);
-            number_1.setText(number);
-            milliliter_1.setText(milliliter);
-            operator_1.setText(operator);
-
-
-
-            List<Storage> storages = OperationDao.queryAll();
-            int size = storages.size();
-            for (int i = 1; i < size; i++) {
-                Storage storage1 = storages.get(i);
-                String smell1 = storage1.getSmell();
-                String copies1 = storage1.getCopies();
-                Log.e(TAG, smell1 + copies1);
-            }
+            setSaveData();
         }
         humidity = (TextView) findViewById(R.id.humidity);
         print = (Button) findViewById(R.id.print);
@@ -143,6 +87,77 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         bu_return.setOnClickListener(this);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(this);
+    }
+
+    private void setSaveData() {
+        //得到上一个Activity的数据
+        stosteDetectionData = getIntent().getStringArrayExtra("data");
+        //得到算法的数据
+        arithmetic = getIntent().getDoubleArrayExtra("arithmetic");
+
+        double density = arithmetic[1];
+        double vitality = arithmetic[5];
+        double motilityRate = arithmetic[4];
+
+        String densityS = String.valueOf(Double.parseDouble(String.format("%.3f", density)));
+        String vitalityS = String.valueOf(Double.parseDouble(String.format("%.3f", vitality)));
+        String motilityRateS = String.valueOf(Double.parseDouble(String.format("%.3f", motilityRate)));
+
+        String color = stosteDetectionData[0];
+        String smell = stosteDetectionData[1];
+        String dateC = stosteDetectionData[2];
+        String timeC = stosteDetectionData[3];
+        String number = stosteDetectionData[4];
+        String milliliter = stosteDetectionData[5];
+        String result = null;
+
+        String type = "精液原液";
+
+        int length = milliliter.length();
+        String milliliterSubstring = milliliter.substring(0, length - 2);
+        Integer milliliterInt = Integer.valueOf(milliliterSubstring);
+
+        if (milliliterInt >= 250 && density >= 3.0 && vitality >= 0.8) {
+            result = "优";
+        } else if (milliliterInt >= 150 && milliliterInt <= 250 && density >= 2.0 && density <= 3.0 && vitality >= 0.7 && vitality <= 0.8) {
+            result = "良";
+        } else if (milliliterInt >= 150 && milliliterInt <= 150 && density >= 0.8 && density <= 2.0 && vitality >= 0.6 && vitality <= 0.7) {
+            result = "合格";
+        } else {
+            result = "不合格";
+        }
+        double copies = milliliterInt * motilityRate * vitality / 30;
+        double add = copies * 80 - milliliterInt;
+
+        String copiesS = String.valueOf(Math.round(copies));
+        String addS = String.valueOf(add);
+        String operator = IDSelect.id_manage;
+
+       //显示到页面
+        add_1.setText(addS);
+        copies_1.setText(copiesS);
+        density_1.setText(densityS);
+        vitality_1.setText(vitalityS);
+        motilityRate_1.setText(motilityRateS);
+        color_1.setText(color);
+        smell_1.setText(smell);
+        dateC_1.setText(dateC);
+        timeC_1.setText(timeC);
+        number_1.setText(number);
+        milliliter_1.setText(milliliter);
+        operator_1.setText(operator);
+        result_1.setText(result);
+        //保存到数据库
+        Storage storage = new Storage();
+        DaoUtil.sD2(storage, number, operator, milliliter, dateC, timeC, copiesS, addS, densityS, vitalityS, motilityRateS, smell, color, type, result);
+        List<Storage> storages = OperationDao.queryAll();
+        int size = storages.size();
+        for (int i = 1; i < size; i++) {
+            Storage storage1 = storages.get(i);
+            String smell1 = storage1.getSmell();
+            String copies1 = storage1.getCopies();
+            Log.e(TAG, smell1 + copies1);
+        }
     }
 
     @Override

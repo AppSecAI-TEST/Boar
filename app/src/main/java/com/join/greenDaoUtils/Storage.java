@@ -12,7 +12,7 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Storage {
     @Id(autoincrement = true)
-    private long id;
+    private Long id;
     private String color;
     private String smell;
     private String date;
@@ -148,6 +148,9 @@ public class Storage {
     }
     public void setMotileSperms(String motileSperms) {
         this.motileSperms = motileSperms;
+    }
+    public void setId(long id) {
+        this.id = id;
     }
    
 
