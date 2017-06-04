@@ -22,8 +22,14 @@ import com.join.utils.DaoUtil;
 
 import java.util.List;
 
+import static com.join.R.id.dateC;
+import static com.join.R.id.milliliter;
 import static com.join.R.id.motilityRate;
+import static com.join.R.id.number;
 import static com.join.R.id.operator;
+import static com.join.R.id.result;
+import static com.join.R.id.smell;
+import static com.join.R.id.timeC;
 import static com.join.R.id.vitality;
 
 /**
@@ -62,24 +68,20 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
     }
 
     private void init() {
-        result_1 = (TextView) findViewById(R.id.result);
+        result_1 = (TextView) findViewById(result);
         add_1 = (TextView) findViewById(R.id.add);
         density_1 = (TextView) findViewById(R.id.density);
         vitality_1 = (TextView) findViewById(vitality);
         motilityRate_1 = (TextView) findViewById(motilityRate);
         copies_1 = (TextView) findViewById(R.id.copies);
         color_1 = (TextView) findViewById(R.id.color);
-        smell_1 = (TextView) findViewById(R.id.smell);
-        dateC_1 = (TextView) findViewById(R.id.dateC);
-        timeC_1 = (TextView) findViewById(R.id.timeC);
-        number_1 = (TextView) findViewById(R.id.number);
-        milliliter_1 = (TextView) findViewById(R.id.milliliter);
+        smell_1 = (TextView) findViewById(smell);
+        dateC_1 = (TextView) findViewById(dateC);
+        timeC_1 = (TextView) findViewById(timeC);
+        number_1 = (TextView) findViewById(number);
+        milliliter_1 = (TextView) findViewById(milliliter);
         operator_1 = (TextView) findViewById(operator);
-        int action = getIntent().getFlags();//区别由那个页面进入本页面
-        Log.e(TAG, action + "");
-        if (action == 1) {
-            setSaveData();
-        }
+
         humidity = (TextView) findViewById(R.id.humidity);
         print = (Button) findViewById(R.id.print);
         print.setOnClickListener(this);
@@ -87,6 +89,36 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         bu_return.setOnClickListener(this);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(this);
+
+
+        int action = getIntent().getFlags();//区别IDQuery还是StosteDetection1
+        Log.e(TAG, action + "");
+        if (action == 1) {
+            setSaveData();
+        } else if (action == 2) {
+            getSetDataIDQuery();
+
+        }
+    }
+
+    private void getSetDataIDQuery() {
+        long idqUeryData = getIntent().getLongExtra("IDQUeryData", -1L);
+        List<Storage> storages = OperationDao.queryLoveID(idqUeryData);
+        Storage storage = storages.get(0);
+        //显示到页面
+        add_1.setText(storage.getAdd());
+        copies_1.setText(storage.getCopies());
+        density_1.setText(storage.getDensity());
+        vitality_1.setText(storage.getVitality());
+        motilityRate_1.setText(storage.getMotilityRate());
+        color_1.setText(storage.getColor());
+        smell_1.setText(storage.getSmell());
+        dateC_1.setText(storage.getDate());
+        timeC_1.setText(storage.getTime());
+        number_1.setText(storage.getNumber());
+        milliliter_1.setText(storage.getCapacity());
+        operator_1.setText(storage.getOperator());
+        result_1.setText("结果: " + storage.getResult());
     }
 
     private void setSaveData() {
@@ -133,7 +165,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         String addS = String.valueOf(add);
         String operator = IDSelect.id_manage;
 
-       //显示到页面
+        //显示到页面
         add_1.setText(addS);
         copies_1.setText(copiesS);
         density_1.setText(densityS);
@@ -146,18 +178,12 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         number_1.setText(number);
         milliliter_1.setText(milliliter);
         operator_1.setText(operator);
-        result_1.setText(result);
+        result_1.setText("结果: " + result);
         //保存到数据库
         Storage storage = new Storage();
         DaoUtil.sD2(storage, number, operator, milliliter, dateC, timeC, copiesS, addS, densityS, vitalityS, motilityRateS, smell, color, type, result);
-        List<Storage> storages = OperationDao.queryAll();
-        int size = storages.size();
-        for (int i = 1; i < size; i++) {
-            Storage storage1 = storages.get(i);
-            String smell1 = storage1.getSmell();
-            String copies1 = storage1.getCopies();
-            Log.e(TAG, smell1 + copies1);
-        }
+
+
     }
 
     @Override

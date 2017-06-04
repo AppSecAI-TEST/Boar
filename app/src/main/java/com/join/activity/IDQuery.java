@@ -44,6 +44,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
     private List<com.join.entity.IDQuery> list;
+    private Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,19 +55,33 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 com.join.entity.IDQuery idQuery = list.get(position);
-                String time = idQuery.getTime();
-                long id1 = idQuery.getId();
-                Log.e(TAG, "onItemClick: " + time+"\n"+id1);
-                Intent intent = new Intent();
-                intent.setAction("com.join.stostedetection2");
-                startActivity(intent);
+
+                long idTag = idQuery.getId();
+                Log.e(TAG, "onItemClick: " + idTag);
+                String type = idQuery.getType();
+                if (type.equals("精液原液")) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("IDQUeryData", idTag);
+                    intent.putExtras(bundle);
+                    intent.setAction("com.join.stostedetection2");
+                    intent.addFlags(2);
+                    startActivity(intent);
+                } else if (type.equals("稀释精液")) {
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("IDQUeryData", idTag);
+                    intent.putExtras(bundle);
+                    intent.setAction("com.join.stostedetection22");
+                    intent.addFlags(2);
+                    startActivity(intent);
+                }
             }
         });
     }
 
 
-
     private void init() {
+        intent = new Intent();
         humidity = (TextView) findViewById(R.id.humidity);
         id_Gong_1 = (TextView) findViewById(R.id.id_Gong_1);
         ll_Gong = (PercentLinearLayout) findViewById(R.id.ll_Gong);

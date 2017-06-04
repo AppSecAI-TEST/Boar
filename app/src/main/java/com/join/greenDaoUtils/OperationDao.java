@@ -23,7 +23,7 @@ public class OperationDao {
         //如果有ID Unique 重复了就替换
         BaseApplication.getDaoInstant().getStorageDao().insertOrReplace(storage);
         //如果ID unique重复了就报错
-       // BaseApplication.getDaoInstant().getStorageDao().insert(storage);
+        // BaseApplication.getDaoInstant().getStorageDao().insert(storage);
     }
 
 
@@ -34,7 +34,7 @@ public class OperationDao {
      */
 
     public static void deleteData(long id) {
-      //  BaseApplication.getDaoInstant().getStorageDao().deleteByKey(id);
+        BaseApplication.getDaoInstant().getStorageDao().deleteByKey(id);
     }
 
 
@@ -58,6 +58,9 @@ public class OperationDao {
         return BaseApplication.getDaoInstant().getStorageDao().queryBuilder().where(StorageDao.Properties.Number.eq(number)).list();
     }
 
+    public static List<Storage> queryLoveID(long id) {
+        return BaseApplication.getDaoInstant().getStorageDao().queryBuilder().where(StorageDao.Properties.Id.eq(id)).list();
+    }
 
     /**
      * 查询全部数据

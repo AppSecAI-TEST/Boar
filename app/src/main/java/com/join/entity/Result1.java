@@ -15,13 +15,24 @@ public class Result1 extends BaseObservable {
     private String motilityRate;//活率
     private String date;
     private String time;
-    private String motileSperms;
+    private String motileSperms;//有效精子数
     private String capacity;//容量
     private String operator;//操作员
     private String result;
     private String batch;//批号ID//nu
     private String color;
     private String smell;
+    private String humidity;
+
+    @Bindable
+    public String getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
+        notifyPropertyChanged(BR.humidity);
+    }
 
     @Bindable
     public String getBatch() {

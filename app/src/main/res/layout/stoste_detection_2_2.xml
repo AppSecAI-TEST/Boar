@@ -6,6 +6,12 @@
 
         <import type="com.join.entity.Result1" />
 
+        <import type="com.join.activity.StosteDetection22" />
+
+        <variable
+            name="activity"
+            type="StosteDetection22" />
+
         <variable
             name="result1"
             type="Result1" />
@@ -55,7 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="7dp"
-                    android:text="27℃"
+                    android:text="@{result1.humidity}"
                     android:textColor="#fff"
                     android:textSize="25dp" />
             </com.zhy.android.percent.support.PercentLinearLayout>
@@ -314,12 +320,12 @@
                             app:layout_widthPercent="100%w">
 
                             <Button
-                                android:id="@+id/print"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="18dp"
                                 android:background="@drawable/background_green"
+                                android:onClick="@{activity.printData}"
                                 android:text="打印"
                                 android:textColor="#f4f4f4"
                                 android:textSize="25dp"
@@ -327,12 +333,12 @@
                                 app:layout_widthPercent="40%w" />
 
                             <Button
-                                android:id="@+id/bu_return"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="40dp"
                                 android:background="@drawable/background_green"
+                                android:onClick="@{activity.closeActivity}"
                                 android:text="返回"
                                 android:textColor="#f4f4f4"
                                 android:textSize="25dp"
@@ -559,6 +565,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="45dp"
             android:layout_marginTop="18dp"
+            android:onClick="@{activity.returnFunction}"
             android:src="@drawable/a_000" />
     </com.zhy.android.percent.support.PercentFrameLayout>
 </layout>
