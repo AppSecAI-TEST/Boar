@@ -1,691 +1,710 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.android.percent.support.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
 
-    <com.zhy.android.percent.support.PercentLinearLayout
+        <import type="com.join.activity.ParameterSetting" />
+
+        <import type="com.join.entity.SettingResult"></import>
+
+        <variable
+            name="result"
+            type="SettingResult" />
+
+        <variable
+            name="setting"
+            type="ParameterSetting" />
+    </data>
+
+    <com.zhy.android.percent.support.PercentFrameLayout
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.zhy.android.percent.support.PercentLinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#078e80"
-            android:orientation="horizontal"
-            app:layout_heightPercent="11%h"
-            app:layout_widthPercent="100%w">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="550dp"
-                android:text="检测参数"
-                android:textColor="#fff"
-                android:textSize="40dp" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="340dp"
-                android:text="平台温度:"
-                android:textColor="#fff"
-                android:textSize="25dp" />
-
-            <TextView
-                android:id="@+id/humidity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="7dp"
-                android:text="27℃"
-                android:textColor="#fff"
-                android:textSize="25dp" />
-        </com.zhy.android.percent.support.PercentLinearLayout>
-        <!--1.1-->
         <com.zhy.android.percent.support.PercentLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#e0f3f1"
             android:orientation="vertical">
-            <!--2.1-->
+
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:background="@drawable/background_white"
-                android:orientation="vertical"
-                app:layout_heightPercent="100%h"
-                app:layout_widthPercent="95%w">
+                android:background="#078e80"
+                android:orientation="horizontal"
+                app:layout_heightPercent="11%h"
+                app:layout_widthPercent="100%w">
 
-                <com.zhy.android.percent.support.PercentLinearLayout
+                <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginRight="100dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="550dp"
+                    android:text="检测参数"
+                    android:textColor="#fff"
+                    android:textSize="40dp" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/a_023"
-                        android:text="确认"
-                        android:textColor="#fff"
-                        android:textSize="26dp" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="340dp"
+                    android:text="平台温度:"
+                    android:textColor="#fff"
+                    android:textSize="25dp" />
 
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
-                        android:background="@drawable/a_023"
-                        android:text="返回"
-                        android:textColor="#fff"
-                        android:textSize="26dp" />
-                </com.zhy.android.percent.support.PercentLinearLayout>
-                <!--2.2.1-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="7dp"
+                    android:text="@{result.humidity}"
+                    android:textColor="#fff"
+                    android:textSize="25dp" />
+            </com.zhy.android.percent.support.PercentLinearLayout>
+            <!--1.1-->
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#e0f3f1"
+                android:orientation="vertical">
+                <!--2.1-->
                 <com.zhy.android.percent.support.PercentLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="112dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/background_green_line"
-                    android:orientation="horizontal"
-                    app:layout_heightPercent="60%h"
-                    app:layout_widthPercent="82%w">
+                    android:layout_gravity="center"
+                    android:background="@drawable/background_white"
+                    android:orientation="vertical"
+                    app:layout_heightPercent="100%h"
+                    app:layout_widthPercent="95%w">
 
                     <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="25%w">
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="100dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
 
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="精液原液等级标准"
-                            android:textColor="#099185"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="采精量"
-                            android:textColor="#099185"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="密度"
-                            android:textColor="#099185"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:id="@+id/textView9"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="活力"
-                            android:textColor="#099185"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="颜色"
-                            android:textColor="#099185"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="气味"
-                            android:textColor="#099185"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-
-                    </com.zhy.android.percent.support.PercentLinearLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="#51a791" />
-
-
-                    <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="25%w">
-
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:background="#1e8c83"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="20dp"
-                            android:text="优"
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/a_023"
+                            android:onClick="@{setting.confirm}"
+                            android:text="确认"
                             android:textColor="#fff"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
+                            android:textSize="26dp" />
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="250ml"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="3.0亿/ml"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:id="@+id/textView1"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="0.8"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="正常"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="正常"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-
-                    </com.zhy.android.percent.support.PercentLinearLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="#51a791" />
-
-                    <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="25%w">
-
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:background="#51a79e"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="20dp"
-                            android:text="良"
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="50dp"
+                            android:background="@drawable/a_023"
+                            android:onClick="@{setting.returnAbove}"
+                            android:text="返回"
                             android:textColor="#fff"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="150ml"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="2.0亿/ml"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:id="@+id/textView2_1"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="0.7"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="正常"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="正常"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-
-                    </com.zhy.android.percent.support.PercentLinearLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="#51a791" />
-
-                    <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="vertical"
-                        app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="25%w">
-
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:background="#9bccc8"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="20dp"
-                            android:text="合格"
-                            android:textColor="#fff"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="97.5%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="100ml"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="0.8亿/ml"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:id="@+id/textView9_1"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="0.6"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="正常"
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
-                            android:background="#51a791" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="正常"
-
-                            android:textSize="22dp"
-                            app:layout_heightPercent="16%h"
-                            app:layout_widthPercent="100%w" />
-
-
+                            android:textSize="26dp" />
                     </com.zhy.android.percent.support.PercentLinearLayout>
                     <!--2.2.1-->
-                </com.zhy.android.percent.support.PercentLinearLayout>
-
-                <com.zhy.android.percent.support.PercentLinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginLeft="112dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/background_green_line"
-                    android:orientation="horizontal"
-                    app:layout_heightPercent="20%h"
-                    app:layout_widthPercent="82%w">
-
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:orientation="vertical"
-                        app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="25%w">
+                        android:layout_marginLeft="112dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/background_green_line"
+                        android:orientation="horizontal"
+                        app:layout_heightPercent="60%h"
+                        app:layout_widthPercent="82%w">
 
-                        <TextView
-                            android:layout_width="match_parent"
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="25%w">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="精液原液等级标准"
+                                android:textColor="#099185"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="采精量"
+                                android:textColor="#099185"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="密度"
+                                android:textColor="#099185"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="活力"
+                                android:textColor="#099185"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="颜色"
+                                android:textColor="#099185"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="气味"
+                                android:textColor="#099185"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+
+                        </com.zhy.android.percent.support.PercentLinearLayout>
+
+                        <View
+                            android:layout_width="2dp"
                             android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="稀释精液参数"
-                            android:textColor="#099185"
-                            android:textSize="24dp" />
+                            android:background="#51a791" />
 
+
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="25%w">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="#1e8c83"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20dp"
+                                android:text="优"
+                                android:textColor="#fff"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="250ml"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="3.0亿/ml"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:id="@+id/textView1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="0.8"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="正常"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="正常"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+
+                        </com.zhy.android.percent.support.PercentLinearLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#51a791" />
+
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="25%w">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="#51a79e"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20dp"
+                                android:text="良"
+                                android:textColor="#fff"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="150ml"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="2.0亿/ml"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:id="@+id/textView2_1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="0.7"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="正常"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="正常"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+
+                        </com.zhy.android.percent.support.PercentLinearLayout>
+
+                        <View
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
+                            android:background="#51a791" />
+
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="25%w">
+
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="#9bccc8"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="20dp"
+                                android:text="合格"
+                                android:textColor="#fff"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="97.5%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="100ml"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="0.8亿/ml"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:id="@+id/textView9_1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="0.6"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="正常"
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="正常"
+
+                                android:textSize="22dp"
+                                app:layout_heightPercent="16%h"
+                                app:layout_widthPercent="100%w" />
+
+
+                        </com.zhy.android.percent.support.PercentLinearLayout>
+                        <!--2.2.1-->
                     </com.zhy.android.percent.support.PercentLinearLayout>
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="#51a791" />
 
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:orientation="vertical"
-                        app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="25%w">
+                        android:layout_marginLeft="112dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/background_green_line"
+                        android:orientation="horizontal"
+                        app:layout_heightPercent="20%h"
+                        app:layout_widthPercent="82%w">
 
-                        <TextView
+                        <com.zhy.android.percent.support.PercentLinearLayout
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="活力"
-                            android:textColor="#099185"
-                            android:textSize="24dp"
-                            app:layout_heightPercent="49%h"
-                            app:layout_widthPercent="100%w" />
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="25%w">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="稀释精液参数"
+                                android:textColor="#099185"
+                                android:textSize="24dp" />
+
+                        </com.zhy.android.percent.support.PercentLinearLayout>
 
                         <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
                             android:background="#51a791" />
 
-                        <TextView
+                        <com.zhy.android.percent.support.PercentLinearLayout
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="0.6"
-                            android:textSize="24dp"
-                            app:layout_heightPercent="49%h"
-                            app:layout_widthPercent="100%w" />
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="25%w">
 
-                    </com.zhy.android.percent.support.PercentLinearLayout>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="活力"
+                                android:textColor="#099185"
+                                android:textSize="24dp"
+                                app:layout_heightPercent="49%h"
+                                app:layout_widthPercent="100%w" />
 
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="#51a791" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
 
-                    <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:orientation="vertical"
-                        app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="25%w">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="0.6"
+                                android:textSize="24dp"
+                                app:layout_heightPercent="49%h"
+                                app:layout_widthPercent="100%w" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="每剂容量"
-                            android:textColor="#099185"
-                            android:textSize="24dp"
-                            app:layout_heightPercent="49%h"
-                            app:layout_widthPercent="100%w" />
+                        </com.zhy.android.percent.support.PercentLinearLayout>
 
                         <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
                             android:background="#51a791" />
 
-                        <TextView
+                        <com.zhy.android.percent.support.PercentLinearLayout
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="80ml"
-                            android:textSize="24dp"
-                            app:layout_heightPercent="49%h"
-                            app:layout_widthPercent="100%w" />
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="25%w">
 
-                    </com.zhy.android.percent.support.PercentLinearLayout>
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="每剂容量"
+                                android:textColor="#099185"
+                                android:textSize="24dp"
+                                app:layout_heightPercent="49%h"
+                                app:layout_widthPercent="100%w" />
 
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent"
-                        android:background="#51a791" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
 
-                    <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:orientation="vertical"
-                        app:layout_heightPercent="100%h"
-                        app:layout_widthPercent="25%w">
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="80ml"
+                                android:textSize="24dp"
+                                app:layout_heightPercent="49%h"
+                                app:layout_widthPercent="100%w" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="每份有效精子数"
-                            android:textColor="#099185"
-                            android:textSize="24dp"
-                            app:layout_heightPercent="49%h"
-                            app:layout_widthPercent="100%w" />
+                        </com.zhy.android.percent.support.PercentLinearLayout>
 
                         <View
-                            android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_width="2dp"
+                            android:layout_height="match_parent"
                             android:background="#51a791" />
 
-                        <TextView
+                        <com.zhy.android.percent.support.PercentLinearLayout
                             android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="15dp"
-                            android:text="30亿"
-                            android:textSize="24dp"
-                            app:layout_heightPercent="49%h"
-                            app:layout_widthPercent="100%w" />
+                            android:orientation="vertical"
+                            app:layout_heightPercent="100%h"
+                            app:layout_widthPercent="25%w">
 
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="每份有效精子数"
+                                android:textColor="#099185"
+                                android:textSize="24dp"
+                                app:layout_heightPercent="49%h"
+                                app:layout_widthPercent="100%w" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="#51a791" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dp"
+                                android:text="30亿"
+                                android:textSize="24dp"
+                                app:layout_heightPercent="49%h"
+                                app:layout_widthPercent="100%w" />
+
+                        </com.zhy.android.percent.support.PercentLinearLayout>
                     </com.zhy.android.percent.support.PercentLinearLayout>
+
+
+                    <!--2.1-->
                 </com.zhy.android.percent.support.PercentLinearLayout>
 
-
-                <!--2.1-->
             </com.zhy.android.percent.support.PercentLinearLayout>
+
 
         </com.zhy.android.percent.support.PercentLinearLayout>
 
-
-    </com.zhy.android.percent.support.PercentLinearLayout>
-
-    <ImageView
-        android:id="@+id/icon_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/a_000" />
-</com.zhy.android.percent.support.PercentFrameLayout>
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="18dp"
+            android:onClick="@{setting.returnFunction}"
+            android:src="@drawable/a_000" />
+    </com.zhy.android.percent.support.PercentFrameLayout>
+</layout>
