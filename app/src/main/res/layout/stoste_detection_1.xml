@@ -59,11 +59,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="62dp"
+                android:layout_marginLeft="55dp"
                 android:background="@drawable/background_white_3"
                 android:orientation="horizontal"
-                app:layout_heightPercent="90%h"
-                app:layout_widthPercent="90%w">
+                app:layout_heightPercent="95%h"
+                app:layout_widthPercent="92%w">
                 <!--2.2.1-->
                 <com.zhy.android.percent.support.PercentLinearLayout
                     android:id="@+id/camera_ll"
@@ -98,13 +98,53 @@
                         app:secondaryColor="#58e2d0"
                         app:textColor="#02544b" />
 
+                    <LinearLayout
+                        android:id="@+id/abnormalShow_layout"
+                        android:layout_width="480dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="150dp"
+                        android:background="@drawable/background_green_line_2"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/abnormalShow_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="30dp"
+                            android:gravity="center"
+                            android:text="样本图像背景异常.导致结果异常."
+                            android:textColor="#3cc5b9"
+                            android:textSize="30dp" />
+
+                        <LinearLayout
+                            android:layout_width="350dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/abnormalShow_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center"
+                                android:text="你ddddddsss"
+                                android:textColor="#3cc5b9"
+                                android:textSize="30dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
                     <Button
                         android:id="@+id/bu_return"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="bottom|right"
                         android:layout_marginBottom="50dp"
-                        android:layout_marginRight="70dp"
+                        android:layout_marginRight="80dp"
                         android:background="@drawable/background_green"
                         android:text="返回"
                         android:textColor="#fff"

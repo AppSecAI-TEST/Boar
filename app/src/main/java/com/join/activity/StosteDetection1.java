@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView;
@@ -29,7 +29,6 @@ import com.join.camera.IPictureCallback4;
 import com.join.camera.MsgCons;
 import com.join.service.Humidity;
 import com.join.utils.Arithmetic;
-import com.join.utils.CustomToast;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 
@@ -41,9 +40,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private AnimatedCircleLoadingView animatedCircleLoadingView;  //进度条
     private Button bu_return, bu_enter;
     private ImageView icon_1;
-    private TextView humidity, title;
+    private TextView humidity, title, abnormalShow_1, abnormalShow_2;
     private Humidity.HumidityBinder humidityBinder;
-    private String[] stosteDetectionData;
     private PercentLinearLayout camera_ll;
     private CameraSurfaceView cameraSurfaceView = null;
     private Camera camera;
@@ -53,14 +51,19 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     public static final int JUMP_FRAGMENT = 4;//之后的照相 照完之后回调通知再次照相
     private int count = 1; //控制照相的张数
     private MyHandler handler = new MyHandler();
-    private double[] arithmeticData;
+    private double[] arithmeticData;//算法的结果数据
+    private String[] stosteDetectionData;
     private Arithmetic arithmetic;
-    private boolean boolTag = true;
-    private int flag;
+    private boolean boolTag = true;//算法出结果就取消睡眠
+    private int flag;//判断哪个activity标记
     private Intent intent;
-    private boolean boolTag1 = true;
+    private boolean boolTag1 = true;  //如果离开页面停止调用相机
+    private int state;//算法返回的状态
+    private boolean stateThread = true;//控制线程的状态
+    private LinearLayout abnormalShow_layout;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stoste_detection_1);
@@ -247,6 +250,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     }
 
     private void init() {
+        abnormalShow_layout = (LinearLayout) findViewById(R.id.abnormalShow_layout);
+        abnormalShow_1 = (TextView) findViewById(R.id.abnormalShow_1);
+        abnormalShow_2 = (TextView) findViewById(R.id.abnormalShow_2);
         title = (TextView) findViewById(R.id.title);
         camera_ll = (PercentLinearLayout) findViewById(R.id.camera_ll);
         humidity = (TextView) findViewById(R.id.humidity);
@@ -319,8 +325,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
      * 改变进度的线程
      */
 
-    private int state;
-    private boolean stateThread = true;
 
     private void startPercentMockThread() {
 
@@ -330,70 +334,95 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             @Override
             public void run() {
                 while (stateThread) {
-                    Log.e(TAG, "run: " + "jjjjjjjjjjjjjj");
+
                     try {
                         // Thread.sleep(1500);
                         for (int i = 0; i <= 100; i++) {
                             if (boolTag) {
                                 Thread.sleep(1500);
                             }
-
                             if (!boolTag) {
                                 if (state == -1) {
-                                    animatedCircleLoadingView.stopFailure();
+                                    //  animatedCircleLoadingView.stopFailure();
                                     progress = false;
-                                    CustomToast.showToast(StosteDetection1.this, "您输入参数不对,请从新输入..");
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            abnormalShow_layout.setVisibility(View.VISIBLE);
+                                            abnormalShow_1.setText("参数不对,导致结果异常.");
+                                            abnormalShow_2.setText("请重新返回检测!");
+
+                                        }
+                                    });
                                     break;
                                 } else if (state == -6) {
-                                    animatedCircleLoadingView.stopFailure();
+                                    //  animatedCircleLoadingView.stopFailure();  bu_enter.setVisibility(View.VISIBLE);
+
                                     progress = false;
                                     stateThread = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            CustomToast.showToast(StosteDetection1.this, "样本图像背景异常,请从新检测..");
-
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            abnormalShow_layout.setVisibility(View.VISIBLE);
+                                            abnormalShow_1.setText("样本图像背景异常,导致结果异常.");
+                                            abnormalShow_2.setText("请重新返回检测!");
                                         }
                                     });
                                     break;
                                 } else if (state == -5) {
-                                    animatedCircleLoadingView.stopFailure();
+                                    // animatedCircleLoadingView.stopFailure();//显示不对的图像
+
                                     progress = false;
                                     stateThread = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            CustomToast.showToast(StosteDetection1.this, "样本异常，活动精子数太少");
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            abnormalShow_layout.setVisibility(View.VISIBLE);
+                                            abnormalShow_1.setText("活动精子数太少,导致结果异常.");
+                                            abnormalShow_2.setText("请重新返回检测!");
+
                                         }
                                     });
                                     break;
                                 } else if (state == -4) {
-                                    animatedCircleLoadingView.stopFailure();
+                                    //  animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            CustomToast.showToast(StosteDetection1.this, "样本图像张数不够");
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            abnormalShow_layout.setVisibility(View.VISIBLE);
+                                            abnormalShow_1.setText("样本图像张数不够,导致结果异常.");
+                                            abnormalShow_2.setText("请重新返回检测!");
                                         }
                                     });
                                     break;
                                 } else if (state == -3) {
-                                    animatedCircleLoadingView.stopFailure();
+                                    // animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            CustomToast.showToast(StosteDetection1.this, "未找到图像或图像文件名不规范");
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            abnormalShow_layout.setVisibility(View.VISIBLE);
+                                            abnormalShow_1.setText("未找到图像或图像文件名不规范.");
+                                            abnormalShow_2.setText("请重新返回检测!");
                                         }
                                     });
                                     break;
                                 } else if (state == -2) {
-                                    animatedCircleLoadingView.stopFailure();
+                                    // animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            CustomToast.showToast(StosteDetection1.this, "数据写入异常");
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            abnormalShow_layout.setVisibility(View.VISIBLE);
+                                            abnormalShow_1.setText("数据写入异常");
+                                            abnormalShow_2.setText("请重新返回检测!");
                                         }
                                     });
                                     break;

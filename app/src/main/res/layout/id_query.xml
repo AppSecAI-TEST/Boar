@@ -19,21 +19,19 @@
             app:layout_widthPercent="100%w">
 
             <TextView
-                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="380dp"
+                android:layout_marginLeft="455dp"
                 android:text="按公猪ID/批号ID查询"
                 android:textColor="#fff"
                 android:textSize="40dp" />
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="350dp"
+                android:layout_marginLeft="260dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />

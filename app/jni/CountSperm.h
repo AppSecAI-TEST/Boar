@@ -36,7 +36,6 @@
 	*
 	*
 	*
-
 	输出参考：
 	pdTestResult[0] = nTotalSpermNum;//被检测的精子总数
 	pdTestResult[1] = dTotaSpermDensity;//精子密度,亿个/毫升
@@ -45,7 +44,6 @@
 	pdTestResult[4] = dAliveSpermRatio;//精子活率
 	pdTestResult[5] = dActiveSpermRatio;//精子活力
 	pdTestResult[7] = dSLNum;//有效精子数,亿个
-
 *
 * 当前版本：V1.1
 * 作者：He Yi
