@@ -4,6 +4,7 @@ package com.join.utils;
 import android.util.Log;
 
 import com.join.camera.IPictureCallback3;
+import com.join.camera.IPictureCallback4;
 
 import java.io.File;
 
@@ -12,13 +13,19 @@ import java.io.File;
  */
 
 public class Arithmetic {
-
+    private String TAG = "jjjArithmetic";
     private IPictureCallback3 iPictureCallback3;
+    private IPictureCallback4 iPictureCallback4;
     private int returnState;
 
     public void setiPictureCallback3(IPictureCallback3 iPictureCallback3) {
         this.iPictureCallback3 = iPictureCallback3;
     }
+
+    public void setiPictureCallback4(IPictureCallback4 iPictureCallback4) {
+        this.iPictureCallback4 = iPictureCallback4;
+    }
+
     public void getArithmetic() {
         new Thread(new Runnable() {
             @Override
@@ -28,13 +35,15 @@ public class Arithmetic {
                 for (int i = 0; i < 22; i++) {
                     pdTestResult[i] = 0;
                 }
-                String resultImage = "/storage/emulated/0/hitester/certify/ResultImgs";
+                String resultImage = "/storage/emulated/0/CreateCare/ResultImgs";
+                String pictures = iPictureCallback4.photoPrepared4();
                 File file = new File(resultImage);
                 if (!file.exists()) {
                     file.mkdir();
                 }
-                returnState = countSperm("/storage/emulated/0/hitester/certify/", "/storage/emulated/0/hitester/certify/ResultImgs/", tem, pdTestResult);
-                iPictureCallback3.photoPrepared3(pdTestResult,returnState);
+                returnState = countSperm(pictures + "/", resultImage + "/", tem, pdTestResult);
+                Log.e(TAG, "run: " + returnState);
+                iPictureCallback3.photoPrepared3(pdTestResult, returnState);
                 Log.e("jjjj", "精子总数" + pdTestResult[0]);//被检测的精子总数
                 Log.e("jjjj", "密度" + pdTestResult[1]);//精子密度
                 Log.e("jjjj", "检测的活动的精子数" + pdTestResult[2]);//被检测的活动的精子数
@@ -47,8 +56,10 @@ public class Arithmetic {
             }
         }).start();
     }
+
     static {
         System.loadLibrary("mainSperm");
     }
+
     private native static int countSperm(String pictures, String path, double[] tem, double[] arryout);
 }

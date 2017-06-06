@@ -25,7 +25,7 @@ public class CertifyCameraManager implements ErrorCallback {
     private SurfaceHolder holder;
     private Context context;
     private IPictureCallback2 iPictureCallback2;
-
+    private String path;
 
     /**
      * 拿到相机
@@ -148,6 +148,7 @@ public class CertifyCameraManager implements ErrorCallback {
     /**
      * 拍照之后返回的字节
      */
+
     private Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
 
         private int i;
@@ -157,7 +158,9 @@ public class CertifyCameraManager implements ErrorCallback {
             String format = String.format("%03d", i++);
             stopPreview();
             String photo_name = "";
-            String path = Settings.get().getCertifyPath();
+            if (path == null) {
+                path = Settings.get().getCertifyPath();
+            }
             Log.e(TAG, "onPictureTaken: " + path);
             File file = new File(path);
             if (!file.exists()) {
@@ -200,7 +203,7 @@ public class CertifyCameraManager implements ErrorCallback {
                     Message message = Message.obtain();
                     message.what = MsgCons.CAMERA_PHOTO_PREPARED;
                     message.obj = photo_name;*/
-                    iPictureCallback2.photoPrepared(i);
+                    iPictureCallback2.photoPrepared(i, path);
 
                 }
 

@@ -3,6 +3,8 @@ package com.join.camera;
 import android.os.Environment;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 设置路径 去的路径
@@ -14,7 +16,7 @@ public class Settings {
     }
 
     private String storagePath = Environment.getExternalStorageDirectory().getAbsolutePath().concat(File.separator)
-            .concat("hitester"); // /ExternalStorageDirectory/appName
+            .concat("CreateCare"); // /ExternalStorageDirectory/appName
 
     static Settings instance;
 
@@ -34,7 +36,9 @@ public class Settings {
     }
 
     public String getCertifyPath() {
-        return storagePath + File.separator + "certify";
+        SimpleDateFormat stime = new SimpleDateFormat("yy-MM-dd hh:mm");
+        String timeFormat = stime.format(new Date());
+        return storagePath + File.separator + timeFormat;
     }
 
 
