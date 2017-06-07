@@ -50,7 +50,7 @@ public class CertifyCameraManager implements ErrorCallback {
         try {
             camera = findCamera();
             if (camera != null) {
-                initCamera(1600, 1200);
+                initCamera(1920, 1080);
             }
         } catch (Exception e) {
             camera = null;

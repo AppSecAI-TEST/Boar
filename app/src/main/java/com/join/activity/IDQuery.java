@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.join.R;
+import com.join.UDisk.SaveToExcel;
 import com.join.adapter.IDQueryAdapter;
 import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
@@ -25,6 +26,7 @@ import com.join.utils.CustomToast;
 import com.join.utils.Keyboard1;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +116,12 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
                     String vitality = storage.getVitality();
                     String motilityRate = storage.getMotilityRate();
                     String result = storage.getResult();
+                    String resultImage = "/storage/emulated/0/CreateCare" + File.separator + "demo.xls";
+                    SaveToExcel saveToExcel = new SaveToExcel(resultImage);
+                    saveToExcel.writeToExcel(new String[]{date, time, operator, "jjj", "jjj", date,
+                            time, operator, "jjj", "jjj", date, time, operator, "jjj", "jjj", date});
+
+
                     com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(id, date, time, type, density, vitality, motilityRate, operator, result, "查看");
                     list.add(idQuery);
 

@@ -99,7 +99,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     public void photoPrepared(int tag, final String path) {
         handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
-        if (tag == 14) {
+        if (tag == 20) {
             arithmetic.setiPictureCallback4(new IPictureCallback4() {
                 @Override
                 public String photoPrepared4() {
@@ -192,7 +192,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case JUMP_FRAGMENT:
-                    if (count == 15) {
+                    if (count == 21) {
                         isPrepared = true;
                         removeMessages(MsgCons.CAMERA_TIMEOUT);
                         mCameraManager.delCallback();
