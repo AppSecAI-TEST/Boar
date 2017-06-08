@@ -11,11 +11,14 @@ public class DaoUtil {
     /**
      * 精液原液
      */
-    public static void sD2(Storage storage, String number, String operator, String capacity, String date, String time, String copies, String add
-            , String density, String vitality, String motilityRate, String smell, String color, String type, String result) {
+    public static void sD2(Storage storage, String number, String operator, String milliliter, String date, String time, String checkoutDate,
+                           String checkoutTime, String copies, String add, String density, String vitality, String motilityRate,
+                           String smell, String color, String type, String result) {
+        storage.setCheckoutDate(checkoutDate);
+        storage.setCheckoutTime(checkoutTime);
         storage.setNumber(number);
         storage.setOperator(operator);
-        storage.setCapacity(capacity);
+        storage.setMilliliter(milliliter);
         storage.setDate(date);
         storage.setTime(time);
         storage.setCopies(copies);
@@ -27,19 +30,21 @@ public class DaoUtil {
         storage.setColor(color);
         storage.setType(type);
         storage.setResult(result);
+
+
         OperationDao.addData(storage);
     }
 
     /**
      * 稀释精液
      */
-    public static void sD22(Storage storage, String density, String motilityRate, String date, String time, String smell,
+    public static void sD22(Storage storage, String density, String motilityRate, String checkoutDate, String checkoutTime, String smell,
                             String color, String vitality, String motileSperms, String capacity, String operator, String number, String type, String result) {
         storage.setNumber(number);
         storage.setOperator(operator);
         storage.setCapacity(capacity);
-        storage.setDate(date);
-        storage.setTime(time);
+        storage.setCheckoutDate(checkoutDate);
+        storage.setCheckoutTime(checkoutTime);
         storage.setDensity(density);
         storage.setVitality(vitality);
         storage.setMotilityRate(motilityRate);

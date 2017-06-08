@@ -105,7 +105,7 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         String dateC = stosteDetectionData[2];
         String timeC = stosteDetectionData[3];
         String number = stosteDetectionData[4];
-        String milliliter = stosteDetectionData[5];
+        String capacity = stosteDetectionData[5];
 
         String operator = IDSelect.id_manage;
         String type = "稀释精液";
@@ -116,8 +116,8 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         double vitality = arithmetic[5];
         double motilityRate = arithmetic[4];
         double motileSperms = arithmetic[7];
-        int length = milliliter.length();
-        String milliliterSubstring = milliliter.substring(0, length - 2);
+        int length = capacity.length();
+        String milliliterSubstring = capacity.substring(0, length - 2);
         Integer milliliterInt = Integer.valueOf(milliliterSubstring);
         if (milliliterInt >= 80 && vitality >= 0.6 && motileSperms >= 30) {
             result = "合格";
@@ -139,12 +139,12 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         result1.setSmell(smell);
         result1.setBatch(number);
         result1.setOperator(operator);
-        result1.setCapacity(milliliter);
+        result1.setCapacity(capacity);
         result1.setMotileSperms(motileSpermsS);
         //保存到数据库
         Storage storage = new Storage();
         DaoUtil.sD22(storage, densityS, motilityRateS, dateC,
-                timeC, smell, color, vitalityS, motileSpermsS, milliliter, operator, number, type, result);
+                timeC, smell, color, vitalityS, motileSpermsS, capacity, operator, number, type, result);
 
     }
 

@@ -342,7 +342,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                 Thread.sleep(1500);
                             }
                             if (!boolTag) {
-                                if (state == -1) {
+                   /*             if (state == -1) {
                                     //  animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
@@ -426,10 +426,11 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                }
+                                }*/
                             }
 
-                            if (progress) {
+                          //  if (progress) {
+                            if (true) {
                                 changePercent(i);
                                 if (i == 100) {
                                     Thread.sleep(4000);

@@ -15,8 +15,10 @@ public class Storage {
     private Long id;
     private String color;
     private String smell;
-    private String date;
-    private String time;
+    private String date;          //采精日期
+    private String time;//采精时间
+    private String checkoutDate;//检测日期
+    private String checkoutTime;//检测时间
     private String number; //公猪编号/批号
     private String operator;//操作员
     private String type;  //精液类型
@@ -25,19 +27,23 @@ public class Storage {
     private String motilityRate;//活率
     private String copies;    //分装份数(原液)
     private String add;         //需增加多少稀释精液(原液)
-    private String result;
-    private String capacity; //每剂容量
+    private String result;//结果
+    private String capacity; //每剂容量(稀释)
+    private String milliliter; //采精量(原液)
     private String motileSperms;//有效精子数(稀释)
-    @Generated(hash = 1387764676)
+    @Generated(hash = 590371873)
     public Storage(Long id, String color, String smell, String date, String time,
-            String number, String operator, String type, String density,
-            String vitality, String motilityRate, String copies, String add,
-            String result, String capacity, String motileSperms) {
+            String checkoutDate, String checkoutTime, String number,
+            String operator, String type, String density, String vitality,
+            String motilityRate, String copies, String add, String result,
+            String capacity, String milliliter, String motileSperms) {
         this.id = id;
         this.color = color;
         this.smell = smell;
         this.date = date;
         this.time = time;
+        this.checkoutDate = checkoutDate;
+        this.checkoutTime = checkoutTime;
         this.number = number;
         this.operator = operator;
         this.type = type;
@@ -48,6 +54,7 @@ public class Storage {
         this.add = add;
         this.result = result;
         this.capacity = capacity;
+        this.milliliter = milliliter;
         this.motileSperms = motileSperms;
     }
     @Generated(hash = 2114225574)
@@ -82,6 +89,18 @@ public class Storage {
     }
     public void setTime(String time) {
         this.time = time;
+    }
+    public String getCheckoutDate() {
+        return this.checkoutDate;
+    }
+    public void setCheckoutDate(String checkoutDate) {
+        this.checkoutDate = checkoutDate;
+    }
+    public String getCheckoutTime() {
+        return this.checkoutTime;
+    }
+    public void setCheckoutTime(String checkoutTime) {
+        this.checkoutTime = checkoutTime;
     }
     public String getNumber() {
         return this.number;
@@ -143,15 +162,17 @@ public class Storage {
     public void setCapacity(String capacity) {
         this.capacity = capacity;
     }
+    public String getMilliliter() {
+        return this.milliliter;
+    }
+    public void setMilliliter(String milliliter) {
+        this.milliliter = milliliter;
+    }
     public String getMotileSperms() {
         return this.motileSperms;
     }
     public void setMotileSperms(String motileSperms) {
         this.motileSperms = motileSperms;
     }
-    public void setId(long id) {
-        this.id = id;
-    }
-   
 
 }

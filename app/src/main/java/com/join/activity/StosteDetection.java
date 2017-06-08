@@ -26,7 +26,7 @@ import java.text.SimpleDateFormat;
  */
 
 public class StosteDetection extends Activity implements View.OnClickListener, ServiceConnection {
-    private PercentLinearLayout id_Gong, id_Gong_2, id_Gong_3;
+    private PercentLinearLayout id_Gong, id_Gong_2, id_Gong_3, percent;
     private TextView id_Gong_1, id_ml, time, date;
     private ImageView icon_1;
     private Keyboard keyboard;//自定义键盘
@@ -50,15 +50,15 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                 break;
             case R.id.id_Gong:
                 keyboard = new Keyboard(StosteDetection.this, id_Gong_1, id_ml, time, 1);
-                keyboard.showWindow(id_Gong);
+                keyboard.showWindow(percent);
                 break;
             case R.id.id_Gong_2:
                 keyboard = new Keyboard(StosteDetection.this, id_Gong_1, id_ml, time, 2);
-                keyboard.showWindow(id_Gong);
+                keyboard.showWindow(percent);
                 break;
             case R.id.id_Gong_3:
                 keyboard = new Keyboard(StosteDetection.this, id_Gong_1, id_ml, time, 3);
-                keyboard.showWindow(id_Gong);
+                keyboard.showWindow(percent);
                 break;
 
             case R.id.normal_1:
@@ -146,6 +146,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
 
 
     private void init() {
+        percent = (PercentLinearLayout) findViewById(R.id.percent);
         intent = new Intent();
         title = (TextView) findViewById(R.id.title);
         humidity = (TextView) findViewById(R.id.humidity);

@@ -17,7 +17,6 @@ import jxl.write.WritableWorkbook;
 /**
  * 数据转成Excel
  */
-
 public class SaveToExcel {
     private WritableWorkbook wwb;//工作手册(1)
     private String excelPath;
@@ -29,7 +28,9 @@ public class SaveToExcel {
         createExcel(excelFile);
     }
 
-    // 创建excel表.
+    /**
+     * 创建excel表.
+     */
     public void createExcel(File file) {
         WritableSheet ws = null; //工作单(2)
         try {
@@ -113,7 +114,9 @@ public class SaveToExcel {
         }
     }
 
-    //增加数据
+    /**
+     * 增加数据
+     */
     public void writeToExcel(String[] args) {
 
         try {

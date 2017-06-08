@@ -10,20 +10,30 @@ import com.join.BR;
  */
 
 public class StosteDetectionDiluentE extends BaseObservable {
-    private String id_Gong_1;
-    private String id_ml;
+    private String number;
+    private String capacity;
     private String date;
     private String time;
     private String humidity;
 
     @Bindable
-    public String getHumidity() {
-        return humidity;
+    public String getNumber() {
+        return number;
     }
 
-    public void setHumidity(String humidity) {
-        this.humidity = humidity;
-        notifyPropertyChanged(BR.humidity);
+    public void setNumber(String number) {
+        this.number = number;
+        notifyPropertyChanged(BR.number);
+    }
+
+    @Bindable
+    public String getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(String capacity) {
+        this.capacity = capacity;
+        notifyPropertyChanged(BR.capacity);
     }
 
     @Bindable
@@ -47,22 +57,12 @@ public class StosteDetectionDiluentE extends BaseObservable {
     }
 
     @Bindable
-    public String getId_Gong_1() {
-        return id_Gong_1;
+    public String getHumidity() {
+        return humidity;
     }
 
-    public void setId_Gong_1(String id_Gong_1) {
-        this.id_Gong_1 = id_Gong_1;
-        notifyPropertyChanged(BR.id_Gong_1);
-    }
-
-    @Bindable
-    public String getId_ml() {
-        return id_ml;
-    }
-
-    public void setId_ml(String id_ml) {
-        this.id_ml = id_ml;
-        notifyPropertyChanged(BR.id_ml);
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
+        notifyPropertyChanged(BR.humidity);
     }
 }

@@ -6,6 +6,7 @@
 
 
     <com.zhy.android.percent.support.PercentLinearLayout
+        android:id="@+id/percent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -296,6 +297,7 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
     </com.zhy.android.percent.support.PercentLinearLayout>
+
     <ImageView
         android:id="@+id/icon_1"
         android:layout_width="wrap_content"

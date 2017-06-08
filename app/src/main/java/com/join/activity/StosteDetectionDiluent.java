@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat;
 
 public class StosteDetectionDiluent extends Activity implements View.OnClickListener, ServiceConnection {
     private Keyboard2 keyboard;
-    private PercentLinearLayout linearLayout;
+    private PercentLinearLayout percent;
     private StosteDetectionDiluentE diluentE;
     private Button normal_1, abnormal_1, normal_2, abnormal_2, start;
     private Humidity.HumidityBinder humidityBinder;
@@ -44,7 +44,6 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
         super.onCreate(savedInstanceState);
         StosteDetectionDiluentBinding binding = DataBindingUtil.setContentView(this, R.layout.stoste_detection_diluent);
 
-        linearLayout = (PercentLinearLayout) findViewById(R.id.id_Gong);
         diluentE = new StosteDetectionDiluentE();
         binding.setDiluent(this);
         binding.setDiluentE(diluentE);
@@ -52,7 +51,7 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
     }
 
     private void init() {
-
+        percent = (PercentLinearLayout) findViewById(R.id.percent);
         normal_1 = (Button) findViewById(R.id.normal_1);
         normal_1.setOnClickListener(this);
 
@@ -79,12 +78,12 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
 
     public void showDialog(View view) {
         keyboard = new Keyboard2(StosteDetectionDiluent.this, diluentE, 1);
-        keyboard.showWindow(linearLayout);
+        keyboard.showWindow(percent);
     }
 
     public void showDialog2(View view) {
         keyboard = new Keyboard2(StosteDetectionDiluent.this, diluentE, 2);
-        keyboard.showWindow(linearLayout);
+        keyboard.showWindow(percent);
     }
 
     public void startActivityC(View view) {
@@ -146,7 +145,7 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
                     String dateC;
                     String timeC;
                     String numberGong;
-                    String milliliter;
+                    String capacity;
                     if (normal_1_tab) {
                         color = "异常";
                     } else {
@@ -161,9 +160,9 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
                     }
                     dateC = diluentE.getDate();
                     timeC = diluentE.getTime();
-                    numberGong = diluentE.getId_Gong_1();
-                    milliliter = diluentE.getId_ml();
-                    String[] dataArray = new String[]{color, smell, dateC, timeC, numberGong, milliliter};
+                    numberGong = diluentE.getNumber();
+                    capacity = diluentE.getCapacity();
+                    String[] dataArray = new String[]{color, smell, dateC, timeC, numberGong, capacity};
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
                     intent.putExtras(bundle);

@@ -6,6 +6,7 @@
 
 
     <com.zhy.android.percent.support.PercentLinearLayout
+        android:id="@+id/percent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -72,11 +73,11 @@
                     app:layout_widthPercent="97%w">
 
                     <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_marginTop="10dp"
                         android:id="@+id/ll_Gong"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_marginLeft="33dp"
+                        android:layout_marginTop="10dp"
                         android:background="@drawable/background_white_3"
                         android:orientation="horizontal"
                         app:layout_heightPercent="90%h"

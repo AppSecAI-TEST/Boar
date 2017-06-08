@@ -16,7 +16,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.join.R;
-import com.join.UDisk.SaveToExcel;
 import com.join.adapter.IDQueryAdapter;
 import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
@@ -26,7 +25,6 @@ import com.join.utils.CustomToast;
 import com.join.utils.Keyboard1;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +40,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     private ImageView icon_1;
     private Button input, bu_return;
     private PercentLinearLayout ll_Gong;
+    private PercentLinearLayout percent;
     private Keyboard1 keyboard1;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
@@ -83,6 +82,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
 
 
     private void init() {
+        percent = (PercentLinearLayout) findViewById(R.id.percent);
         intent = new Intent();
         humidity = (TextView) findViewById(R.id.humidity);
         id_Gong_1 = (TextView) findViewById(R.id.id_Gong_1);
@@ -95,37 +95,37 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         bu_return = (Button) findViewById(R.id.bu_return);
         bu_return.setOnClickListener(this);
         listView = (ListView) findViewById(R.id.lv_content);
+
+
         keyboard1 = new Keyboard1(IDQuery.this, id_Gong_1);
 
         keyboard1.setIdQueryKeyboard1(new IDQueryKeyboard1() {
             @Override
             public void start() {
                 list = new ArrayList<>();
-                String s = id_Gong_1.getText().toString();
-                List<Storage> storages = OperationDao.queryLove(s);
-                int size = storages.size();
-                Log.e(TAG, "start:" + size);
-                for (int i = 0; i < size; i++) {
-                    Storage storage = storages.get(i);
-                    String date = storage.getDate();
-                    String time = storage.getTime();
-                    String operator = storage.getOperator();
-                    Long id = storage.getId();
-                    String type = storage.getType();
-                    String density = storage.getDensity();
-                    String vitality = storage.getVitality();
-                    String motilityRate = storage.getMotilityRate();
-                    String result = storage.getResult();
-                    String resultImage = "/storage/emulated/0/CreateCare" + File.separator + "demo.xls";
-                    SaveToExcel saveToExcel = new SaveToExcel(resultImage);
-                    saveToExcel.writeToExcel(new String[]{date, time, operator, "jjj", "jjj", date,
-                            time, operator, "jjj", "jjj", date, time, operator, "jjj", "jjj", date});
+
+                        String s = id_Gong_1.getText().toString();
+                        List<Storage> storages = OperationDao.queryLove(s);
+                        int size = storages.size();
+                        Log.e(TAG, "start:" + size);
+                        for (int i = 0; i < size; i++) {
+                            Storage storage = storages.get(i);
+                            String date = storage.getDate();
+                            String time = storage.getTime();
+                            String operator = storage.getOperator();
+                            Long id = storage.getId();
+                            String type = storage.getType();
+                            String density = storage.getDensity();
+                            String vitality = storage.getVitality();
+                            String motilityRate = storage.getMotilityRate();
+                            String result = storage.getResult();
+
+                            com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(id, date, time, type, density, vitality, motilityRate, operator, result, "查看");
+                            list.add(idQuery);
+                        }
 
 
-                    com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(id, date, time, type, density, vitality, motilityRate, operator, result, "查看");
-                    list.add(idQuery);
 
-                }
                 idQueryAdapter = new IDQueryAdapter(IDQuery.this, list);
                 listView.setAdapter(idQueryAdapter);
             }
@@ -149,7 +149,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
                 startActivity(intent);
                 break;
             case R.id.ll_Gong:
-                keyboard1.showWindow(ll_Gong);
+                keyboard1.showWindow(percent);
                 break;
         }
     }

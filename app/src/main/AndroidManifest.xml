@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
 
         <!--欢迎界面-->
-        <activity android:name=".activity.Greet">
+        <activity android:name=".activity.HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -58,7 +58,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <!--查询菜单-->
+        <activity android:name=".activity.QueryFunction">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.QueryFunction"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!--开始检测-->
         <activity android:name=".activity.StosteDetection1">
             <intent-filter>

@@ -15,7 +15,6 @@ import com.github.mjdev.libaums.fs.UsbFile;
 import com.github.mjdev.libaums.fs.UsbFileOutputStream;
 import com.github.mjdev.libaums.partition.Partition;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
 
@@ -25,16 +24,18 @@ import java.io.OutputStream;
 
 public class UDiskToSD {
     private static final String ACTION_USB_PERMISSION = "com.android.example.USB_PERMISSION";
-    private String TAG = "jjjMainActivity";
+    private String TAG = "jjjUDiskToSD";
     private UsbMassStorageDevice[] storageDevices;
     private UsbFile cFolder;//当前U盘的根目录
     private Context context;
+    private String inputPath;
 
-    public UDiskToSD(Context context) {
+    public UDiskToSD(Context context, String inputPath) {
         this.context = context;
+        this.inputPath = inputPath;
         registerReceiver();
         redDeviceList();
-        readFile(cFolder);
+        readFile(cFolder, inputPath);
     }
 
     /**
@@ -61,8 +62,8 @@ public class UDiskToSD {
                     Log.e(TAG, "onReceive: " + "接收到自定义广播");
                     UsbDevice usbDevice = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
                     if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {  //允许权限申请
-                        if (usbDevice != null) {  //Do something
 
+                        if (usbDevice != null) {
                             Log.e(TAG, "onReceive: " + "用户已授权，可以进行读取操作");
                             readDevice(getUsbMass(usbDevice));
                         } else {
@@ -76,10 +77,9 @@ public class UDiskToSD {
                     break;
                 case UsbManager.ACTION_USB_DEVICE_ATTACHED://接收到存储设备插入广播
                     UsbDevice device_add = intent.getParcelableExtra(UsbManager.EXTRA_DEVICE);
+
                     if (device_add != null) {
-
                         Log.e(TAG, "onReceive: " + "接收到存储设备插入广播，尝试读取");
-
                         redDeviceList();
                     }
                     break;
@@ -93,6 +93,7 @@ public class UDiskToSD {
             }
         }
     };
+
     /**
      * 得到U盘的根目录
      *
@@ -124,6 +125,7 @@ public class UDiskToSD {
             Log.e(TAG, "readDevice: " + "读取失败，异常：" + e.getMessage());
         }
     }
+
     /**
      * 得到一台机器有几个USB设备   并把设备传入readDevice去得到根目录
      */
@@ -151,6 +153,7 @@ public class UDiskToSD {
 
             Log.e(TAG, "redDeviceList: " + "未检测到有任何存储设备插入");
     }
+
     /**
      * 得到U盘设备
      *
@@ -166,39 +169,32 @@ public class UDiskToSD {
         return null;
     }
 
+    /**
+     * 把手机文件写入U盘
+     *
+     * @param uFile
+     */
+    public void readFile(UsbFile uFile, String inputPath) {
 
-    private void readFile(final UsbFile uFile) {
+        try {
+            UsbFile directory = uFile.createFile("demo.xls");
+            // FileInputStream fis = new FileInputStream("/storage/emulated/0/CreateCare" + File.separator + "demo.xls");//读取选择的文件的
+            FileInputStream fis = new FileInputStream(inputPath);//读取选择的文件的
+            OutputStream os1 = new UsbFileOutputStream(directory);//写入U盘的输出流
 
-        new Thread(new Runnable() {//读取文件
-            @Override
-            public void run() {
-                try {
-                    UsbFile directory = uFile.createFile("demo.xls");
-                    FileInputStream fis = new FileInputStream("/storage/emulated/0/CreateCare" + File.separator + "demo.xls");//读取选择的文件的
-                    OutputStream os1 = new UsbFileOutputStream(directory);
-
-                    int bytesRead = 0;
-                    byte[] buffer = new byte[1024];
-                    while ((bytesRead = fis.read(buffer)) != -1) {
-                        os1.write(buffer, 0, bytesRead);
-                    }
-                    os1.flush();
-                    os1.close();
-                    fis.close();
-
-                    /**
-                     *  写入文件到U盘同理 要获取到UsbFileOutputStream后 通过
-                     *  f.createNewFile();调用 在U盘中创建文件 然后获取os后
-                     *  可以通过输出流将需要写入的文件写到流中即可完成写入操作
-                     */
-
-                } catch (final Exception e) {
-                    e.printStackTrace();
-                    Log.e(TAG, "run: "+"yichang" );
-                }
+            int bytesRead = 0;
+            byte[] buffer = new byte[1024];
+            while ((bytesRead = fis.read(buffer)) != -1) {
+                os1.write(buffer, 0, bytesRead);
             }
-        }).start();
+            os1.flush();
+            os1.close();
+            fis.close();
 
+        } catch (final Exception e) {
+            e.printStackTrace();
+            Log.e(TAG, "run: " + "写入U盘发生异常");
+        }
     }
 
 }

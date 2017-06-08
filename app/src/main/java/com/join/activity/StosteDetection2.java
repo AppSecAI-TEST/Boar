@@ -20,6 +20,7 @@ import com.join.service.Humidity;
 import com.join.utils.CustomToast;
 import com.join.utils.DaoUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import static com.join.R.id.dateC;
@@ -179,9 +180,18 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         milliliter_1.setText(milliliter);
         operator_1.setText(operator);
         result_1.setText("结果: " + result);
+
+
+        SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
+        String checkoutDate = sdate.format(new java.util.Date());
+
+
+        SimpleDateFormat stime = new SimpleDateFormat("hh:mm");
+        String checkoutTime = stime.format(new java.util.Date());
+
         //保存到数据库
         Storage storage = new Storage();
-        DaoUtil.sD2(storage, number, operator, milliliter, dateC, timeC, copiesS, addS, densityS, vitalityS, motilityRateS, smell, color, type, result);
+        DaoUtil.sD2(storage, number, operator, milliliter, dateC, timeC, checkoutDate, checkoutTime, copiesS, addS, densityS, vitalityS, motilityRateS, smell, color, type, result);
 
 
     }

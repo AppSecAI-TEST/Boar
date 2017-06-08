@@ -1,32 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.android.percent.support.PercentLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/percent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     android:orientation="vertical">
 
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/background_white_3"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/background_white_4"
         android:orientation="vertical"
         app:layout_heightPercent="85%h"
         app:layout_widthPercent="60%w">
-
         <!--/第二层-->
-
         <com.zhy.android.percent.support.PercentLinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:orientation="vertical"
-            app:layout_heightPercent="90%h"
+            app:layout_heightPercent="93%h"
             app:layout_widthPercent="82%w">
             <!--1-->
-
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -78,26 +77,23 @@
                     app:layout_widthPercent="35%w" />
                 <!--1-->
             </com.zhy.android.percent.support.PercentLinearLayout>
-
-
             <!--2-->
-
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="28dp"
                 android:orientation="horizontal"
-                app:layout_heightPercent="18%h"
+                app:layout_heightPercent="17.5%h"
                 app:layout_widthPercent="100%w">
 
                 <Button
                     android:id="@+id/bu_1"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="1"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
 
@@ -106,10 +102,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="2"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
 
@@ -118,34 +114,32 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="3"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
                 <!--2-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
-
             <!--3-->
-
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                app:layout_heightPercent="18%h"
+                app:layout_heightPercent="17.5%h"
                 app:layout_widthPercent="100%w">
 
                 <Button
                     android:id="@+id/bu_4"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="4"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
 
@@ -154,10 +148,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="5"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
 
@@ -166,15 +160,14 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="6"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
                 <!--3-->
             </com.zhy.android.percent.support.PercentLinearLayout>
-
 
             <!--4-->
             <com.zhy.android.percent.support.PercentLinearLayout
@@ -182,17 +175,17 @@
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                app:layout_heightPercent="18%h"
+                app:layout_heightPercent="17.5%h"
                 app:layout_widthPercent="100%w">
 
                 <Button
                     android:id="@+id/bu_7"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="7"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
 
@@ -201,10 +194,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="8"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
 
@@ -213,31 +206,29 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="9"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
                 <!--4-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
-
             <!--5-->
-
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                app:layout_heightPercent="18%h"
+                app:layout_heightPercent="17.5%h"
                 app:layout_widthPercent="100%w">
 
                 <Button
                     android:id="@+id/delete"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="删除"
                     android:textSize="30dp"
@@ -249,10 +240,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="0"
-                    android:textSize="30dp"
+                    android:textSize="35dp"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="30%w" />
 
@@ -261,7 +252,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_3"
+                    android:background="@drawable/background_white_5"
                     android:gravity="center"
                     android:text="完成"
                     android:textSize="30dp"
@@ -270,10 +261,8 @@
                 <!--5-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
-
             <!--第二层-->
         </com.zhy.android.percent.support.PercentLinearLayout>
-
 
     </com.zhy.android.percent.support.PercentLinearLayout>
 </com.zhy.android.percent.support.PercentLinearLayout>

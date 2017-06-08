@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="530dp"
-                android:text="系统参数"
+                android:text="数据查询"
                 android:textColor="#fff"
                 android:textSize="40dp" />
 
@@ -74,6 +74,7 @@
                     app:layout_widthPercent="90%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
+                        android:id="@+id/function_1"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
@@ -89,7 +90,7 @@
                             android:background="@drawable/background_green_1"
                             android:orientation="horizontal"
                             app:layout_heightPercent="100%h"
-                            app:layout_widthPercent="30%w">
+                            app:layout_widthPercent="27%w">
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -104,18 +105,30 @@
                             android:layout_height="match_parent"
                             android:background="#A9A9A9" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="30dp"
-                            android:text="系统时间"
-                            android:textColor="#078d82"
-                            android:textSize="35dp" />
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/a_028"
+                            app:layout_heightPercent="70%h"
+                            app:layout_widthPercent="65%w">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="45dp"
+                                android:text="按时间查询"
+                                android:textColor="#078d82"
+                                android:textSize="30dp" />
+                        </com.zhy.android.percent.support.PercentLinearLayout>
                         <!--2.1-->
                     </com.zhy.android.percent.support.PercentLinearLayout>
 
                     <com.zhy.android.percent.support.PercentLinearLayout
+                        android:id="@+id/function_2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
@@ -132,14 +145,14 @@
                             android:background="@drawable/background_green_1"
                             android:orientation="horizontal"
                             app:layout_heightPercent="100%h"
-                            app:layout_widthPercent="30%w">
+                            app:layout_widthPercent="27%w">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="32dp"
-                                android:src="@drawable/a_008" />
+                                android:src="@drawable/a_024" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
 
                         <View
@@ -147,14 +160,26 @@
                             android:layout_height="match_parent"
                             android:background="#A9A9A9" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="30dp"
-                            android:text="WIFI设置"
-                            android:textColor="#078d82"
-                            android:textSize="35dp" />
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/a_028"
+                            app:layout_heightPercent="70%h"
+                            app:layout_widthPercent="65%w">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="30dp"
+                                android:text="公猪ID/批号查询"
+                                android:textColor="#078d82"
+                                android:textSize="30dp" />
+                        </com.zhy.android.percent.support.PercentLinearLayout>
+
+
                         <!--2.1-->
                     </com.zhy.android.percent.support.PercentLinearLayout>
                     <!--2.1-->
@@ -170,6 +195,7 @@
                     app:layout_widthPercent="90%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
+                        android:id="@+id/function_3"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
@@ -185,14 +211,14 @@
                             android:background="@drawable/background_green_1"
                             android:orientation="horizontal"
                             app:layout_heightPercent="100%h"
-                            app:layout_widthPercent="30%w">
+                            app:layout_widthPercent="27%w">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginLeft="42dp"
-                                android:src="@drawable/a_007" />
+                                android:layout_marginLeft="32dp"
+                                android:src="@drawable/a_026" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
 
                         <View
@@ -200,19 +226,31 @@
                             android:layout_height="match_parent"
                             android:background="#A9A9A9" />
 
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="30dp"
-                            android:text="管理员设置"
-                            android:textColor="#078d82"
-                            android:textSize="35dp" />
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/a_028"
+                            app:layout_heightPercent="70%h"
+                            app:layout_widthPercent="65%w">
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="30dp"
+                                android:text="异常结果查询"
+                                android:textColor="#078d82"
+                                android:textSize="30dp" />
+                        </com.zhy.android.percent.support.PercentLinearLayout>
+
                         <!--2.1-->
                     </com.zhy.android.percent.support.PercentLinearLayout>
 
                     <com.zhy.android.percent.support.PercentLinearLayout
+                        android:id="@+id/function_4"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
@@ -229,14 +267,14 @@
                             android:background="@drawable/background_green_1"
                             android:orientation="horizontal"
                             app:layout_heightPercent="100%h"
-                            app:layout_widthPercent="30%w">
+                            app:layout_widthPercent="27%w">
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="37dp"
-                                android:src="@drawable/a_005" />
+                                android:src="@drawable/a_027" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
 
                         <View
@@ -244,27 +282,38 @@
                             android:layout_height="match_parent"
                             android:background="#A9A9A9" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <com.zhy.android.percent.support.PercentLinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="55dp"
-                            android:text="关  于"
-                            android:textColor="#078d82"
-                            android:textSize="35dp" />
+                            android:layout_marginLeft="15dp"
+                            android:background="@drawable/a_028"
+                            app:layout_heightPercent="70%h"
+                            app:layout_widthPercent="65%w">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="35dp"
+                                android:text="按检验员ID查询"
+                                android:textColor="#078d82"
+                                android:textSize="30dp" />
+                        </com.zhy.android.percent.support.PercentLinearLayout>
+
                         <!--2.1-->
                     </com.zhy.android.percent.support.PercentLinearLayout>
                     <!--2.1-->
                 </com.zhy.android.percent.support.PercentLinearLayout>
 
                 <Button
-                    android:id="@+id/bu_return"
+                    android:id="@+id/bu_copy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="65dp"
                     android:background="@drawable/a_017"
-                    android:text="返回"
+                    android:text="数据备份"
                     android:textColor="#fff"
                     android:textSize="35dp" />
                 <!--2.1-->
@@ -276,11 +325,10 @@
     </com.zhy.android.percent.support.PercentLinearLayout>
 
     <ImageView
-        android:id="@+id/icon_1"
+        android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="18dp"
         android:src="@drawable/a_000" />
 </com.zhy.android.percent.support.PercentFrameLayout>
-

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.join.R;
 import com.join.interface_callback.IDQueryKeyboard1;
+import com.zhy.android.percent.support.PercentLinearLayout;
 
 
 public class Keyboard1 implements View.OnClickListener {
@@ -70,10 +71,12 @@ public class Keyboard1 implements View.OnClickListener {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
             view = layoutInflater.inflate(R.layout.keyboard, null);
+            PercentLinearLayout pl = (PercentLinearLayout) view.findViewById(R.id.percent);
+            pl.getBackground().setAlpha(180);
             init();
 
             // 创建一个PopuWidow对象 设置宽,高,
-            popupWindow = new PopupWindow(view, 1200, 760);
+            popupWindow = new PopupWindow(view, 1280, 752);
         }
         popupWindow.setFocusable(false); // 获取焦点
         popupWindow.setTouchable(true); // 设置popupwindow可点击
@@ -85,9 +88,10 @@ public class Keyboard1 implements View.OnClickListener {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 
         int xPos = windowManager.getDefaultDisplay().getWidth();
-        Log.i("coder", "xPos:" + xPos);
+        int height = windowManager.getDefaultDisplay().getHeight();
+        Log.i("coder", "xPos:" + xPos+"\n"+height);
         //以parent 为开始的x,y轴
-        popupWindow.showAsDropDown(parent, -170, -240);
+        popupWindow.showAsDropDown(parent,-xPos,-height);
 
     }
 

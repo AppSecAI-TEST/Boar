@@ -8,44 +8,41 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.join.R;
+import com.join.UDisk.SaveToExcelAndSD;
 import com.join.service.Humidity;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
+import java.io.File;
+
 /**
- * Created by join on 2017/5/11.
+ *
  */
 
-public class Function extends Activity implements View.OnClickListener, ServiceConnection {
+public class QueryFunction extends Activity implements View.OnClickListener, ServiceConnection {
     private PercentLinearLayout function_1, function_2, function_3, function_4;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
     private Intent intent;
+    private Button bu_copy;
+    private ImageView icon;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.function);
-        initView();
+        setContentView(R.layout.query_function);
+        init();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Intent intentHumidity = new Intent(this, Humidity.class);
-        bindService(intentHumidity, this, BIND_AUTO_CREATE);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        unbindService(this);
-    }
-
-    private void initView() {
-        humidity = (TextView) findViewById(R.id.humidity);
+    private void init() {
+        intent = new Intent();
+        icon = (ImageView) findViewById(R.id.icon);
+        bu_copy = (Button) findViewById(R.id.bu_copy);
+        bu_copy.setOnClickListener(this);
         function_1 = (PercentLinearLayout) findViewById(R.id.function_1);
         function_1.setOnClickListener(this);
         function_2 = (PercentLinearLayout) findViewById(R.id.function_2);
@@ -54,7 +51,8 @@ public class Function extends Activity implements View.OnClickListener, ServiceC
         function_3.setOnClickListener(this);
         function_4 = (PercentLinearLayout) findViewById(R.id.function_4);
         function_4.setOnClickListener(this);
-        intent = new Intent();
+        humidity = (TextView) findViewById(R.id.humidity);
+
     }
 
     @Override
@@ -62,22 +60,24 @@ public class Function extends Activity implements View.OnClickListener, ServiceC
         switch (v.getId()) {
             case R.id.function_1:
 
-                intent.setAction("com.join.stostedetection");
-                startActivity(intent);
                 break;
             case R.id.function_2:
-
-                intent.setAction("com.join.StosteDetectionDiluent");
+                intent.setAction("com.join.IDQuery");
                 startActivity(intent);
                 break;
             case R.id.function_3:
 
-                intent.setAction("com.join.QueryFunction");
-                startActivity(intent);
                 break;
             case R.id.function_4:
-                intent.setAction("com.join.SystemSet");
+
+                break;
+            case R.id.icon:
+                intent.setAction("com.join.function");
                 startActivity(intent);
+                break;
+            case R.id.bu_copy:
+                SaveToExcelAndSD saveToExcelAndSD = new SaveToExcelAndSD(this);
+                saveToExcelAndSD.saveToExcelAndSD("/storage/emulated/0/CreateCare" + File.separator + "demo.xls");
                 break;
         }
     }
@@ -103,5 +103,18 @@ public class Function extends Activity implements View.OnClickListener, ServiceC
     @Override
     public void onServiceDisconnected(ComponentName name) {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
     }
 }
