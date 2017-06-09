@@ -35,21 +35,21 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     private ListView listView;
     private IDQueryAdapter idQueryAdapter;
     private ImageView icon_1;
-    private Button input, bu_return;
+    private Button bu_return;
     private PercentLinearLayout ll_Gong;
-    private Keyboard1 keyboard1;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
     private List<com.join.entity.IDQuery> list;
     private Intent intent;
     private String numberTag;
+    private TextView get_data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.id_query);
         numberTag = getIntent().getStringExtra("KeyboardIDQueryData");
-        Log.e(TAG, "onCreate: "+numberTag);
+        Log.e(TAG, "onCreate: " + numberTag);
         init();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,17 +83,16 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     private void init() {
 
         intent = new Intent();
+        get_data = (TextView) findViewById(R.id.get_data);
         humidity = (TextView) findViewById(R.id.humidity);
         ll_Gong = (PercentLinearLayout) findViewById(R.id.ll_Gong);
         ll_Gong.setOnClickListener(this);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(this);
-        input = (Button) findViewById(R.id.input);
-        input.setOnClickListener(this);
         bu_return = (Button) findViewById(R.id.bu_return);
         bu_return.setOnClickListener(this);
         listView = (ListView) findViewById(R.id.lv_content);
-
+        get_data.setText(numberTag);
 
         list = new ArrayList<>();
         List<Storage> storages = OperationDao.queryLove(numberTag);

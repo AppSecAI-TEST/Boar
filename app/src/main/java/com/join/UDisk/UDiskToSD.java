@@ -14,9 +14,12 @@ import com.github.mjdev.libaums.fs.FileSystem;
 import com.github.mjdev.libaums.fs.UsbFile;
 import com.github.mjdev.libaums.fs.UsbFileOutputStream;
 import com.github.mjdev.libaums.partition.Partition;
+import com.join.callback.MonitorUDiskCallback;
 
 import java.io.FileInputStream;
 import java.io.OutputStream;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by join on 2017/6/7.
@@ -28,21 +31,33 @@ public class UDiskToSD {
     private UsbMassStorageDevice[] storageDevices;
     private UsbFile cFolder;//当前U盘的根目录
     private Context context;
-    private String inputPath;
 
-    public UDiskToSD(Context context, String inputPath) {
+    private MonitorUDiskCallback monitorUDiskCallback;
+
+    public void setMonitorUDiskCallback(MonitorUDiskCallback monitorUDiskCallback) {
+        this.monitorUDiskCallback = monitorUDiskCallback;
+    }
+
+    public UDiskToSD(Context context) {
         this.context = context;
-        this.inputPath = inputPath;
-        registerReceiver();
-        redDeviceList();
-        readFile(cFolder, inputPath);
+        executorService = Executors.newCachedThreadPool();
+
+    }
+
+    public UsbFile getUsbFile() {
+
+        return this.cFolder;
     }
 
     /**
      * 注册监听U盘的广播
      */
-    private void registerReceiver() {
+    public void registerReceiver() {
+        monitorUDiskCallback.getState(true);
         //监听otg插入 拔出
+        // IntentFilter usbDetachedFilter = new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED);
+        //registerReceiver(usbDetachedReceiver, usbDetachedFilter);
+        //http://blog.csdn.net/glouds/article/details/40303549
         IntentFilter usbDeviceStateFilter = new IntentFilter();
         usbDeviceStateFilter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
         usbDeviceStateFilter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
@@ -64,6 +79,7 @@ public class UDiskToSD {
                     if (intent.getBooleanExtra(UsbManager.EXTRA_PERMISSION_GRANTED, false)) {  //允许权限申请
 
                         if (usbDevice != null) {
+
                             Log.e(TAG, "onReceive: " + "用户已授权，可以进行读取操作");
                             readDevice(getUsbMass(usbDevice));
                         } else {
@@ -80,6 +96,7 @@ public class UDiskToSD {
 
                     if (device_add != null) {
                         Log.e(TAG, "onReceive: " + "接收到存储设备插入广播，尝试读取");
+
                         redDeviceList();
                     }
                     break;
@@ -129,7 +146,7 @@ public class UDiskToSD {
     /**
      * 得到一台机器有几个USB设备   并把设备传入readDevice去得到根目录
      */
-    private void redDeviceList() {
+    public void redDeviceList() {
 
         Log.e(TAG, "redDeviceList: " + "开始读取设备列表...");
         UsbManager usbManager = (UsbManager) context.getSystemService(Context.USB_SERVICE);
@@ -174,27 +191,34 @@ public class UDiskToSD {
      *
      * @param uFile
      */
-    public void readFile(UsbFile uFile, String inputPath) {
+    private ExecutorService executorService;
 
-        try {
-            UsbFile directory = uFile.createFile("demo.xls");
-            // FileInputStream fis = new FileInputStream("/storage/emulated/0/CreateCare" + File.separator + "demo.xls");//读取选择的文件的
-            FileInputStream fis = new FileInputStream(inputPath);//读取选择的文件的
-            OutputStream os1 = new UsbFileOutputStream(directory);//写入U盘的输出流
+    public void readFile(final UsbFile uFile, final String inputPath) {
 
-            int bytesRead = 0;
-            byte[] buffer = new byte[1024];
-            while ((bytesRead = fis.read(buffer)) != -1) {
-                os1.write(buffer, 0, bytesRead);
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    UsbFile directory = uFile.createFile("demo.xls");
+
+                    // FileInputStream fis = new FileInputStream("/storage/emulated/0/CreateCare" + File.separator + "demo.xls");//读取选择的文件的
+                    FileInputStream fis = new FileInputStream(inputPath);//读取选择的文件的
+                    OutputStream os1 = new UsbFileOutputStream(directory);//写入U盘的输出流
+
+                    int bytesRead = 0;
+                    byte[] buffer = new byte[1024];
+                    while ((bytesRead = fis.read(buffer)) != -1) {
+                        os1.write(buffer, 0, bytesRead);
+                    }
+                    os1.flush();
+                    os1.close();
+                    fis.close();
+                } catch (final Exception e) {
+                    Log.e(TAG, "run: " + "异常");
+                }
             }
-            os1.flush();
-            os1.close();
-            fis.close();
+        });
 
-        } catch (final Exception e) {
-            e.printStackTrace();
-            Log.e(TAG, "run: " + "写入U盘发生异常");
-        }
     }
 
 }
