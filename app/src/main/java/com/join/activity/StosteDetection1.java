@@ -429,7 +429,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                 }*/
                             }
 
-                          //  if (progress) {
+                            //  if (progress) {
                             if (true) {
                                 changePercent(i);
                                 if (i == 100) {
@@ -448,8 +448,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
 
                         }
-                    } catch (InterruptedException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
+                        stateThread = false;
                     }
                 }
             }

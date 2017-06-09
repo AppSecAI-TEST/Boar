@@ -31,7 +31,6 @@ public class DaoUtil {
         storage.setType(type);
         storage.setResult(result);
 
-
         OperationDao.addData(storage);
     }
 

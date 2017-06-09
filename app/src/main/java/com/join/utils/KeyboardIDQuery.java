@@ -1,7 +1,9 @@
 package com.join.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,26 +13,21 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.join.R;
-import com.join.interface_callback.IDQueryKeyboard1;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 
-public class Keyboard1 implements View.OnClickListener {
+public class KeyboardIDQuery implements View.OnClickListener {
     private Button bu_0, bu_1, bu_2, bu_3, bu_4, bu_5, bu_6, bu_7, bu_8, bu_9, bu_w, delete, out;
-    private TextView input, id_Gong_1;
+    private TextView input;
     private Context context;
     private View view;
     private PopupWindow popupWindow;
-    private IDQueryKeyboard1 idQueryKeyboard1;
+    private Intent intent;
 
 
-    public void setIdQueryKeyboard1(IDQueryKeyboard1 idQueryKeyboard1) {
-        this.idQueryKeyboard1 = idQueryKeyboard1;
-    }
-
-    public Keyboard1(Context context, TextView id_Gong_1) {
+    public KeyboardIDQuery(Context context, Intent intent) {
         this.context = context;
-        this.id_Gong_1 = id_Gong_1;
+        this.intent = intent;
 
     }
 
@@ -89,9 +86,9 @@ public class Keyboard1 implements View.OnClickListener {
 
         int xPos = windowManager.getDefaultDisplay().getWidth();
         int height = windowManager.getDefaultDisplay().getHeight();
-        Log.i("coder", "xPos:" + xPos+"\n"+height);
+        Log.i("coder", "xPos:" + xPos + "\n" + height);
         //以parent 为开始的x,y轴
-        popupWindow.showAsDropDown(parent,-xPos,-height);
+        popupWindow.showAsDropDown(parent, -xPos, -height);
 
     }
 
@@ -179,13 +176,16 @@ public class Keyboard1 implements View.OnClickListener {
                 break;
             case R.id.bu_w:
                 if (length1 > 0) {
-                    id_Gong_1.setText(buffer);
-                    buffer.delete(0, length1);
-                    input.setText(buffer);
-
                     if (popupWindow != null) {
                         popupWindow.dismiss();
-                        idQueryKeyboard1.start();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("KeyboardIDQueryData", buffer.toString());
+                        buffer.delete(0, length1);
+                        input.setText(buffer);
+                        intent.putExtras(bundle);
+                        intent.setAction("com.join.IDQuery");
+                        context.startActivity(intent);
+
                     }
                 }
                 break;

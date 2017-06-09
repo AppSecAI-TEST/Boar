@@ -53,7 +53,6 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
     }
 
     public void returnFunction(View view) {
-
         intent.setAction("com.join.function");
         startActivity(intent);
     }

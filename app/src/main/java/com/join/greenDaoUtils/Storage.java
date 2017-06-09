@@ -28,7 +28,7 @@ public class Storage {
     private String copies;    //分装份数(原液)
     private String add;         //需增加多少稀释精液(原液)
     private String result;//结果
-    private String capacity; //每剂容量(稀释)
+    private String capacity; //每剂容量
     private String milliliter; //采精量(原液)
     private String motileSperms;//有效精子数(稀释)
     @Generated(hash = 590371873)

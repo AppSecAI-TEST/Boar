@@ -12,7 +12,7 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 
 /**
- * Created by join on 2017/6/8.
+ * 把数据转成Excel,然后从sd卡复制到U盘
  */
 
 public class SaveToExcelAndSD {
@@ -51,8 +51,14 @@ public class SaveToExcelAndSD {
                     //保存成Excel
                     String resultImage = "/storage/emulated/0/CreateCare" + File.separator + "demo.xls";
                     SaveToExcel saveToExcel = new SaveToExcel(path);
-                    saveToExcel.writeToExcel(new String[]{checkoutDate, checkoutTime, type, operator, date, time,
-                            number, milliliter, color, smell, density, vitality, motilityRate, motileSperms, capacity, result});
+                    if (type.equals("精液原液")) {
+                        saveToExcel.writeToExcel(new String[]{checkoutDate, checkoutTime, type, operator, date, time,
+                                number, milliliter, color, smell, density, vitality, motilityRate, "-", "-", result});
+                    } else {
+                        saveToExcel.writeToExcel(new String[]{checkoutDate, checkoutTime, type, operator, "-", "-",
+                                number, "-", color, smell, density, vitality, motilityRate, motileSperms, capacity, result});
+                    }
+
                 }
                 UDiskToSD diskToSD = new UDiskToSD(context, path);
             }

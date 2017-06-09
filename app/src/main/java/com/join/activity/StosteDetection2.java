@@ -59,6 +59,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
     private double[] arithmetic;
     private int tab;
     private String TAG = "jjjStosteDetection2";
+    private List<Storage> storages;//查询某个ID得到的数据
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -102,9 +103,25 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         }
     }
 
+    /**
+     * IDQuery传过来的ID,查询传过来的ID设置到页面
+     */
+
+    private volatile boolean queryLoveIDThreadState = true;
+
     private void getSetDataIDQuery() {
-        long idqUeryData = getIntent().getLongExtra("IDQUeryData", -1L);
-        List<Storage> storages = OperationDao.queryLoveID(idqUeryData);
+        final long idqUeryData = getIntent().getLongExtra("IDQUeryData", -1L);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (queryLoveIDThreadState) ;
+                storages = OperationDao.queryLoveID(idqUeryData);
+                Log.e(TAG, "run: " + "查询几次");
+                queryLoveIDThreadState = false;
+            }
+        }).start();
+        storages = OperationDao.queryLoveID(idqUeryData);
         Storage storage = storages.get(0);
         //显示到页面
         add_1.setText(storage.getAdd());
@@ -117,7 +134,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         dateC_1.setText(storage.getDate());
         timeC_1.setText(storage.getTime());
         number_1.setText(storage.getNumber());
-        milliliter_1.setText(storage.getCapacity());
+        milliliter_1.setText(storage.getMilliliter());
         operator_1.setText(storage.getOperator());
         result_1.setText("结果: " + storage.getResult());
     }
@@ -150,6 +167,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         String milliliterSubstring = milliliter.substring(0, length - 2);
         Integer milliliterInt = Integer.valueOf(milliliterSubstring);
 
+
         if (milliliterInt >= 250 && density >= 3.0 && vitality >= 0.8) {
             result = "优";
         } else if (milliliterInt >= 150 && milliliterInt <= 250 && density >= 2.0 && density <= 3.0 && vitality >= 0.7 && vitality <= 0.8) {
@@ -159,11 +177,12 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         } else {
             result = "不合格";
         }
-        double copies = milliliterInt * motilityRate * vitality / 30;
-        double add = copies * 80 - milliliterInt;
 
-        String copiesS = String.valueOf(Math.round(copies));
-        String addS = String.valueOf(add);
+        double copies = milliliterInt * motilityRate * vitality / 30; //得到推荐份数
+        double capacity = milliliterInt / copies;//得到每剂容量
+        double add = copies * 80 - milliliterInt;  //得到需增加多少稀释精液
+        String addS = String.valueOf(Double.parseDouble(String.format("%.3f", add)));//取小数点后三位的数,四舍五入
+        String copiesS = String.valueOf(Math.round(copies));//取整数,四舍五入
         String operator = IDSelect.id_manage;
 
         //显示到页面
@@ -225,6 +244,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
     protected void onPause() {
         super.onPause();
         unbindService(this);
+        queryLoveIDThreadState = false;
     }
 
     @Override

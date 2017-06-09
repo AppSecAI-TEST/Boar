@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.join.R;
 import com.join.UDisk.SaveToExcelAndSD;
 import com.join.service.Humidity;
+import com.join.utils.KeyboardIDQuery;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 import java.io.File;
@@ -30,6 +31,8 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
     private Intent intent;
     private Button bu_copy;
     private ImageView icon;
+    private KeyboardIDQuery keyboardIDQuery;
+    private PercentLinearLayout percent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
     }
 
     private void init() {
+        percent = (PercentLinearLayout) findViewById(R.id.percent);
         intent = new Intent();
         icon = (ImageView) findViewById(R.id.icon);
         bu_copy = (Button) findViewById(R.id.bu_copy);
@@ -55,6 +59,8 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
 
     }
 
+
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -62,8 +68,10 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
 
                 break;
             case R.id.function_2:
-                intent.setAction("com.join.IDQuery");
-                startActivity(intent);
+
+                keyboardIDQuery = new KeyboardIDQuery(QueryFunction.this, intent);
+                keyboardIDQuery.showWindow(percent);
+
                 break;
             case R.id.function_3:
 

@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.join.R;
 import com.join.entity.StosteDetectionDiluentE;
-import com.join.interface_callback.IDQueryKeyboard1;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 
@@ -22,13 +21,9 @@ public class Keyboard2 implements View.OnClickListener {
     private Context context;
     private View view;
     private PopupWindow popupWindow;
-    private IDQueryKeyboard1 idQueryKeyboard1;
     private StosteDetectionDiluentE diluentE;
     private int tag;
 
-    public void setIdQueryKeyboard1(IDQueryKeyboard1 idQueryKeyboard1) {
-        this.idQueryKeyboard1 = idQueryKeyboard1;
-    }
 
     public Keyboard2(Context context, StosteDetectionDiluentE e, int tag) {
         this.context = context;
