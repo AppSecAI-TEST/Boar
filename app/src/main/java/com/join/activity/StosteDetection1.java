@@ -104,6 +104,12 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     public void photoPrepared(int tag, final String path) {
         handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+        if (tag==5){
+            humidityClass.sendCommand(SerialPortCommand.two);
+        }
+        if (tag==10){
+            humidityClass.sendCommand(SerialPortCommand.three);
+        }
         if (tag == 20) {
 
             arithmetic.setiPictureCallback4(new IPictureCallback4() {
