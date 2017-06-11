@@ -16,23 +16,30 @@ import java.util.Random;
 
 public class Humidity extends Service implements SerialPortUtil.OnDataReceiveListener {
     private HumidityCallback humidityCallback;
+    private CommandCallback commandCallback;
     private boolean connect;
     private Random random;
     private SerialPortUtil instance;
-    private String TAG = Humidity.class.getSimpleName();
-    private int in;
+    private String TAG = "jjjHumidity";
+    private int humidityInt;
+
+    private int commandInt;
 
     @Override
     public void onDataReceive(byte[] buffer, int size) {
         String data = Convert.bytesToHexString(buffer);
-        Log.e("jjj", "onDataReceive: " + data);
+        Log.e(TAG, "onDataReceive: " + data);
         if (buffer[5] == 0x04) {
-
             String substring = data.substring(18, 20);
-            in = Integer.valueOf(substring, 16);
-            Log.e("jjj", "onDataReceive: " + in);
+            humidityInt = Integer.valueOf(substring, 16);
+            Log.e(TAG, "onDataReceive: " + humidityInt);
 
+        }
 
+        if (buffer[5] == 0x03) {
+            String substring = data.substring(18, 20);
+            commandInt = Integer.valueOf(substring, 16);
+            Log.e(TAG, "onDataReceive: " + commandInt+"command");
         }
     }
 
@@ -51,10 +58,11 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
     @Override
     public IBinder onBind(Intent intent) {
         int flags = intent.getFlags();
-      if (flags==1){
-          boolean b = instance.sendBuffer(SerialPortCommand.handshake);
-          Log.e("jjj", b + "");
-      }
+        Log.e(TAG, "onBind: " + flags);
+        if (flags == 1) {
+            boolean b = instance.sendBuffer(SerialPortCommand.handshake);
+            Log.e(TAG, b + "");
+        }
         return new HumidityBinder();
     }
 
@@ -72,10 +80,13 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
                 connect = true;
                 while (connect) {
                     if (humidityCallback != null) {
-                        int humidiy = in;
+                        int humidiy = humidityInt;
                         humidityCallback.onHumidityChange(humidiy);
                     }
+                    if (commandCallback != null) {
 
+                        commandCallback.onCommandResult(commandInt);
+                    }
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -86,23 +97,33 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
         }).start();
     }
 
-    public int getHumidiy() {
-        int s = random.nextInt((40) % (40 - 30 + 1) + 30);
-        return s;
-    }
 
     public void setHumidityCallback(HumidityCallback callback) {
         this.humidityCallback = callback;
+    }
+
+    public void setCommandCallback(CommandCallback commandCallback) {
+        this.commandCallback = commandCallback;
     }
 
     public interface HumidityCallback {
         void onHumidityChange(int data);
     }
 
+    public interface CommandCallback {
+        void onCommandResult(int data);
+    }
+
+   public void sendCommand(byte[] comm) {
+        instance.sendBuffer(comm);
+       Log.e(TAG, "sendCommand: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj" );
+    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        //instance.closeSerialPort();
+        commandCallback = null;
         connect = false;
     }
 }

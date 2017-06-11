@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.join.camera.IPictureCallback2;
 import com.join.camera.IPictureCallback3;
 import com.join.camera.IPictureCallback4;
 import com.join.camera.MsgCons;
+import com.join.serialport.SerialPortCommand;
 import com.join.service.Humidity;
 import com.join.utils.Arithmetic;
 import com.zhy.android.percent.support.PercentLinearLayout;
@@ -35,7 +37,8 @@ import com.zhy.android.percent.support.PercentLinearLayout;
 /**
  * 开始检测
  */
-public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection, IPictureCallback2, IPictureCallback3 {
+public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection,
+        IPictureCallback2, IPictureCallback3, Humidity.CommandCallback {
     private String TAG = "jjjStosteDetection1";
     private AnimatedCircleLoadingView animatedCircleLoadingView;  //进度条
     private Button bu_return, bu_enter;
@@ -61,6 +64,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private int state;//算法返回的状态
     private boolean stateThread = true;//控制线程的状态
     private LinearLayout abnormalShow_layout;
+    private Humidity humidityClass;
+    private int commandState;
 
     @Override
 
@@ -100,6 +105,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     public void photoPrepared(int tag, final String path) {
         handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
         if (tag == 20) {
+
             arithmetic.setiPictureCallback4(new IPictureCallback4() {
                 @Override
                 public String photoPrepared4() {
@@ -132,6 +138,12 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
     }
 
+    @Override
+    public void onCommandResult(int data) {
+        commandState = data;
+        Log.e(TAG, "onCommandResult: "+"1111111111111"+commandState );
+    }
+
 
     class CameraSurfaceView extends SurfaceView {
 
@@ -147,7 +159,11 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         public void surfaceCreated(SurfaceHolder holder) {
             if (mCameraManager != null) {
                 mCameraManager.startPreview(holder);
+
             }
+        /*    if (commandState==?){
+
+            }*/
             handler.sendEmptyMessageDelayed(TAKE_PHOTO, 200L);
             //已经预览的时候通知照相
             // handler.sendEmptyMessage(TAKE_PHOTO);
@@ -265,6 +281,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         icon_1.setOnClickListener(this);
         arithmetic = new Arithmetic();
         intent = new Intent();
+
     }
 
 
@@ -273,6 +290,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
+
         arithmetic.setiPictureCallback3(this);
         if (flag == 2) {
             title.setText("稀释精液检测");
@@ -292,7 +310,11 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;
-        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass = humidityBinder.getHumidity();
+        humidityClass.setCommandCallback(this);
+        if (humidityClass != null) {
+            humidityClass.sendCommand(SerialPortCommand.aone);
+        }
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
             public void onHumidityChange(final int data) {

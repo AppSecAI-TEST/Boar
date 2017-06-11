@@ -52,6 +52,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
         percent = (PercentLinearLayout) findViewById(R.id.percent);
         intent = new Intent();
         icon = (ImageView) findViewById(R.id.icon);
+        icon.setOnClickListener(this);
         bu_copy = (Button) findViewById(R.id.bu_copy);
         bu_copy.setOnClickListener(this);
         function_1 = (PercentLinearLayout) findViewById(R.id.function_1);
