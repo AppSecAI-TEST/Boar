@@ -103,22 +103,40 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
     @Override
     public void photoPrepared(int tag, final String path) {
-        handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
-        if (tag==5){
-            humidityClass.sendCommand(SerialPortCommand.two);
+        if (commandState == 00) {
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+            if (tag == 5) {
+                humidityClass.sendCommand(SerialPortCommand.two);
+            }
         }
-        if (tag==10){
-            humidityClass.sendCommand(SerialPortCommand.three);
-        }
-        if (tag == 20) {
 
-            arithmetic.setiPictureCallback4(new IPictureCallback4() {
-                @Override
-                public String photoPrepared4() {
-                    return path;
-                }
-            });
-            arithmetic.getArithmetic();
+        if (commandState == 1) {
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+            if (tag == 10) {
+                humidityClass.sendCommand(SerialPortCommand.three);
+
+            }
+        }
+        if (commandState == 2) {
+            Log.e(TAG, "photoPrepared: " + commandState + "1000L");
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+            if (tag == 15) {
+                humidityClass.sendCommand(SerialPortCommand.four);
+
+            }
+        }
+        if (commandState == 3) {
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+            if (tag == 20) {
+
+                arithmetic.setiPictureCallback4(new IPictureCallback4() {
+                    @Override
+                    public String photoPrepared4() {
+                        return path;
+                    }
+                });
+                arithmetic.getArithmetic();
+            }
         }
     }
 
@@ -147,7 +165,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     public void onCommandResult(int data) {
         commandState = data;
-        Log.e(TAG, "onCommandResult: "+"1111111111111"+commandState );
+        Log.e(TAG, "onCommandResult: " + commandState);
     }
 
 

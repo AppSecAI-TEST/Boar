@@ -39,7 +39,7 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
         if (buffer[5] == 0x03) {
             String substring = data.substring(18, 20);
             commandInt = Integer.valueOf(substring, 16);
-            Log.e(TAG, "onDataReceive: " + commandInt+"command");
+            Log.e(TAG, "onDataReceive: " + commandInt + "command");
         }
     }
 
@@ -97,26 +97,44 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
         }).start();
     }
 
-
+    /**
+     * 设置温度接口
+     *
+     * @param callback
+     */
     public void setHumidityCallback(HumidityCallback callback) {
         this.humidityCallback = callback;
     }
 
+    /**
+     * 设置命令接口
+     */
     public void setCommandCallback(CommandCallback commandCallback) {
         this.commandCallback = commandCallback;
     }
 
+    /**
+     * 温度回调
+     */
     public interface HumidityCallback {
         void onHumidityChange(int data);
     }
 
+    /**
+     * 命令回调接口
+     */
     public interface CommandCallback {
         void onCommandResult(int data);
     }
 
-   public void sendCommand(byte[] comm) {
+    /**
+     * 发送命令
+     *
+     * @param comm
+     */
+    public void sendCommand(byte[] comm) {
         instance.sendBuffer(comm);
-       Log.e(TAG, "sendCommand: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj" );
+
     }
 
     @Override
