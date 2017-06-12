@@ -17,9 +17,7 @@ import com.github.mjdev.libaums.fs.UsbFile;
 import com.join.R;
 import com.join.UDisk.SaveToExcelAndSD;
 import com.join.UDisk.UDiskToSD;
-import com.join.callback.MonitorUDiskCallback;
 import com.join.service.Humidity;
-import com.join.utils.CustomToast;
 import com.join.utils.KeyboardIDQuery;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
@@ -29,7 +27,7 @@ import java.io.File;
  *
  */
 
-public class QueryFunction extends Activity implements View.OnClickListener, ServiceConnection, MonitorUDiskCallback {
+public class QueryFunction extends Activity implements View.OnClickListener, ServiceConnection {
     private String TAG = "jjjQueryFuncetion";
     private PercentLinearLayout function_1, function_2, function_3, function_4;
     private TextView humidity;
@@ -65,6 +63,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
         function_4.setOnClickListener(this);
         humidity = (TextView) findViewById(R.id.humidity);
 
+
     }
 
 
@@ -89,21 +88,32 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
                 startActivity(intent);
                 break;
             case R.id.bu_copy:
-                UDiskToSD uDiskToSD = new UDiskToSD(this);
-                uDiskToSD.setMonitorUDiskCallback(this);
+
+                saveToExcelAndSD = new SaveToExcelAndSD(this);
+                uDiskToSD = new UDiskToSD(this);
                 uDiskToSD.registerReceiver();
                 uDiskToSD.redDeviceList();
-                if (UDiskState) {
-                    SaveToExcelAndSD saveToExcelAndSD = new SaveToExcelAndSD(this);
-                    saveToExcelAndSD.saveToExcelAndSD("/storage/emulated/0/CreateCare" + File.separator + "demo.xls");
-                    UsbFile usbFile = uDiskToSD.getUsbFile();
-                    uDiskToSD.readFile(usbFile, "/storage/emulated/0/CreateCare" + File.separator + "demo.xls");
-                } else {
-                    CustomToast.showToast(this, "请插入你的U盘...");
+
+
+                boolean saveStateSD = saveToExcelAndSD.saveToExcelAndSD("/storage/emulated/0/CreateCare" + File.separator + "demo.xls");
+                usbFile = uDiskToSD.getUsbFile();
+                Log.e(TAG, "onClick: " + saveStateSD);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
+                if (saveStateSD) {
+                    uDiskToSD.readFile(usbFile, "/storage/emulated/0/CreateCare" + File.separator + "demo.xls");
+                }
+
                 break;
         }
     }
+
+    SaveToExcelAndSD saveToExcelAndSD;
+    UsbFile usbFile;
+    UDiskToSD uDiskToSD;
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
@@ -139,13 +149,15 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
     protected void onPause() {
         super.onPause();
         unbindService(this);
+        if (uDiskToSD != null) {
+            uDiskToSD.closeReceiver();
+        }
+
     }
 
-
     @Override
-    public void getState(boolean state) {
-        Log.e(TAG, "getState: " + state);
-        UDiskState = state;
+    protected void onDestroy() {
+        super.onDestroy();
 
     }
 }

@@ -14,7 +14,6 @@ import com.github.mjdev.libaums.fs.FileSystem;
 import com.github.mjdev.libaums.fs.UsbFile;
 import com.github.mjdev.libaums.fs.UsbFileOutputStream;
 import com.github.mjdev.libaums.partition.Partition;
-import com.join.callback.MonitorUDiskCallback;
 
 import java.io.FileInputStream;
 import java.io.OutputStream;
@@ -23,6 +22,7 @@ import java.util.concurrent.Executors;
 
 /**
  * Created by join on 2017/6/7.
+ * http://blog.csdn.net/csdn635406113/article/details/70146041
  */
 
 public class UDiskToSD {
@@ -32,11 +32,6 @@ public class UDiskToSD {
     private UsbFile cFolder;//当前U盘的根目录
     private Context context;
 
-    private MonitorUDiskCallback monitorUDiskCallback;
-
-    public void setMonitorUDiskCallback(MonitorUDiskCallback monitorUDiskCallback) {
-        this.monitorUDiskCallback = monitorUDiskCallback;
-    }
 
     public UDiskToSD(Context context) {
         this.context = context;
@@ -52,20 +47,25 @@ public class UDiskToSD {
     /**
      * 注册监听U盘的广播
      */
-    public void registerReceiver() {
-        monitorUDiskCallback.getState(true);
+
+    public synchronized void registerReceiver() {
+
         //监听otg插入 拔出
-        // IntentFilter usbDetachedFilter = new IntentFilter(UsbManager.ACTION_USB_DEVICE_DETACHED);
-        //registerReceiver(usbDetachedReceiver, usbDetachedFilter);
-        //http://blog.csdn.net/glouds/article/details/40303549
         IntentFilter usbDeviceStateFilter = new IntentFilter();
         usbDeviceStateFilter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
         usbDeviceStateFilter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
         context.registerReceiver(mUsbReceiver, usbDeviceStateFilter);
         //注册监听自定义广播
         IntentFilter filter = new IntentFilter(ACTION_USB_PERMISSION);
-
         context.registerReceiver(mUsbReceiver, filter);
+
+    }
+
+    public void closeReceiver() {
+        if (mUsbReceiver != null) {
+            context.unregisterReceiver(mUsbReceiver);
+            mUsbReceiver = null;
+        }
     }
 
     private BroadcastReceiver mUsbReceiver = new BroadcastReceiver() {
@@ -81,6 +81,7 @@ public class UDiskToSD {
                         if (usbDevice != null) {
 
                             Log.e(TAG, "onReceive: " + "用户已授权，可以进行读取操作");
+
                             readDevice(getUsbMass(usbDevice));
                         } else {
 
@@ -129,6 +130,7 @@ public class UDiskToSD {
 //            Log.d(TAG, "Occupied Space: " + currentFs.getOccupiedSpace());
 //            Log.d(TAG, "Free Space: " + currentFs.getFreeSpace());
 //            Log.d(TAG, "Chunk size: " + currentFs.getChunkSize());
+
             UsbFile root = currentFs.getRootDirectory();//获取根目录
             String deviceName = currentFs.getVolumeLabel();//获取设备标签
             Log.e(TAG, "readDevice: " + "正在读取U盘" + deviceName);
@@ -138,7 +140,7 @@ public class UDiskToSD {
 
         } catch (Exception e) {
             e.printStackTrace();
-
+            context.unregisterReceiver(mUsbReceiver);
             Log.e(TAG, "readDevice: " + "读取失败，异常：" + e.getMessage());
         }
     }
@@ -155,7 +157,7 @@ public class UDiskToSD {
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), 0);
         for (UsbMassStorageDevice device : storageDevices) {//可能有几个 一般只有一个 因为大部分手机只有1个otg插口
             int length = storageDevices.length;
-            Log.e(TAG, "redDeviceList: " + length);
+            Log.e(TAG, "redDeviceList: 长度: " + length);
             if (usbManager.hasPermission(device.getUsbDevice())) {//有就直接读取设备是否有权限
                 Log.e(TAG, "redDeviceList: " + "检测到有权限，直接读取");
 
@@ -166,9 +168,12 @@ public class UDiskToSD {
                 usbManager.requestPermission(device.getUsbDevice(), pendingIntent); //该代码执行后，系统弹出一个对话框，
             }
         }
-        if (storageDevices.length == 0)
+        if (storageDevices.length == 0) {
 
+            context.unregisterReceiver(mUsbReceiver);
             Log.e(TAG, "redDeviceList: " + "未检测到有任何存储设备插入");
+        }
+
     }
 
     /**
@@ -199,22 +204,26 @@ public class UDiskToSD {
             @Override
             public void run() {
                 try {
+
+
                     UsbFile directory = uFile.createFile("demo.xls");
 
                     // FileInputStream fis = new FileInputStream("/storage/emulated/0/CreateCare" + File.separator + "demo.xls");//读取选择的文件的
                     FileInputStream fis = new FileInputStream(inputPath);//读取选择的文件的
                     OutputStream os1 = new UsbFileOutputStream(directory);//写入U盘的输出流
-
+                    Log.e(TAG, "run: " + "开始写入");
                     int bytesRead = 0;
                     byte[] buffer = new byte[1024];
                     while ((bytesRead = fis.read(buffer)) != -1) {
                         os1.write(buffer, 0, bytesRead);
                     }
+                    Log.e(TAG, "run: " + "写入成功");
                     os1.flush();
                     os1.close();
                     fis.close();
-                } catch (final Exception e) {
+                } catch (Exception e) {
                     Log.e(TAG, "run: " + "异常");
+
                 }
             }
         });

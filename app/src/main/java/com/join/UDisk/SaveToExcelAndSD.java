@@ -17,12 +17,16 @@ public class SaveToExcelAndSD {
     private Context context;
     private String TAG = "jjjSaveToExcelAndSD";
 
+
+
     public SaveToExcelAndSD(Context context) {
         this.context = context;
     }
 
-    public void saveToExcelAndSD(final String path) {
+    public boolean saveToExcelAndSD(final String path) {
+
         new Thread(new Runnable() {
+
             @Override
             public void run() {
                 List<Storage> storages = OperationDao.queryAll();
@@ -51,20 +55,20 @@ public class SaveToExcelAndSD {
                     String resultImage = "/storage/emulated/0/CreateCare" + File.separator + "demo.xls";
                     SaveToExcel saveToExcel = new SaveToExcel(path);
                     if (type.equals("精液原液")) {
-                        Log.e(TAG, "run: " + "jjjjj");
+                        Log.e(TAG, "run: " + "保存的是精液原液");
                         saveToExcel.writeToExcel(new String[]{checkoutDate, checkoutTime, type, operator, date, time,
                                 number, milliliter, color, smell, density, vitality, motilityRate, "-", "-", result});
+
                     } else {
-                        Log.e(TAG, "run: " + "jjjjj");
+                        Log.e(TAG, "run: " + "保存的是稀释精液");
                         saveToExcel.writeToExcel(new String[]{checkoutDate, checkoutTime, type, operator, "-", "-",
                                 number, "-", color, smell, density, vitality, motilityRate, motileSperms, capacity, result});
+
                     }
-
                 }
-
-
             }
         }).start();
+        return true;
     }
 
 }
