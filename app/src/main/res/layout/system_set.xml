@@ -17,10 +17,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="580dp"
-            android:text="设  置"
+            android:layout_marginLeft="570dp"
+            android:text="设    置"
             android:textColor="#fff"
-            android:textSize="40dp" />
+            android:textSize="45dp" />
 
         <TextView
             android:layout_width="wrap_content"

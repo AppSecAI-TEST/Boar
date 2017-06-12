@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by join on 2017/5/15.
+ * 按公猪ID查询
  */
 
 public class IDQuery extends Activity implements View.OnClickListener, ServiceConnection {
@@ -100,8 +100,8 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         Log.e(TAG, "start:" + size);
         for (int i = 0; i < size; i++) {
             Storage storage = storages.get(i);
-            String date = storage.getDate();
-            String time = storage.getTime();
+            String checkoutDate = storage.getCheckoutDate();
+            String checkoutTime = storage.getCheckoutTime();
             String operator = storage.getOperator();
             Long id = storage.getId();
             String type = storage.getType();
@@ -110,7 +110,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
             String motilityRate = storage.getMotilityRate();
             String result = storage.getResult();
 
-            com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(id, date, time, type, density, vitality, motilityRate, operator, result, "查看");
+            com.join.entity.IDQuery idQuery = new com.join.entity.IDQuery(id, checkoutDate, checkoutTime, type, density, vitality, motilityRate, operator, result, "查看");
             list.add(idQuery);
         }
         idQueryAdapter = new IDQueryAdapter(IDQuery.this, list);

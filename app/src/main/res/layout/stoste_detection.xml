@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="490dp"
+                android:layout_marginLeft="510dp"
                 android:text="精液原液检测"
                 android:textColor="#fff"
                 android:textSize="40dp" />
@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="350dp"
+                android:layout_marginLeft="330dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
