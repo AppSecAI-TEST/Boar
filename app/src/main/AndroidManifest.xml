@@ -98,6 +98,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--按日期查询-->
+        <activity android:name=".activity.DateQuery">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.DateQuery"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
         <!--标准参数,系统参数设置入口-->
         <activity android:name=".activity.SystemSet">

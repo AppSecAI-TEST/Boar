@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="515dp"
+                android:layout_marginLeft="520dp"
                 android:text="按日期查询"
                 android:textColor="#fff"
                 android:textSize="40dp" />
@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="370dp"
+                android:layout_marginLeft="365dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />

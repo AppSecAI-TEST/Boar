@@ -1,11 +1,15 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,7 +28,7 @@ import java.util.List;
  * Created by join on 2017/6/13.
  */
 
-public class DateQuery extends Activity implements View.OnClickListener {
+public class DateQuery extends Activity implements View.OnClickListener,ServiceConnection {
     private String TAG = "jjjDateQuery";
     private ListView listView;
     private Intent intent;
@@ -42,11 +46,15 @@ public class DateQuery extends Activity implements View.OnClickListener {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_query);
+        String numberTag = getIntent().getStringExtra("KeyboardDateQueryData1");
+        String numberTag1 = getIntent().getStringExtra("KeyboardDateQueryData2");
+        this.numberTag = Integer.valueOf(numberTag);
+        this.numberTag1 = Integer.valueOf(numberTag1);
         init();
+
     }
 
     private void init() {
-
         intent = new Intent();
         get_data_1 = (TextView) findViewById(R.id.get_data_1);
         get_data_2 = (TextView) findViewById(R.id.get_data_2);
@@ -56,8 +64,8 @@ public class DateQuery extends Activity implements View.OnClickListener {
         bu_return = (Button) findViewById(R.id.bu_return);
         bu_return.setOnClickListener(this);
         listView = (ListView) findViewById(R.id.lv_content);
-        get_data_1.setText(numberTag);
-        get_data_2.setText(numberTag1);
+        get_data_1.setText(numberTag+"");
+        get_data_2.setText(numberTag1+"");
         list = new ArrayList<>();
         List<Storage> storages = OperationDao.queryLoveDate(numberTag, numberTag1);
         int size = storages.size();
@@ -83,10 +91,80 @@ public class DateQuery extends Activity implements View.OnClickListener {
         }
         idQueryAdapter = new IDQueryAdapter(DateQuery.this, list);
         listView.setAdapter(idQueryAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                com.join.entity.IDQuery idQuery = list.get(position);
+
+                long idTag = idQuery.getId();
+                Log.e(TAG, "onItemClick: " + idTag);
+                String type = idQuery.getType();
+                if (type.equals("精液原液")) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("IDQUeryData", idTag);
+                    intent.putExtras(bundle);
+                    intent.setAction("com.join.stostedetection2");
+                    intent.addFlags(2);
+                    startActivity(intent);
+                } else if (type.equals("稀释精液")) {
+                    Bundle bundle = new Bundle();
+                    bundle.putLong("IDQUeryData", idTag);
+                    intent.putExtras(bundle);
+                    intent.setAction("com.join.stostedetection22");
+                    intent.addFlags(2);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+
+            case R.id.bu_return:
+                finish();
+                break;
+            case R.id.icon_1:
+                intent = new Intent();
+                intent.setAction("com.join.function");
+                startActivity(intent);
+                break;
+        }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
+    }
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        humidityBinder = (Humidity.HumidityBinder) service;
+        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
+            @Override
+            public void onHumidityChange(final int data) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText("" + data);
+
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
 
     }
 }

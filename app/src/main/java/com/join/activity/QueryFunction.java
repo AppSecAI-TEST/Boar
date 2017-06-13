@@ -18,6 +18,7 @@ import com.join.R;
 import com.join.UDisk.SaveToExcelAndSD;
 import com.join.UDisk.UDiskToSD;
 import com.join.service.Humidity;
+import com.join.utils.KeyboardDateQuery;
 import com.join.utils.KeyboardIDQuery;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
@@ -36,6 +37,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
     private Button bu_copy;
     private ImageView icon;
     private KeyboardIDQuery keyboardIDQuery;
+    private KeyboardDateQuery keyboardDateQuery;
     private PercentLinearLayout percent;
     private boolean UDiskState;//是否插入U盘
 
@@ -71,7 +73,8 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.function_1:
-
+                keyboardDateQuery = new KeyboardDateQuery(QueryFunction.this, intent);
+                keyboardDateQuery.showWindow(percent);
                 break;
             case R.id.function_2:
                 keyboardIDQuery = new KeyboardIDQuery(QueryFunction.this, intent);
@@ -149,9 +152,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
     protected void onPause() {
         super.onPause();
         unbindService(this);
-        if (uDiskToSD != null) {
-            uDiskToSD.closeReceiver();
-        }
+
 
     }
 

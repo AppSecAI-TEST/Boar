@@ -61,6 +61,9 @@ public class UDiskToSD {
 
     }
 
+    /**
+     * 关闭广播
+     */
     public void closeReceiver() {
         if (mUsbReceiver != null) {
             context.unregisterReceiver(mUsbReceiver);

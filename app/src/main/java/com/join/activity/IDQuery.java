@@ -20,7 +20,6 @@ import com.join.adapter.IDQueryAdapter;
 import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
 import com.join.service.Humidity;
-import com.join.utils.CustomToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -120,9 +119,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.input:
-                CustomToast.showToast(this, "正开发中......");
-                break;
+
             case R.id.bu_return:
                 finish();
                 break;
@@ -131,7 +128,6 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
                 intent.setAction("com.join.function");
                 startActivity(intent);
                 break;
-
         }
     }
 
