@@ -38,6 +38,8 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
     private boolean normal_2_tab = true;
     private boolean abnormal_2_tab = true;
     private Intent intent;
+    private String dateFormat;
+    private String timeFormat;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,12 +68,13 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
         start = (Button) findViewById(R.id.start);
         start.setOnClickListener(this);
         intent = new Intent();
-        SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
-        String dateFormat = sdate.format(new java.util.Date());
-        diluentE.setDate(dateFormat);
+        SimpleDateFormat sdate = new SimpleDateFormat("yyyyMMdd");
+        dateFormat = sdate.format(new java.util.Date());
+        String checkoutDate = dateFormat.substring(0, 4) + "-" + dateFormat.substring(4, 6) + "-" + dateFormat.substring(6, 8);
+        diluentE.setDate(checkoutDate);
 
         SimpleDateFormat stime = new SimpleDateFormat("hh:mm");
-        String timeFormat = stime.format(new java.util.Date());
+        timeFormat = stime.format(new java.util.Date());
         diluentE.setTime(timeFormat);
 
     }
@@ -142,8 +145,6 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
                 if ((!normal_1_tab || !abnormal_1_tab) && (!normal_2_tab || !abnormal_2_tab)) {
                     String color;
                     String smell;
-                    String dateC;
-                    String timeC;
                     String numberGong;
                     String capacity;
                     if (normal_1_tab) {
@@ -158,11 +159,10 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
 
                         smell = "正常";
                     }
-                    dateC = diluentE.getDate();
-                    timeC = diluentE.getTime();
+
                     numberGong = diluentE.getNumber();
                     capacity = diluentE.getCapacity();
-                    String[] dataArray = new String[]{color, smell, dateC, timeC, numberGong, capacity};
+                    String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, capacity};
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
                     intent.putExtras(bundle);

@@ -201,8 +201,9 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         result_1.setText("结果: " + result);
 
 
-        SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdate = new SimpleDateFormat("yyyyMMdd");
         String checkoutDate = sdate.format(new java.util.Date());
+        Integer checkoutDateInt = Integer.valueOf(checkoutDate);
 
 
         SimpleDateFormat stime = new SimpleDateFormat("hh:mm");
@@ -210,7 +211,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
 
         //保存到数据库
         Storage storage = new Storage();
-        DaoUtil.sD2(storage, number, operator, milliliter, dateC, timeC, checkoutDate, checkoutTime, copiesS, addS, densityS, vitalityS, motilityRateS, smell, color, type, result);
+        DaoUtil.sD2(storage, number, operator, milliliter, dateC, timeC, checkoutDateInt, checkoutTime, copiesS, addS, densityS, vitalityS, motilityRateS, smell, color, type, result);
 
 
     }

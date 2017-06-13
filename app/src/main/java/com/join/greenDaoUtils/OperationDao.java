@@ -62,8 +62,8 @@ public class OperationDao {
         return BaseApplication.getDaoInstant().getStorageDao().queryBuilder().where(StorageDao.Properties.Id.eq(id)).list();
     }
 
-    public static List<Storage> queryLoveDate(String startTime, String lastTime) {
-        return BaseApplication.getDaoInstant().getStorageDao().queryBuilder().where(StorageDao.Properties.CheckoutTime.between(startTime, lastTime)).list();
+    public static List<Storage> queryLoveDate(int startDate, int lastDate) {
+        return BaseApplication.getDaoInstant().getStorageDao().queryBuilder().where(StorageDao.Properties.CheckoutDate.between(startDate, lastDate)).list();
     }
 
     /**

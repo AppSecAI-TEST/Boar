@@ -84,8 +84,11 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         result1.setDensity(storage.getDensity());
         result1.setVitality(storage.getVitality());
         result1.setMotilityRate(storage.getMotilityRate());
-        result1.setTime(storage.getTime());
-        result1.setDate(storage.getDate());
+        result1.setTime(storage.getCheckoutTime());
+        int checkoutDateInt = storage.getCheckoutDate();
+        String originalData = String.valueOf(checkoutDateInt);
+        String checkoutDate = originalData.substring(0, 4) + "-" + originalData.substring(4, 6) + "-" + originalData.substring(6, 8);
+        result1.setDate(checkoutDate);
         result1.setColor(storage.getColor());
         result1.setSmell(storage.getSmell());
         result1.setBatch(storage.getNumber());
@@ -101,10 +104,13 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
     private void setSaveData() {
         String color = stosteDetectionData[0];
         String smell = stosteDetectionData[1];
-        String dateC = stosteDetectionData[2];
+        String checkoutDateC = stosteDetectionData[2];
         String timeC = stosteDetectionData[3];
         String number = stosteDetectionData[4];
         String capacity = stosteDetectionData[5];
+        Integer checkoutDateInt = Integer.valueOf(checkoutDateC);
+        String originalData = String.valueOf(checkoutDateInt);
+        String checkoutDate = originalData.substring(0, 4) + "-" + originalData.substring(4, 6) + "-" + originalData.substring(6, 8);
 
         String operator = IDSelect.id_manage;
         String type = "稀释精液";
@@ -133,7 +139,7 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         result1.setVitality(vitalityS);
         result1.setMotilityRate(motilityRateS);
         result1.setTime(timeC);
-        result1.setDate(dateC);
+        result1.setDate(checkoutDate);
         result1.setColor(color);
         result1.setSmell(smell);
         result1.setBatch(number);
@@ -142,7 +148,7 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         result1.setMotileSperms(motileSpermsS);
         //保存到数据库
         Storage storage = new Storage();
-        DaoUtil.sD22(storage, densityS, motilityRateS, dateC,
+        DaoUtil.sD22(storage, densityS, motilityRateS, checkoutDateInt,
                 timeC, smell, color, vitalityS, motileSpermsS, capacity, operator, number, type, result);
 
     }

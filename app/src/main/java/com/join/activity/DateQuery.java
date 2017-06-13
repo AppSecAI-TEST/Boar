@@ -34,7 +34,7 @@ public class DateQuery extends Activity implements View.OnClickListener {
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
     private List<com.join.entity.IDQuery> list;
-    private String numberTag, numberTag1;
+    private int numberTag, numberTag1;
 
     private TextView get_data_1, get_data_2;
 
@@ -42,6 +42,7 @@ public class DateQuery extends Activity implements View.OnClickListener {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_query);
+        init();
     }
 
     private void init() {
@@ -63,7 +64,11 @@ public class DateQuery extends Activity implements View.OnClickListener {
         Log.e(TAG, "start:" + size);
         for (int i = 0; i < size; i++) {
             Storage storage = storages.get(i);
-            String checkoutDate = storage.getCheckoutDate();
+            int checkoutDateInt = storage.getCheckoutDate();
+
+            String originalData = String.valueOf(checkoutDateInt);
+            String checkoutDate = originalData.substring(0, 4) + "-" + originalData.substring(4, 6) + "-" + originalData.substring(6, 8);
+
             String checkoutTime = storage.getCheckoutTime();
             String operator = storage.getOperator();
             Long id = storage.getId();

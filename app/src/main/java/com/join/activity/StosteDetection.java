@@ -40,6 +40,8 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
     private TextView humidity, title;
     private Humidity.HumidityBinder humidityBinder;
     private String TAG = "jjjStosteDetection";
+    private String dateFormat;
+    private String timeFormat;
 
     @Override
     public void onClick(View v) {
@@ -109,8 +111,6 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                 if ((!normal_1_tab || !abnormal_1_tab) && (!normal_2_tab || !abnormal_2_tab)) {
                     String color;
                     String smell;
-                    String dateC;
-                    String timeC;
                     String numberGong;
                     String milliliter;
                     if (normal_1_tab) {
@@ -125,11 +125,10 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
 
                         smell = "正常";
                     }
-                    dateC = date.getText().toString();
-                    timeC = time.getText().toString();
+
                     numberGong = id_Gong_1.getText().toString();
                     milliliter = id_ml.getText().toString();
-                    String[] dataArray = new String[]{color, smell, dateC, timeC, numberGong, milliliter};
+                    String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, milliliter};
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
                     intent.putExtras(bundle);
@@ -175,11 +174,12 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
 
 
         SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
-        String dateFormat = sdate.format(new java.util.Date());
+        dateFormat = sdate.format(new java.util.Date());
+
         date.setText(dateFormat);
 
         SimpleDateFormat stime = new SimpleDateFormat("hh:mm");
-        String timeFormat = stime.format(new java.util.Date());
+        timeFormat = stime.format(new java.util.Date());
         time.setText(timeFormat);
     }
 

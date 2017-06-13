@@ -18,7 +18,6 @@ public class SaveToExcelAndSD {
     private String TAG = "jjjSaveToExcelAndSD";
 
 
-
     public SaveToExcelAndSD(Context context) {
         this.context = context;
     }
@@ -47,7 +46,7 @@ public class SaveToExcelAndSD {
                     String color = storage.getColor();
                     String smell = storage.getSmell();
                     String milliliter = storage.getMilliliter();
-                    String checkoutDate = storage.getCheckoutDate();
+                    int checkoutDate = storage.getCheckoutDate();
                     String checkoutTime = storage.getCheckoutTime();
                     String motileSperms = storage.getMotileSperms();
 
@@ -56,12 +55,12 @@ public class SaveToExcelAndSD {
                     SaveToExcel saveToExcel = new SaveToExcel(path);
                     if (type.equals("精液原液")) {
                         Log.e(TAG, "run: " + "保存的是精液原液");
-                        saveToExcel.writeToExcel(new String[]{checkoutDate, checkoutTime, type, operator, date, time,
+                        saveToExcel.writeToExcel(new String[]{checkoutDate + "", checkoutTime, type, operator, date, time,
                                 number, milliliter, color, smell, density, vitality, motilityRate, "-", "-", result});
 
                     } else {
                         Log.e(TAG, "run: " + "保存的是稀释精液");
-                        saveToExcel.writeToExcel(new String[]{checkoutDate, checkoutTime, type, operator, "-", "-",
+                        saveToExcel.writeToExcel(new String[]{checkoutDate + "", checkoutTime, type, operator, "-", "-",
                                 number, "-", color, smell, density, vitality, motilityRate, motileSperms, capacity, result});
 
                     }

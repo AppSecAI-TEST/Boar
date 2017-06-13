@@ -185,9 +185,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 mCameraManager.startPreview(holder);
 
             }
-        /*    if (commandState==?){
 
-            }*/
             handler.sendEmptyMessageDelayed(TAKE_PHOTO, 200L);
             //已经预览的时候通知照相
             // handler.sendEmptyMessage(TAKE_PHOTO);
@@ -272,6 +270,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     intent.addFlags(1);
                     startActivity(intent);
                 } else if (flag == 2) {
+                    double v1 = arithmeticData[1];
+                    Log.e(TAG, "onClick: " + v1);
                     intent = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", stosteDetectionData);

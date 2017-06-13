@@ -96,7 +96,11 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         Log.e(TAG, "start:" + size);
         for (int i = 0; i < size; i++) {
             Storage storage = storages.get(i);
-            String checkoutDate = storage.getCheckoutDate();
+            int checkoutDateInt = storage.getCheckoutDate();
+            Log.e(TAG, "init: " + checkoutDateInt + "new");
+            String originalData = String.valueOf(checkoutDateInt);
+            String checkoutDate = originalData.substring(0, 4) + "-" + originalData.substring(4, 6) + "-" + originalData.substring(6, 8);
+
             String checkoutTime = storage.getCheckoutTime();
             String operator = storage.getOperator();
             Long id = storage.getId();

@@ -17,7 +17,7 @@ public class Storage {
     private String smell;
     private String date;          //采精日期
     private String time;//采精时间
-    private String checkoutDate;//检测日期
+    private int checkoutDate;//检测日期
     private String checkoutTime;//检测时间
     private String number; //公猪编号/批号
     private String operator;//操作员
@@ -31,12 +31,12 @@ public class Storage {
     private String capacity; //每剂容量
     private String milliliter; //采精量(原液)
     private String motileSperms;//有效精子数(稀释)
-    @Generated(hash = 590371873)
+    @Generated(hash = 275532710)
     public Storage(Long id, String color, String smell, String date, String time,
-            String checkoutDate, String checkoutTime, String number,
-            String operator, String type, String density, String vitality,
-            String motilityRate, String copies, String add, String result,
-            String capacity, String milliliter, String motileSperms) {
+            int checkoutDate, String checkoutTime, String number, String operator,
+            String type, String density, String vitality, String motilityRate,
+            String copies, String add, String result, String capacity,
+            String milliliter, String motileSperms) {
         this.id = id;
         this.color = color;
         this.smell = smell;
@@ -90,10 +90,10 @@ public class Storage {
     public void setTime(String time) {
         this.time = time;
     }
-    public String getCheckoutDate() {
+    public int getCheckoutDate() {
         return this.checkoutDate;
     }
-    public void setCheckoutDate(String checkoutDate) {
+    public void setCheckoutDate(int checkoutDate) {
         this.checkoutDate = checkoutDate;
     }
     public String getCheckoutTime() {
@@ -175,4 +175,5 @@ public class Storage {
         this.motileSperms = motileSperms;
     }
 
+  
 }

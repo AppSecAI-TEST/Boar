@@ -27,6 +27,7 @@
             app:layout_widthPercent="95%w">
             <!--1.1-->
             <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/input_ll_1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/a_028"
@@ -44,6 +45,7 @@
                     android:textSize="25dp" />
 
                 <TextView
+                    android:id="@+id/input_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -55,6 +57,7 @@
             </com.zhy.android.percent.support.PercentLinearLayout>
 
             <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/input_ll_2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginLeft="14dp"
@@ -73,6 +76,7 @@
                     android:textSize="25dp" />
 
                 <TextView
+                    android:id="@+id/input_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -282,6 +286,7 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
         <Button
+            android:id="@+id/out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

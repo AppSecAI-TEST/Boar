@@ -11,7 +11,7 @@ public class DaoUtil {
     /**
      * 精液原液
      */
-    public static void sD2(Storage storage, String number, String operator, String milliliter, String date, String time, String checkoutDate,
+    public static void sD2(Storage storage, String number, String operator, String milliliter, String date, String time, int checkoutDate,
                            String checkoutTime, String copies, String add, String density, String vitality, String motilityRate,
                            String smell, String color, String type, String result) {
         storage.setCheckoutDate(checkoutDate);
@@ -37,7 +37,7 @@ public class DaoUtil {
     /**
      * 稀释精液
      */
-    public static void sD22(Storage storage, String density, String motilityRate, String checkoutDate, String checkoutTime, String smell,
+    public static void sD22(Storage storage, String density, String motilityRate, int checkoutDate, String checkoutTime, String smell,
                             String color, String vitality, String motileSperms, String capacity, String operator, String number, String type, String result) {
         storage.setNumber(number);
         storage.setOperator(operator);

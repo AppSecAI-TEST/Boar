@@ -27,7 +27,7 @@ public class StorageDao extends AbstractDao<Storage, Long> {
         public final static Property Smell = new Property(2, String.class, "smell", false, "SMELL");
         public final static Property Date = new Property(3, String.class, "date", false, "DATE");
         public final static Property Time = new Property(4, String.class, "time", false, "TIME");
-        public final static Property CheckoutDate = new Property(5, String.class, "checkoutDate", false, "CHECKOUT_DATE");
+        public final static Property CheckoutDate = new Property(5, int.class, "checkoutDate", false, "CHECKOUT_DATE");
         public final static Property CheckoutTime = new Property(6, String.class, "checkoutTime", false, "CHECKOUT_TIME");
         public final static Property Number = new Property(7, String.class, "number", false, "NUMBER");
         public final static Property Operator = new Property(8, String.class, "operator", false, "OPERATOR");
@@ -61,7 +61,7 @@ public class StorageDao extends AbstractDao<Storage, Long> {
                 "\"SMELL\" TEXT," + // 2: smell
                 "\"DATE\" TEXT," + // 3: date
                 "\"TIME\" TEXT," + // 4: time
-                "\"CHECKOUT_DATE\" TEXT," + // 5: checkoutDate
+                "\"CHECKOUT_DATE\" INTEGER NOT NULL ," + // 5: checkoutDate
                 "\"CHECKOUT_TIME\" TEXT," + // 6: checkoutTime
                 "\"NUMBER\" TEXT," + // 7: number
                 "\"OPERATOR\" TEXT," + // 8: operator
@@ -111,11 +111,7 @@ public class StorageDao extends AbstractDao<Storage, Long> {
         if (time != null) {
             stmt.bindString(5, time);
         }
- 
-        String checkoutDate = entity.getCheckoutDate();
-        if (checkoutDate != null) {
-            stmt.bindString(6, checkoutDate);
-        }
+        stmt.bindLong(6, entity.getCheckoutDate());
  
         String checkoutTime = entity.getCheckoutTime();
         if (checkoutTime != null) {
@@ -211,11 +207,7 @@ public class StorageDao extends AbstractDao<Storage, Long> {
         if (time != null) {
             stmt.bindString(5, time);
         }
- 
-        String checkoutDate = entity.getCheckoutDate();
-        if (checkoutDate != null) {
-            stmt.bindString(6, checkoutDate);
-        }
+        stmt.bindLong(6, entity.getCheckoutDate());
  
         String checkoutTime = entity.getCheckoutTime();
         if (checkoutTime != null) {
@@ -296,7 +288,7 @@ public class StorageDao extends AbstractDao<Storage, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // smell
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // date
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // time
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // checkoutDate
+            cursor.getInt(offset + 5), // checkoutDate
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // checkoutTime
             cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // number
             cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // operator
@@ -321,7 +313,7 @@ public class StorageDao extends AbstractDao<Storage, Long> {
         entity.setSmell(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setDate(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setTime(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setCheckoutDate(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setCheckoutDate(cursor.getInt(offset + 5));
         entity.setCheckoutTime(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
         entity.setNumber(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
         entity.setOperator(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
