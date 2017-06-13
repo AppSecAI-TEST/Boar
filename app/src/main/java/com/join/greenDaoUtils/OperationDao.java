@@ -49,7 +49,7 @@ public class OperationDao {
     }
 
     /**
-     * 查询条件为Type=TYPE_LOVE的数据
+     * 查询条件为Number=number的数据
      *
      * @return
      */
@@ -60,6 +60,10 @@ public class OperationDao {
 
     public static List<Storage> queryLoveID(long id) {
         return BaseApplication.getDaoInstant().getStorageDao().queryBuilder().where(StorageDao.Properties.Id.eq(id)).list();
+    }
+
+    public static List<Storage> queryLoveDate(String startTime, String lastTime) {
+        return BaseApplication.getDaoInstant().getStorageDao().queryBuilder().where(StorageDao.Properties.CheckoutTime.between(startTime, lastTime)).list();
     }
 
     /**

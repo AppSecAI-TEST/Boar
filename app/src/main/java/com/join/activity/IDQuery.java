@@ -21,7 +21,6 @@ import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
-import com.zhy.android.percent.support.PercentLinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,6 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
     private IDQueryAdapter idQueryAdapter;
     private ImageView icon_1;
     private Button bu_return;
-    private PercentLinearLayout ll_Gong;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
     private List<com.join.entity.IDQuery> list;
@@ -85,8 +83,6 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         intent = new Intent();
         get_data = (TextView) findViewById(R.id.get_data);
         humidity = (TextView) findViewById(R.id.humidity);
-        ll_Gong = (PercentLinearLayout) findViewById(R.id.ll_Gong);
-        ll_Gong.setOnClickListener(this);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(this);
         bu_return = (Button) findViewById(R.id.bu_return);
