@@ -312,7 +312,6 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                 }
                 break;
             case R.id.delete:
-
                 if (selectTag == 1) {
                     if (lengthFather_1 > 0) {
                         Log.e(TAG, "onClick: " + selectTag);
@@ -341,7 +340,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                 } else if (selectTag == 2) {
                     if (lengthFather_2 >= 0) {
                         Log.e(TAG, "onClick: " + selectTag);
-                        buffer2.delete(0, lengthFather_1);
+                        buffer2.delete(0, lengthFather_2);
                         input_2.setText(null);
 
                     }
