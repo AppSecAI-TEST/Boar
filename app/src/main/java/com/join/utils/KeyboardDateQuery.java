@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,6 +16,8 @@ import android.widget.PopupWindow;
 
 import com.join.R;
 import com.zhy.android.percent.support.PercentLinearLayout;
+
+import java.lang.reflect.Method;
 
 
 public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchListener {
@@ -60,11 +63,12 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
         bu_w = (Button) view.findViewById(R.id.bu_w);
         bu_w.setOnClickListener(this);
         input_1 = (EditText) view.findViewById(R.id.input_1);
-        //  input_1.setOnClickListener(this);
         input_2 = (EditText) view.findViewById(R.id.input_2);
-        // input_2.setOnClickListener(this);
+        closeKeyboard(input_1);
+        closeKeyboard(input_2);
         input_1.setOnTouchListener(this);
         input_2.setOnTouchListener(this);
+
     }
 
     public void showWindow(View parent) {
@@ -97,9 +101,11 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
 
     }
 
+    //开始日期输入框的buffer
     private StringBuffer buffer = new StringBuffer();
+    //结束日期输入框的buffer
     private StringBuffer buffer2 = new StringBuffer();
-
+    //点击区分那个输入框
     private int selectTag = 0;
 
     @Override
@@ -358,7 +364,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                         input_2.setText(null);
                         intent.putExtras(bundle);
                         intent.setAction("com.join.DateQuery");
-                         context.startActivity(intent);
+                        context.startActivity(intent);
 
                     }
                 }
@@ -406,4 +412,32 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
 
         return false;
     }
+
+    /**
+     * 关闭EditText的软件盘
+     *
+     * @param et
+     */
+    private void closeKeyboard(EditText et) {
+        if (android.os.Build.VERSION.SDK_INT <= 10) {
+            et.setInputType(InputType.TYPE_NULL);
+        } else {
+            Class<EditText> cls = EditText.class;
+            Method method;
+            try {
+                method = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
+                method.setAccessible(true);
+                method.invoke(et, false);
+            } catch (Exception e) {
+            }
+
+            try {
+                method = cls.getMethod("setSoftInputShownOnFocus", boolean.class);
+                method.setAccessible(true);
+                method.invoke(et, false);
+            } catch (Exception e) {
+            }
+        }
+    }
+
 }

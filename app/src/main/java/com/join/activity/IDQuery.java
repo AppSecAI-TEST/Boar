@@ -78,7 +78,6 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
 
 
     private void init() {
-
         intent = new Intent();
         get_data = (TextView) findViewById(R.id.get_data);
         humidity = (TextView) findViewById(R.id.humidity);
