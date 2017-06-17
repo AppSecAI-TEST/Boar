@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
@@ -87,6 +88,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private void initParam() {
         mCameraManager = new CertifyCameraManager();
         camera = mCameraManager.getCamera(this);
+
         mCameraManager.addCallback2(this);
         if (camera == null) {
 
@@ -97,21 +99,42 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     }
 
     private void takePicture() {
-        mCameraManager.takePhoto();
+        if (mCameraManager != null) {
+            final boolean isSupportAutoFocus = getPackageManager().hasSystemFeature(
+                    PackageManager.FEATURE_CAMERA_AUTOFOCUS);
+            //自动对焦
+            Camera.AutoFocusCallback autoFocusCallback = new Camera.AutoFocusCallback() {
+
+                public void onAutoFocus(boolean success, Camera camera) {
+                    Log.e(TAG, "onAutoFocus: " + success);
+                    if (success) {
+                        Log.i(TAG, "autoFocusCallback: success...");
+                        mCameraManager.takePhoto();
+                    } else {
+                        Log.i(TAG, "autoFocusCallback: fail...");
+
+                        mCameraManager.takePhoto();
+
+                    }
+                }
+            };
+            camera.autoFocus(autoFocusCallback);
+
+        }
     }
 
 
     @Override
     public void photoPrepared(int tag, final String path) {
         if (commandState == 00) {
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 500L);
             if (tag == 5) {
                 humidityClass.sendCommand(SerialPortCommand.two);
             }
         }
 
         if (commandState == 1) {
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 500L);
             if (tag == 10) {
                 humidityClass.sendCommand(SerialPortCommand.three);
 
@@ -119,14 +142,14 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         }
         if (commandState == 2) {
             Log.e(TAG, "photoPrepared: " + commandState + "1000L");
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 500L);
             if (tag == 15) {
                 humidityClass.sendCommand(SerialPortCommand.four);
 
             }
         }
         if (commandState == 3) {
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 1000L);
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 500L);
             if (tag == 20) {
 
                 arithmetic.setiPictureCallback4(new IPictureCallback4() {
@@ -135,6 +158,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                         return path;
                     }
                 });
+
                 arithmetic.getArithmetic();
             }
         }
@@ -388,7 +412,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                 Thread.sleep(1500);
                             }
                             if (!boolTag) {
-                   /*             if (state == -1) {
+                                humidityClass.sendCommand(SerialPortCommand.aone);
+                                humidityClass.sendCommand(SerialPortCommand.guan);
+                                if (state == -1) {
                                     //  animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
@@ -472,7 +498,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                }*/
+                                }
                             }
 
                             //  if (progress) {

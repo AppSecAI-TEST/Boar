@@ -11,6 +11,7 @@ import android.hardware.Camera.Parameters;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.ViewGroup;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,6 +36,7 @@ public class CertifyCameraManager implements ErrorCallback {
      */
     public Camera getCamera(Context context) {
         this.context = context;
+
         if (camera == null) {
             camera = openCamera();
         }
@@ -69,14 +71,18 @@ public class CertifyCameraManager implements ErrorCallback {
         //得到相机的数目
         int numberOfCameras = Camera.getNumberOfCameras();
         if (numberOfCameras == 0) {
+            Log.e(TAG, "findCamera: " + "jjjjjjjjjjjjj");
             return null;
         }
+        Log.e(TAG, "findCamera: " + numberOfCameras);
         CameraInfo cameraInfo = new CameraInfo();
         for (int i = 0; i < numberOfCameras; i++) {
             Camera.getCameraInfo(i, cameraInfo);
             if (cameraInfo.facing == CameraInfo.CAMERA_FACING_BACK) {
+                Log.e(TAG, "findCamera: CAMERA_FACING_BACK");
                 return Camera.open(i);
             } else if (cameraInfo.facing == CameraInfo.CAMERA_FACING_FRONT) {
+                Log.e(TAG, "findCamera: CAMERA_FACING_FRONT");
                 return Camera.open(i);
             }
         }
@@ -99,7 +105,17 @@ public class CertifyCameraManager implements ErrorCallback {
     }
 
     public void initSurfaceView(SurfaceView surfaceView) {
+
+        surfaceView.setY(-250);
+        surfaceView.setX(-300);
+        ViewGroup.LayoutParams layoutParams = surfaceView.getLayoutParams();
+        layoutParams.height = 1000;
+        layoutParams.width = 1200;
+        surfaceView.setLayoutParams(layoutParams);
+
         holder = surfaceView.getHolder();
+
+
     }
 
     /**
@@ -111,6 +127,7 @@ public class CertifyCameraManager implements ErrorCallback {
     private void setCameraParameters(int width, int height) {
         cameraParameters = camera.getParameters();
         cameraParameters.setPreviewFrameRate(30);
+
         cameraParameters.setPreviewSize(width, height);
         cameraParameters.setPictureSize(width, height);
         cameraParameters.setJpegQuality(100);
