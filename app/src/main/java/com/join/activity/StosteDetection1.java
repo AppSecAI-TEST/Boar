@@ -149,7 +149,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             }
         }
         if (commandState == 3) {
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 800L);
+           // handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 800L);
             if (tag == 20) {
 
                 arithmetic.setiPictureCallback4(new IPictureCallback4() {
