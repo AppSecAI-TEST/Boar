@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="7dp"
-            android:text="27℃"
+            android:text="37℃"
             android:textColor="#fff"
             android:textSize="25dp" />
     </com.zhy.android.percent.support.PercentLinearLayout>

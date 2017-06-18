@@ -59,8 +59,8 @@ public class ParameterSetting extends Activity implements ServiceConnection {
         Humidity humidityClass = humidityBinder.getHumidity();
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
-            public void onHumidityChange(final int data) {
-                settingResult.setHumidity("" + data);
+            public void onHumidityChange(final String data) {
+                settingResult.setHumidity( data);
             }
         });
     }

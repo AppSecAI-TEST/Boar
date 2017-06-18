@@ -127,12 +127,12 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
         Humidity humidityClass = humidityBinder.getHumidity();
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
-            public void onHumidityChange(final int data) {
+            public void onHumidityChange(final String data) {
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        humidity.setText("" + data);
+                        humidity.setText( data);
                     }
                 });
             }

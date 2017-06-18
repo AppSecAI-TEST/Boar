@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,11 +33,11 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
     private Keyboard keyboard;//自定义键盘
     private Button normal_1, abnormal_1, normal_2, abnormal_2, start;
     private boolean normal_1_tab = true;
-    private boolean abnormal_1_tab = true;
+    private boolean abnormal_1_tab = false;
     private Intent intent;
 
     private boolean normal_2_tab = true;
-    private boolean abnormal_2_tab = true;
+    private boolean abnormal_2_tab = false;
     private TextView humidity, title;
     private Humidity.HumidityBinder humidityBinder;
     private String TAG = "jjjStosteDetection";
@@ -64,46 +65,34 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                 break;
 
             case R.id.normal_1:
-                if (normal_1_tab) {
+                if (!normal_1_tab) {
                     abnormal_1.setBackgroundResource(R.drawable.a_020);
-                    abnormal_1_tab = true;
+                    abnormal_1_tab = false;
                     normal_1.setBackgroundResource(R.drawable.a_019);
-                    normal_1_tab = false;
-                } else {
-                    normal_1.setBackgroundResource(R.drawable.a_020);
                     normal_1_tab = true;
                 }
                 break;
             case R.id.abnormal_1:
-                if (abnormal_1_tab) {
+                if (!abnormal_1_tab) {
                     normal_1.setBackgroundResource(R.drawable.a_020);
-                    normal_1_tab = true;
+                    normal_1_tab = false;
                     abnormal_1.setBackgroundResource(R.drawable.a_019);
-                    abnormal_1_tab = false;
-                } else {
-                    abnormal_1.setBackgroundResource(R.drawable.a_020);
                     abnormal_1_tab = true;
                 }
                 break;
             case R.id.normal_2:
-                if (normal_2_tab) {
+                if (!normal_2_tab) {
                     abnormal_2.setBackgroundResource(R.drawable.a_020);
-                    abnormal_2_tab = true;
+                    abnormal_2_tab = false;
                     normal_2.setBackgroundResource(R.drawable.a_019);
-                    normal_2_tab = false;
-                } else {
-                    normal_2.setBackgroundResource(R.drawable.a_020);
                     normal_2_tab = true;
                 }
                 break;
             case R.id.abnormal_2:
-                if (abnormal_2_tab) {
+                if (!abnormal_2_tab) {
                     normal_2.setBackgroundResource(R.drawable.a_020);
-                    normal_2_tab = true;
+                    normal_2_tab = false;
                     abnormal_2.setBackgroundResource(R.drawable.a_019);
-                    abnormal_2_tab = false;
-                } else {
-                    abnormal_2.setBackgroundResource(R.drawable.a_020);
                     abnormal_2_tab = true;
                 }
                 break;
@@ -114,18 +103,17 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                     String numberGong;
                     String milliliter;
                     if (normal_1_tab) {
-                        color = "异常";
-                    } else {
-
                         color = "正常";
+                    } else {
+                        color = "异常";
                     }
                     if (normal_2_tab) {
-                        smell = "异常";
+                        smell = "正常";
                     } else {
 
-                        smell = "正常";
+                        smell = "异常";
                     }
-
+                    Log.e(TAG, "onClick: " + color + "\n" + smell);
                     numberGong = id_Gong_1.getText().toString();
                     milliliter = id_ml.getText().toString();
                     String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, milliliter};
@@ -212,11 +200,11 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
         Humidity humidityClass = humidityBinder.getHumidity();
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
-            public void onHumidityChange(final int data) {
+            public void onHumidityChange(final String data) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        humidity.setText("" + data);
+                        humidity.setText( data);
                     }
                 });
             }

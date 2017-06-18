@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="330dp"
+                    android:layout_marginLeft="325dp"
                     android:text="平台温度:"
                     android:textColor="#fff"
                     android:textSize="25dp" />
@@ -61,6 +61,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="7dp"
+                    android:hint="37℃"
+                    android:textColorHint="#fff"
                     android:text="@{diluentE.humidity}"
                     android:textColor="#fff"
                     android:textSize="25dp" />
@@ -117,6 +119,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="20dp"
+                                android:hint="00001"
                                 android:text="@{diluentE.number}"
                                 android:textColor="#078d82"
                                 android:textSize="23dp" />
@@ -149,6 +152,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="20dp"
+                                android:hint="80ml"
                                 android:text="@{diluentE.capacity}"
                                 android:textColor="#078d82"
                                 android:textSize="23dp" />
@@ -249,7 +253,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="20dp"
-                            android:background="@drawable/a_020"
+                            android:background="@drawable/a_019"
                             android:text="正 常"
                             android:textColor="#b6b7bb"
                             android:textSize="25dp" />
@@ -279,7 +283,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="20dp"
-                            android:background="@drawable/a_020"
+                            android:background="@drawable/a_019"
                             android:text="正 常"
                             android:textColor="#b6b7bb"
                             android:textSize="25dp" />

@@ -8,6 +8,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -32,11 +33,11 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
     private Button normal_1, abnormal_1, normal_2, abnormal_2, start;
     private Humidity.HumidityBinder humidityBinder;
     private boolean normal_1_tab = true;
-    private boolean abnormal_1_tab = true;
+    private boolean abnormal_1_tab = false;
 
-
+    private String TAG = "jjjStosteDetectionDiluent";
     private boolean normal_2_tab = true;
-    private boolean abnormal_2_tab = true;
+    private boolean abnormal_2_tab = false;
     private Intent intent;
     private String dateFormat;
     private String timeFormat;
@@ -98,46 +99,34 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.normal_1:
-                if (normal_1_tab) {
+                if (!normal_1_tab) {
                     abnormal_1.setBackgroundResource(R.drawable.a_020);
-                    abnormal_1_tab = true;
+                    abnormal_1_tab = false;
                     normal_1.setBackgroundResource(R.drawable.a_019);
-                    normal_1_tab = false;
-                } else {
-                    normal_1.setBackgroundResource(R.drawable.a_020);
                     normal_1_tab = true;
                 }
                 break;
             case R.id.abnormal_1:
-                if (abnormal_1_tab) {
+                if (!abnormal_1_tab) {
                     normal_1.setBackgroundResource(R.drawable.a_020);
-                    normal_1_tab = true;
+                    normal_1_tab = false;
                     abnormal_1.setBackgroundResource(R.drawable.a_019);
-                    abnormal_1_tab = false;
-                } else {
-                    abnormal_1.setBackgroundResource(R.drawable.a_020);
                     abnormal_1_tab = true;
                 }
                 break;
             case R.id.normal_2:
-                if (normal_2_tab) {
+                if (!normal_2_tab) {
                     abnormal_2.setBackgroundResource(R.drawable.a_020);
-                    abnormal_2_tab = true;
+                    abnormal_2_tab = false;
                     normal_2.setBackgroundResource(R.drawable.a_019);
-                    normal_2_tab = false;
-                } else {
-                    normal_2.setBackgroundResource(R.drawable.a_020);
                     normal_2_tab = true;
                 }
                 break;
             case R.id.abnormal_2:
-                if (abnormal_2_tab) {
+                if (!abnormal_2_tab) {
                     normal_2.setBackgroundResource(R.drawable.a_020);
-                    normal_2_tab = true;
+                    normal_2_tab = false;
                     abnormal_2.setBackgroundResource(R.drawable.a_019);
-                    abnormal_2_tab = false;
-                } else {
-                    abnormal_2.setBackgroundResource(R.drawable.a_020);
                     abnormal_2_tab = true;
                 }
                 break;
@@ -148,19 +137,33 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
                     String numberGong;
                     String capacity;
                     if (normal_1_tab) {
-                        color = "异常";
+                        color = "正常";
                     } else {
 
-                        color = "正常";
+                        color = "异常";
                     }
                     if (normal_2_tab) {
-                        smell = "异常";
+                        smell = "正常";
                     } else {
 
-                        smell = "正常";
+                        smell = "异常";
+                    }
+                    Log.e(TAG, "onClick: " + color + "\n" + smell);
+                    String numberGongTemp = diluentE.getNumber();
+                    String capacityTemp = diluentE.getCapacity();
+                    if (numberGongTemp==null) {
+
+                        numberGong = "80ml";
+                    } else {
+                        numberGong = numberGongTemp;
+                    }
+                    if (capacityTemp==null) {
+
+                        capacity = "00001";
+                    } else {
+                        capacity = capacityTemp;
                     }
 
-                    numberGong = diluentE.getNumber();
                     capacity = diluentE.getCapacity();
                     String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, capacity};
                     Bundle bundle = new Bundle();
@@ -196,8 +199,8 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
         Humidity humidityClass = humidityBinder.getHumidity();
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
-            public void onHumidityChange(int data) {
-                diluentE.setHumidity(data + "");
+            public void onHumidityChange(String data) {
+                diluentE.setHumidity(data);
             }
         });
     }

@@ -172,7 +172,7 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         Humidity humidityClass = humidityBinder.getHumidity();
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
-            public void onHumidityChange(final int data) {
+            public void onHumidityChange(final String data) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

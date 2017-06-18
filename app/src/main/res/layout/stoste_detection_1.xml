@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="320dp"
+                android:layout_marginLeft="310dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
-                android:text="27℃"
+                android:text="37℃"
                 android:textColor="#fff"
                 android:textSize="25dp" />
         </com.zhy.android.percent.support.PercentLinearLayout>

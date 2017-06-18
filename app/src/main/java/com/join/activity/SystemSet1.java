@@ -71,12 +71,12 @@ public class SystemSet1 extends Activity implements View.OnClickListener ,Servic
         Humidity humidityClass = humidityBinder.getHumidity();
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
-            public void onHumidityChange(final int data) {
+            public void onHumidityChange(final String data) {
                 Log.e("jjjj", data + "");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        humidity.setText("" + data);
+                        humidity.setText( data);
                     }
                 });
             }

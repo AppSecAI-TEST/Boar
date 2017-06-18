@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="280dp"
+                    android:layout_marginLeft="275dp"
                     android:text="平台温度:"
                     android:textColor="#fff"
                     android:textSize="25dp" />
@@ -61,8 +61,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="7dp"
+                    android:hint="37℃"
                     android:text="@{result1.humidity}"
                     android:textColor="#fff"
+                    android:textColorHint="#fff"
                     android:textSize="25dp" />
             </com.zhy.android.percent.support.PercentLinearLayout>
             <!--1.1-->

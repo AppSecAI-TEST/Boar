@@ -5,7 +5,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
@@ -100,8 +99,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
     private void takePicture() {
         if (mCameraManager != null) {
-            final boolean isSupportAutoFocus = getPackageManager().hasSystemFeature(
-                    PackageManager.FEATURE_CAMERA_AUTOFOCUS);
+           /* final boolean isSupportAutoFocus = getPackageManager().hasSystemFeature(
+                    PackageManager.FEATURE_CAMERA_AUTOFOCUS);//是否支持自动对焦*/
+
             //自动对焦
             Camera.AutoFocusCallback autoFocusCallback = new Camera.AutoFocusCallback() {
 
@@ -127,14 +127,14 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     public void photoPrepared(int tag, final String path) {
         if (commandState == 00) {
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 500L);
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 800L);
             if (tag == 5) {
                 humidityClass.sendCommand(SerialPortCommand.two);
             }
         }
 
         if (commandState == 1) {
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 500L);
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 800L);
             if (tag == 10) {
                 humidityClass.sendCommand(SerialPortCommand.three);
 
@@ -142,14 +142,14 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         }
         if (commandState == 2) {
             Log.e(TAG, "photoPrepared: " + commandState + "1000L");
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 500L);
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 800L);
             if (tag == 15) {
                 humidityClass.sendCommand(SerialPortCommand.four);
 
             }
         }
         if (commandState == 3) {
-            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 500L);
+            handler.sendEmptyMessageDelayed(JUMP_FRAGMENT, 800L);
             if (tag == 20) {
 
                 arithmetic.setiPictureCallback4(new IPictureCallback4() {
@@ -210,7 +210,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
             }
 
-            handler.sendEmptyMessageDelayed(TAKE_PHOTO, 200L);
+            handler.sendEmptyMessageDelayed(TAKE_PHOTO, 2800L);
             //已经预览的时候通知照相
             // handler.sendEmptyMessage(TAKE_PHOTO);
         }
@@ -258,6 +258,14 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                         isPrepared = true;
                         removeMessages(MsgCons.CAMERA_TIMEOUT);
                         mCameraManager.delCallback();
+                        closeCamera();
+                        humidityClass.sendCommand(SerialPortCommand.aone);
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        humidityClass.sendCommand(SerialPortCommand.guan);
                     } else {
                         if (boolTag1) {
                             takePicture();
@@ -365,12 +373,12 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         }
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
-            public void onHumidityChange(final int data) {
+            public void onHumidityChange(final String data) {
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        humidity.setText("" + data);
+                        humidity.setText( data);
                     }
                 });
             }
@@ -412,8 +420,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                 Thread.sleep(1500);
                             }
                             if (!boolTag) {
-                                humidityClass.sendCommand(SerialPortCommand.aone);
-                                humidityClass.sendCommand(SerialPortCommand.guan);
+
                                 if (state == -1) {
                                     //  animatedCircleLoadingView.stopFailure();
                                     progress = false;

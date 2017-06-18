@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="330dp"
+                android:layout_marginLeft="320dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
-                android:text="27℃"
+                android:text="37℃"
                 android:textColor="#fff"
                 android:textSize="25dp" />
         </com.zhy.android.percent.support.PercentLinearLayout>
@@ -100,7 +100,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginLeft="20dp"
-                            android:text="12345"
+                            android:text="00001"
                             android:textColor="#078d82"
                             android:textSize="23dp" />
 
@@ -232,7 +232,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/a_020"
+                        android:background="@drawable/a_019"
                         android:text="正 常"
                         android:textColor="#b6b7bb"
                         android:textSize="25dp" />
@@ -262,7 +262,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/a_020"
+                        android:background="@drawable/a_019"
                         android:text="正 常"
                         android:textColor="#b6b7bb"
                         android:textSize="25dp" />

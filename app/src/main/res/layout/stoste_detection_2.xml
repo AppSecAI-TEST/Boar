@@ -5,6 +5,14 @@
     android:layout_height="match_parent">
 
 
+    <ImageView
+        android:id="@+id/icon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/a_000" />
+
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="280dp"
+                android:layout_marginLeft="272dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -44,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
-                android:text="27℃"
+                android:text="37℃"
                 android:textColor="#fff"
                 android:textSize="25dp" />
         </com.zhy.android.percent.support.PercentLinearLayout>
@@ -584,13 +592,5 @@
 
 
     </com.zhy.android.percent.support.PercentLinearLayout>
-
-    <ImageView
-        android:id="@+id/icon_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/a_000" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 
