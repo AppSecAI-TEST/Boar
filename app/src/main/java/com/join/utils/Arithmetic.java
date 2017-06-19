@@ -30,7 +30,7 @@ public class Arithmetic {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                double[] tem = {0.57143, 10, 80, 15};
+                double[] tem = {0.6472, 10, 80, 15};
                 double[] pdTestResult = new double[22];
                 for (int i = 0; i < 22; i++) {
                     pdTestResult[i] = 0;

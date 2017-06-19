@@ -12,7 +12,9 @@ import java.util.Date;
 public class Settings {
 
     private Settings() {
-        FileUtil.mkdir(storagePath);
+        if (storagePath != null) {
+            FileUtil.mkdir(storagePath);
+        }
     }
 
     private String storagePath = Environment.getExternalStorageDirectory().getAbsolutePath().concat(File.separator)

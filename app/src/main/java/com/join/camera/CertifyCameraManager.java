@@ -26,7 +26,7 @@ public class CertifyCameraManager implements ErrorCallback {
     private SurfaceHolder holder;
     private Context context;
     private IPictureCallback2 iPictureCallback2;
-    private String path;
+    private String aonePath;
 
     /**
      * 拿到相机
@@ -165,30 +165,89 @@ public class CertifyCameraManager implements ErrorCallback {
     /**
      * 拍照之后返回的字节
      */
-
+    private String twoPath;
+    private String threePath;
+    private String fourPath;
     private Camera.PictureCallback pictureCallback = new Camera.PictureCallback() {
 
         private int i;
+        private int tempNumber = 0;
+        private int tempNumber2 = 0;
+        private int tempNumber3 = 0;
+        private int tempNumber4 = 0;
+        String format2 = null;
+        String format3 = null;
+        String format4 = null;
+        String format5 = null;
 
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
             String format = String.format("%03d", i++);
+
+
             stopPreview();
             String photo_name = "";
-            if (path == null) {
-                path = Settings.get().getCertifyPath();
+            if (i <= 20) {
+                format2 = String.format("%03d", tempNumber++);
+                if (aonePath == null) {
+
+                    aonePath = Settings.get().getCertifyPath() + "aonePath";
+                }
+                File aonePathFile = new File(aonePath);
+
+                if (!aonePathFile.exists()) {
+                    aonePathFile.mkdir();
+                }
             }
-            Log.e(TAG, "onPictureTaken: " + path);
-            File file = new File(path);
-            if (!file.exists()) {
-                file.mkdir();
+
+            if (i <= 40 && i >= 20) {
+                format3 = String.format("%03d", (tempNumber2++) - 1);
+                Log.e(TAG, "onPictureTaken: " + tempNumber2);
+                if (twoPath == null) {
+
+                    twoPath = Settings.get().getCertifyPath() + "twoPath";
+                }
+
+                File twoPathField = new File(twoPath);
+                if (!twoPathField.exists()) {
+                    twoPathField.mkdir();
+                }
+            }
+            if (i <= 60 && i >= 40) {
+                format4 = String.format("%03d", (tempNumber3++) - 1);
+                if (threePath == null) {
+
+                    threePath = Settings.get().getCertifyPath() + "threePath";
+                }
+                File twoPathField = new File(threePath);
+                if (!twoPathField.exists()) {
+                    twoPathField.mkdir();
+                }
+
+            }
+
+            if (i <= 80 && i >= 60) {
+                format5 = String.format("%03d", (tempNumber4++) - 1);
+                if (fourPath == null) {
+                    fourPath = Settings.get().getCertifyPath() + "fourPath";
+                }
+                File twoPathField = new File(fourPath);
+                if (!twoPathField.exists()) {
+                    twoPathField.mkdir();
+                }
             }
             try {
-                //   Date date = new Date();
-                Log.e(TAG, "onPictureTaken: format" + format);
-                String save_name = (format + ".jpg");
-                File saveFile = new File(path + File.separator + save_name);
 
+                Log.e(TAG, "onPictureTaken: format" + format);
+                String save_name = (format2 + ".jpg");
+                String save_name2 = (format3 + ".jpg");
+                String save_name3 = (format4 + ".jpg");
+                String save_name4 = (format5 + ".jpg");
+
+                File saveFile = new File(aonePath + File.separator + save_name);
+                File saveFile1 = new File(twoPath + File.separator + save_name2);
+                File saveFile2 = new File(threePath + File.separator + save_name3);
+                File saveFile3 = new File(fourPath + File.separator + save_name4);
 
               /*  BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(saveFile));
                 Bitmap mBitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
@@ -205,10 +264,27 @@ public class CertifyCameraManager implements ErrorCallback {
 
                 // bos.flush();
                 //  bos.close();
-                FileOutputStream fos = new FileOutputStream(saveFile);
-                fos.write(data);
-                fos.close();
-                fos.flush();
+                if (i <= 20) {
+                    FileOutputStream fos = new FileOutputStream(saveFile);
+                    fos.write(data);
+                    fos.close();
+                    fos.flush();
+                } else if (i <= 40 && i >= 20) {
+                    FileOutputStream fos = new FileOutputStream(saveFile1);
+                    fos.write(data);
+                    fos.close();
+                    fos.flush();
+                } else if (i <= 60 && i >= 40) {
+                    FileOutputStream fos = new FileOutputStream(saveFile2);
+                    fos.write(data);
+                    fos.close();
+                    fos.flush();
+                } else if (i <= 80 && i >= 60) {
+                    FileOutputStream fos = new FileOutputStream(saveFile3);
+                    fos.write(data);
+                    fos.close();
+                    fos.flush();
+                }
                 startPreview(holder);
                 // photo_name = saveFile.getAbsolutePath();
             } catch (Exception e) {
@@ -220,7 +296,16 @@ public class CertifyCameraManager implements ErrorCallback {
                     Message message = Message.obtain();
                     message.what = MsgCons.CAMERA_PHOTO_PREPARED;
                     message.obj = photo_name;*/
-                    iPictureCallback2.photoPrepared(i, path);
+                    if (i <= 20) {
+                        iPictureCallback2.photoPrepared(i, aonePath);
+                    } else if (i <= 40 && i >= 20) {
+                        iPictureCallback2.photoPrepared(i, twoPath);
+                    } else if (i <= 60 && i >= 40) {
+                        iPictureCallback2.photoPrepared(i, threePath);
+                    } else if (i <= 80 && i >= 60) {
+                        iPictureCallback2.photoPrepared(i, fourPath);
+                    }
+
 
                 }
 
@@ -237,16 +322,13 @@ public class CertifyCameraManager implements ErrorCallback {
      */
     public void addCallback2(IPictureCallback2 iPictureCallback) {
         this.iPictureCallback2 = iPictureCallback;
-
     }
-
 
     /**
      * 删除回调
      */
     public void delCallback() {
         this.iPictureCallback2 = null;
-
     }
 
     /**
@@ -278,7 +360,7 @@ public class CertifyCameraManager implements ErrorCallback {
     public void stopPreview() {
         if (camera != null) {
             camera.stopPreview();
-            camera.setPreviewCallback(null);
+           camera.setPreviewCallback(null);
             mPreviewing = false;
         }
     }
