@@ -79,10 +79,11 @@ public class CertifyCameraManager implements ErrorCallback {
         for (int i = 0; i < numberOfCameras; i++) {
             Camera.getCameraInfo(i, cameraInfo);
             if (cameraInfo.facing == CameraInfo.CAMERA_FACING_BACK) {
-                Log.e(TAG, "findCamera: CAMERA_FACING_BACK");
+                Log.e(TAG, "findCamera: CAMERA_FACING_BACK" + i);
+
                 return Camera.open(i);
             } else if (cameraInfo.facing == CameraInfo.CAMERA_FACING_FRONT) {
-                Log.e(TAG, "findCamera: CAMERA_FACING_FRONT");
+                Log.e(TAG, "findCamera: CAMERA_FACING_FRONT" + i);
                 return Camera.open(i);
             }
         }
@@ -360,7 +361,7 @@ public class CertifyCameraManager implements ErrorCallback {
     public void stopPreview() {
         if (camera != null) {
             camera.stopPreview();
-           camera.setPreviewCallback(null);
+            camera.setPreviewCallback(null);
             mPreviewing = false;
         }
     }

@@ -29,7 +29,7 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
     public void onDataReceive(byte[] buffer, int size) {
         String data = Convert.bytesToHexString(buffer);
 
-        Log.e(TAG, "onDataReceive: " + data);
+      //  Log.e(TAG, "onDataReceive: " + data);
 /*        if (buffer[5] == 0x04) {
             String substring = data.substring(18, 20);
             humidityInt = Integer.valueOf(substring, 16);

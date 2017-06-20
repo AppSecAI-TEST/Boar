@@ -133,6 +133,19 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     }
 
 
+    /**
+     * 增加相机到布局
+     */
+    private void initSurafceView() {
+        camera_ll.removeAllViews();
+        cameraSurfaceView = new CameraSurfaceView(this);
+
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        camera_ll.addView(cameraSurfaceView, params);
+
+        mCameraManager.initSurfaceView(cameraSurfaceView);
+    }
+
     @Override
     public void photoPrepared(int tag, final String path) {
         if (commandState == 00) {
@@ -196,21 +209,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     }
 
 
-    /**
-     * 增加相机到布局
-     */
-    private void initSurafceView() {
-        camera_ll.removeAllViews();
-        cameraSurfaceView = new CameraSurfaceView(this);
-
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        camera_ll.addView(cameraSurfaceView, params);
-
-        mCameraManager.initSurfaceView(cameraSurfaceView);
-    }
-
     @Override
     public void photoPrepared3(double[] arithmetic, int returnState) {
+        Log.e(TAG, "photoPrepared3: " + "tag" + tag);
         if (tag == 20) {
             this.arithmeticData = arithmetic;
             state = returnState;
@@ -297,6 +298,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private class MyHandler extends Handler {
         MyHandler() {
         }
+
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -434,6 +436,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     public void onServiceDisconnected(ComponentName name) {
 
     }
+
     /**
      * 加载动漫
      */
@@ -457,7 +460,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     try {
                         for (int i = 0; i <= 100; i++) {
                             if (boolTag) {
-                                Thread.sleep(2500);
+                                Thread.sleep(3000);
                             }
                             if (!boolTag) {
 

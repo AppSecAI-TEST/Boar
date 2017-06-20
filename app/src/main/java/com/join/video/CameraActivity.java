@@ -95,11 +95,15 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
         holder.setFormat(PixelFormat.TRANSPARENT);
         holder.setKeepScreenOn(true);
         holder.addCallback(this); // holder加入回调接口
+        // setType必须设置，要不出错.
+        holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
     /**
      * 初始化相机
      */
+    private String TAG = "jjjCameraActivity";
+
     private void initCamera() {
         if (Camera.getNumberOfCameras() == 2) {
             mCamera = Camera.open(mCameraFacing);
@@ -116,7 +120,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 
             for (int num = 0; num < vSizeList.size(); num++) {
                 Camera.Size size = vSizeList.get(num);
-
+                Log.e(TAG, "initCamera: " + "\n" + size.width + "\n" + size.height);
                 if (size.width >= 800 && size.height >= 480) {
                     this.mSize = size;
                     break;
@@ -124,14 +128,14 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             }
             mSize = vSizeList.get(0);
 
-            List<String> focusModesList = parameters.getSupportedFocusModes();
+          //  List<String> focusModesList = parameters.getSupportedFocusModes();
 
             //增加对聚焦模式的判断
-            if (focusModesList.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+    /*        if (focusModesList.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
                 parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
             } else if (focusModesList.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
                 parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-            }
+            }*/
             mCamera.setParameters(parameters);
         }
         int rotation = getWindowManager().getDefaultDisplay().getRotation();
@@ -175,7 +179,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             //设置audio的编码格式
             mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
             //设置video的编码格式
-            mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.DEFAULT);
+            mRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H263);
             // 设置录制的视频帧率。必须放在设置编码和格式的后面，否则报错
             mRecorder.setVideoFrameRate(30);
             //设置录制的视频编码比特率
@@ -184,13 +188,13 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             //设置要捕获的视频的宽度和高度
             //   mSurfaceHolder.setFixedSize(640, 480);//最高只能设置640x480
 
-            mRecorder.setVideoSize(320, 240);//最高只能设置640x480
+            mRecorder.setVideoSize(1280, 720);//最高只能设置640x480
             //设置记录会话的最大持续时间（毫秒）
             mRecorder.setMaxDuration(60 * 1000);
             mRecorder.setPreviewDisplay(mSurfaceHolder.getSurface());
-           // String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath();
-            String path1 = Environment.getExternalStorageDirectory().getPath()+"/"+"DCIM"+"/"+"Camera";
-            Log.e("jjj",path1);
+            // String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath();
+            String path1 = Environment.getExternalStorageDirectory().getPath() + "/" + "DCIM" + "/" + "Camera";
+            Log.e("jjj", path1);
 
             if (path1 != null) {
                 File dir = new File(path1);
@@ -198,7 +202,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
                     dir.mkdir();
                 }
                /* path = dir + "/" + System.currentTimeMillis() + ".avi";*/
-                path1 = dir + "/" + "HEVC" + ".3gp";
+                path1 = dir + "/" + "HEVC" + ".avi";
                 Log.e("jjj", path1);
                 //设置输出文件的路径
                 mRecorder.setOutputFile(path1);
@@ -208,10 +212,9 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
                 mRecorder.start();
                 isRecording = true;
 
-                // btnStartStop.setText("停止");
+                btnStartStop.setText("停止");
             }
         } catch (Exception e) {
-            Log.e("jjjj", "jjjjjjj");
             e.printStackTrace();
         }
     }
@@ -225,7 +228,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             mRecorder.stop();
             //重置
             mRecorder.reset();
-            // btnStartStop.setText("开始");
+            btnStartStop.setText("开始");
         } catch (Exception e) {
             e.printStackTrace();
         }
