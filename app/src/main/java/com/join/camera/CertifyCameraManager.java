@@ -71,7 +71,6 @@ public class CertifyCameraManager implements ErrorCallback {
         //得到相机的数目
         int numberOfCameras = Camera.getNumberOfCameras();
         if (numberOfCameras == 0) {
-            Log.e(TAG, "findCamera: " + "jjjjjjjjjjjjj");
             return null;
         }
         Log.e(TAG, "findCamera: " + numberOfCameras);
@@ -268,23 +267,23 @@ public class CertifyCameraManager implements ErrorCallback {
                 if (i <= 20) {
                     FileOutputStream fos = new FileOutputStream(saveFile);
                     fos.write(data);
-                    fos.close();
                     fos.flush();
+                    fos.close();
                 } else if (i <= 40 && i >= 20) {
                     FileOutputStream fos = new FileOutputStream(saveFile1);
                     fos.write(data);
-                    fos.close();
                     fos.flush();
+                    fos.close();
                 } else if (i <= 60 && i >= 40) {
                     FileOutputStream fos = new FileOutputStream(saveFile2);
                     fos.write(data);
-                    fos.close();
                     fos.flush();
+                    fos.close();
                 } else if (i <= 80 && i >= 60) {
                     FileOutputStream fos = new FileOutputStream(saveFile3);
                     fos.write(data);
-                    fos.close();
                     fos.flush();
+                    fos.close();
                 }
                 startPreview(holder);
                 // photo_name = saveFile.getAbsolutePath();
@@ -298,13 +297,13 @@ public class CertifyCameraManager implements ErrorCallback {
                     message.what = MsgCons.CAMERA_PHOTO_PREPARED;
                     message.obj = photo_name;*/
                     if (i <= 20) {
-                        iPictureCallback2.photoPrepared(i, aonePath);
+                        iPictureCallback2.photoPrepared2(i, aonePath);
                     } else if (i <= 40 && i >= 20) {
-                        iPictureCallback2.photoPrepared(i, twoPath);
+                        iPictureCallback2.photoPrepared2(i, twoPath);
                     } else if (i <= 60 && i >= 40) {
-                        iPictureCallback2.photoPrepared(i, threePath);
+                        iPictureCallback2.photoPrepared2(i, threePath);
                     } else if (i <= 80 && i >= 60) {
-                        iPictureCallback2.photoPrepared(i, fourPath);
+                        iPictureCallback2.photoPrepared2(i, fourPath);
                     }
 
 

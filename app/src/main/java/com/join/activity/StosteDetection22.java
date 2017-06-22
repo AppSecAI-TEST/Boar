@@ -130,7 +130,7 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
             result = "不合格";
         }
         String motileSpermsS = String.valueOf(Double.parseDouble(String.format("%.3f", motileSperms)));
-        String densityS = String.valueOf(Double.parseDouble(String.format("%.3f", density)));
+        String densityS = String.valueOf(Double.parseDouble(String.format("%.3f", density))) + "亿/ml";
         String vitalityS = String.valueOf(Double.parseDouble(String.format("%.3f", vitality)));
         String motilityRateS = String.valueOf(Double.parseDouble(String.format("%.3f", motilityRate)));
         result1.setResult("结果: " + result);

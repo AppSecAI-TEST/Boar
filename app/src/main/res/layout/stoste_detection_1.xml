@@ -5,6 +5,14 @@
     android:layout_height="match_parent">
 
 
+    <ImageView
+        android:id="@+id/icon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="18dp"
+        android:src="@drawable/a_000" />
+
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -74,7 +82,10 @@
                     android:orientation="vertical"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="55%w">
-
+                    <SurfaceView
+                        android:id="@+id/surface_view"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent" />
                     <!--2.2.1-->
                 </com.zhy.android.percent.support.PercentLinearLayout>
                 <!--2.2.2-->
@@ -173,12 +184,4 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
     </com.zhy.android.percent.support.PercentLinearLayout>
-
-    <ImageView
-        android:id="@+id/icon_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/a_000" />
 </com.zhy.android.percent.support.PercentFrameLayout>

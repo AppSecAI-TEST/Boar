@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES"></uses-permission>
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+
+    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"></uses-feature>
     <!--开机启动权限-->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
@@ -28,7 +31,7 @@
             </intent-filter>
         </receiver>
         <!--欢迎界面-->
-        <activity android:name=".video.CameraActivity">
+        <activity android:name=".activity.HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

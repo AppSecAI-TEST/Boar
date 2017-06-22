@@ -33,7 +33,6 @@ import java.util.List;
  */
 
 public class CameraActivity extends Activity implements SurfaceHolder.Callback {
-    //http://stackoverflow.com/questions/10102242/getting-frames-from-videos-android   视频分解库
     //http://blog.csdn.net/feifeiwendao/article/details/52527824    ffmpeg
     private SurfaceView mSurfaceView;
     private SurfaceHolder mSurfaceHolder;
@@ -128,14 +127,14 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             }
             mSize = vSizeList.get(0);
 
-          //  List<String> focusModesList = parameters.getSupportedFocusModes();
+          List<String> focusModesList = parameters.getSupportedFocusModes();
 
             //增加对聚焦模式的判断
-    /*        if (focusModesList.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
+            if (focusModesList.contains(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO)) {
                 parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
             } else if (focusModesList.contains(Camera.Parameters.FOCUS_MODE_AUTO)) {
                 parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
-            }*/
+            }
             mCamera.setParameters(parameters);
         }
         int rotation = getWindowManager().getDefaultDisplay().getRotation();
@@ -186,11 +185,12 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
             mRecorder.setVideoEncodingBitRate(1024 * 1024);
 
             //设置要捕获的视频的宽度和高度
-            //   mSurfaceHolder.setFixedSize(640, 480);//最高只能设置640x480
+             mSurfaceHolder.setFixedSize(1280, 720);//最高只能设置640x480
 
             mRecorder.setVideoSize(1280, 720);//最高只能设置640x480
             //设置记录会话的最大持续时间（毫秒）
             mRecorder.setMaxDuration(60 * 1000);
+
             mRecorder.setPreviewDisplay(mSurfaceHolder.getSurface());
             // String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath();
             String path1 = Environment.getExternalStorageDirectory().getPath() + "/" + "DCIM" + "/" + "Camera";

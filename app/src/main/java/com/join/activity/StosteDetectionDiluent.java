@@ -153,18 +153,18 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
                     String capacityTemp = diluentE.getCapacity();
                     if (numberGongTemp==null) {
 
-                        numberGong = "80ml";
+                        numberGong = "00001";
                     } else {
                         numberGong = numberGongTemp;
                     }
                     if (capacityTemp==null) {
 
-                        capacity = "00001";
+                        capacity = "80ml";
                     } else {
                         capacity = capacityTemp;
                     }
 
-                    capacity = diluentE.getCapacity();
+
                     String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, capacity};
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);

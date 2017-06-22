@@ -124,9 +124,9 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         storages = OperationDao.queryLoveID(idqUeryData);
         Storage storage = storages.get(0);
         //显示到页面
-        add_1.setText(storage.getAdd());
+        add_1.setText(storage.getAdd() + "ml");
         copies_1.setText(storage.getCopies());
-        density_1.setText(storage.getDensity());
+        density_1.setText(storage.getDensity() + "亿/ml");
         vitality_1.setText(storage.getVitality());
         motilityRate_1.setText(storage.getMotilityRate());
         color_1.setText(storage.getColor());
@@ -181,14 +181,17 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         double copies = milliliterInt * motilityRate * vitality / 30; //得到推荐份数
         double capacity = milliliterInt / copies;//得到每剂容量
         double add = copies * 80 - milliliterInt;  //得到需增加多少稀释精液
+        if (add < 0) {
+            add = 0.0;
+        }
         String addS = String.valueOf(Double.parseDouble(String.format("%.3f", add)));//取小数点后三位的数,四舍五入
         String copiesS = String.valueOf(Math.round(copies));//取整数,四舍五入
         String operator = IDSelect.id_manage;
 
         //显示到页面
-        add_1.setText(addS);
+        add_1.setText(addS + "ml");
         copies_1.setText(copiesS);
-        density_1.setText(densityS);
+        density_1.setText(densityS + "亿/ml");
         vitality_1.setText(vitalityS);
         motilityRate_1.setText(motilityRateS);
         color_1.setText(color);
