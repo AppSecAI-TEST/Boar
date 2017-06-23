@@ -36,10 +36,13 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
             Log.e(TAG, "onDataReceive: " + humidityInt);
 
         }*/
-
         if (buffer[5] == 0x03) {
             String substring = data.substring(18, 20);
             commandInt = Integer.valueOf(substring, 16);
+            if (commandCallback != null) {
+
+                commandCallback.onCommandResult(commandInt);
+            }
             Log.e(TAG, "onDataReceive: " + commandInt + "command");
         }
     }
@@ -48,7 +51,7 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
     public void onCreate() {
         super.onCreate();
         random = new Random();
-        getCallbackData();
+       // getCallbackData();
         getCallbackData1();
         instance = SerialPortUtil.getInstance();
         instance.setOnDataReceiveListener(this);
@@ -75,21 +78,18 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
         }
     }
 
-    public void getCallbackData() {
+  /*  public void getCallbackData() {
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 while (connect) {
                     if (humidityCallback != null) {
-/*
+*//*
                         int humidiy = humidityInt;
-                        humidityCallback.onHumidityChange(humidiy);*/
+                        humidityCallback.onHumidityChange(humidiy);*//*
                     }
-                    if (commandCallback != null) {
 
-                        commandCallback.onCommandResult(commandInt);
-                    }
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -98,7 +98,7 @@ public class Humidity extends Service implements SerialPortUtil.OnDataReceiveLis
                 }
             }
         }).start();
-    }
+    }*/
 
     public void getCallbackData1() {
         new Thread(new Runnable() {

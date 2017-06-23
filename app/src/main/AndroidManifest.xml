@@ -11,7 +11,7 @@
     <uses-feature android:name="android.hardware.camera" android:required="true"/>
     <uses-feature android:name="android.hardware.camera.autofocus"></uses-feature>
     <!--开机启动权限-->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <!--  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />-->
 
 
     <application
@@ -23,13 +23,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- 开机自启动广播接受 -->
-        <receiver android:name=".receiver.AutoStartBroadcastReceiver">
+<!--        <receiver android:name=".receiver.AutoStartBroadcastReceiver">
             <intent-filter android:priority="1000">
 
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
-        </receiver>
+        </receiver>-->
         <!--欢迎界面-->
         <activity android:name=".activity.HomePage">
             <intent-filter>

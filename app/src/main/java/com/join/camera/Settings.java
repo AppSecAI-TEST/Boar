@@ -38,7 +38,7 @@ public class Settings {
     }
 
     public String getCertifyPath() {
-        SimpleDateFormat stime = new SimpleDateFormat("yy-MM-dd hh:mm");
+        SimpleDateFormat stime = new SimpleDateFormat("yy-MM-dd hhmm");
         String timeFormat = stime.format(new Date());
         return storagePath + File.separator + timeFormat;
     }

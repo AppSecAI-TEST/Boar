@@ -7,6 +7,7 @@ import android.content.ServiceConnection;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -41,10 +42,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private TextView humidity, title, abnormalShow_1, abnormalShow_2;
     private Humidity.HumidityBinder humidityBinder;
     private PercentLinearLayout camera_ll;
-    private Camera camera;
-    public static final int TAKE_PHOTO = 1;//第一次照相
-    public static final int JUMP_FRAGMENT = 4;//之后的照相 照完之后回调通知再次照相
-    private int count = 1; //控制照相的张数
     private double[] arithmeticData;//算法的结果数据
     private double[] arithmeticData2;
     private double[] arithmeticData3;
@@ -62,16 +59,18 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private int state3;
     private int state4;
     private int tag;
+    private int affirmOne = 0;
     private boolean stateThread = true;//控制线程的状态
     private LinearLayout abnormalShow_layout;
     private Humidity humidityClass;
     private int commandState;
 
-    SurfaceView mPreview;
-    SurfaceHolder mHolder;
-    NewCamera newCamera;
-    Camera mcamera;
-
+    private SurfaceView mPreview;
+    private SurfaceHolder mHolder;
+    private NewCamera newCamera;
+    private Camera mcamera;
+    private NewCamera.MyHandler myHandler;
+    private Message message;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,8 +81,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         stosteDetectionData = this.getIntent().getStringArrayExtra("data");
         flag = getIntent().getFlags();
         mPreview = (SurfaceView) findViewById(R.id.surface_view);
-        mPreview.setY(-86);
-        mPreview.setX(-35);
+        mPreview.setY(-175);
+        mPreview.setX(-49);
         ViewGroup.LayoutParams layoutParams = mPreview.getLayoutParams();
         layoutParams.height = 850;
         layoutParams.width = 700;
@@ -175,8 +174,10 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         arithmetic = new Arithmetic();
         intent = new Intent();
         newCamera = new NewCamera();
+        myHandler = newCamera.getMyHandler();
         mcamera = newCamera.getMcamera();
         newCamera.addCallback2(this);
+
 
     }
 
@@ -189,29 +190,88 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     return path;
                 }
             });
-            arithmetic.getArithmetic();
-            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj" );
+            boolean temp = arithmetic.getArithmetic();
+            if (temp) {
+                this.tag = tag;
+            }
+            humidityClass.sendCommand(SerialPortCommand.two);
+
+        }
+        if (tag == 2) {
+            arithmetic.setiPictureCallback4(new IPictureCallback4() {
+                @Override
+                public String photoPrepared4() {
+                    return path;
+                }
+            });
+
+            boolean temp = arithmetic.getArithmetic();
+
+            if (temp) {
+                this.tag = tag;
+            }
+            humidityClass.sendCommand(SerialPortCommand.three);
+
+        }
+        if (tag == 3) {
+            arithmetic.setiPictureCallback4(new IPictureCallback4() {
+                @Override
+                public String photoPrepared4() {
+                    return path;
+                }
+            });
+            boolean temp = arithmetic.getArithmetic();
+            if (temp) {
+                this.tag = tag;
+            }
+            humidityClass.sendCommand(SerialPortCommand.four);
+
+        }
+        if (tag == 4) {
+            arithmetic.setiPictureCallback4(new IPictureCallback4() {
+                @Override
+                public String photoPrepared4() {
+                    return path;
+                }
+            });
+            affirmOne = 1;
+            newCamera.releaseCamera();
+            humidityClass.sendCommand(SerialPortCommand.one);
+
+            boolean temp = arithmetic.getArithmetic();
+            if (temp) {
+                this.tag = tag;
+            }
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            humidityClass.sendCommand(SerialPortCommand.guan);
+
         }
     }
 
     @Override
     public void photoPrepared3(double[] arithmetic, int returnState) {
-        Log.e(TAG, "photoPrepared3: " + "tag" + tag);
-        if (tag == 20) {
+
+        if (tag == 1) {
             this.arithmeticData = arithmetic;
-            // state = returnState;
-            state = 1;
-            Log.e(TAG, "photoPrepared3: " + tag);
-        } else if (tag == 40) {
+            Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
+             state = returnState;
+           // state = 1;
+        } else if (tag == 2) {
+            Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             this.arithmeticData2 = arithmetic;
             state2 = returnState;
-        } else if (tag == 60) {
+        } else if (tag == 3) {
+            Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             state3 = returnState;
             this.arithmeticData3 = arithmetic;
-        } else if (tag == 80) {
+        } else if (tag == 4) {
+            Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             state4 = returnState;
             this.arithmeticData4 = arithmetic;
-            boolTag = false;
             double ar1 = (arithmeticData[0] + arithmeticData2[0] + arithmeticData3[0] + arithmeticData4[0]) / 4;
             double ar2 = (arithmeticData[1] + arithmeticData2[1] + arithmeticData3[1] + arithmeticData4[1]) / 4;
             double ar3 = arithmeticData[2] + arithmeticData2[2] + arithmeticData3[2] + arithmeticData4[2] / 4;
@@ -222,14 +282,42 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             arithmeticData5 = new double[]{
                     ar1, ar2, ar3, ar4, ar5, ar6, 0.0, ar7
             };
+            boolTag = false;
             Log.e(TAG, "photoPrepared3: " + arithmeticData5[0] + "hhhhhhhhhhhhhhhhhhhhhhh");
 
         }
     }
 
+
+
     @Override
     public void onCommandResult(int data) {
         commandState = data;
+        Log.e(TAG, "onCommandResult: " + data);
+        if (data == 0 && affirmOne == 0) {
+            message = new Message();
+            message.what = 1;
+            message.arg1 = 1;
+            myHandler.sendMessageDelayed(message, 3000);
+        }
+        if (data == 1) {
+            message = new Message();
+            message.what = 1;
+            message.arg1 = 2;
+            myHandler.sendMessageDelayed(message, 3000);
+        }
+        if (data == 2) {
+            message = new Message();
+            message.what = 1;
+            message.arg1 = 3;
+            myHandler.sendMessageDelayed(message, 3000);
+        }
+        if (data == 3) {
+            message = new Message();
+            message.what = 1;
+            message.arg1 = 4;
+            myHandler.sendMessageDelayed(message, 3000);
+        }
     }
 
 
@@ -239,7 +327,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         humidityClass = humidityBinder.getHumidity();
         humidityClass.setCommandCallback(this);
         if (humidityClass != null) {
-            humidityClass.sendCommand(SerialPortCommand.aone);
+            humidityClass.sendCommand(SerialPortCommand.one);
         }
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
@@ -283,7 +371,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     try {
                         for (int i = 0; i <= 100; i++) {
                             if (boolTag) {
-                                Thread.sleep(3500);
+                                Thread.sleep(3200);
                             }
                             if (!boolTag) {
 
@@ -385,11 +473,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                             bu_enter.setVisibility(View.VISIBLE);
                                         }
                                     });
-
                                 }
                             }
-
-
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

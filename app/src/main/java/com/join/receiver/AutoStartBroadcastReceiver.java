@@ -1,17 +1,11 @@
 package com.join.receiver;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
-import com.join.activity.HomePage;
-
 /**
  * Created by Administrator on 2017/6/18 0018.
  */
 
-public class AutoStartBroadcastReceiver extends BroadcastReceiver {
-    String action_boot = "android.intent.action.BOOT_COMPLETED";
+/*public class AutoStartBroadcastReceiver extends BroadcastReceiver {
+   String action_boot = "android.intent.action.BOOT_COMPLETED";
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -23,4 +17,4 @@ public class AutoStartBroadcastReceiver extends BroadcastReceiver {
             context.startActivity(sayHelloIntent);
         }
     }
-}
+}*/

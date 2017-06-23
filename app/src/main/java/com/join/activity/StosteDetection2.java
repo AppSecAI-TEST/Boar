@@ -126,7 +126,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         //显示到页面
         add_1.setText(storage.getAdd() + "ml");
         copies_1.setText(storage.getCopies());
-        density_1.setText(storage.getDensity() + "亿/ml");
+        density_1.setText(storage.getDensity() + "(亿/ml)");
         vitality_1.setText(storage.getVitality());
         motilityRate_1.setText(storage.getMotilityRate());
         color_1.setText(storage.getColor());
@@ -191,7 +191,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         //显示到页面
         add_1.setText(addS + "ml");
         copies_1.setText(copiesS);
-        density_1.setText(densityS + "亿/ml");
+        density_1.setText(densityS + "(亿/ml)");
         vitality_1.setText(vitalityS);
         motilityRate_1.setText(motilityRateS);
         color_1.setText(color);

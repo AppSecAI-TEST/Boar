@@ -6,6 +6,8 @@ import android.graphics.ImageFormat;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
 import android.hardware.Camera;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
@@ -17,20 +19,43 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by Administrator on 2017/6/22 0022.
  */
 
 public class NewCamera {
-
+    private String TAG = "jjjNewCamera";
     private Camera camera;
     private boolean isPreview = false; // 是否在浏览中
-    private int pic_name = 1;
-    private boolean tag = true;
-    private String TAG = "jjjNewCamera";
+    private int pic_name = -1;
+    private boolean saveTag = false;
     private IPictureCallback2 iPictureCallback2;
+    private MyHandler myHandler;
+
+    public MyHandler getMyHandler() {
+        if (myHandler == null) {
+            myHandler = new MyHandler();
+        }
+        return myHandler;
+    }
+
+    public class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+
+            switch (msg.what) {
+                case 1:
+                    if (camera != null) {
+                        camera.setPreviewCallback(new StreamIt()); // 设置回调的类
+                    }
+                    pic_name = msg.arg1;
+                    saveTag = true;
+                    Log.e(TAG, "handleMessage: " + msg.arg1);
+                    break;
+            }
+        }
+    }
 
     /**
      * 拿到相机 设置参数
@@ -41,19 +66,20 @@ public class NewCamera {
             if (camera != null && !isPreview) {
                 try {
                     Camera.Parameters parameters = camera.getParameters();
-                    List<Camera.Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
+           /*         List<Camera.Size> supportedPreviewSizes = parameters.getSupportedPreviewSizes();
                     for (int i = 0; i < supportedPreviewSizes.size(); i++) {
                         Camera.Size size = supportedPreviewSizes.get(i);
                         int height = size.height;
                         int width = size.width;
                         Log.e("jjjjj", height + "\n" + width);
-                    }
+                    }*/
                     parameters.setPreviewFpsRange(20, 30); // 每秒显示20~30帧
                     parameters.setPreviewFrameRate(20);// 每秒3帧 每秒从摄像头里面获得3个画面,
                     parameters.setPictureSize(1600, 1200); // 设置照片的大小
                     parameters.setPreviewSize(1600, 1200); // 设置预览照片的大小
                     parameters.setPictureFormat(ImageFormat.NV21); // 设置图片格式
                     camera.setPreviewCallback(new StreamIt()); // 设置回调的类
+
                     camera.setParameters(parameters);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -75,14 +101,17 @@ public class NewCamera {
         byte[][] data = new byte[20][];
         int i = 0;
 
-
         @Override
         public void onPreviewFrame(byte[] data, Camera camera) {
-            if (tag) {
+            if (saveTag) {
+                Log.e(TAG, "onPreviewFrame: " + "jjjjjjjjjjjjjjjjjjjjjj" + i);
                 this.data[i] = data;
                 if (i == this.data.length - 1) {
-                    save(camera, this.data, 1);
-                    tag = false;
+                    save(camera, this.data, pic_name);
+                    camera.setPreviewCallback(null); // 设置回调的类
+                    saveTag = false;
+                    i = 0;
+                    this.data = null;
                 }
                 i++;
             }
@@ -95,6 +124,10 @@ public class NewCamera {
                 certifyPath = settings.getCertifyPath() + "one";
             } else if (tag == 2) {
                 certifyPath = settings.getCertifyPath() + "two";
+            } else if (tag == 3) {
+                certifyPath = settings.getCertifyPath() + "three";
+            } else if (tag == 4) {
+                certifyPath = settings.getCertifyPath() + "four";
             }
 
             File onePathField = new File(certifyPath);
@@ -116,8 +149,8 @@ public class NewCamera {
                                     size.height, null);
                             if (image != null) {
 
-                                ByteArrayOutputStream outstream = new ByteArrayOutputStream();
-                                image.compressToJpeg(new Rect(0, 0, size.width, size.height), 80, outstream);
+                              /*  ByteArrayOutputStream outstream = new ByteArrayOutputStream();
+                                image.compressToJpeg(new Rect(0, 0, size.width, size.height), 80, outstream);*/
 
                                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                                 boolean b = image.compressToJpeg(new Rect(0, 0, size.width, size.height), 80, stream);
@@ -126,7 +159,7 @@ public class NewCamera {
                                 format = String.format("%03d", tempNumber);
                                 saveBitmap(bmp, certifyPath, format);
                                 format = String.format("%03d", tempNumber++);
-                                outstream.flush();
+                                // outstream.flush();
                             }
                         }
                         iPictureCallback2.photoPrepared2(tag, certifyPath);

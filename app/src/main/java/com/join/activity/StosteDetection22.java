@@ -81,7 +81,7 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         //显示到页面
         result1.setResult("结果: " + storage.getResult());
         result1.setMotileSperms(result1.getMotileSperms());
-        result1.setDensity(storage.getDensity());
+        result1.setDensity(storage.getDensity() + "(亿/ml)");
         result1.setVitality(storage.getVitality());
         result1.setMotilityRate(storage.getMotilityRate());
         result1.setTime(storage.getCheckoutTime());
@@ -130,12 +130,12 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
             result = "不合格";
         }
         String motileSpermsS = String.valueOf(Double.parseDouble(String.format("%.3f", motileSperms)));
-        String densityS = String.valueOf(Double.parseDouble(String.format("%.3f", density))) + "亿/ml";
+        String densityS = String.valueOf(Double.parseDouble(String.format("%.3f", density)));
         String vitalityS = String.valueOf(Double.parseDouble(String.format("%.3f", vitality)));
         String motilityRateS = String.valueOf(Double.parseDouble(String.format("%.3f", motilityRate)));
         result1.setResult("结果: " + result);
         result1.setMotileSperms(motileSpermsS);
-        result1.setDensity(densityS);
+        result1.setDensity(densityS + ("亿/ml"));
         result1.setVitality(vitalityS);
         result1.setMotilityRate(motilityRateS);
         result1.setTime(timeC);

@@ -26,7 +26,7 @@ public class Arithmetic {
         this.iPictureCallback4 = iPictureCallback4;
     }
 
-    public void getArithmetic() {
+    public boolean getArithmetic() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -42,8 +42,12 @@ public class Arithmetic {
                     file.mkdir();
                 }
                 returnState = countSperm(pictures + "/", resultImage + "/", tem, pdTestResult);
-                Log.e(TAG, "run: " + returnState);
-                iPictureCallback3.photoPrepared3(pdTestResult, returnState);
+                Log.e(TAG, "run: " + pictures);
+                if (returnState!=-2){
+                    iPictureCallback3.photoPrepared3(pdTestResult, returnState);
+                    returnState=-2;
+                }
+
                 Log.e("jjjj", "精子总数" + pdTestResult[0]);//被检测的精子总数
                 Log.e("jjjj", "密度" + pdTestResult[1]);//精子密度
                 Log.e("jjjj", "检测的活动的精子数" + pdTestResult[2]);//被检测的活动的精子数
@@ -55,6 +59,7 @@ public class Arithmetic {
 
             }
         }).start();
+        return true;
     }
 
     static {
