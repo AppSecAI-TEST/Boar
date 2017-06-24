@@ -43,18 +43,18 @@ public class Arithmetic {
                 }
                 returnState = countSperm(pictures + "/", resultImage + "/", tem, pdTestResult);
                 Log.e(TAG, "run: " + pictures);
-                if (returnState!=-2){
+                if (pdTestResult != null) {
                     iPictureCallback3.photoPrepared3(pdTestResult, returnState);
-                    returnState=-2;
+
                 }
 
-                Log.e("jjjj", "精子总数" + pdTestResult[0]);//被检测的精子总数
-                Log.e("jjjj", "密度" + pdTestResult[1]);//精子密度
-                Log.e("jjjj", "检测的活动的精子数" + pdTestResult[2]);//被检测的活动的精子数
-                Log.e("jjjj", "活动精子密度" + pdTestResult[3]);//活动精子密度
-                Log.e("jjjj", "活率" + pdTestResult[4]);//精子活率
-                Log.e("jjjj", "活力" + pdTestResult[5]);//精子活力
-                Log.e("jjjj", "有效精子数" + pdTestResult[7]);//有效精子数
+                Log.e(TAG, "精子总数" + pdTestResult[0]);//被检测的精子总数
+                Log.e(TAG, "密度" + pdTestResult[1]);//精子密度
+                Log.e(TAG, "检测的活动的精子数" + pdTestResult[2]);//被检测的活动的精子数
+                Log.e(TAG, "活动精子密度" + pdTestResult[3]);//活动精子密度
+                Log.e(TAG, "活率" + pdTestResult[4]);//精子活率
+                Log.e(TAG, "活力" + pdTestResult[5]);//精子活力
+                Log.e(TAG, "有效精子数" + pdTestResult[7]);//有效精子数
 
 
             }

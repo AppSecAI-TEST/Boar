@@ -71,6 +71,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private Camera mcamera;
     private NewCamera.MyHandler myHandler;
     private Message message;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +111,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         super.onPause();
         unbindService(this);
         stateThread = false;
+        myHandler.sendEmptyMessage(2);
         finish();
     }
 
@@ -195,6 +197,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 this.tag = tag;
             }
             humidityClass.sendCommand(SerialPortCommand.two);
+            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+1 );
 
         }
         if (tag == 2) {
@@ -211,6 +214,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 this.tag = tag;
             }
             humidityClass.sendCommand(SerialPortCommand.three);
+            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+2 );
 
         }
         if (tag == 3) {
@@ -225,6 +229,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 this.tag = tag;
             }
             humidityClass.sendCommand(SerialPortCommand.four);
+            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+3 );
 
         }
         if (tag == 4) {
@@ -237,7 +242,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             affirmOne = 1;
             newCamera.releaseCamera();
             humidityClass.sendCommand(SerialPortCommand.one);
-
+            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+4 );
             boolean temp = arithmetic.getArithmetic();
             if (temp) {
                 this.tag = tag;
@@ -258,8 +263,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         if (tag == 1) {
             this.arithmeticData = arithmetic;
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
-             state = returnState;
-           // state = 1;
+            state = returnState;
+            // state = 1;
         } else if (tag == 2) {
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             this.arithmeticData2 = arithmetic;
@@ -287,7 +292,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
         }
     }
-
 
 
     @Override

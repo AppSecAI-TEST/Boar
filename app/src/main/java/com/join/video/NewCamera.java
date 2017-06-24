@@ -30,13 +30,16 @@ public class NewCamera {
     private boolean isPreview = false; // 是否在浏览中
     private int pic_name = -1;
     private boolean saveTag = false;
+    private boolean threadState = false;
     private IPictureCallback2 iPictureCallback2;
     private MyHandler myHandler;
+    private int threadClose;
 
     public MyHandler getMyHandler() {
         if (myHandler == null) {
             myHandler = new MyHandler();
         }
+
         return myHandler;
     }
 
@@ -50,8 +53,13 @@ public class NewCamera {
                         camera.setPreviewCallback(new StreamIt()); // 设置回调的类
                     }
                     pic_name = msg.arg1;
+                    threadState = true;
                     saveTag = true;
                     Log.e(TAG, "handleMessage: " + msg.arg1);
+                    break;
+                case 2:
+                    threadClose = 2;
+                    threadState = false;
                     break;
             }
         }
@@ -137,40 +145,49 @@ public class NewCamera {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    while (threadState) {
+                        Camera.Size size = camera.getParameters().getPreviewSize();
+                        try {
+                            int tempNumber = 0;
+                            String format = null;
+                            for (int i = 0; i < data.length; i++) {
+                                if (threadClose == 2) {
+                                    return;
+                                }
 
-                    Camera.Size size = camera.getParameters().getPreviewSize();
-                    try {
-                        int tempNumber = 0;
-                        String format = null;
-                        for (int i = 0; i < data.length; i++) {
-
-                            // 调用image.compressToJpeg（）将YUV格式图像数据data转为jpg格式
-                            YuvImage image = new YuvImage(data[i], ImageFormat.NV21, size.width,
-                                    size.height, null);
-                            if (image != null) {
+                                // 调用image.compressToJpeg（）将YUV格式图像数据data转为jpg格式
+                                YuvImage image = new YuvImage(data[i], ImageFormat.NV21, size.width,
+                                        size.height, null);
+                                if (image != null) {
 
                               /*  ByteArrayOutputStream outstream = new ByteArrayOutputStream();
                                 image.compressToJpeg(new Rect(0, 0, size.width, size.height), 80, outstream);*/
 
-                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                                boolean b = image.compressToJpeg(new Rect(0, 0, size.width, size.height), 80, stream);
+                                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                    boolean b = image.compressToJpeg(new Rect(0, 0, size.width, size.height), 80, stream);
 
-                                Bitmap bmp = BitmapFactory.decodeByteArray(stream.toByteArray(), 0, stream.size());
-                                format = String.format("%03d", tempNumber);
-                                saveBitmap(bmp, certifyPath, format);
-                                format = String.format("%03d", tempNumber++);
-                                // outstream.flush();
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(stream.toByteArray(), 0, stream.size());
+                                    format = String.format("%03d", tempNumber);
+                                    saveBitmap(bmp, certifyPath, format);
+                                    format = String.format("%03d", tempNumber++);
+                                    // outstream.flush();
+                                    if (i == 19) {
+
+                                        threadState = false;
+                                    }
+                                }
                             }
-                        }
-                        iPictureCallback2.photoPrepared2(tag, certifyPath);
-                    } catch (Exception ex) {
-                        Log.e("Sys", "Error:" + ex.getMessage());
+                            iPictureCallback2.photoPrepared2(tag, certifyPath);
+                        } catch (Exception ex) {
+                            Log.e("Sys", "Error:" + ex.getMessage());
 
+                        }
                     }
                 }
             }).start();
 
         }
+
     }
 
     /**
