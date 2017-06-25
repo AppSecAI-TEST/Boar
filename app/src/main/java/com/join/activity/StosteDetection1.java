@@ -63,7 +63,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private boolean stateThread = true;//控制线程的状态
     private LinearLayout abnormalShow_layout;
     private Humidity humidityClass;
-    private int commandState;
 
     private SurfaceView mPreview;
     private SurfaceHolder mHolder;
@@ -71,8 +70,10 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private Camera mcamera;
     private NewCamera.MyHandler myHandler;
     private Message message;
+    private boolean serialProt1, serialProt2, serialProt3, serialProt4;
 
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stoste_detection_1);
@@ -197,7 +198,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 this.tag = tag;
             }
             humidityClass.sendCommand(SerialPortCommand.two);
-            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+1 );
+            serialProt2 = true;
 
         }
         if (tag == 2) {
@@ -214,7 +215,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 this.tag = tag;
             }
             humidityClass.sendCommand(SerialPortCommand.three);
-            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+2 );
+            serialProt3 = true;
 
         }
         if (tag == 3) {
@@ -229,7 +230,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 this.tag = tag;
             }
             humidityClass.sendCommand(SerialPortCommand.four);
-            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+3 );
+            serialProt4 = true;
 
         }
         if (tag == 4) {
@@ -242,7 +243,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             affirmOne = 1;
             newCamera.releaseCamera();
             humidityClass.sendCommand(SerialPortCommand.one);
-            Log.e(TAG, "photoPrepared2: "+"jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj"+4 );
             boolean temp = arithmetic.getArithmetic();
             if (temp) {
                 this.tag = tag;
@@ -259,7 +259,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
     @Override
     public void photoPrepared3(double[] arithmetic, int returnState) {
-
+        Log.e(TAG, "photoPrepared3: returnState" + returnState);
         if (tag == 1) {
             this.arithmeticData = arithmetic;
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
@@ -277,13 +277,27 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             state4 = returnState;
             this.arithmeticData4 = arithmetic;
-            double ar1 = (arithmeticData[0] + arithmeticData2[0] + arithmeticData3[0] + arithmeticData4[0]) / 4;
-            double ar2 = (arithmeticData[1] + arithmeticData2[1] + arithmeticData3[1] + arithmeticData4[1]) / 4;
-            double ar3 = arithmeticData[2] + arithmeticData2[2] + arithmeticData3[2] + arithmeticData4[2] / 4;
-            double ar4 = arithmeticData[3] + arithmeticData2[3] + arithmeticData3[3] + arithmeticData4[3] / 4;
-            double ar5 = arithmeticData[4] + arithmeticData2[4] + arithmeticData3[4] + arithmeticData4[4] / 4;
-            double ar6 = arithmeticData[5] + arithmeticData2[5] + arithmeticData3[5] + arithmeticData4[5] / 4;
-            double ar7 = arithmeticData[7] + arithmeticData2[7] + arithmeticData3[7] + arithmeticData4[7] / 4;
+            int i = 0;
+            if (state == 1) {
+                i++;
+            }
+            if (state2 == 1) {
+                i++;
+            }
+            if (state3 == 1) {
+                i++;
+            }
+            if (state4 == 1) {
+                i++;
+            }
+            Log.e(TAG, "photoPrepared3: " + i);
+            double ar1 = (arithmeticData[0] + arithmeticData2[0] + arithmeticData3[0] + arithmeticData4[0]) / i;
+            double ar2 = (arithmeticData[1] + arithmeticData2[1] + arithmeticData3[1] + arithmeticData4[1]) / i;
+            double ar3 = arithmeticData[2] + arithmeticData2[2] + arithmeticData3[2] + arithmeticData4[2] / i;
+            double ar4 = arithmeticData[3] + arithmeticData2[3] + arithmeticData3[3] + arithmeticData4[3] / i;
+            double ar5 = arithmeticData[4] + arithmeticData2[4] + arithmeticData3[4] + arithmeticData4[4] / i;
+            double ar6 = arithmeticData[5] + arithmeticData2[5] + arithmeticData3[5] + arithmeticData4[5] / i;
+            double ar7 = arithmeticData[7] + arithmeticData2[7] + arithmeticData3[7] + arithmeticData4[7] / i;
             arithmeticData5 = new double[]{
                     ar1, ar2, ar3, ar4, ar5, ar6, 0.0, ar7
             };
@@ -296,13 +310,44 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
     @Override
     public void onCommandResult(int data) {
-        commandState = data;
         Log.e(TAG, "onCommandResult: " + data);
+        if (serialProt1) {
+            if (data != 0) {
+                humidityClass.sendCommand(SerialPortCommand.one);
+                Log.e(TAG, "onCommandResult: " + "tttttttttttttttttttttttttttttttttttttttttt" + 0);
+                serialProt1 = false;
+            }
+            serialProt1 = false;
+        }
+        if (serialProt2) {
+            if (data != 1) {
+                humidityClass.sendCommand(SerialPortCommand.two);
+                Log.e(TAG, "onCommandResult: " + "tttttttttttttttttttttttttttttttttttttttttt" + 1);
+                serialProt2 = false;
+            }
+            serialProt2 = false;
+        }
+        if (serialProt3) {
+            if (data != 2) {
+                humidityClass.sendCommand(SerialPortCommand.three);
+                Log.e(TAG, "onCommandResult: " + "tttttttttttttttttttttttttttttttttttttttttt" + 2);
+                serialProt3 = false;
+            }
+            serialProt3 = false;
+        }
+        if (serialProt4) {
+            if (data != 3) {
+                humidityClass.sendCommand(SerialPortCommand.four);
+                Log.e(TAG, "onCommandResult: " + "tttttttttttttttttttttttttttttttttttttttttt" + 3);
+                serialProt4 = false;
+            }
+            serialProt4 = false;
+        }
         if (data == 0 && affirmOne == 0) {
             message = new Message();
             message.what = 1;
             message.arg1 = 1;
-            myHandler.sendMessageDelayed(message, 3000);
+            myHandler.sendMessageDelayed(message, 4000);
         }
         if (data == 1) {
             message = new Message();
@@ -332,6 +377,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         humidityClass.setCommandCallback(this);
         if (humidityClass != null) {
             humidityClass.sendCommand(SerialPortCommand.one);
+            serialProt1 = true;
         }
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
@@ -375,11 +421,11 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     try {
                         for (int i = 0; i <= 100; i++) {
                             if (boolTag) {
-                                Thread.sleep(3200);
+                                Thread.sleep(3000);
                             }
                             if (!boolTag) {
 
-                                if (state == -1) {
+                                if (state == -1 && state2 == -1 && state3 == -1 && state4 == -1) {
                                     //  animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
@@ -393,7 +439,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                } else if (state == -6) {
+                                } else if (state == -6 && state2 == -6 && state3 == -6 && state4 == -6) {
                                     //  animatedCircleLoadingView.stopFailure();  bu_enter.setVisibility(View.VISIBLE);
                                     progress = false;
                                     stateThread = false;
@@ -407,7 +453,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                } else if (state == -5) {
+                                } else if (state == -5 && state2 == -5 && state3 == -5 && state4 == -5) {
                                     // animatedCircleLoadingView.stopFailure();//显示不对的图像
 
                                     progress = false;
@@ -423,7 +469,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                } else if (state == -4) {
+                                } else if (state == -4 && state2 == -4 && state3 == -4 && state4 == -4) {
                                     //  animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
@@ -436,7 +482,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                } else if (state == -3) {
+                                } else if (state == -3 && state2 == -3 && state3 == -3 && state4 == -3) {
                                     // animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
@@ -449,7 +495,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                } else if (state == -2) {
+                                } else if (state == -2 && state2 == -2 && state3 == -2 && state4 == -2) {
                                     // animatedCircleLoadingView.stopFailure();
                                     progress = false;
                                     runOnUiThread(new Runnable() {
