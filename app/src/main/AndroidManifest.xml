@@ -8,11 +8,16 @@
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
 
-    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
     <uses-feature android:name="android.hardware.camera.autofocus"></uses-feature>
     <!--开机启动权限-->
-  <!--  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />-->
-
+    <!--  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".app.BaseApplication"
@@ -23,13 +28,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- 开机自启动广播接受 -->
-<!--        <receiver android:name=".receiver.AutoStartBroadcastReceiver">
-            <intent-filter android:priority="1000">
+        <!--        <receiver android:name=".receiver.AutoStartBroadcastReceiver">
+                    <intent-filter android:priority="1000">
 
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <category android:name="android.intent.category.LAUNCHER"></category>
-            </intent-filter>
-        </receiver>-->
+                        <action android:name="android.intent.action.BOOT_COMPLETED" />
+                        <category android:name="android.intent.category.LAUNCHER"></category>
+                    </intent-filter>
+                </receiver>-->
         <!--欢迎界面-->
         <activity android:name=".activity.HomePage">
             <intent-filter>
@@ -148,7 +153,14 @@
             </intent-filter>
         </activity>
 
-
+        <!--wifi-->
+        <activity android:name=".activity.WiFiActivity">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.WiFiActivity"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <service android:name=".service.Humidity"></service>
     </application>
 

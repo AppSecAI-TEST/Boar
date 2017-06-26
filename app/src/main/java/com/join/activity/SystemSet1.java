@@ -15,16 +15,20 @@ import android.widget.TextView;
 
 import com.join.R;
 import com.join.service.Humidity;
+import com.zhy.android.percent.support.PercentLinearLayout;
 
 /**
  * Created by join on 2017/5/15.
  */
 
-public class SystemSet1 extends Activity implements View.OnClickListener ,ServiceConnection {
+public class SystemSet1 extends Activity implements View.OnClickListener, ServiceConnection {
     private Button bu_return;
     private ImageView icon_1;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
+    private PercentLinearLayout wifiLayout;
+    private Intent intent;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +42,8 @@ public class SystemSet1 extends Activity implements View.OnClickListener ,Servic
         bu_return.setOnClickListener(this);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(this);
+        wifiLayout = (PercentLinearLayout) findViewById(R.id.wifi);
+        wifiLayout.setOnClickListener(this);
     }
 
     @Override
@@ -47,11 +53,18 @@ public class SystemSet1 extends Activity implements View.OnClickListener ,Servic
                 finish();
                 break;
             case R.id.icon_1:
-                Intent intent = new Intent();
+                intent = new Intent();
                 intent.setAction("com.join.function");
                 startActivity(intent);
                 break;
+            case R.id.wifi:
+                intent = new Intent();
+                intent.setAction("com.join.WiFiActivity");
+                startActivity(intent);
+                break;
+
         }
+
     }
 
     @Override
@@ -60,11 +73,13 @@ public class SystemSet1 extends Activity implements View.OnClickListener ,Servic
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         unbindService(this);
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;
@@ -76,7 +91,7 @@ public class SystemSet1 extends Activity implements View.OnClickListener ,Servic
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        humidity.setText( data);
+                        humidity.setText(data);
                     }
                 });
             }
