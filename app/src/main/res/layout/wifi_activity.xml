@@ -47,12 +47,7 @@
 	        android:text="关闭WiFi" />
 
     </LinearLayout>	
-    <Button 
-        android:id="@+id/jump_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="获取已连接wifi信息"/>	
-	
+
     <ListView
         android:id="@+id/wifi_list"
         android:layout_width="match_parent"

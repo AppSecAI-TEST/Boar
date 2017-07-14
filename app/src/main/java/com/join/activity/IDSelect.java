@@ -42,8 +42,6 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.id_select);
         initView();
-        showDialog();
-
 
     }
 
@@ -93,10 +91,9 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
     }
 
 
-    public void showDialog() {
-        showAlertDialog();
-    }
-
+    /**
+     * 最初版的手机号输入当做密码
+     */
     public void showAlertDialog() {
 
         ManageDialog.Builder builder = new ManageDialog.Builder(this);

@@ -31,7 +31,7 @@ import java.io.File;
 public class QueryFunction extends Activity implements View.OnClickListener, ServiceConnection {
     private String TAG = "jjjQueryFuncetion";
     private PercentLinearLayout function_1, function_2, function_3, function_4;
-    private TextView humidity;
+    private TextView humidity,textView2;
     private Humidity.HumidityBinder humidityBinder;
     private Intent intent;
     private Button bu_copy;
@@ -46,6 +46,8 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
         super.onCreate(savedInstanceState);
         setContentView(R.layout.query_function);
         init();
+
+        Log.e(TAG, "onCreate: "+ textView2.getTextSize()+"jjjjjjjjjjjjjjjjjj" );
     }
 
     private void init() {
@@ -64,6 +66,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
         function_4 = (PercentLinearLayout) findViewById(R.id.function_4);
         function_4.setOnClickListener(this);
         humidity = (TextView) findViewById(R.id.humidity);
+        textView2 = (TextView) findViewById(R.id.textView2);
 
 
     }

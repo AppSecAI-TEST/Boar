@@ -24,10 +24,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:layout_marginLeftPercent="42%w"
-                android:text="数据查询"
+                android:layout_marginLeft="530dp"
+                android:text="窗口选择"
                 android:textColor="#fff"
-                app:layout_textSizePercent="50%h" />
+                app:layout_textSizePercent="4%w"/>
 
             <TextView
                 android:id="@+id/textView"

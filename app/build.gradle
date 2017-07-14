@@ -49,7 +49,7 @@ dependencies {
     //greendao依赖 先加这句然后在加其他
     compile 'org.greenrobot:greendao:3.2.0'
     //百分比适配
-    compile 'com.zhy:percent-support-extends:1.0.1'
+    compile 'com.zhy:percent-support-extends:1.1.1'
     compile project(':progress')  //进度条
     compile files('libs/jxl.jar')  //保存Excel文件
     compile 'com.github.mjdev:libaums:+' //文件写入到U盘
