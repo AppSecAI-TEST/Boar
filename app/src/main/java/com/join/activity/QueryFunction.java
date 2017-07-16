@@ -9,7 +9,6 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,7 +33,6 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
     private TextView humidity,textView2;
     private Humidity.HumidityBinder humidityBinder;
     private Intent intent;
-    private Button bu_copy;
     private ImageView icon;
     private KeyboardIDQuery keyboardIDQuery;
     private KeyboardDateQuery keyboardDateQuery;
@@ -55,8 +53,6 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
         intent = new Intent();
         icon = (ImageView) findViewById(R.id.icon);
         icon.setOnClickListener(this);
-        bu_copy = (Button) findViewById(R.id.bu_copy);
-        bu_copy.setOnClickListener(this);
         function_1 = (PercentLinearLayout) findViewById(R.id.function_1);
         function_1.setOnClickListener(this);
         function_2 = (PercentLinearLayout) findViewById(R.id.function_2);

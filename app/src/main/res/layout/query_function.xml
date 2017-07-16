@@ -24,9 +24,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:layout_marginLeftPercent="42%w"
                 android:text="数据查询"
                 android:textColor="#fff"
+                app:layout_marginLeftPercent="42%w"
                 app:layout_textSizePercent="50%h" />
 
             <TextView
@@ -69,9 +69,9 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="70dp"
                     android:orientation="horizontal"
                     app:layout_heightPercent="19%h"
+                    app:layout_marginTopPercent="18%h"
                     app:layout_widthPercent="90%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
@@ -190,9 +190,10 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="65dp"
                     android:orientation="horizontal"
                     app:layout_heightPercent="19%h"
+                    app:layout_marginTopPercent="15%h"
+
                     app:layout_widthPercent="90%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
@@ -307,16 +308,6 @@
                     <!--2.1-->
                 </com.zhy.android.percent.support.PercentLinearLayout>
 
-                <Button
-                    android:id="@+id/bu_copy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="65dp"
-                    android:background="@drawable/a_017"
-                    android:text="数据备份"
-                    android:textColor="#fff"
-                    android:textSize="35dp" />
                 <!--2.1-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
