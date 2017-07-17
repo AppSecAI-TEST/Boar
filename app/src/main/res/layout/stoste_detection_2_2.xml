@@ -43,6 +43,7 @@
                     android:layout_marginLeft="480dp"
                     android:text="稀释精液检测结果"
                     android:textColor="#fff"
+                    app:layout_marginLeftPercent="37%w"
                     android:textSize="40dp" />
 
                 <TextView
@@ -50,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="275dp"
+                    app:layout_marginLeftPercent="22%w"
                     android:text="平台温度:"
                     android:textColor="#fff"
                     android:textSize="25dp" />
@@ -78,7 +79,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
+                    app:layout_marginTopPercent="1%w"
                     android:background="@drawable/background_white"
                     android:orientation="horizontal"
                     app:layout_heightPercent="82%h"
@@ -88,7 +89,7 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="70dp"
+                        app:layout_marginLeftPercent="6%w"
                         android:background="@drawable/background_white_1"
                         android:orientation="horizontal"
                         app:layout_heightPercent="70%h"
@@ -310,7 +311,8 @@
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="100dp"
+                        app:layout_marginLeftPercent="8%w"
+                        app:layout_marginTopPercent="2%w"
                         android:orientation="vertical"
                         app:layout_heightPercent="90%h"
                         app:layout_widthPercent="40%w">
@@ -325,7 +327,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="18dp"
+                                app:layout_marginLeftPercent="4%w"
                                 android:background="@drawable/background_green"
                                 android:onClick="@{activity.printData}"
                                 android:text="打印"
@@ -338,7 +340,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginLeft="40dp"
+                                app:layout_marginLeftPercent="8%w"
                                 android:background="@drawable/background_green"
                                 android:onClick="@{activity.closeActivity}"
                                 android:text="返回"
@@ -352,7 +354,7 @@
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginTop="10dp"
+                            app:layout_marginTopPercent="2%w"
                             android:background="@drawable/background_white_1"
                             android:orientation="horizontal"
                             app:layout_heightPercent="68%h"
@@ -565,9 +567,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="18dp"
             android:onClick="@{activity.returnFunction}"
-            android:src="@drawable/a_000" />
+            android:src="@drawable/a_000"
+            app:layout_marginLeftPercent="4%w"
+            app:layout_marginTopPercent="1%w" />
     </com.zhy.android.percent.support.PercentFrameLayout>
 </layout>

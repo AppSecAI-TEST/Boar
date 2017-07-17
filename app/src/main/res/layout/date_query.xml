@@ -23,10 +23,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="520dp"
                 android:text="按日期查询"
                 android:textColor="#fff"
-                android:textSize="40dp" />
+                app:layout_marginLeftPercent="41%w"
+                app:layout_textSizePercent="4%w" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -35,7 +35,8 @@
                 android:layout_marginLeft="355dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                app:layout_marginLeftPercent="27%w" />
 
             <TextView
                 android:id="@+id/humidity"
@@ -66,8 +67,8 @@
                 <com.zhy.android.percent.support.PercentLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="45dp"
+                    app:layout_marginLeftPercent="1.5%w"
+                    app:layout_marginTopPercent="3%w"
                     android:orientation="horizontal"
                     app:layout_heightPercent="20%h"
                     app:layout_widthPercent="97%w">
@@ -75,8 +76,8 @@
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginTop="10dp"
+                        app:layout_marginLeftPercent="1.5%w"
+                        app:layout_marginTopPercent="1%w"
                         android:background="@drawable/background_white_3"
                         android:orientation="horizontal"
                         app:layout_heightPercent="90%h"
@@ -86,7 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
+                            app:layout_marginLeftPercent="2%w"
                             android:text="开始日期:"
                             android:textSize="28dp" />
 
@@ -95,7 +96,7 @@
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
+                            app:layout_marginLeftPercent="2%w"
                             android:background="@drawable/background_white_2"
                             android:gravity="center_vertical"
                             android:paddingLeft="18dp"
@@ -111,7 +112,7 @@
                         android:id="@+id/ll_Gong"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="33dp"
+                        app:layout_marginLeftPercent="3%w"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/background_white_3"
                         android:orientation="horizontal"
@@ -122,7 +123,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
+                            app:layout_marginLeftPercent="2%w"
                             android:text="结束日期:"
                             android:textSize="28dp" />
 
@@ -131,7 +132,7 @@
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
+                            app:layout_marginLeftPercent="2%w"
                             android:background="@drawable/background_white_2"
                             android:gravity="center_vertical"
                             android:paddingLeft="18dp"
@@ -148,7 +149,7 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="80dp"
+                        app:layout_marginLeftPercent="5%w"
                         android:background="@drawable/background_green"
                         android:text="返回"
                         android:textColor="#f4f4f4"
@@ -163,8 +164,8 @@
                 <com.zhy.android.percent.support.PercentLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="50dp"
+                    app:layout_marginLeftPercent="1.5%w"
+                    app:layout_marginTopPercent="4%w"
                     android:background="@drawable/background_white_3"
                     android:orientation="vertical"
                     app:layout_heightPercent="59%h"
@@ -361,8 +362,8 @@
         android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/a_000" />
+        android:src="@drawable/a_000"
+        app:layout_marginLeftPercent="4%w"
+        app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

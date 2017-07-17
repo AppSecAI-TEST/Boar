@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_marginTop="65dp"
+        app:layout_marginTopPercent="5%w"
         android:background="@drawable/background_white_4"
         android:orientation="vertical"
         app:layout_heightPercent="88%h"

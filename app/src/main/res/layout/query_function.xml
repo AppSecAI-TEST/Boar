@@ -34,10 +34,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="380dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                android:textSize="25dp" />
+                android:textSize="25dp"
+                app:layout_marginLeftPercent="29%w" />
 
             <TextView
                 android:id="@+id/humidity"
@@ -60,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="62dp"
+                app:layout_marginLeftPercent="5%w"
                 android:orientation="vertical"
                 app:layout_heightPercent="90%h"
                 app:layout_widthPercent="90%w">
@@ -133,7 +133,7 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="152dp"
+                        app:layout_marginLeftPercent="14%w"
                         android:background="@drawable/background_white_6"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
@@ -193,7 +193,6 @@
                     android:orientation="horizontal"
                     app:layout_heightPercent="19%h"
                     app:layout_marginTopPercent="15%h"
-
                     app:layout_widthPercent="90%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
@@ -256,7 +255,7 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="152dp"
+                        app:layout_marginLeftPercent="14%w"
                         android:background="@drawable/background_white_6"
                         android:orientation="horizontal"
                         app:layout_heightPercent="100%h"
@@ -320,7 +319,7 @@
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/a_000" />
+        android:src="@drawable/a_000"
+        app:layout_marginLeftPercent="4%w"
+        app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>

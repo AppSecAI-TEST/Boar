@@ -5,13 +5,6 @@
     android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/icon_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/a_000" />
 
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="match_parent"
@@ -31,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="530dp"
+                app:layout_marginLeftPercent="41%w"
                 android:text="精液原液检测"
                 android:textColor="#fff"
                 android:textSize="40dp" />
@@ -42,6 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="310dp"
+                app:layout_marginLeftPercent="24%w"
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp" />
@@ -67,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="55dp"
+                app:layout_marginLeftPercent="4%w"
                 android:background="@drawable/background_white_3"
                 android:orientation="horizontal"
                 app:layout_heightPercent="95%h"
@@ -98,7 +92,8 @@
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="45%w">
 
-                    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/circle_loading_view"
                         android:layout_width="300dp"
                         android:layout_height="200dp"
@@ -184,4 +179,12 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
     </com.zhy.android.percent.support.PercentLinearLayout>
+
+    <ImageView
+        android:id="@+id/icon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/a_000"
+        app:layout_marginLeftPercent="4%w"
+        app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>

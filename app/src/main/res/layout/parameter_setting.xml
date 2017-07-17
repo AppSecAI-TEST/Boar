@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                 android:layout_marginLeft="530px"
+                    app:layout_marginLeftPercent="45%w"
                     android:text="检测参数"
                     android:textColor="#fff"
                     android:textSize="40dp" />
@@ -50,20 +50,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="355dp"
+                    app:layout_marginLeftPercent="28%w"
                     android:text="平台温度:"
                     android:textColor="#fff"
                     android:textSize="25dp" />
 
                 <TextView
-                    android:hint="37℃"
-                    android:textColorHint="#fff"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="7dp"
+                    android:hint="37℃"
                     android:text="@{result.humidity}"
                     android:textColor="#fff"
+                    android:textColorHint="#fff"
                     android:textSize="25dp" />
             </com.zhy.android.percent.support.PercentLinearLayout>
             <!--1.1-->
@@ -86,8 +86,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right"
-                        android:layout_marginRight="100dp"
-                        android:layout_marginTop="10dp"
+                        app:layout_marginRightPercent="8%w"
+                        app:layout_marginTopPercent="2%w"
                         android:orientation="horizontal">
 
                         <Button
@@ -102,7 +102,7 @@
                         <Button
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="50dp"
+                            app:layout_marginLeftPercent="3%w"
                             android:background="@drawable/a_023"
                             android:onClick="@{setting.returnAbove}"
                             android:text="返回"
@@ -113,7 +113,7 @@
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="112dp"
+                        app:layout_marginLeftPercent="9%w"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/background_green_line"
                         android:orientation="horizontal"
@@ -546,7 +546,7 @@
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_marginLeft="112dp"
+                        app:layout_marginLeftPercent="9%w"
                         android:layout_marginTop="5dp"
                         android:background="@drawable/background_green_line"
                         android:orientation="horizontal"
@@ -703,9 +703,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="45dp"
-            android:layout_marginTop="18dp"
             android:onClick="@{setting.returnFunction}"
-            android:src="@drawable/a_000" />
+            android:src="@drawable/a_000"
+            app:layout_marginLeftPercent="4%w"
+            app:layout_marginTopPercent="1%w" />
     </com.zhy.android.percent.support.PercentFrameLayout>
 </layout>
