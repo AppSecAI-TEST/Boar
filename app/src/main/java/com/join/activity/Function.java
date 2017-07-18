@@ -61,13 +61,13 @@ public class Function extends Activity implements View.OnClickListener, ServiceC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.function_1:
-
-                intent.setAction("com.join.stostedetection");
+                intent.setAction("com.join.WindowSelect");
+                intent.setFlags(1);
                 startActivity(intent);
                 break;
             case R.id.function_2:
-
-                intent.setAction("com.join.StosteDetectionDiluent");
+                intent.setAction("com.join.WindowSelect");
+                intent.setFlags(2);
                 startActivity(intent);
                 break;
             case R.id.function_3:

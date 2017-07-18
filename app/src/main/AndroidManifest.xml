@@ -65,7 +65,7 @@
         <activity android:name=".activity.StosteDetection">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.stostedetection"></action>
+                <action android:name="com.join.StosteDetection"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -152,7 +152,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
+        <!--wifi-->
+        <activity android:name=".activity.WindowSelect">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.WindowSelect"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <!--wifi-->
         <activity android:name=".activity.WiFiActivity">
             <intent-filter>
