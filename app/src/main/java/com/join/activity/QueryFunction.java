@@ -7,7 +7,6 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,8 +19,6 @@ import com.join.service.Humidity;
 import com.join.utils.KeyboardDateQuery;
 import com.join.utils.KeyboardIDQuery;
 import com.zhy.android.percent.support.PercentLinearLayout;
-
-import java.io.File;
 
 /**
  *
@@ -45,7 +42,6 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
         setContentView(R.layout.query_function);
         init();
 
-        Log.e(TAG, "onCreate: "+ textView2.getTextSize()+"jjjjjjjjjjjjjjjjjj" );
     }
 
     private void init() {
@@ -89,7 +85,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
                 intent.setAction("com.join.function");
                 startActivity(intent);
                 break;
-            case R.id.bu_copy:
+           /* case R.id.bu_copy:
 
                 saveToExcelAndSD = new SaveToExcelAndSD(this);
                 uDiskToSD = new UDiskToSD(this);
@@ -109,7 +105,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
                     uDiskToSD.readFile(usbFile, "/storage/emulated/0/CreateCare" + File.separator + "demo.xls");
                 }
 
-                break;
+                break;*/
         }
     }
 

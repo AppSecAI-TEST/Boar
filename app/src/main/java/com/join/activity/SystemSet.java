@@ -18,11 +18,12 @@ import com.join.service.Humidity;
  * 标准参数,系统参数设置入口
  */
 
-public class SystemSet extends Activity implements View.OnClickListener,ServiceConnection {
-    private Button affirm1, affirm2, affirm3;
+public class SystemSet extends Activity implements View.OnClickListener, ServiceConnection {
+    private Button time_bu, wifi_bu, brightness_bu, standard_bu, manage_bu, about_bu;
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
     private Intent intent;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,29 +33,42 @@ public class SystemSet extends Activity implements View.OnClickListener,ServiceC
 
     private void init() {
         humidity = (TextView) findViewById(R.id.humidity);
-        affirm1 = (Button) findViewById(R.id.affirm1);
-        affirm1.setOnClickListener(this);
-        affirm2 = (Button) findViewById(R.id.affirm2);
-        affirm2.setOnClickListener(this);
-        affirm3 = (Button) findViewById(R.id.affirm3);
-        affirm3.setOnClickListener(this);
+        time_bu = (Button) findViewById(R.id.time_bu);
+        time_bu.setOnClickListener(this);
+        wifi_bu = (Button) findViewById(R.id.wifi_bu);
+        wifi_bu.setOnClickListener(this);
+        brightness_bu = (Button) findViewById(R.id.brightness_bu);
+        brightness_bu.setOnClickListener(this);
+        standard_bu = (Button) findViewById(R.id.standard_bu);
+        standard_bu.setOnClickListener(this);
+        manage_bu = (Button) findViewById(R.id.manage_bu);
+        manage_bu.setOnClickListener(this);
+        about_bu = (Button) findViewById(R.id.about_bu);
+        about_bu.setOnClickListener(this);
         intent = new Intent();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.affirm1:
-                intent.setAction("com.join.ParameterSetting");
-                startActivity(intent);
+            case R.id.time_bu:
 
                 break;
-            case R.id.affirm2:
-                intent.setAction("com.join.SystemSet1");
+            case R.id.wifi_bu:
+
+                break;
+            case R.id.brightness_bu:
+
+                break;
+            case R.id.standard_bu:
+                intent.setAction("com.join.ParameterSetting");
                 startActivity(intent);
                 break;
-            case R.id.affirm3:
-                finish();
+            case R.id.manage_bu:
+
+                break;
+            case R.id.about_bu:
+
                 break;
         }
     }
@@ -65,11 +79,13 @@ public class SystemSet extends Activity implements View.OnClickListener,ServiceC
         Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         unbindService(this);
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;
@@ -81,7 +97,7 @@ public class SystemSet extends Activity implements View.OnClickListener,ServiceC
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        humidity.setText( data);
+                        humidity.setText(data);
                     }
                 });
             }

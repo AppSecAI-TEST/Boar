@@ -302,7 +302,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     ar1, ar2, ar3, ar4, ar5, ar6, 0.0, ar7
             };
             boolTag = false;
-            Log.e(TAG, "photoPrepared3: " + arithmeticData5[0] + "hhhhhhhhhhhhhhhhhhhhhhh");
+
 
         }
     }
@@ -314,7 +314,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         if (serialProt1) {
             if (data != 0) {
                 humidityClass.sendCommand(SerialPortCommand.one);
-                Log.e(TAG, "onCommandResult: " + "tttttttttttttttttttttttttttttttttttttttttt" + 0);
+
                 serialProt1 = false;
             }
             serialProt1 = false;
