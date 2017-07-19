@@ -1,5 +1,8 @@
 package com.join.camera;
 
+/**
+ * 回调算法的结果
+ */
 public interface IPictureCallback3 {
     /**
      * 回调算法的结果

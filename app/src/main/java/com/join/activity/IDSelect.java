@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,7 +33,6 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
     private PopupWindowUtil util;
     private PercentLinearLayout one;
     private Humidity.HumidityBinder humidityBinder;
-    public static String id_manage;
 
     @Override
 
@@ -78,9 +76,9 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
                 break;
             case R.id.affirm:
                 if (input.length() > 0) {
-                    Log.e("jjj", input + "");
-                    id_manage = input.getText().toString();
+
                     Intent intent = new Intent();
+                    intent.putExtra("idSelect", input.getText().toString());
                     intent.setAction("com.join.function");
                     startActivity(intent);
                 } else {
@@ -129,7 +127,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        humidity.setText( data);
+                        humidity.setText(data);
                     }
                 });
             }

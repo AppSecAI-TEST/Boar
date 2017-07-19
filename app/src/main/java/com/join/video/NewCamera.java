@@ -106,7 +106,7 @@ public class NewCamera {
 
     private class StreamIt implements Camera.PreviewCallback {
 
-        byte[][] data = new byte[20][];
+        byte[][] data = new byte[20][];//存储相片的原始数据
         int i = 0;
 
         @Override

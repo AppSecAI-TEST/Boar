@@ -186,7 +186,10 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         }
         String addS = String.valueOf(Double.parseDouble(String.format("%.3f", add)));//取小数点后三位的数,四舍五入
         String copiesS = String.valueOf(Math.round(copies));//取整数,四舍五入
-        String operator = IDSelect.id_manage;
+
+
+        /*_________________________________________________________________________*/
+        String operator = "00001";
 
         //显示到页面
         add_1.setText(addS + "ml");

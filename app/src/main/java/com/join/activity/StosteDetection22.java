@@ -111,8 +111,8 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         Integer checkoutDateInt = Integer.valueOf(checkoutDateC);
         String originalData = String.valueOf(checkoutDateInt);
         String checkoutDate = originalData.substring(0, 4) + "-" + originalData.substring(4, 6) + "-" + originalData.substring(6, 8);
-
-        String operator = IDSelect.id_manage;
+/*_________________________________________________________________________*/
+        String operator = "00001";
         String type = "稀释精液";
         String result = null;
 

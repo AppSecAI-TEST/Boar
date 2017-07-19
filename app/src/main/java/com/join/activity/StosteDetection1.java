@@ -47,7 +47,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private double[] arithmeticData3;
     private double[] arithmeticData4;
     private double[] arithmeticData5;//算法的结果数据
-    private String[] stosteDetectionData;
+    private String[] stosteDetectionData;//上一个activity传过来的参数
+    private int[] windowSelect;
 
     private Arithmetic arithmetic;
     private boolean boolTag = true;//算法出结果就取消睡眠
@@ -81,6 +82,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         startLoading();
         startPercentMockThread();
         stosteDetectionData = this.getIntent().getStringArrayExtra("data");
+        windowSelect = this.getIntent().getIntArrayExtra("windowSelect");
         flag = getIntent().getFlags();
         mPreview = (SurfaceView) findViewById(R.id.surface_view);
         mPreview.setY(-175);
@@ -91,7 +93,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         mPreview.setLayoutParams(layoutParams);
         mHolder = mPreview.getHolder();
         mHolder.addCallback(this);
-
 
     }
 
@@ -186,6 +187,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
 
     @Override
     public void photoPrepared2(int tag, final String path) {
+
         if (tag == 1) {
             arithmetic.setiPictureCallback4(new IPictureCallback4() {
                 @Override
@@ -322,7 +324,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         if (serialProt2) {
             if (data != 1) {
                 humidityClass.sendCommand(SerialPortCommand.two);
-                Log.e(TAG, "onCommandResult: " + "tttttttttttttttttttttttttttttttttttttttttt" + 1);
+
                 serialProt2 = false;
             }
             serialProt2 = false;
@@ -330,7 +332,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         if (serialProt3) {
             if (data != 2) {
                 humidityClass.sendCommand(SerialPortCommand.three);
-                Log.e(TAG, "onCommandResult: " + "tttttttttttttttttttttttttttttttttttttttttt" + 2);
+
                 serialProt3 = false;
             }
             serialProt3 = false;
@@ -338,34 +340,46 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         if (serialProt4) {
             if (data != 3) {
                 humidityClass.sendCommand(SerialPortCommand.four);
-                Log.e(TAG, "onCommandResult: " + "tttttttttttttttttttttttttttttttttttttttttt" + 3);
                 serialProt4 = false;
             }
             serialProt4 = false;
         }
-        if (data == 0 && affirmOne == 0) {
-            message = new Message();
-            message.what = 1;
-            message.arg1 = 1;
-            myHandler.sendMessageDelayed(message, 4000);
+
+            if (data == 0 && affirmOne == 0) {//data等于0的时候利用handler通知去取相片,并且不是复位的命令  arg1区别是取玻片上的那个窗口的图片
+                if (windowSelect[0]!=0) {
+                message = new Message();
+                message.what = 1;
+                message.arg1 = 1;
+                myHandler.sendMessageDelayed(message, 4000);
+            }
         }
-        if (data == 1) {
-            message = new Message();
-            message.what = 1;
-            message.arg1 = 2;
-            myHandler.sendMessageDelayed(message, 3000);
+
+            if (data == 1) {//data等于1的时候利用handler通知去取相片,
+                if (windowSelect[1]!=0) {
+                message = new Message();
+                message.what = 1;
+                message.arg1 = 2;
+                myHandler.sendMessageDelayed(message, 3000);
+            }
         }
-        if (data == 2) {
-            message = new Message();
-            message.what = 1;
-            message.arg1 = 3;
-            myHandler.sendMessageDelayed(message, 3000);
+
+
+            if (data == 2) {
+                if (windowSelect[2]!=0) {
+                message = new Message();
+                message.what = 1;
+                message.arg1 = 3;
+                myHandler.sendMessageDelayed(message, 3000);
+            }
         }
+
         if (data == 3) {
+            if (windowSelect[2]!=0) {
             message = new Message();
             message.what = 1;
             message.arg1 = 4;
             myHandler.sendMessageDelayed(message, 3000);
+        }
         }
     }
 

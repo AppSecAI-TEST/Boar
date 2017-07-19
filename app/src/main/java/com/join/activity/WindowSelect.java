@@ -25,6 +25,7 @@ public class WindowSelect extends Activity implements View.OnClickListener {
     private int win_tag_1, win_tag_2, win_tag_3, win_tag_4;
     private int flags;
     private Intent intent;
+    private String function;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class WindowSelect extends Activity implements View.OnClickListener {
         setContentView(R.layout.windows_select);
         initView();
         flags = getIntent().getFlags();
+        function=getIntent().getStringExtra("function");
     }
 
     private void initView() {
@@ -102,11 +104,31 @@ public class WindowSelect extends Activity implements View.OnClickListener {
                 }
                 break;
             case R.id.continue_ws:
-
+                int[] winArray = new int[4];
+                if (win_tag_1 % 2 != 0) {
+                    winArray[0] = 1;
+                }
+                if (win_tag_2 % 2 != 0) {
+                    winArray[1] = 2;
+                }
+                if (win_tag_3 % 2 != 0) {
+                    winArray[2] = 3;
+                }
+                if (win_tag_4 % 2 != 0) {
+                    winArray[3] = 4;
+                }
+                Bundle bundle = new Bundle();
                 if (flags == 1) {
+
+                    bundle.putIntArray("windowSelect", winArray);
+                    bundle.putString("idSelect",function);
+                    intent.putExtras(bundle);
                     intent.setAction("com.join.StosteDetection");
                     startActivity(intent);
                 } else if (flags == 2) {
+                    bundle.putIntArray("windowSelect", winArray);
+                    bundle.putString("idSelect",function);
+                    intent.putExtras(bundle);
                     intent.setAction("com.join.StosteDetectionDiluent");
                     startActivity(intent);
                 }

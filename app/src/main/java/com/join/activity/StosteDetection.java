@@ -27,6 +27,7 @@ import java.text.SimpleDateFormat;
  */
 
 public class StosteDetection extends Activity implements View.OnClickListener, ServiceConnection {
+    private String TAG = "jjjStosteDetection";
     private PercentLinearLayout id_Gong, id_Gong_2, id_Gong_3, percent;
     private TextView id_Gong_1, id_ml, time, date;
     private ImageView icon_1;
@@ -40,9 +41,10 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
     private boolean abnormal_2_tab = false;
     private TextView humidity, title;
     private Humidity.HumidityBinder humidityBinder;
-    private String TAG = "jjjStosteDetection";
+
     private String dateFormat;
     private String timeFormat;
+    private int[] windowSelect;//窗口的标记
 
     @Override
     public void onClick(View v) {
@@ -119,6 +121,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                     String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, milliliter};
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
+                    bundle.putIntArray("windowSelect", windowSelect);
                     intent.putExtras(bundle);
                     intent.setAction("com.join.stostedetection1");
                     intent.addFlags(1);
@@ -176,6 +179,10 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stoste_detection);
         init();
+        Bundle extras = getIntent().getExtras();
+        // extras.getString("idSelect");
+        windowSelect = extras.getIntArray("windowSelect");
+        Log.e(TAG, "onCreate: " + extras.getString("idSelect"));
 
     }
 
@@ -204,7 +211,7 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        humidity.setText( data);
+                        humidity.setText(data);
                     }
                 });
             }

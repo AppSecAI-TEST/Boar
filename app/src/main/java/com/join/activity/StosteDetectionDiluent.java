@@ -41,7 +41,7 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
     private Intent intent;
     private String dateFormat;
     private String timeFormat;
-
+    private int[] windowSelect;//窗口的标记
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +51,8 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
         binding.setDiluent(this);
         binding.setDiluentE(diluentE);
         init();
+        Bundle extras = getIntent().getExtras();
+        windowSelect = extras.getIntArray("windowSelect");
     }
 
     private void init() {
@@ -168,6 +170,7 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
                     String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, capacity};
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
+                    bundle.putIntArray("windowSelect", windowSelect);
                     intent.putExtras(bundle);
                     intent.setAction("com.join.stostedetection1");
                     intent.addFlags(2);
