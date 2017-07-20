@@ -19,7 +19,7 @@ import com.zhy.android.percent.support.PercentLinearLayout;
 public class WindowSelect extends Activity implements View.OnClickListener {
     private String TAG = "jjjWindowSelect";
     private PercentLinearLayout windows_1, windows_2, windows_3, windows_4;
-    private Button continue_ws, return_ws;
+    private Button continue_ws;
     private ImageView icon;
     private TextView text_ws_1, text_ws_2, text_ws_3, text_ws_4;
     private int win_tag_1, win_tag_2, win_tag_3, win_tag_4;
@@ -49,8 +49,6 @@ public class WindowSelect extends Activity implements View.OnClickListener {
         icon.setOnClickListener(this);
         continue_ws = (Button) findViewById(R.id.continue_ws);
         continue_ws.setOnClickListener(this);
-        return_ws = (Button) findViewById(R.id.return_ws);
-        return_ws.setOnClickListener(this);
         text_ws_1 = (TextView) findViewById(R.id.text_ws_1);
         text_ws_2 = (TextView) findViewById(R.id.text_ws_2);
         text_ws_3 = (TextView) findViewById(R.id.text_ws_3);
@@ -67,10 +65,10 @@ public class WindowSelect extends Activity implements View.OnClickListener {
                 win_tag_1++;
                 if (win_tag_1 % 2 != 0) {
                     windows_1.setBackgroundResource(R.mipmap.n_007);
-                    text_ws_1.setHintTextColor(getResources().getColor(R.color.green));
+                    text_ws_1.setTextColor(getResources().getColor(R.color.green));
                 } else {
                     windows_1.setBackgroundResource(R.mipmap.n_008);
-                    text_ws_1.setHintTextColor(getResources().getColor(R.color.black));
+                    text_ws_1.setTextColor(getResources().getColor(R.color.black));
                 }
                 break;
             case R.id.windows_2:
@@ -133,9 +131,7 @@ public class WindowSelect extends Activity implements View.OnClickListener {
                     startActivity(intent);
                 }
                 break;
-            case R.id.return_ws:
-                finish();
-                break;
+
         }
     }
 }

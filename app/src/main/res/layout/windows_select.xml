@@ -71,16 +71,17 @@
                     android:layout_gravity="center_horizontal"
                     android:orientation="horizontal"
                     app:layout_heightPercent="19%h"
-                    app:layout_marginTopPercent="7%w"
-                    app:layout_widthPercent="90%w">
+                    app:layout_marginTopPercent="10%w"
+                    app:layout_widthPercent="100%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:id="@+id/windows_1"
-                        android:layout_width="435dp"
-                        android:layout_height="89dp"
+                        android:layout_width="529dp"
+                        android:layout_height="106dp"
                         android:layout_gravity="center"
                         android:background="@mipmap/n_008"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        app:layout_marginLeftPercent="2%w">
 
                         <TextView
                             android:id="@+id/text_ws_1"
@@ -97,12 +98,12 @@
 
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:id="@+id/windows_2"
-                        android:layout_width="435dp"
-                        android:layout_height="89dp"
+                        android:layout_width="529dp"
+                        android:layout_height="106dp"
                         android:layout_gravity="center"
                         android:background="@mipmap/n_008"
                         android:orientation="horizontal"
-                        app:layout_marginLeftPercent="14%w">
+                        app:layout_marginLeftPercent="4%w">
 
                         <TextView
                             android:id="@+id/text_ws_2"
@@ -124,16 +125,17 @@
                     android:layout_gravity="center"
                     android:orientation="horizontal"
                     app:layout_heightPercent="19%h"
-                    app:layout_marginTopPercent="3%w"
-                    app:layout_widthPercent="90%w">
+                    app:layout_marginTopPercent="2%w"
+                    app:layout_widthPercent="100%w">
                     <!--2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:id="@+id/windows_3"
-                        android:layout_width="435dp"
-                        android:layout_height="89dp"
+                        android:layout_width="529dp"
+                        android:layout_height="106dp"
                         android:layout_gravity="center"
                         android:background="@mipmap/n_008"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        app:layout_marginLeftPercent="2%w">
 
                         <TextView
                             android:id="@+id/text_ws_3"
@@ -149,12 +151,12 @@
 
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:id="@+id/windows_4"
-                        android:layout_width="435dp"
-                        android:layout_height="89dp"
+                        android:layout_width="529dp"
+                        android:layout_height="106dp"
                         android:layout_gravity="center"
                         android:background="@mipmap/n_008"
                         android:orientation="horizontal"
-                        app:layout_marginLeftPercent="14%w">
+                        app:layout_marginLeftPercent="4%w">
 
                         <TextView
                             android:id="@+id/text_ws_4"
@@ -169,40 +171,18 @@
                     <!--2.1-->
                 </com.zhy.android.percent.support.PercentLinearLayout>
 
-                <com.zhy.android.percent.support.PercentLinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+
+                <Button
+                    android:id="@+id/continue_ws"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    app:layout_heightPercent="22%h"
-                    app:layout_marginTopPercent="6%w"
-                    app:layout_widthPercent="70%w">
+                    android:background="@mipmap/n_009"
+                    android:text="继续"
+                    android:textColor="#fff"
+                    android:textSize="30dp"
+                    app:layout_marginTopPercent="6%w" />
 
-                    <Button
-                        android:id="@+id/continue_ws"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/a_023"
-                        android:text="继续"
-                        android:textColor="#fff"
-                        android:textSize="30dp" />
-
-
-                    <Button
-                        android:id="@+id/return_ws"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/a_023"
-                        android:text="返回"
-                        android:textColor="#fff"
-                        android:textSize="30dp"
-                        app:layout_marginLeftPercent="36%w" />
-
-
-                    <!--2.1-->
-                </com.zhy.android.percent.support.PercentLinearLayout>
 
             </com.zhy.android.percent.support.PercentLinearLayout>
 
