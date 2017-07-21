@@ -20,7 +20,7 @@ public class WindowSelect extends Activity implements View.OnClickListener {
     private String TAG = "jjjWindowSelect";
     private PercentLinearLayout windows_1, windows_2, windows_3, windows_4;
     private Button continue_ws;
-    private ImageView icon;
+    private ImageView icon_1;
     private TextView text_ws_1, text_ws_2, text_ws_3, text_ws_4;
     private int win_tag_1, win_tag_2, win_tag_3, win_tag_4;
     private int flags;
@@ -33,7 +33,7 @@ public class WindowSelect extends Activity implements View.OnClickListener {
         setContentView(R.layout.windows_select);
         initView();
         flags = getIntent().getFlags();
-        function=getIntent().getStringExtra("function");
+        function = getIntent().getStringExtra("function");
     }
 
     private void initView() {
@@ -45,8 +45,8 @@ public class WindowSelect extends Activity implements View.OnClickListener {
         windows_3.setOnClickListener(this);
         windows_4 = (PercentLinearLayout) findViewById(R.id.windows_4);
         windows_4.setOnClickListener(this);
-        icon = (ImageView) findViewById(R.id.icon);
-        icon.setOnClickListener(this);
+        icon_1 = (ImageView) findViewById(R.id.icon_1);
+        icon_1.setOnClickListener(this);
         continue_ws = (Button) findViewById(R.id.continue_ws);
         continue_ws.setOnClickListener(this);
         text_ws_1 = (TextView) findViewById(R.id.text_ws_1);
@@ -119,17 +119,22 @@ public class WindowSelect extends Activity implements View.OnClickListener {
                 if (flags == 1) {
 
                     bundle.putIntArray("windowSelect", winArray);
-                    bundle.putString("idSelect",function);
+                    bundle.putString("idSelect", function);
                     intent.putExtras(bundle);
                     intent.setAction("com.join.StosteDetection");
                     startActivity(intent);
                 } else if (flags == 2) {
                     bundle.putIntArray("windowSelect", winArray);
-                    bundle.putString("idSelect",function);
+                    bundle.putString("idSelect", function);
                     intent.putExtras(bundle);
                     intent.setAction("com.join.StosteDetectionDiluent");
                     startActivity(intent);
                 }
+                break;
+
+            case R.id.icon_1:
+                intent.setAction("com.join.function");
+                startActivity(intent);
                 break;
 
         }

@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.join.R;
@@ -23,6 +24,7 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
     private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
     private Intent intent;
+    private ImageView icon_1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
         manage_bu.setOnClickListener(this);
         about_bu = (Button) findViewById(R.id.about_bu);
         about_bu.setOnClickListener(this);
+        icon_1 = (ImageView) findViewById(R.id.icon_1);
+        icon_1.setOnClickListener(this);
         intent = new Intent();
     }
 
@@ -73,6 +77,10 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
                 break;
             case R.id.about_bu:
 
+                break;
+            case R.id.icon_1:
+                intent.setAction("com.join.function");
+                startActivity(intent);
                 break;
         }
     }

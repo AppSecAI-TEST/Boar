@@ -192,7 +192,7 @@
     </com.zhy.android.percent.support.PercentLinearLayout>
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/a_000"

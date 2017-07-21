@@ -1,10 +1,13 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.join.R;
 import com.join.brightnessLibrary.BubbleSeekBar;
@@ -20,12 +23,22 @@ import static com.join.R.layout.brightness;
 public class Brightness extends Activity {
     private String TAG="jjjBrightness";
     private BubbleSeekBar bar;
+    private ImageView icon_1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(brightness);
+        icon_1 = (ImageView) findViewById(R.id.icon_1);
+        icon_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction("com.join.function");
+                startActivity(intent);
+            }
+        });
         bar= (BubbleSeekBar) findViewById(R.id.bar);
-
         bar.getConfigBuilder()
                   .bubbleTextSize(50)
                 .build();

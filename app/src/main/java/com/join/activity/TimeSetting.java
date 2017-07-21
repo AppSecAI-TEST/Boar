@@ -1,9 +1,11 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,10 +19,11 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 
-
 public class TimeSetting extends Activity implements View.OnClickListener {
     private PercentLinearLayout date_t, time_t;
     private TextView date_tv, time_tv;
+    private ImageView icon_1;
+    private Intent intent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class TimeSetting extends Activity implements View.OnClickListener {
         time_t.setOnClickListener(this);
         date_tv = (TextView) findViewById(R.id.date_tv);
         time_tv = (TextView) findViewById(R.id.time_tv);
+        icon_1 = (ImageView) findViewById(R.id.icon_1);
+        icon_1.setOnClickListener(this);
+        intent = new Intent();
     }
 
     @Override
@@ -55,7 +61,7 @@ public class TimeSetting extends Activity implements View.OnClickListener {
                                 SimpleDateFormat sDateFormat = new SimpleDateFormat("hhmmss");
                                 String tateFormat = sDateFormat.format(new java.util.Date());
                                 testDate(province + city + strArea + "." + tateFormat);
-                                date_tv.setText(province+"/"+city+"/"+strArea);
+                                date_tv.setText(province + "/" + city + "/" + strArea);
 
 
                                 Toast.makeText(TimeSetting.this,
@@ -73,12 +79,17 @@ public class TimeSetting extends Activity implements View.OnClickListener {
                         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyyMMdd");
                         String tateFormat = sDateFormat.format(new java.util.Date());
                         testDate(tateFormat + "." + province + city + "30");
-                        time_tv.setText(province+":"+city);
+                        time_tv.setText(province + ":" + city);
                         Toast.makeText(TimeSetting.this,
                                 province + "-" + city,
                                 Toast.LENGTH_LONG).show();
                     }
                 });
+                break;
+
+            case R.id.icon_1:
+                intent.setAction("com.join.function");
+                startActivity(intent);
                 break;
         }
     }
