@@ -18,6 +18,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
         android:name=".app.BaseApplication"
@@ -36,7 +37,7 @@
                     </intent-filter>
                 </receiver>-->
         <!--欢迎界面-->
-        <activity android:name=".activity.TimeSetting">
+        <activity android:name=".activity.HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -145,14 +146,14 @@
         </activity>
         <!--系统时间,管理员设置-->
 
-        <activity android:name=".activity.SystemSet1">
-            <intent-filter>
-                //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.SystemSet1"></action>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <!--wifi-->
+        <!--        <activity android:name=".activity.SystemSet1">
+                    <intent-filter>
+                        //http://www.cnblogs.com/feng9exe/p/5699233.html
+                        <action android:name="com.join.SystemSet1"></action>
+                        <category android:name="android.intent.category.DEFAULT" />
+                    </intent-filter>
+                </activity>-->
+        <!--载波片选择-->
         <activity android:name=".activity.WindowSelect">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
@@ -168,6 +169,25 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <!--设置亮度-->
+        <activity android:name=".activity.Brightness">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.Brightness"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--设置日期,时间-->
+        <activity android:name=".activity.TimeSetting">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.TimeSetting"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <service android:name=".service.Humidity"></service>
     </application>
 

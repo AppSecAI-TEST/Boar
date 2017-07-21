@@ -53,12 +53,16 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
         switch (v.getId()) {
             case R.id.time_bu:
 
+                intent.setAction("com.join.TimeSetting");
+                startActivity(intent);
                 break;
             case R.id.wifi_bu:
-
+                intent.setAction("com.join.WiFiActivity");
+                startActivity(intent);
                 break;
             case R.id.brightness_bu:
-
+                intent.setAction("com.join.Brightness");
+                startActivity(intent);
                 break;
             case R.id.standard_bu:
                 intent.setAction("com.join.ParameterSetting");
