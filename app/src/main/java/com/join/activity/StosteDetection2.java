@@ -2,8 +2,10 @@ package com.join.activity;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
@@ -188,8 +190,12 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         String copiesS = String.valueOf(Math.round(copies));//取整数,四舍五入
 
 
-        /*_________________________________________________________________________*/
-        String operator = "00001";
+        //拿到管理员序号
+        SharedPreferences preferences = getSharedPreferences("IdSelect", Context.MODE_PRIVATE);
+        String operatorData = preferences.getString("operator", "defaultname");
+
+        String operator = operatorData;
+
 
         //显示到页面
         add_1.setText(addS + "ml");

@@ -2,9 +2,11 @@ package com.join.activity;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -76,9 +78,12 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
                 break;
             case R.id.affirm:
                 if (input.length() > 0) {
-
+                    //保存管理员序号
+                    SharedPreferences settings = getSharedPreferences("IdSelect", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putString("operator", input.getText().toString());
+                    editor.commit();
                     Intent intent = new Intent();
-                    intent.putExtra("idSelect", input.getText().toString());
                     intent.setAction("com.join.function");
                     startActivity(intent);
                 } else {

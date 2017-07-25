@@ -21,7 +21,7 @@ import com.join.utils.KeyboardIDQuery;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 /**
- *
+ *查询主界面
  */
 
 public class QueryFunction extends Activity implements View.OnClickListener, ServiceConnection {
@@ -109,9 +109,9 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
         }
     }
 
-    SaveToExcelAndSD saveToExcelAndSD;
-    UsbFile usbFile;
-    UDiskToSD uDiskToSD;
+    private SaveToExcelAndSD saveToExcelAndSD;
+    private UsbFile usbFile;
+    private UDiskToSD uDiskToSD;
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {

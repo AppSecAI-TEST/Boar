@@ -1,8 +1,11 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.join.R;
+import com.join.service.Humidity;
 import com.join.three.DateSelectDialog;
 import com.join.three.TimeSelectDialog;
 import com.zhy.android.percent.support.PercentLinearLayout;
@@ -19,21 +23,40 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 
-public class TimeSetting extends Activity implements View.OnClickListener {
+public class TimeSetting extends Activity implements View.OnClickListener, ServiceConnection {
     private PercentLinearLayout date_t, time_t;
     private TextView date_tv, time_tv;
     private ImageView icon_1;
     private Intent intent;
-
+    private TextView humidity;
+    private Humidity.HumidityBinder humidityBinder;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.time_activity);
         initView();
+        SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        String tateFormat = sDateFormat.format(new java.util.Date());
+        date_tv.setText(tateFormat);
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
+        String timeFormatS = timeFormat.format(new java.util.Date());
+        time_tv.setText(timeFormatS);
+
 
     }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
+    }
     private void initView() {
+        humidity = (TextView) findViewById(R.id.humidity);
         date_t = (PercentLinearLayout) findViewById(R.id.date_t);
         date_t.setOnClickListener(this);
         time_t = (PercentLinearLayout) findViewById(R.id.time_t);
@@ -107,5 +130,27 @@ public class TimeSetting extends Activity implements View.OnClickListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        humidityBinder = (Humidity.HumidityBinder) service;
+        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
+            @Override
+            public void onHumidityChange(final String data) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText(data);
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
     }
 }

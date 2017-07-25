@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.join.R;
 import com.join.adapter.TwoAdapter;
@@ -82,8 +81,12 @@ public class PopupWindowUtil {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view,
                                     int position, long id) {
+                //可以在这保存
+         /*       SharedPreferences settings = context.getSharedPreferences("IdSelect", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("operator", list.get(position));
+                editor.commit();*/
 
-                Toast.makeText(context, list.get(position), Toast.LENGTH_LONG).show();
                 editText.setText(list.get(position));
                 icon.setBackgroundResource(R.drawable.a_011);
 

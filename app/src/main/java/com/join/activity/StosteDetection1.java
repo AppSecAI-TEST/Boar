@@ -128,13 +128,11 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         switch (v.getId()) {
             case R.id.icon_1:
                 boolTag1 = false;
-                intent = new Intent();
                 intent.setAction("com.join.function");
                 startActivity(intent);
                 break;
             case R.id.bu_enter:
                 if (flag == 1) {
-                    intent = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", stosteDetectionData);
                     bundle.putDoubleArray("arithmetic", arithmeticData5);
@@ -143,8 +141,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     intent.addFlags(1);
                     startActivity(intent);
                 } else if (flag == 2) {
-
-                    intent = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", stosteDetectionData);
                     bundle.putDoubleArray("arithmetic", arithmeticData5);
@@ -181,6 +177,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         myHandler = newCamera.getMyHandler();
         mcamera = newCamera.getMcamera();
         newCamera.addCallback2(this);
+        intent = new Intent();
 
 
     }

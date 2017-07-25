@@ -1,8 +1,11 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
@@ -10,13 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.join.R;
+import com.join.service.Humidity;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 /**
  *
  */
 
-public class WindowSelect extends Activity implements View.OnClickListener {
+public class WindowSelect extends Activity implements View.OnClickListener,ServiceConnection {
     private String TAG = "jjjWindowSelect";
     private PercentLinearLayout windows_1, windows_2, windows_3, windows_4;
     private Button continue_ws;
@@ -25,7 +29,8 @@ public class WindowSelect extends Activity implements View.OnClickListener {
     private int win_tag_1, win_tag_2, win_tag_3, win_tag_4;
     private int flags;
     private Intent intent;
-    private String function;
+    private TextView humidity;
+    private Humidity.HumidityBinder humidityBinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,10 +38,21 @@ public class WindowSelect extends Activity implements View.OnClickListener {
         setContentView(R.layout.windows_select);
         initView();
         flags = getIntent().getFlags();
-        function = getIntent().getStringExtra("function");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
     }
 
     private void initView() {
+        humidity = (TextView) findViewById(R.id.humidity);
         windows_1 = (PercentLinearLayout) findViewById(R.id.windows_1);
         windows_1.setOnClickListener(this);
         windows_2 = (PercentLinearLayout) findViewById(R.id.windows_2);
@@ -119,13 +135,11 @@ public class WindowSelect extends Activity implements View.OnClickListener {
                 if (flags == 1) {
 
                     bundle.putIntArray("windowSelect", winArray);
-                    bundle.putString("idSelect", function);
                     intent.putExtras(bundle);
                     intent.setAction("com.join.StosteDetection");
                     startActivity(intent);
                 } else if (flags == 2) {
                     bundle.putIntArray("windowSelect", winArray);
-                    bundle.putString("idSelect", function);
                     intent.putExtras(bundle);
                     intent.setAction("com.join.StosteDetectionDiluent");
                     startActivity(intent);
@@ -138,5 +152,27 @@ public class WindowSelect extends Activity implements View.OnClickListener {
                 break;
 
         }
+    }
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        humidityBinder = (Humidity.HumidityBinder) service;
+        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
+            @Override
+            public void onHumidityChange(final String data) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText(data);
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
     }
 }

@@ -1,16 +1,21 @@
 package com.join.activity;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.join.R;
 import com.join.brightnessLibrary.BubbleSeekBar;
+import com.join.service.Humidity;
 
 import java.util.Locale;
 
@@ -20,15 +25,18 @@ import static com.join.R.layout.brightness;
  * Created by Administrator on 2017/7/18 0018.
  */
 
-public class Brightness extends Activity {
+public class Brightness extends Activity implements ServiceConnection {
     private String TAG="jjjBrightness";
     private BubbleSeekBar bar;
     private ImageView icon_1;
+    private TextView humidity;
+    private Humidity.HumidityBinder humidityBinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(brightness);
+        humidity = (TextView) findViewById(R.id.humidity);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,4 +83,38 @@ public class Brightness extends Activity {
             }
         });
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unbindService(this);
+    }
+    @Override
+    public void onServiceConnected(ComponentName name, IBinder service) {
+        humidityBinder = (Humidity.HumidityBinder) service;
+        Humidity humidityClass = humidityBinder.getHumidity();
+        humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
+            @Override
+            public void onHumidityChange(final String data) {
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText(data);
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName name) {
+
+    }
+
 }

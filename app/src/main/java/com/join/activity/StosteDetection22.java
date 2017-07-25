@@ -2,8 +2,10 @@ package com.join.activity;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -40,7 +42,6 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         result1 = new Result1();
         binding.setResult1(result1);
         binding.setActivity(this);
-
         init();
     }
 
@@ -111,8 +112,11 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         Integer checkoutDateInt = Integer.valueOf(checkoutDateC);
         String originalData = String.valueOf(checkoutDateInt);
         String checkoutDate = originalData.substring(0, 4) + "-" + originalData.substring(4, 6) + "-" + originalData.substring(6, 8);
-/*_________________________________________________________________________*/
-        String operator = "00001";
+        //拿到管理员序号
+        SharedPreferences preferences = getSharedPreferences("IdSelect", Context.MODE_PRIVATE);
+        String operatorData = preferences.getString("operator", "defaultname");
+
+        String operator = operatorData;
         String type = "稀释精液";
         String result = null;
 
