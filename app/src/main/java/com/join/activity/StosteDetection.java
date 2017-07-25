@@ -180,9 +180,8 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
         setContentView(R.layout.stoste_detection);
         init();
         Bundle extras = getIntent().getExtras();
-        // extras.getString("idSelect");
         windowSelect = extras.getIntArray("windowSelect");
-        Log.e(TAG, "onCreate: " + extras.getString("idSelect"));
+
 
     }
 

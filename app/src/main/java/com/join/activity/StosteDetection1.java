@@ -83,6 +83,10 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         startPercentMockThread();
         stosteDetectionData = this.getIntent().getStringArrayExtra("data");
         windowSelect = this.getIntent().getIntArrayExtra("windowSelect");
+
+        for (int i = 0; i < windowSelect.length; i++) {
+            Log.e(TAG, "onCreate: " + windowSelect[i]);
+        }
         flag = getIntent().getFlags();
         mPreview = (SurfaceView) findViewById(R.id.surface_view);
         mPreview.setY(-175);
@@ -100,6 +104,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     protected void onResume() {
         super.onResume();
         Intent intentHumidity = new Intent(this, Humidity.class);
+        intentHumidity.setFlags(1);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);
         arithmetic.setiPictureCallback3(this);
         if (flag == 2) {
@@ -177,7 +182,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         myHandler = newCamera.getMyHandler();
         mcamera = newCamera.getMcamera();
         newCamera.addCallback2(this);
-        intent = new Intent();
 
 
     }
@@ -302,7 +306,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             };
             boolTag = false;
 
-
         }
     }
 
@@ -341,18 +344,19 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             }
             serialProt4 = false;
         }
-
+        if (serialProt1) {
             if (data == 0 && affirmOne == 0) {//data等于0的时候利用handler通知去取相片,并且不是复位的命令  arg1区别是取玻片上的那个窗口的图片
-                if (windowSelect[0]!=0) {
+                //  if (windowSelect[0] != 0) {
                 message = new Message();
                 message.what = 1;
                 message.arg1 = 1;
                 myHandler.sendMessageDelayed(message, 4000);
             }
+            // }
         }
 
-            if (data == 1) {//data等于1的时候利用handler通知去取相片,
-                if (windowSelect[1]!=0) {
+        if (data == 1) {//data等于1的时候利用handler通知去取相片,
+            if (windowSelect[1] != 0) {
                 message = new Message();
                 message.what = 1;
                 message.arg1 = 2;
@@ -361,8 +365,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         }
 
 
-            if (data == 2) {
-                if (windowSelect[2]!=0) {
+        if (data == 2) {
+            if (windowSelect[2] != 0) {
                 message = new Message();
                 message.what = 1;
                 message.arg1 = 3;
@@ -371,12 +375,12 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         }
 
         if (data == 3) {
-            if (windowSelect[2]!=0) {
-            message = new Message();
-            message.what = 1;
-            message.arg1 = 4;
-            myHandler.sendMessageDelayed(message, 3000);
-        }
+            if (windowSelect[3] != 0) {
+                message = new Message();
+                message.what = 1;
+                message.arg1 = 4;
+                myHandler.sendMessageDelayed(message, 3000);
+            }
         }
     }
 
