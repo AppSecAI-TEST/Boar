@@ -117,6 +117,7 @@ public class NewCamera {
                 if (i == this.data.length - 1) {
                     save(camera, this.data, pic_name);
                     camera.setPreviewCallback(null); // 设置回调的类
+
                     saveTag = false;
                     i = 0;
                     this.data = null;
@@ -125,7 +126,7 @@ public class NewCamera {
             }
         }
 
-        String certifyPath;
+      private  String certifyPath;
 
         private void save(final Camera camera, final byte[][] data, final int tag) {
             if (tag == 1) {

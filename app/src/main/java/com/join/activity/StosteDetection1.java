@@ -42,16 +42,15 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private TextView humidity, title, abnormalShow_1, abnormalShow_2;
     private Humidity.HumidityBinder humidityBinder;
     private PercentLinearLayout camera_ll;
-    private double[] arithmeticData;//算法的结果数据
-    private double[] arithmeticData2;
-    private double[] arithmeticData3;
-    private double[] arithmeticData4;
     private double[] arithmeticData5;//算法的结果数据
     private String[] stosteDetectionData;//上一个activity传过来的参数
     private int[] windowSelect;
 
     private Arithmetic arithmetic;
+
     private boolean boolTag = true;//算法出结果就取消睡眠
+
+
     private int flag;//判断哪个activity标记
     private Intent intent;
     private boolean boolTag1 = true;  //如果离开页面停止调用相机
@@ -71,7 +70,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private Camera mcamera;
     private NewCamera.MyHandler myHandler;
     private Message message;
-    private boolean serialProt1, serialProt2, serialProt3, serialProt4;
+    private boolean Prot1 = true, Prot2 = true, Prot3 = true, Prot4 = true;
+    private int winTag;
+    private int helpCount=1;
 
     @Override
 
@@ -85,7 +86,28 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         windowSelect = this.getIntent().getIntArrayExtra("windowSelect");
 
         for (int i = 0; i < windowSelect.length; i++) {
-            Log.e(TAG, "onCreate: " + windowSelect[i]);
+            if (windowSelect[i] != 0) {
+                winTag = i;
+                Log.e(TAG, "onCreate: " + winTag);
+                break;
+            }
+        }
+        for (int i = 0; i < windowSelect.length; i++) {
+            if (windowSelect[i] != 0) {
+                helpCount++;
+                if (i==0){
+
+                }
+                if (i==0){
+
+                }
+                if (i==0){
+
+                }
+                if (i==0){
+
+                }
+            }
         }
         flag = getIntent().getFlags();
         mPreview = (SurfaceView) findViewById(R.id.surface_view);
@@ -200,8 +222,14 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             if (temp) {
                 this.tag = tag;
             }
-            humidityClass.sendCommand(SerialPortCommand.two);
-            serialProt2 = true;
+            if (windowSelect[1] != 0) {
+                humidityClass.sendCommand(SerialPortCommand.two);
+            } else if (windowSelect[2] != 0) {
+                humidityClass.sendCommand(SerialPortCommand.three);
+            } else if (windowSelect[3] != 0) {
+                humidityClass.sendCommand(SerialPortCommand.four);
+            }
+
 
         }
         if (tag == 2) {
@@ -217,8 +245,12 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             if (temp) {
                 this.tag = tag;
             }
-            humidityClass.sendCommand(SerialPortCommand.three);
-            serialProt3 = true;
+            if (windowSelect[2] != 0) {
+                humidityClass.sendCommand(SerialPortCommand.three);
+            } else if (windowSelect[3] != 0) {
+                humidityClass.sendCommand(SerialPortCommand.four);
+            }
+
 
         }
         if (tag == 3) {
@@ -232,8 +264,10 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             if (temp) {
                 this.tag = tag;
             }
-            humidityClass.sendCommand(SerialPortCommand.four);
-            serialProt4 = true;
+            if (windowSelect[3] != 0) {
+                humidityClass.sendCommand(SerialPortCommand.four);
+            }
+
 
         }
         if (tag == 4) {
@@ -245,67 +279,75 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             });
             affirmOne = 1;
             newCamera.releaseCamera();
-            humidityClass.sendCommand(SerialPortCommand.one);
+            // humidityClass.sendCommand(SerialPortCommand.one);
             boolean temp = arithmetic.getArithmetic();
             if (temp) {
                 this.tag = tag;
             }
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            humidityClass.sendCommand(SerialPortCommand.guan);
+
+            //  humidityClass.sendCommand(SerialPortCommand.guan);
 
         }
     }
+
+    private double arg1, arg2, arg3, arg4, arg5, arg6, arg7;
 
     @Override
     public void photoPrepared3(double[] arithmetic, int returnState) {
         Log.e(TAG, "photoPrepared3: returnState" + returnState);
         if (tag == 1) {
-            this.arithmeticData = arithmetic;
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
+            if (returnState != 1) {
+                arg1 = arithmetic[0];
+                arg2 = arithmetic[1];
+                arg3 = arithmetic[2];
+                arg4 = arithmetic[3];
+                arg5 = arithmetic[4];
+                arg6 = arithmetic[5];
+                arg7 = arithmetic[7];
+
+            }
             state = returnState;
-            // state = 1;
         } else if (tag == 2) {
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
-            this.arithmeticData2 = arithmetic;
+            if (returnState != 1) {
+                arg1 = +arithmetic[0];
+                arg2 = +arithmetic[1];
+                arg3 = +arithmetic[2];
+                arg4 = +arithmetic[3];
+                arg5 = +arithmetic[4];
+                arg6 = +arithmetic[5];
+                arg7 = +arithmetic[7];
+
+            }
             state2 = returnState;
         } else if (tag == 3) {
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             state3 = returnState;
-            this.arithmeticData3 = arithmetic;
+            if (returnState != 1) {
+                arg1 = +arithmetic[0];
+                arg2 = +arithmetic[1];
+                arg3 = +arithmetic[2];
+                arg4 = +arithmetic[3];
+                arg5 = +arithmetic[4];
+                arg6 = +arithmetic[5];
+                arg7 = +arithmetic[7];
+            }
+
         } else if (tag == 4) {
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             state4 = returnState;
-            this.arithmeticData4 = arithmetic;
-            int i = 0;
-            if (state == 1) {
-                i++;
-            }
-            if (state2 == 1) {
-                i++;
-            }
-            if (state3 == 1) {
-                i++;
-            }
-            if (state4 == 1) {
-                i++;
-            }
-            Log.e(TAG, "photoPrepared3: " + i);
-            double ar1 = (arithmeticData[0] + arithmeticData2[0] + arithmeticData3[0] + arithmeticData4[0]) / i;
-            double ar2 = (arithmeticData[1] + arithmeticData2[1] + arithmeticData3[1] + arithmeticData4[1]) / i;
-            double ar3 = arithmeticData[2] + arithmeticData2[2] + arithmeticData3[2] + arithmeticData4[2] / i;
-            double ar4 = arithmeticData[3] + arithmeticData2[3] + arithmeticData3[3] + arithmeticData4[3] / i;
-            double ar5 = arithmeticData[4] + arithmeticData2[4] + arithmeticData3[4] + arithmeticData4[4] / i;
-            double ar6 = arithmeticData[5] + arithmeticData2[5] + arithmeticData3[5] + arithmeticData4[5] / i;
-            double ar7 = arithmeticData[7] + arithmeticData2[7] + arithmeticData3[7] + arithmeticData4[7] / i;
-            arithmeticData5 = new double[]{
-                    ar1, ar2, ar3, ar4, ar5, ar6, 0.0, ar7
-            };
-            boolTag = false;
 
+            if (returnState != 1) {
+                arg1 = +arithmetic[0];
+                arg2 = +arithmetic[1];
+                arg3 = +arithmetic[2];
+                arg4 = +arithmetic[3];
+                arg5 = +arithmetic[4];
+                arg6 = +arithmetic[5];
+                arg7 = +arithmetic[7];
+            }
+            boolTag = false;
         }
     }
 
@@ -313,73 +355,51 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     public void onCommandResult(int data) {
         Log.e(TAG, "onCommandResult: " + data);
-        if (serialProt1) {
-            if (data != 0) {
-                humidityClass.sendCommand(SerialPortCommand.one);
 
-                serialProt1 = false;
-            }
-            serialProt1 = false;
-        }
-        if (serialProt2) {
-            if (data != 1) {
-                humidityClass.sendCommand(SerialPortCommand.two);
-
-                serialProt2 = false;
-            }
-            serialProt2 = false;
-        }
-        if (serialProt3) {
-            if (data != 2) {
-                humidityClass.sendCommand(SerialPortCommand.three);
-
-                serialProt3 = false;
-            }
-            serialProt3 = false;
-        }
-        if (serialProt4) {
-            if (data != 3) {
-                humidityClass.sendCommand(SerialPortCommand.four);
-                serialProt4 = false;
-            }
-            serialProt4 = false;
-        }
-        if (serialProt1) {
-            if (data == 0 && affirmOne == 0) {//data等于0的时候利用handler通知去取相片,并且不是复位的命令  arg1区别是取玻片上的那个窗口的图片
-                //  if (windowSelect[0] != 0) {
-                message = new Message();
-                message.what = 1;
-                message.arg1 = 1;
-                myHandler.sendMessageDelayed(message, 4000);
-            }
-            // }
-        }
-
-        if (data == 1) {//data等于1的时候利用handler通知去取相片,
-            if (windowSelect[1] != 0) {
-                message = new Message();
-                message.what = 1;
-                message.arg1 = 2;
-                myHandler.sendMessageDelayed(message, 3000);
+        if (windowSelect[0] != 0) {
+            if (Prot1) {
+                if (data == 0 && affirmOne == 0) {//data等于0的时候利用handler通知去取相片,并且不是复位的命令  arg1区别是取玻片上的那个窗口的图片
+                    Log.e(TAG, "onCommandResult: " + "进入2");
+                    message = new Message();
+                    message.what = 1;
+                    message.arg1 = 1;
+                    myHandler.sendMessageDelayed(message, 3000);
+                    Prot1 = false;
+                }
             }
         }
-
-
-        if (data == 2) {
-            if (windowSelect[2] != 0) {
-                message = new Message();
-                message.what = 1;
-                message.arg1 = 3;
-                myHandler.sendMessageDelayed(message, 3000);
+        if (windowSelect[1] != 0) {
+            if (Prot2) {
+                if (data == 1) {//data等于1的时候利用handler通知去取相片,
+                    Log.e(TAG, "onCommandResult: " + data + "标记" + 3);
+                    message = new Message();
+                    message.what = 1;
+                    message.arg1 = 2;
+                    myHandler.sendMessageDelayed(message, 3000);
+                    Prot2 = false;
+                }
             }
         }
-
-        if (data == 3) {
-            if (windowSelect[3] != 0) {
-                message = new Message();
-                message.what = 1;
-                message.arg1 = 4;
-                myHandler.sendMessageDelayed(message, 3000);
+        if (windowSelect[2] != 0) {
+            if (Prot3) {
+                if (data == 2) {
+                    message = new Message();
+                    message.what = 1;
+                    message.arg1 = 3;
+                    myHandler.sendMessageDelayed(message, 3000);
+                    Prot3 = false;
+                }
+            }
+        }
+        if (windowSelect[3] != 0) {
+            if (Prot4) {
+                if (data == 3) {
+                    message = new Message();
+                    message.what = 1;
+                    message.arg1 = 4;
+                    myHandler.sendMessageDelayed(message, 3000);
+                    Prot4 = false;
+                }
             }
         }
     }
@@ -390,9 +410,14 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         humidityBinder = (Humidity.HumidityBinder) service;
         humidityClass = humidityBinder.getHumidity();
         humidityClass.setCommandCallback(this);
-        if (humidityClass != null) {
+        if (winTag == 0) {
             humidityClass.sendCommand(SerialPortCommand.one);
-            serialProt1 = true;
+        } else if (winTag == 1) {
+            humidityClass.sendCommand(SerialPortCommand.two);
+        } else if (winTag == 2) {
+            humidityClass.sendCommand(SerialPortCommand.three);
+        } else if (winTag == 3) {
+            humidityClass.sendCommand(SerialPortCommand.four);
         }
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override

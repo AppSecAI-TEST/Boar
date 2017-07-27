@@ -59,8 +59,8 @@ public class BubbleSeekBar extends View {
 
     private float mMin; // min
     private float mMax; // max
-    private float mProgress; // real time value
-    private boolean isFloatType; // support for float type output
+    private float mProgress; // 实时值
+    private boolean isFloatType; //对浮点类型输出的支持
     private int mTrackSize; // height of right-track(on the right of thumb)
     private int mSecondTrackSize; // height of left-track(on the left of thumb)
     private int mThumbRadius; // radius of thumb

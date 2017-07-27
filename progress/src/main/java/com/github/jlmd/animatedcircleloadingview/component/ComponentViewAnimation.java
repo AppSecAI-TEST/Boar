@@ -6,7 +6,7 @@ import com.github.jlmd.animatedcircleloadingview.animator.AnimationState;
 import com.github.jlmd.animatedcircleloadingview.exception.NullStateListenerException;
 
 /**
- * @author jlmd
+ * 超类
  */
 public abstract class ComponentViewAnimation extends View {
 
