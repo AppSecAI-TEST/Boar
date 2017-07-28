@@ -124,7 +124,7 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
         double density = arithmetic[1];
         double vitality = arithmetic[5];
         double motilityRate = arithmetic[4];
-        double motileSperms = arithmetic[7];
+        double motileSperms = arithmetic[6];
         int length = capacity.length();
         String milliliterSubstring = capacity.substring(0, length - 2);
         Integer milliliterInt = Integer.valueOf(milliliterSubstring);

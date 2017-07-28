@@ -47,7 +47,7 @@ public class Arithmetic {
                     iPictureCallback3.photoPrepared3(pdTestResult, returnState);
 
                 }
-
+                Log.e(TAG, "精子总数" + returnState);
                 Log.e(TAG, "精子总数" + pdTestResult[0]);//被检测的精子总数
                 Log.e(TAG, "密度" + pdTestResult[1]);//精子密度
                 Log.e(TAG, "检测的活动的精子数" + pdTestResult[2]);//被检测的活动的精子数

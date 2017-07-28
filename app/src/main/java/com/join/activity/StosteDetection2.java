@@ -150,7 +150,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
         double density = arithmetic[1];
         double vitality = arithmetic[5];
         double motilityRate = arithmetic[4];
-
+        Log.e(TAG, "setSaveData: "+"density"+density+"vitality"+vitality );
         String densityS = String.valueOf(Double.parseDouble(String.format("%.3f", density)));
         String vitalityS = String.valueOf(Double.parseDouble(String.format("%.3f", vitality)));
         String motilityRateS = String.valueOf(Double.parseDouble(String.format("%.3f", motilityRate)));

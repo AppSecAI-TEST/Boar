@@ -53,7 +53,7 @@ public class IDQueryAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.id_query_item, null);
             holder = new ViewHolder();
 
-            convertView.setTag(holder);
+
 
             holder.date = (TextView) convertView.findViewById(R.id.date);
             holder.time = (TextView) convertView.findViewById(R.id.time);
@@ -64,7 +64,7 @@ public class IDQueryAdapter extends BaseAdapter {
             holder.operator = (TextView) convertView.findViewById(R.id.operator);
             holder.result = (TextView) convertView.findViewById(R.id.result);
             holder.check = (TextView) convertView.findViewById(R.id.check);
-
+            convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }

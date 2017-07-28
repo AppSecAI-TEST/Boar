@@ -91,6 +91,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
         list = new ArrayList<>();
         List<Storage> storages = OperationDao.queryLove(numberTag);
         int size = storages.size();
+
         Log.e(TAG, "start:" + size);
         for (int i = 0; i < size; i++) {
             Storage storage = storages.get(i);
@@ -102,6 +103,8 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
             String checkoutTime = storage.getCheckoutTime();
             String operator = storage.getOperator();
             Long id = storage.getId();
+
+
             String type = storage.getType();
             String density = storage.getDensity();
             String vitality = storage.getVitality();

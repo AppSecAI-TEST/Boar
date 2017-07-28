@@ -6,11 +6,9 @@
     android:orientation="vertical">
 
     <com.zhy.android.percent.support.PercentLinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_heightPercent="12%h"
-        app:layout_widthPercent="100%w">
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/date"
@@ -22,7 +20,8 @@
             android:textColor="#089285"
             android:textSize="30dp"
             app:layout_heightPercent="100%h"
-            app:layout_widthPercent="15%w" />
+            app:layout_widthPercent="15%w"
+           />
 
         <View
             android:layout_width="1dp"

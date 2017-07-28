@@ -129,7 +129,7 @@
                 <com.zhy.android.percent.support.PercentLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    app:layout_marginLeftPercent="1%w"
+                    app:layout_marginLeftPercent="2%w"
                     app:layout_marginTopPercent="4%w"
                     android:background="@drawable/background_white_3"
                     android:orientation="vertical"
@@ -308,9 +308,9 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         app:layout_heightPercent="76%h"
-                        app:layout_widthPercent="100%w">
+                        app:layout_widthPercent="100%w"/>
 
-                    </ListView>
+
 
                     <!--2.3.1-->
                 </com.zhy.android.percent.support.PercentLinearLayout>

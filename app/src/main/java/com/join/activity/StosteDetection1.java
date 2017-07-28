@@ -45,11 +45,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private double[] arithmeticData5;//算法的结果数据
     private String[] stosteDetectionData;//上一个activity传过来的参数
     private int[] windowSelect;
-
     private Arithmetic arithmetic;
-
     private boolean boolTag = true;//算法出结果就取消睡眠
-
 
     private int flag;//判断哪个activity标记
     private Intent intent;
@@ -70,12 +67,13 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     private Camera mcamera;
     private NewCamera.MyHandler myHandler;
     private Message message;
-    private boolean Prot1 = true, Prot2 = true, Prot3 = true, Prot4 = true;
-    private int winTag;
-    private int helpCount=1;
+    private boolean Prot1 = true, Prot2 = true, Prot3 = true, Prot4 = true;//保证在命令的回调中只调用一次
+    private int winTag;//标记开始检测的窗口位置
+    private int helpCount = 0;//标记本次需要的检测的数量;
+    private int firstTag1 = -1, firstTag2 = -1, firstTag3 = -1, firstTag4 = -1;//标记哪个玻片被使用
+    private double arg1, arg2, arg3, arg4, arg5, arg6, arg7;//临时存储算法的变量
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.stoste_detection_1);
@@ -88,24 +86,25 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
         for (int i = 0; i < windowSelect.length; i++) {
             if (windowSelect[i] != 0) {
                 winTag = i;
-                Log.e(TAG, "onCreate: " + winTag);
+
                 break;
             }
         }
+
         for (int i = 0; i < windowSelect.length; i++) {
             if (windowSelect[i] != 0) {
-                helpCount++;
-                if (i==0){
+                if (i == 0) {
+                    firstTag1 = i;
 
                 }
-                if (i==0){
-
+                if (i == 1) {
+                    firstTag2 = i;
                 }
-                if (i==0){
-
+                if (i == 2) {
+                    firstTag3 = i;
                 }
-                if (i==0){
-
+                if (i == 3) {
+                    firstTag4 = i;
                 }
             }
         }
@@ -268,7 +267,6 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 humidityClass.sendCommand(SerialPortCommand.four);
             }
 
-
         }
         if (tag == 4) {
             arithmetic.setiPictureCallback4(new IPictureCallback4() {
@@ -277,27 +275,24 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     return path;
                 }
             });
-            affirmOne = 1;
-            newCamera.releaseCamera();
-            // humidityClass.sendCommand(SerialPortCommand.one);
             boolean temp = arithmetic.getArithmetic();
             if (temp) {
                 this.tag = tag;
             }
 
-            //  humidityClass.sendCommand(SerialPortCommand.guan);
 
         }
     }
 
-    private double arg1, arg2, arg3, arg4, arg5, arg6, arg7;
 
     @Override
     public void photoPrepared3(double[] arithmetic, int returnState) {
         Log.e(TAG, "photoPrepared3: returnState" + returnState);
         if (tag == 1) {
+            state = returnState;
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
-            if (returnState != 1) {
+            if (returnState == 1) {
+                helpCount++;
                 arg1 = arithmetic[0];
                 arg2 = arithmetic[1];
                 arg3 = arithmetic[2];
@@ -307,47 +302,101 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                 arg7 = arithmetic[7];
 
             }
-            state = returnState;
+            if (firstTag2 == -1 && firstTag3 == -1 && firstTag4 == -1) {
+                arithmeticData5 = new double[]{arg1, arg2, arg3, arg4, arg5, arg6, arg7};
+                boolTag = false;
+                humidityClass.sendCommand(SerialPortCommand.one);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                humidityClass.sendCommand(SerialPortCommand.guan);
+            }
+
         } else if (tag == 2) {
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
-            if (returnState != 1) {
-                arg1 = +arithmetic[0];
-                arg2 = +arithmetic[1];
-                arg3 = +arithmetic[2];
-                arg4 = +arithmetic[3];
-                arg5 = +arithmetic[4];
-                arg6 = +arithmetic[5];
-                arg7 = +arithmetic[7];
+            state2 = returnState;
+            if (returnState == 1) {
+                helpCount++;
+                arg1 = (arg1 + arithmetic[0]) / helpCount;
+                arg2 = (arg2 + arithmetic[1]) / helpCount;
+                arg3 = (arg3 + arithmetic[2]) / helpCount;
+                arg4 = (arg4 + arithmetic[3]) / helpCount;
+                arg5 = (arg5 + arithmetic[4]) / helpCount;
+                arg6 = (arg6 + arithmetic[5]) / helpCount;
+                arg7 = (arg7 + arithmetic[7]) / helpCount;
+
 
             }
-            state2 = returnState;
+            if (firstTag3 == -1 && firstTag4 == -1) {
+                arithmeticData5 = new double[]{arg1, arg2, arg3, arg4, arg5, arg6, arg7};
+                boolTag = false;
+                affirmOne = 1;
+                newCamera.releaseCamera();
+                humidityClass.sendCommand(SerialPortCommand.one);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                humidityClass.sendCommand(SerialPortCommand.guan);
+            }
         } else if (tag == 3) {
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             state3 = returnState;
-            if (returnState != 1) {
-                arg1 = +arithmetic[0];
-                arg2 = +arithmetic[1];
-                arg3 = +arithmetic[2];
-                arg4 = +arithmetic[3];
-                arg5 = +arithmetic[4];
-                arg6 = +arithmetic[5];
-                arg7 = +arithmetic[7];
+            if (returnState == 1) {
+                helpCount++;
+                arg1 = (arg1 + arithmetic[0]) / helpCount;
+                arg2 = (arg2 + arithmetic[1]) / helpCount;
+                arg3 = (arg3 + arithmetic[2]) / helpCount;
+                arg4 = (arg4 + arithmetic[3]) / helpCount;
+                arg5 = (arg5 + arithmetic[4]) / helpCount;
+                arg6 = (arg6 + arithmetic[5]) / helpCount;
+                arg7 = (arg7 + arithmetic[7]) / helpCount;
+
+            }
+            if (firstTag4 == -1) {
+                arithmeticData5 = new double[]{arg1, arg2, arg3, arg4, arg5, arg6, arg7};
+                boolTag = false;
+                affirmOne = 1;
+                newCamera.releaseCamera();
+                humidityClass.sendCommand(SerialPortCommand.one);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                humidityClass.sendCommand(SerialPortCommand.guan);
             }
 
         } else if (tag == 4) {
             Log.e(TAG, "photoPrepared3: " + "tag" + tag + "\n" + arithmetic[0]);
             state4 = returnState;
 
-            if (returnState != 1) {
-                arg1 = +arithmetic[0];
-                arg2 = +arithmetic[1];
-                arg3 = +arithmetic[2];
-                arg4 = +arithmetic[3];
-                arg5 = +arithmetic[4];
-                arg6 = +arithmetic[5];
-                arg7 = +arithmetic[7];
+            if (returnState == 1) {
+                helpCount++;
+                arg1 = (arg1 + arithmetic[0]) / helpCount;
+                arg2 = (arg2 + arithmetic[1]) / helpCount;
+                arg3 = (arg3 + arithmetic[2]) / helpCount;
+                arg4 = (arg4 + arithmetic[3]) / helpCount;
+                arg5 = (arg5 + arithmetic[4]) / helpCount;
+                arg6 = (arg6 + arithmetic[5]) / helpCount;
+                arg7 = (arg7 + arithmetic[7]) / helpCount;
+
             }
+            arithmeticData5 = new double[]{arg1, arg2, arg3, arg4, arg5, arg6, arg7};
             boolTag = false;
+            affirmOne = 1;
+            newCamera.releaseCamera();
+            humidityClass.sendCommand(SerialPortCommand.one);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            humidityClass.sendCommand(SerialPortCommand.guan);
+
         }
     }
 
