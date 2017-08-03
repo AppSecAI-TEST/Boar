@@ -88,14 +88,14 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intentHumidity = new Intent(this, Humidity.class);
-        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+    /*    Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        unbindService(this);
+     //   unbindService(this);
     }
 
     @Override

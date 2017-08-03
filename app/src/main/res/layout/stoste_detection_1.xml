@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
 
-
     <com.zhy.android.percent.support.PercentLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,31 +23,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:layout_marginLeftPercent="41%w"
                 android:text="精液原液检测"
                 android:textColor="#fff"
-                android:textSize="40dp" />
+                app:layout_marginLeftPercent="41%w"
+                app:layout_textSizePercent="3%w" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="310dp"
-                app:layout_marginLeftPercent="24%w"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                android:textSize="25dp" />
+                app:layout_marginLeftPercent="22%w"
+                app:layout_textSizePercent="2.6%w" />
 
             <TextView
                 android:id="@+id/humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="7dp"
                 android:text="37℃"
                 android:textColor="#fff"
-                android:textSize="25dp" />
+                app:layout_marginLeftPercent="1%w"
+                app:layout_textSizePercent="2.6%w" />
         </com.zhy.android.percent.support.PercentLinearLayout>
         <!--1.1-->
         <com.zhy.android.percent.support.PercentLinearLayout
@@ -61,10 +59,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                app:layout_marginLeftPercent="4%w"
                 android:background="@drawable/background_white_3"
                 android:orientation="horizontal"
                 app:layout_heightPercent="95%h"
+                app:layout_marginLeftPercent="4%w"
                 app:layout_widthPercent="92%w">
                 <!--2.2.1-->
                 <com.zhy.android.percent.support.PercentLinearLayout
@@ -76,6 +74,7 @@
                     android:orientation="vertical"
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="55%w">
+
                     <SurfaceView
                         android:id="@+id/surface_view"
                         android:layout_width="fill_parent"
@@ -92,27 +91,28 @@
                     app:layout_heightPercent="100%h"
                     app:layout_widthPercent="45%w">
 
-                    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <com.github.jlmd.animatedcircleloadingview.AnimatedCircleLoadingView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/circle_loading_view"
                         android:layout_width="300dp"
                         android:layout_height="200dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="55dp"
                         android:textSize="60dp"
+                        app:layout_marginTopPercent="10%w"
                         app:mainColor="#099e91"
                         app:secondaryColor="#58e2d0"
                         app:textColor="#02544b" />
 
                     <LinearLayout
                         android:id="@+id/abnormalShow_layout"
-                        android:layout_width="480dp"
-                        android:layout_height="150dp"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="150dp"
                         android:background="@drawable/background_green_line_2"
                         android:orientation="vertical"
-                        android:visibility="gone">
+                        android:visibility="gone"
+                        app:layout_heightPercent="20%h"
+                        app:layout_marginTopPercent="30%w"
+                        app:layout_widthPercent="100%w">
 
                         <TextView
                             android:id="@+id/abnormalShow_1"
@@ -154,8 +154,8 @@
                         android:background="@drawable/background_green"
                         android:text="返回"
                         android:textColor="#fff"
-                        android:textSize="30dp"
                         app:layout_heightPercent="16%h"
+                        app:layout_textSizePercent="6%w"
                         app:layout_widthPercent="50%w" />
 
                     <Button
@@ -166,9 +166,9 @@
                         android:background="@drawable/background_green"
                         android:text="查看检测报告"
                         android:textColor="#fff"
-                        android:textSize="30dp"
                         android:visibility="gone"
                         app:layout_heightPercent="18%h"
+                        app:layout_textSizePercent="6%w"
                         app:layout_widthPercent="70%w" />
                     <!--2.2.2-->
                 </com.zhy.android.percent.support.PercentFrameLayout>
@@ -185,6 +185,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/a_000"
-        app:layout_marginLeftPercent="4%w"
+        app:layout_marginLeftPercent="3%w"
         app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>

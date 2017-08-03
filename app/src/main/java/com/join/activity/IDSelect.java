@@ -48,9 +48,9 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intentHumidity = new Intent(this, Humidity.class);
+       /* Intent intentHumidity = new Intent(this, Humidity.class);
         intentHumidity.addFlags(1);
-        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
     }
 
     private void initView() {
@@ -147,7 +147,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
     @Override
     protected void onPause() {
         super.onPause();
-        unbindService(this);
+        //unbindService(this);
     }
 
     @Override

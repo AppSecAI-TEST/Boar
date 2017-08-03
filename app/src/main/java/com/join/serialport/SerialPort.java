@@ -12,6 +12,7 @@ import java.io.OutputStream;
 /**
  *这个代码的 http://gqdy365.iteye.com/blog/2188906
  *另外的http://blog.csdn.net/mr_raptor/article/details/21161389
+ *
  */
 
 public class SerialPort {

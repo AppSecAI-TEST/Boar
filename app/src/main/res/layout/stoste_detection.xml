@@ -26,8 +26,8 @@
                 android:layout_gravity="center"
                 android:text="精液原液检测"
                 android:textColor="#fff"
-                android:textSize="40dp"
-                app:layout_marginLeftPercent="40%w" />
+                app:layout_marginLeftPercent="40%w"
+                app:layout_textSizePercent="3%w" />
 
             <TextView
                 android:id="@+id/textView"
@@ -36,18 +36,18 @@
                 android:layout_gravity="center"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                android:textSize="25dp"
-                app:layout_marginLeftPercent="25%w" />
+                app:layout_marginLeftPercent="22%w"
+                app:layout_textSizePercent="2.6%w" />
 
             <TextView
                 android:id="@+id/humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="7dp"
                 android:text="37℃"
                 android:textColor="#fff"
-                android:textSize="25dp" />
+                app:layout_marginLeftPercent="1%w"
+                app:layout_textSizePercent="2.6%w" />
         </com.zhy.android.percent.support.PercentLinearLayout>
 
         <com.zhy.android.percent.support.PercentLinearLayout
@@ -60,11 +60,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_marginLeft="62dp"
                 android:background="@drawable/background_white_3"
                 android:orientation="vertical"
-                app:layout_heightPercent="90%h"
-                app:layout_widthPercent="90%w">
+                app:layout_heightPercent="92%h"
+                app:layout_marginLeftPercent="3%w"
+                app:layout_widthPercent="94%w">
 
                 <com.zhy.android.percent.support.PercentLinearLayout
                     android:layout_width="0dp"
@@ -213,19 +213,19 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    app:layout_marginTopPercent="2%w"
                     android:background="@drawable/background_white_2"
                     android:orientation="horizontal"
                     app:layout_heightPercent="18%h"
-                    app:layout_widthPercent="80%w">
+                    app:layout_marginTopPercent="2%w"
+                    app:layout_widthPercent="84%w">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="30dp"
                         android:text="颜    色:"
-                        android:textSize="30dp" />
+                        app:layout_marginLeftPercent="3%w"
+                        app:layout_textSizePercent="3.2%w" />
 
                     <Button
                         android:id="@+id/normal_1"
@@ -286,11 +286,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    app:layout_marginTopPercent="2%w"
                     android:background="@drawable/a_015"
                     android:text="开始检测"
                     android:textColor="#fff"
-                    android:textSize="30dp" />
+                    android:textSize="30dp"
+                    app:layout_marginTopPercent="2%w" />
 
             </com.zhy.android.percent.support.PercentLinearLayout>
 

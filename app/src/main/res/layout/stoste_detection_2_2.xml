@@ -40,21 +40,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="480dp"
                     android:text="稀释精液检测结果"
                     android:textColor="#fff"
                     app:layout_marginLeftPercent="37%w"
-                    android:textSize="40dp" />
+                    app:layout_textSizePercent="3%w" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    app:layout_marginLeftPercent="22%w"
                     android:text="平台温度:"
                     android:textColor="#fff"
-                    android:textSize="25dp" />
+                    app:layout_marginLeftPercent="22%w"
+                    app:layout_textSizePercent="2.6%w" />
 
                 <TextView
                     android:id="@+id/humidity"
@@ -66,7 +65,7 @@
                     android:text="@{result1.humidity}"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
-                    android:textSize="25dp" />
+                    app:layout_textSizePercent="2.6%w" />
             </com.zhy.android.percent.support.PercentLinearLayout>
             <!--1.1-->
             <com.zhy.android.percent.support.PercentLinearLayout
@@ -79,20 +78,20 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    app:layout_marginTopPercent="1%w"
                     android:background="@drawable/background_white"
                     android:orientation="horizontal"
                     app:layout_heightPercent="82%h"
-                    app:layout_widthPercent="90%w">
+                    app:layout_marginTopPercent="1%w"
+                    app:layout_widthPercent="92%w">
                     <!--2.2.1-->
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center_vertical"
-                        app:layout_marginLeftPercent="6%w"
                         android:background="@drawable/background_white_1"
                         android:orientation="horizontal"
                         app:layout_heightPercent="70%h"
+                        app:layout_marginLeftPercent="6%w"
                         app:layout_widthPercent="40%w">
 
                         <com.zhy.android.percent.support.PercentLinearLayout
@@ -108,13 +107,13 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="密度"
                                 android:textColor="#099185"
-                                android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_textSizePercent="12%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -126,13 +125,13 @@
                                 android:id="@+id/textView9"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="活率"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -143,13 +142,13 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="检测日期"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -160,13 +159,13 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="检测时间"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -177,13 +176,13 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="气   味"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -194,13 +193,13 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="颜   色"
                                 android:textColor="#099185"
                                 android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_widthPercent="100%w" />
 
                         </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -216,12 +215,12 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.density}"
-                                android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_textSizePercent="12%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -232,12 +231,12 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.motilityRate}"
-                                android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_textSizePercent="12%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -249,12 +248,12 @@
                                 android:id="@+id/date"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.date}"
-                                android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_textSizePercent="12%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -265,12 +264,12 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.time}"
-                                android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_textSizePercent="12%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -281,12 +280,12 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.smell}"
-                                android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_textSizePercent="12%w"
+                                app:layout_widthPercent="100%w" />
 
                             <View
                                 android:layout_width="205dp"
@@ -297,12 +296,12 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:layout_marginLeft="22dp"
                                 android:gravity="center_vertical"
                                 android:text="@{result1.color}"
-                                android:textSize="22dp"
                                 app:layout_heightPercent="16%h"
-                                app:layout_widthPercent="90%w" />
+                                app:layout_paddingLeftPercent="6%w"
+                                app:layout_textSizePercent="12%w"
+                                app:layout_widthPercent="100%w" />
 
                         </com.zhy.android.percent.support.PercentLinearLayout>
                         <!--2.2.1-->
@@ -311,11 +310,11 @@
                     <com.zhy.android.percent.support.PercentLinearLayout
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        app:layout_marginLeftPercent="8%w"
-                        app:layout_marginTopPercent="2%w"
                         android:orientation="vertical"
                         app:layout_heightPercent="90%h"
-                        app:layout_widthPercent="40%w">
+                        app:layout_marginLeftPercent="6%w"
+                        app:layout_marginTopPercent="2%w"
+                        app:layout_widthPercent="42%w">
 
                         <com.zhy.android.percent.support.PercentLinearLayout
                             android:layout_width="0dp"
@@ -324,29 +323,30 @@
                             app:layout_widthPercent="100%w">
 
                             <Button
+                                android:id="@+id/button"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center_vertical"
-                                app:layout_marginLeftPercent="4%w"
                                 android:background="@drawable/background_green"
                                 android:onClick="@{activity.printData}"
                                 android:text="打印"
                                 android:textColor="#f4f4f4"
-                                android:textSize="25dp"
                                 app:layout_heightPercent="45%h"
+                                app:layout_marginLeftPercent="4%w"
+                                app:layout_textSizePercent="6%w"
                                 app:layout_widthPercent="40%w" />
 
                             <Button
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:layout_gravity="center_vertical"
-                                app:layout_marginLeftPercent="8%w"
                                 android:background="@drawable/background_green"
                                 android:onClick="@{activity.closeActivity}"
                                 android:text="返回"
                                 android:textColor="#f4f4f4"
-                                android:textSize="25dp"
                                 app:layout_heightPercent="45%h"
+                                app:layout_marginLeftPercent="8%w"
+                                app:layout_textSizePercent="6%w"
                                 app:layout_widthPercent="40%w" />
                         </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -354,10 +354,10 @@
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:layout_gravity="center_vertical"
-                            app:layout_marginTopPercent="2%w"
                             android:background="@drawable/background_white_1"
                             android:orientation="horizontal"
                             app:layout_heightPercent="68%h"
+                            app:layout_marginTopPercent="2%w"
                             app:layout_widthPercent="100%w">
 
                             <!--2.3.1-->
@@ -374,13 +374,13 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="活   力"
                                     android:textColor="#099185"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <View
                                     android:layout_width="205dp"
@@ -391,13 +391,13 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="有效精子数(亿/剂)"
                                     android:textColor="#099185"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <View
                                     android:layout_width="205dp"
@@ -409,13 +409,13 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="每剂容量"
                                     android:textColor="#099185"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <View
                                     android:layout_width="205dp"
@@ -426,13 +426,13 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="操作员"
                                     android:textColor="#099185"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <View
                                     android:layout_width="205dp"
@@ -443,13 +443,13 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="批号"
                                     android:textColor="#099185"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <!--2.3.1-->
                             </com.zhy.android.percent.support.PercentLinearLayout>
@@ -467,12 +467,12 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.vitality}"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <View
                                     android:layout_width="205dp"
@@ -481,14 +481,15 @@
                                     android:background="#d8d8d8" />
 
                                 <TextView
+                                    android:id="@+id/textView6"
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.motileSperms}"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <View
                                     android:layout_width="205dp"
@@ -499,12 +500,12 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.capacity}"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <View
                                     android:layout_width="205dp"
@@ -515,12 +516,12 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.operator}"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
 
                                 <View
                                     android:layout_width="205dp"
@@ -531,12 +532,12 @@
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="0dp"
-                                    android:layout_marginLeft="22dp"
                                     android:gravity="center_vertical"
                                     android:text="@{result1.batch}"
-                                    android:textSize="22dp"
                                     app:layout_heightPercent="19.3%h"
-                                    app:layout_widthPercent="90%w" />
+                                    app:layout_paddingLeftPercent="6%w"
+                                    app:layout_textSizePercent="12%w"
+                                    app:layout_widthPercent="100%w" />
                                 <!--2.3.1-->
                             </com.zhy.android.percent.support.PercentLinearLayout>
                         </com.zhy.android.percent.support.PercentLinearLayout>
@@ -554,11 +555,10 @@
                     android:gravity="center_vertical"
                     android:text="@{result1.result}"
                     android:textColor="#078d82"
-                    android:textSize="30dp"
                     app:layout_heightPercent="15%h"
-                    app:layout_widthPercent="90%w">
-                    <!--2.1-->
-                </TextView>
+                    app:layout_textSizePercent="4%w"
+                    app:layout_widthPercent="92%w" />
+
             </com.zhy.android.percent.support.PercentLinearLayout>
 
 

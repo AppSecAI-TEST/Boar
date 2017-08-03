@@ -25,8 +25,8 @@
                 android:layout_gravity="center"
                 android:text="时间设定"
                 android:textColor="#fff"
-                android:textSize="40dp"
-                app:layout_marginLeftPercent="41%w" />
+                app:layout_marginLeftPercent="41%w"
+                app:layout_textSizePercent="3%w" />
 
             <TextView
                 android:id="@+id/textView"
@@ -35,18 +35,18 @@
                 android:layout_gravity="center"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                android:textSize="25dp"
-                app:layout_marginLeftPercent="30%w" />
+                app:layout_marginLeftPercent="28%w"
+                app:layout_textSizePercent="2.6%w" />
 
             <TextView
                 android:id="@+id/humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="7dp"
                 android:text="37℃"
                 android:textColor="#fff"
-                android:textSize="25dp" />
+                app:layout_marginLeftPercent="1%w"
+                app:layout_textSizePercent="2.6%w" />
         </com.zhy.android.percent.support.PercentLinearLayout>
 
         <com.zhy.android.percent.support.PercentLinearLayout

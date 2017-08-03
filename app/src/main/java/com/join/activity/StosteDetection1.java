@@ -124,9 +124,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intentHumidity = new Intent(this, Humidity.class);
+   /*     Intent intentHumidity = new Intent(this, Humidity.class);
         intentHumidity.setFlags(1);
-        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
         arithmetic.setiPictureCallback3(this);
         if (flag == 2) {
             title.setText("稀释精液检测");
@@ -137,7 +137,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     protected void onPause() {
         super.onPause();
-        unbindService(this);
+      //  unbindService(this);
         stateThread = false;
         myHandler.sendEmptyMessage(2);
         finish();

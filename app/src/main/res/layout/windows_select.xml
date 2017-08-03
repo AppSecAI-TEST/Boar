@@ -180,7 +180,7 @@
                     android:background="@mipmap/n_009"
                     android:text="继续"
                     android:textColor="#fff"
-                    android:textSize="30dp"
+                    app:layout_textSizePercent="3%w"
                     app:layout_marginTopPercent="6%w" />
 
 

@@ -60,7 +60,7 @@ public class PopupWindowUtil {
             TwoAdapter groupAdapter = new TwoAdapter(context, list);
             lv_group.setAdapter(groupAdapter);
             // 创建一个PopuWidow对象 设置宽,高
-            popupWindow = new PopupWindow(view, 270, 360);
+            popupWindow = new PopupWindow(view, 260, 330);
         }
         popupWindow.setFocusable(false); // 获取焦点
         popupWindow.setTouchable(true); // 设置popupwindow可点击

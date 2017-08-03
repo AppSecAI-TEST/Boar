@@ -42,13 +42,13 @@ public class WindowSelect extends Activity implements View.OnClickListener,Servi
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intentHumidity = new Intent(this, Humidity.class);
-        bindService(intentHumidity, this, BIND_AUTO_CREATE);
+/*        Intent intentHumidity = new Intent(this, Humidity.class);
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
     }
     @Override
     protected void onPause() {
         super.onPause();
-        unbindService(this);
+        //unbindService(this);
     }
 
     private void initView() {
