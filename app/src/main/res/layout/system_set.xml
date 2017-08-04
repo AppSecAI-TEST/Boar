@@ -23,8 +23,8 @@
                 android:layout_gravity="center"
                 android:text="设    置"
                 android:textColor="#fff"
-                app:layout_textSizePercent="4%w"
-                app:layout_marginLeftPercent="44%w" />
+                app:layout_marginLeftPercent="44%w"
+                app:layout_textSizePercent="4%w" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="55dp"
-                    android:background="@mipmap/n_005"
+                    android:background="@mipmap/system_set_6"
                     android:text="时间设定"
                     android:textColor="#fff"
                     android:textSize="30dp" />
@@ -81,7 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/n_003"
+                    android:background="@mipmap/system_set_4"
                     android:text="WIFI设定"
                     android:textColor="#fff"
                     android:textSize="30dp"
@@ -93,12 +93,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/n_006"
+                    android:background="@mipmap/system_set_3"
                     android:text="屏幕亮度"
                     android:textColor="#FFF"
                     android:textSize="32dp"
-                    app:layout_marginTopPercent="6%w"
-                    />
+                    app:layout_marginTopPercent="6%w" />
 
 
             </com.zhy.android.percent.support.PercentLinearLayout>
@@ -119,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="55dp"
-                    android:background="@mipmap/n_004"
+                    android:background="@mipmap/system_set_1"
                     android:text="检测标准"
                     android:textColor="#fff"
                     android:textSize="30dp" />
@@ -129,7 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/n_002"
+                    android:background="@mipmap/system_set_5"
                     android:text="密码管理"
                     android:textColor="#fff"
                     android:textSize="30dp"
@@ -141,12 +140,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/n_001"
+                    android:background="@mipmap/system_set_2"
                     android:text="关     于"
                     android:textColor="#FFF"
                     android:textSize="32dp"
-                    app:layout_marginTopPercent="6%w"
-                     />
+                    app:layout_marginTopPercent="6%w" />
 
 
             </com.zhy.android.percent.support.PercentLinearLayout>
@@ -158,7 +156,7 @@
         android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_000"
-        app:layout_marginLeftPercent="4%w"
+        android:src="@mipmap/home"
+        app:layout_marginLeftPercent="2%w"
         app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>

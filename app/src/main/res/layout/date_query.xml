@@ -75,88 +75,70 @@
                     app:layout_widthPercent="97%w">
 
                     <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:background="@drawable/background_white_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/date_query_1"
                         android:orientation="horizontal"
-                        app:layout_heightPercent="90%h"
                         app:layout_marginLeftPercent="1.5%w"
-                        app:layout_marginTopPercent="1%w"
-                        app:layout_widthPercent="33%w">
+                        app:layout_marginTopPercent="1%w">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="开始日期:"
-                            app:layout_marginLeftPercent="2%w"
-                            app:layout_textSizePercent="8%w" />
+                            android:text="日期:"
+                            app:layout_marginLeftPercent="1%w"
+                            app:layout_textSizePercent="3%w" />
 
                         <TextView
                             android:id="@+id/get_data_1"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/background_white_2"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="18dp"
-                            android:text="12345"
+                            android:text="2017/02/03"
                             android:textColor="#078d82"
-                            app:layout_heightPercent="72%h"
-                            app:layout_marginLeftPercent="2%w"
-                            app:layout_textSizePercent="8%w"
-                            app:layout_widthPercent="62%w" />
-
-                    </com.zhy.android.percent.support.PercentLinearLayout>
-
-                    <com.zhy.android.percent.support.PercentLinearLayout
-                        android:id="@+id/ll_Gong"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/background_white_3"
-                        android:orientation="horizontal"
-                        app:layout_heightPercent="90%h"
-                        app:layout_marginLeftPercent="3%w"
-                        app:layout_widthPercent="33%w">
+                            app:layout_marginLeftPercent="1%w"
+                            app:layout_textSizePercent="2.8%w" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="结束日期:"
-                            app:layout_marginLeftPercent="2%w"
-                            app:layout_textSizePercent="8%w" />
+                            android:text="至"
+                            app:layout_marginLeftPercent="4%w"
+                            app:layout_textSizePercent="3%w" />
 
                         <TextView
                             android:id="@+id/get_data_2"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/background_white_2"
-                            android:gravity="center_vertical"
-                            android:paddingLeft="18dp"
-                            android:text="12345"
+                            android:text="2017/02/03"
                             android:textColor="#078d82"
-                            app:layout_heightPercent="72%h"
                             app:layout_marginLeftPercent="2%w"
-                            app:layout_textSizePercent="8%w"
-                            app:layout_widthPercent="62%w" />
-
+                            app:layout_textSizePercent="2.8%w" />
                     </com.zhy.android.percent.support.PercentLinearLayout>
 
                     <Button
-                        android:id="@+id/bu_return"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:background="@drawable/background_green"
+                        android:background="@mipmap/date_query_2"
+                        android:text="数据导出"
+                        android:textColor="#f4f4f4"
+                        app:layout_marginLeftPercent="5%w"
+                        app:layout_textSizePercent="3%w" />
+
+                    <Button
+                        android:id="@+id/bu_return"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/date_query_2"
                         android:text="返回"
                         android:textColor="#f4f4f4"
-                        app:layout_heightPercent="80%h"
-                        app:layout_marginLeftPercent="5%w"
-                        app:layout_textSizePercent="3%w"
-                        app:layout_widthPercent="22%w" />
+                        app:layout_marginLeftPercent="2%w"
+                        app:layout_textSizePercent="3%w" />
 
 
                     <!--2.2.1-->
@@ -167,9 +149,9 @@
                     android:layout_height="0dp"
                     android:background="@drawable/background_white_3"
                     android:orientation="vertical"
-                    app:layout_heightPercent="62%h"
+                    app:layout_heightPercent="64%h"
                     app:layout_marginLeftPercent="1.5%w"
-                    app:layout_marginTopPercent="4%w"
+                    app:layout_marginTopPercent="3%w"
                     app:layout_widthPercent="97%w">
 
                     <com.zhy.android.percent.support.PercentLinearLayout
@@ -363,8 +345,8 @@
         android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_000"
-        app:layout_marginLeftPercent="4%w"
+        android:src="@mipmap/home"
+        app:layout_marginLeftPercent="2%w"
         app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 

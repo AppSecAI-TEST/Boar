@@ -74,7 +74,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
         switch (v.getId()) {
             case R.id.one:
                 util.showWindow(icon);
-                icon.setBackgroundResource(R.drawable.a_012);
+                icon.setBackgroundResource(R.mipmap.id_select_2);
                 break;
             case R.id.affirm:
                 if (input.length() > 0) {

@@ -51,10 +51,10 @@
 
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:id="@+id/one"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/select_backgruond"
+                android:background="@mipmap/id_select_3"
                 android:orientation="horizontal"
                 app:layout_heightPercent="22%h"
                 app:layout_marginTopPercent="8%w"
@@ -65,18 +65,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="30dp"
-                    android:background="@drawable/a_011" />
+                    app:layout_marginLeftPercent="6%w"
+                    android:background="@mipmap/id_select_1" />
 
                 <TextView
                     android:id="@+id/input"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="25dp"
                     android:hint="请选择检测员ID!"
                     android:textColor="#696969"
                     android:textColorHint="#A9A9A9"
+                    app:layout_marginLeftPercent="8%w"
                     app:layout_heightPercent="30%h"
                     app:layout_textSizePercent="6%w"
                     app:layout_widthPercent="60%w" />
@@ -87,10 +87,10 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:background="@drawable/select_backgruond"
+                android:background="@mipmap/id_select_3"
                 android:orientation="horizontal"
                 app:layout_heightPercent="22%h"
-                app:layout_marginTopPercent="5%w"
+                app:layout_marginTopPercent="2%w"
                 app:layout_widthPercent="78%w">
 
                 <TextView
@@ -109,12 +109,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:background="@drawable/a_015"
-                android:text="确认"
+                android:background="@mipmap/id_select_4"
+                android:text="确      认"
                 android:textColor="#fff"
-                app:layout_textSizePercent="5%w"
                 app:layout_heightPercent="22%h"
-                app:layout_marginTopPercent="4%w"
+                app:layout_marginTopPercent="8%w"
+                app:layout_textSizePercent="6%w"
                 app:layout_widthPercent="78%w" />
 
 

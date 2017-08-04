@@ -88,7 +88,7 @@ public class PopupWindowUtil {
                 editor.commit();*/
 
                 editText.setText(list.get(position));
-                icon.setBackgroundResource(R.drawable.a_011);
+                icon.setBackgroundResource(R.mipmap.id_select_1);
 
                 if (popupWindow != null) {
                     popupWindow.dismiss();

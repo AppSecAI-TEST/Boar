@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +27,7 @@ import com.zhy.android.percent.support.PercentLinearLayout;
 
 public class QueryFunction extends Activity implements View.OnClickListener, ServiceConnection {
     private String TAG = "jjjQueryFuncetion";
-    private PercentLinearLayout function_1, function_2, function_3, function_4;
+    private Button function_1, function_2, function_3, function_4;
     private TextView humidity,textView2;
     private Humidity.HumidityBinder humidityBinder;
     private Intent intent;
@@ -49,13 +50,13 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
         intent = new Intent();
         icon = (ImageView) findViewById(R.id.icon);
         icon.setOnClickListener(this);
-        function_1 = (PercentLinearLayout) findViewById(R.id.function_1);
+        function_1 = (Button) findViewById(R.id.function_1);
         function_1.setOnClickListener(this);
-        function_2 = (PercentLinearLayout) findViewById(R.id.function_2);
+        function_2 = (Button) findViewById(R.id.function_2);
         function_2.setOnClickListener(this);
-        function_3 = (PercentLinearLayout) findViewById(R.id.function_3);
+        function_3 = (Button) findViewById(R.id.function_3);
         function_3.setOnClickListener(this);
-        function_4 = (PercentLinearLayout) findViewById(R.id.function_4);
+        function_4 = (Button) findViewById(R.id.function_4);
         function_4.setOnClickListener(this);
         humidity = (TextView) findViewById(R.id.humidity);
         textView2 = (TextView) findViewById(R.id.textView2);

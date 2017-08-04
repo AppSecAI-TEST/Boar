@@ -11,143 +11,147 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        app:layout_marginTopPercent="5%w"
         android:background="@drawable/background_white_4"
         android:orientation="vertical"
         app:layout_heightPercent="88%h"
+        app:layout_marginTopPercent="5%w"
         app:layout_widthPercent="60%w">
-        <!--1-->
+
         <com.zhy.android.percent.support.PercentLinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            app:layout_heightPercent="14%h"
-            app:layout_widthPercent="95%w">
-            <!--1.1-->
-            <com.zhy.android.percent.support.PercentLinearLayout
-                android:id="@+id/input_ll_1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/a_028"
-                android:orientation="horizontal"
-                app:layout_heightPercent="100%h"
-                app:layout_widthPercent="49%w">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:text="开始日期:"
-                    android:textColor="#078d82"
-                    android:textSize="25dp" />
-
-                <EditText
-                    android:id="@+id/input_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:background="@null"
-                    android:hint="例20170603"
-                    android:textColorHint="#A1A1A1"
-                    android:textCursorDrawable="@null"
-                    android:textSize="25dp" />
-                <!--1.1-->
-            </com.zhy.android.percent.support.PercentLinearLayout>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <com.zhy.android.percent.support.PercentLinearLayout
-                android:id="@+id/input_ll_2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginLeft="14dp"
-                android:background="@drawable/a_028"
-                android:orientation="horizontal"
-                app:layout_heightPercent="100%h"
-                app:layout_widthPercent="49%w">
-
-                <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_marginLeftPercent="6%w"
+                app:layout_marginTopPercent="2%w">
+                <!--1.1-->
+                <com.zhy.android.percent.support.PercentLinearLayout
+                    android:id="@+id/input_ll_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:text="结束日期:"
-                    android:textColor="#078d82"
-                    android:textSize="25dp" />
+                    android:background="@mipmap/keyboard_2"
+                    android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/input_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:background="@null"
-                    android:hint="例20170603"
-                    android:textColorHint="#A1A1A1"
-                    android:textCursorDrawable="@null"
-                    android:textSize="25dp" />
-                <!--1.1-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="开始日期:"
+                        android:textColor="#078d82"
+                        app:layout_marginLeftPercent="1%w"
+                        app:layout_textSizePercent="4%w" />
+
+                    <EditText
+                        android:id="@+id/input_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:hint="例20170603"
+                        android:textColorHint="#A1A1A1"
+                        android:textCursorDrawable="@null"
+                        app:layout_marginLeftPercent="1%w"
+                        app:layout_textSizePercent="4%w" />
+                    <!--1.1-->
+                </com.zhy.android.percent.support.PercentLinearLayout>
+
+                <com.zhy.android.percent.support.PercentLinearLayout
+                    android:id="@+id/input_ll_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/keyboard_2"
+                    android:orientation="horizontal"
+                    app:layout_marginTopPercent="2%w">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="结束日期:"
+                        android:textColor="#078d82"
+                        app:layout_marginLeftPercent="1%w"
+                        app:layout_textSizePercent="4%w" />
+
+                    <EditText
+                        android:id="@+id/input_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:hint="例20170603"
+                        android:textColorHint="#A1A1A1"
+                        android:textCursorDrawable="@null"
+                        app:layout_marginLeftPercent="1%w"
+                        app:layout_textSizePercent="4%w" />
+                    <!--1.1-->
+                </com.zhy.android.percent.support.PercentLinearLayout>
+                <!--1-->
             </com.zhy.android.percent.support.PercentLinearLayout>
-            <!--1-->
+
+            <Button
+                android:id="@+id/bu_w"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@mipmap/keyboard_3"
+                android:text="完成"
+                android:textColor="#fff"
+                app:layout_marginLeftPercent="12%w"
+                app:layout_textSizePercent="4%w" />
+
         </com.zhy.android.percent.support.PercentLinearLayout>
         <!--/第二层-->
         <com.zhy.android.percent.support.PercentLinearLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="13dp"
             android:orientation="vertical"
             app:layout_heightPercent="65%h"
+            app:layout_marginTopPercent="1%w"
             app:layout_widthPercent="82%w">
 
             <!--2-->
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="12dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_heightPercent="22%h"
+                app:layout_marginTopPercent="1%w"
                 app:layout_widthPercent="100%w">
 
                 <Button
                     android:id="@+id/bu_1"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/background_white_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="1"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    app:layout_textSizePercent="7%w" />
 
                 <Button
                     android:id="@+id/bu_2"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_5"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="2"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    app:layout_textSizePercent="7%w" />
 
                 <Button
                     android:id="@+id/bu_3"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_5"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="3"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    app:layout_textSizePercent="7%w" />
                 <!--2-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -155,48 +159,40 @@
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_heightPercent="22%h"
+                app:layout_marginTopPercent="1%w"
                 app:layout_widthPercent="100%w">
 
                 <Button
                     android:id="@+id/bu_4"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/background_white_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="4"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    app:layout_textSizePercent="7%w" />
 
                 <Button
                     android:id="@+id/bu_5"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_5"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="5"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    android:textSize="35dp" />
 
                 <Button
                     android:id="@+id/bu_6"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_5"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="6"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    android:textSize="35dp" />
                 <!--3-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -204,48 +200,40 @@
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_heightPercent="22%h"
+                app:layout_marginTopPercent="1%w"
                 app:layout_widthPercent="100%w">
 
                 <Button
                     android:id="@+id/bu_7"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/background_white_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="7"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    android:textSize="35dp" />
 
                 <Button
                     android:id="@+id/bu_8"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_5"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="8"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    android:textSize="35dp" />
 
                 <Button
                     android:id="@+id/bu_9"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_5"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="9"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    android:textSize="35dp" />
                 <!--4-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -253,63 +241,45 @@
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginTop="8dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_heightPercent="22%h"
+                app:layout_marginTopPercent="1%w"
                 app:layout_widthPercent="100%w">
 
                 <Button
                     android:id="@+id/delete"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:background="@drawable/background_white_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="删除"
-                    android:textSize="30dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    android:textSize="30dp" />
 
                 <Button
                     android:id="@+id/bu_0"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_5"
+                    android:background="@mipmap/keyboard_1"
                     android:enabled="false"
-                    android:gravity="center"
                     android:text="0"
-                    android:textSize="35dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    android:textSize="35dp" />
 
                 <Button
-                    android:id="@+id/bu_w"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:id="@+id/out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/background_white_5"
-                    android:enabled="false"
-                    android:gravity="center"
-                    android:text="完成"
-                    android:textSize="30dp"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="30%w" />
+                    android:background="@mipmap/keyboard_1"
+                    android:text="退出"
+                    android:textSize="30dp" />
                 <!--5-->
             </com.zhy.android.percent.support.PercentLinearLayout>
 
             <!--第二层-->
         </com.zhy.android.percent.support.PercentLinearLayout>
 
-        <Button
-            android:id="@+id/out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/a_029"
-            android:text="退 出"
-            android:textColor="#fff"
-            android:textSize="32dp" />
+
     </com.zhy.android.percent.support.PercentLinearLayout>
 </com.zhy.android.percent.support.PercentLinearLayout>
