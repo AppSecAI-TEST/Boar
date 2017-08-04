@@ -27,9 +27,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:layout_marginLeftPercent="1%w"
             android:text="37℃"
             android:textColor="#fff"
+            app:layout_marginLeftPercent="1%w"
             app:layout_textSizePercent="2.6%w" />
     </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -44,37 +44,19 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:background="@drawable/background_white_3"
+            android:background="@mipmap/function_1"
             android:orientation="vertical"
-            app:layout_heightPercent="45%h"
-            app:layout_marginLeftPercent="6%w"
-            app:layout_widthPercent="20%w">
-
-            <com.zhy.android.percent.support.PercentLinearLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                app:layout_heightPercent="60%h"
-                app:layout_widthPercent="100%w">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:layout_marginTopPercent="28%h"
-                    android:src="@drawable/a_003" />
-            </com.zhy.android.percent.support.PercentLinearLayout>
+            app:layout_heightPercent="16%w"
+            app:layout_marginLeftPercent="16%w"
+            app:layout_widthPercent="15%w">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/a_022"
-                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="精液原液检测"
-                app:layout_textSizePercent="11%w"
-                app:layout_heightPercent="40%h"
-                app:layout_widthPercent="100%w" />
+                app:layout_marginTopPercent="70%w"
+                app:layout_textSizePercent="12%w" />
 
 
         </com.zhy.android.percent.support.PercentLinearLayout>
@@ -84,39 +66,20 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:background="@drawable/background_white_3"
+            android:background="@mipmap/function_2"
             android:orientation="vertical"
-            app:layout_heightPercent="45%h"
+            app:layout_heightPercent="16%w"
             app:layout_marginLeftPercent="3%w"
-            app:layout_widthPercent="20%w">
+            app:layout_widthPercent="15%w">
 
-            <com.zhy.android.percent.support.PercentLinearLayout
-
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                app:layout_heightPercent="60%h"
-                app:layout_widthPercent="100%w">
-
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:layout_marginTopPercent="20%h"
-                    android:src="@drawable/a_001" />
-            </com.zhy.android.percent.support.PercentLinearLayout>
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/a_022"
-                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="稀释精液检测"
-                app:layout_textSizePercent="11%w"
-                app:layout_heightPercent="40%h"
-                app:layout_widthPercent="100%w" />
+                app:layout_marginTopPercent="70%w"
+                app:layout_textSizePercent="12%w" />
 
         </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -125,40 +88,21 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:background="@drawable/background_white_3"
+            android:background="@mipmap/function_3"
             android:orientation="vertical"
-            app:layout_heightPercent="45%h"
+            app:layout_heightPercent="16%w"
             app:layout_marginLeftPercent="3%w"
-            app:layout_widthPercent="20%w">
+            app:layout_widthPercent="15%w">
 
-            <com.zhy.android.percent.support.PercentLinearLayout
-
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                app:layout_heightPercent="60%h"
-                app:layout_widthPercent="100%w">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:layout_marginTopPercent="30%h"
-                    android:src="@drawable/a_004" />
-            </com.zhy.android.percent.support.PercentLinearLayout>
 
             <TextView
                 android:id="@+id/textView5"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/a_022"
-                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="数据查询"
-                app:layout_textSizePercent="11%w"
-                app:layout_heightPercent="40%h"
-                app:layout_widthPercent="100%w" />
+                app:layout_marginTopPercent="70%w"
+                app:layout_textSizePercent="12%w" />
 
         </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -167,38 +111,20 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:background="@drawable/background_white_3"
+            android:background="@mipmap/function_4"
             android:orientation="vertical"
-            app:layout_heightPercent="45%h"
+            app:layout_heightPercent="16%w"
             app:layout_marginLeftPercent="3%w"
-            app:layout_widthPercent="20%w">
+            app:layout_widthPercent="15%w">
 
-            <com.zhy.android.percent.support.PercentLinearLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                app:layout_heightPercent="60%h"
-                app:layout_widthPercent="100%w">
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    app:layout_marginTopPercent="24%h"
-                    android:src="@drawable/a_002" />
-            </com.zhy.android.percent.support.PercentLinearLayout>
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/a_022"
-                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="设  置"
-                app:layout_textSizePercent="11%w"
-                app:layout_heightPercent="40%h"
-                app:layout_widthPercent="100%w" />
+                app:layout_marginTopPercent="70%w"
+                app:layout_textSizePercent="12%w" />
         </com.zhy.android.percent.support.PercentLinearLayout>
 
     </com.zhy.android.percent.support.PercentLinearLayout>

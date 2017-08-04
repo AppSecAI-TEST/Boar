@@ -55,70 +55,73 @@
             android:background="#e0f3f1"
             android:orientation="horizontal">
 
+
             <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/date_t"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
+                android:background="@mipmap/time_ac_1"
                 android:orientation="vertical"
-                app:layout_heightPercent="90%h"
-                app:layout_marginLeftPercent="5%w"
-                app:layout_widthPercent="90%w">
+                app:layout_heightPercent="30%w"
+                app:layout_marginLeftPercent="20%w"
+                app:layout_widthPercent="27%w">
 
-                <com.zhy.android.percent.support.PercentLinearLayout
-                    android:id="@+id/date_t"
-                    android:layout_width="621dp"
-                    android:layout_height="107dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@mipmap/n_010"
-                    android:orientation="horizontal"
-                    app:layout_marginTopPercent="8%w">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="设置日期"
+                    android:textColor="#fff"
+                    app:layout_marginTopPercent="10%w"
+                    app:layout_textSizePercent="11%w" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="设置日期"
-                        android:textSize="35dp"
-                        app:layout_marginLeftPercent="20%w" />
+                <TextView
+                    android:id="@+id/date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="21"
+                    app:layout_marginTopPercent="20%w"
+                    app:layout_textSizePercent="28%w" />
 
-                    <TextView
-                        android:id="@+id/date_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="1992/07/03"
-                        android:textSize="35dp"
-                        app:layout_marginLeftPercent="12%w" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="2017年5月"
+                    app:layout_marginTopPercent="1%w"
+                    app:layout_textSizePercent="14%w" />
+            </com.zhy.android.percent.support.PercentLinearLayout>
 
-                </com.zhy.android.percent.support.PercentLinearLayout>
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:id="@+id/time_t"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:background="@mipmap/time_ac_1"
+                android:orientation="vertical"
+                app:layout_heightPercent="30%w"
+                app:layout_marginLeftPercent="10%w"
+                app:layout_widthPercent="27%w">
 
-                <com.zhy.android.percent.support.PercentLinearLayout
-                    android:id="@+id/time_t"
-                    android:layout_width="621dp"
-                    android:layout_height="107dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="65dp"
-                    android:background="@mipmap/n_011"
-                    android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="设置时间"
+                    android:textColor="#fff"
+                    app:layout_marginTopPercent="10%w"
+                    app:layout_textSizePercent="11%w" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="设置时间"
-                        android:textSize="35dp"
-                        app:layout_marginLeftPercent="20%w" />
-
-                    <TextView
-                        android:id="@+id/time_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="12:30"
-                        android:textSize="35dp"
-                        app:layout_marginLeftPercent="22%w" />
-
-                </com.zhy.android.percent.support.PercentLinearLayout>
+                <TextView
+                    android:id="@+id/time_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="12:30"
+                    app:layout_marginTopPercent="26%w"
+                    app:layout_textSizePercent="26%w" />
 
             </com.zhy.android.percent.support.PercentLinearLayout>
 
@@ -131,8 +134,8 @@
         android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_000"
-        app:layout_marginLeftPercent="4%w"
+        android:src="@mipmap/home"
+        app:layout_marginLeftPercent="2%w"
         app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>
 
