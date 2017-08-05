@@ -59,7 +59,7 @@
             android:layout_marginBottom="21dip"
             android:layout_marginTop="25dip">
 
-            <TextView
+            <Button
                 android:id="@+id/btn_myinfo_sure"
                 android:layout_width="77dip"
                 android:layout_height="33dip"
@@ -70,7 +70,7 @@
                 android:textSize="16sp" />
 
 
-            <TextView
+            <Button
                 android:id="@+id/btn_myinfo_cancel"
                 android:layout_width="77dip"
                 android:layout_height="33dip"

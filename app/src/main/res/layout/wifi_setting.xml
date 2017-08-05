@@ -21,10 +21,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="设    置"
+                android:text="WIFI设置"
                 android:textColor="#fff"
-                app:layout_textSizePercent="3.2%w"
-                app:layout_marginLeftPercent="44%" />
+                app:layout_marginLeftPercent="44%"
+                app:layout_textSizePercent="3.2%w" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -32,8 +32,8 @@
                 android:layout_gravity="center"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                app:layout_textSizePercent="2.6%w"
-                app:layout_marginLeftPercent="28%" />
+                app:layout_marginLeftPercent="24%"
+                app:layout_textSizePercent="2.6%w" />
 
             <TextView
                 android:id="@+id/humidity"
@@ -42,8 +42,8 @@
                 android:layout_gravity="center"
                 android:text="37℃"
                 android:textColor="#fff"
-                app:layout_textSizePercent="2.6%w"
-                app:layout_marginLeftPercent="1%w" />
+                app:layout_marginLeftPercent="1%w"
+                app:layout_textSizePercent="2.6%w" />
         </com.zhy.android.percent.support.PercentLinearLayout>
 
         <com.zhy.android.percent.support.PercentLinearLayout
@@ -57,20 +57,99 @@
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="#e0f3f1"
-                android:orientation="horizontal"
-                app:layout_heightPercent="10%h"
+                android:layout_gravity="center"
+                android:background="@drawable/background_white_4"
+                android:orientation="vertical"
+                app:layout_heightPercent="14%w"
                 app:layout_marginTopPercent="2%w"
-                app:layout_widthPercent="100%w">
+                app:layout_widthPercent="60%w">
 
-                <TextView
+                <com.zhy.android.percent.support.PercentLinearLayout
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:gravity="center"
-                    android:text="WLAN"
-                    app:layout_heightPercent="100%h"
-                    app:layout_widthPercent="10%w" />
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_heightPercent="49%h"
+                    app:layout_widthPercent="90%w">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="WLAN"
+                        app:layout_textSizePercent="5%w" />
+
+                    <ImageView
+                        android:id="@+id/open_wifi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/wifi_setting_1"
+                        app:layout_marginLeftPercent="66%w" />
+
+                </com.zhy.android.percent.support.PercentLinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:background="#000"
+                    app:layout_heightPercent="1%h"
+                    app:layout_widthPercent="90%w" />
+
+                <com.zhy.android.percent.support.PercentLinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_heightPercent="49%h"
+                    app:layout_widthPercent="90%w">
+
+                    <TextView
+                        android:id="@+id/title_name"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:gravity="center_vertical"
+                        android:text="name"
+                        app:layout_heightPercent="100%h"
+                        app:layout_textSizePercent="5%w"
+                        app:layout_widthPercent="75%w" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@mipmap/wifi_setting_2"
+                        app:layout_marginLeftPercent="4%w" />
+
+                </com.zhy.android.percent.support.PercentLinearLayout>
+
+            </com.zhy.android.percent.support.PercentLinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选取网络"
+                app:layout_marginLeftPercent="22%w"
+                app:layout_marginTopPercent="1%w"
+                app:layout_textSizePercent="2%w" />
+
+            <com.zhy.android.percent.support.PercentLinearLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:background="@drawable/background_white_4"
+                android:orientation="vertical"
+                app:layout_heightPercent="21%w"
+                app:layout_marginTopPercent="1%w"
+                app:layout_widthPercent="60%w">
+
+                <ListView
+                    android:id="@+id/wifi_list"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_heightPercent="100%h"
+                    app:layout_widthPercent="100%w" />
 
             </com.zhy.android.percent.support.PercentLinearLayout>
         </com.zhy.android.percent.support.PercentLinearLayout>
@@ -80,7 +159,7 @@
         android:id="@+id/icon_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/a_000"
-        app:layout_marginLeftPercent="4%w"
+        android:src="@mipmap/home"
+        app:layout_marginLeftPercent="2%w"
         app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>

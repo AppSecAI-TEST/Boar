@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.join.R;
@@ -37,8 +38,8 @@ public class DateSelectDialog extends Dialog implements View.OnClickListener {
 
     private View lyChangeAddress; //three_date_setting 的布局
     private View lyChangeAddressChild; //three_date_setting 子布局
-    private TextView btnSure;       //确认的文本框  可以改成button
-    private TextView btnCancel;     //取消的文本框  可以改成button
+    private Button btnSure;       //确认的文本框  可以改成button
+    private Button btnCancel;     //取消的文本框  可以改成button
 
     private Context context;
     private JSONObject mJsonObj;     //得到year.json对象
@@ -190,8 +191,8 @@ public class DateSelectDialog extends Dialog implements View.OnClickListener {
 
         lyChangeAddress = findViewById(R.id.ly_myinfo_changeaddress);
         lyChangeAddressChild = findViewById(R.id.ly_myinfo_changeaddress_child);
-        btnSure = (TextView) findViewById(R.id.btn_myinfo_sure);
-        btnCancel = (TextView) findViewById(R.id.btn_myinfo_cancel);
+        btnSure = (Button) findViewById(R.id.btn_myinfo_sure);
+        btnCancel = (Button) findViewById(R.id.btn_myinfo_cancel);
 
         lyChangeAddress.setOnClickListener(this);
         lyChangeAddressChild.setOnClickListener(this);

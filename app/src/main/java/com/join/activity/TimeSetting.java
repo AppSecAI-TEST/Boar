@@ -25,43 +25,50 @@ import java.text.SimpleDateFormat;
 
 public class TimeSetting extends Activity implements View.OnClickListener, ServiceConnection {
     private PercentLinearLayout date_t, time_t;
-    private TextView date_tv, time_tv;
+    private TextView humidity, date_tv_1, date_tv_2, time_tv;
     private ImageView icon_1;
     private Intent intent;
-    private TextView humidity;
     private Humidity.HumidityBinder humidityBinder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.time_activity);
         initView();
-        SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy年MM月");
         String tateFormat = sDateFormat.format(new java.util.Date());
-        date_tv.setText(tateFormat);
+        date_tv_2.setText(tateFormat);
+        SimpleDateFormat sDateFormat2 = new SimpleDateFormat("dd");
+        String tateFormat2 = sDateFormat2.format(new java.util.Date());
+        date_tv_1.setText(tateFormat2);
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm");
         String timeFormatS = timeFormat.format(new java.util.Date());
         time_tv.setText(timeFormatS);
 
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
    /*     Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         //unbindService(this);
     }
+
     private void initView() {
         humidity = (TextView) findViewById(R.id.humidity);
         date_t = (PercentLinearLayout) findViewById(R.id.date_t);
         date_t.setOnClickListener(this);
         time_t = (PercentLinearLayout) findViewById(R.id.time_t);
         time_t.setOnClickListener(this);
-        date_tv = (TextView) findViewById(R.id.date_tv);
+        date_tv_1 = (TextView) findViewById(R.id.date_tv_1);
+        date_tv_2 = (TextView) findViewById(R.id.date_tv_2);
         time_tv = (TextView) findViewById(R.id.time_tv);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(this);
@@ -84,9 +91,9 @@ public class TimeSetting extends Activity implements View.OnClickListener, Servi
                                 SimpleDateFormat sDateFormat = new SimpleDateFormat("hhmmss");
                                 String tateFormat = sDateFormat.format(new java.util.Date());
                                 testDate(province + city + strArea + "." + tateFormat);
-                                date_tv.setText(province + "/" + city + "/" + strArea);
+                                date_tv_2.setText(province + "年" + city + "月");
 
-
+                                date_tv_1.setText(strArea);
                                 Toast.makeText(TimeSetting.this,
                                         province + "-" + city + "-" + strArea,
                                         Toast.LENGTH_LONG).show();
@@ -131,6 +138,7 @@ public class TimeSetting extends Activity implements View.OnClickListener, Servi
             e.printStackTrace();
         }
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;

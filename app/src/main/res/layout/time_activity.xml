@@ -77,7 +77,7 @@
                     app:layout_textSizePercent="11%w" />
 
                 <TextView
-                    android:id="@+id/date_tv"
+                    android:id="@+id/date_tv_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -86,6 +86,7 @@
                     app:layout_textSizePercent="28%w" />
 
                 <TextView
+                    android:id="@+id/date_tv_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

@@ -18,8 +18,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.join.R;
@@ -34,7 +36,9 @@ import java.util.List;
 
 public class WiFiActivity extends Activity implements View.OnClickListener {
     private String TAG = "jjjWiFiActivity";
-    private Button check_wifi, open_wifi, close_wifi, scan_wifi;
+    private Button check_wifi, close_wifi, scan_wifi;
+    private ImageView open_wifi;
+    private TextView title_name;
     private ListView mlistView;
     protected WifiAdmin mWifiAdmin;
     private List<ScanResult> mWifiList;
@@ -42,13 +46,13 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.wifi_activity);
+        setContentView(R.layout.wifi_setting);
         mWifiAdmin = new WifiAdmin(WiFiActivity.this);
         initViews();
         IntentFilter filter = new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION);
 
         registerReceiver(mReceiver, filter);
-
+        title_name.setText(mWifiAdmin.getConnectWifiSsid());
 
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -96,15 +100,16 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
      * 控件初始化
      */
     private void initViews() {
-        check_wifi = (Button) findViewById(R.id.check_wifi);
-        open_wifi = (Button) findViewById(R.id.open_wifi);
-        close_wifi = (Button) findViewById(R.id.close_wifi);
-        scan_wifi = (Button) findViewById(R.id.scan_wifi);
+        // check_wifi = (Button) findViewById(R.id.check_wifi);
+        open_wifi = (ImageView) findViewById(R.id.open_wifi);
+        //  close_wifi = (Button) findViewById(R.id.close_wifi);
+        // scan_wifi = (Button) findViewById(R.id.scan_wifi);
         mlistView = (ListView) findViewById(R.id.wifi_list);
-        check_wifi.setOnClickListener(WiFiActivity.this);
+        // check_wifi.setOnClickListener(WiFiActivity.this);
         open_wifi.setOnClickListener(WiFiActivity.this);
-        close_wifi.setOnClickListener(WiFiActivity.this);
-        scan_wifi.setOnClickListener(WiFiActivity.this);
+        // close_wifi.setOnClickListener(WiFiActivity.this);
+        //  scan_wifi.setOnClickListener(WiFiActivity.this);
+        title_name = (TextView) findViewById(R.id.title_name);
     }
 
     @Override
@@ -113,28 +118,35 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
         mWifiList = mWifiAdmin.getWifiList();
         WiFiAdapter myAdapter = new WiFiAdapter(this, mWifiList);
         switch (v.getId()) {
-            case R.id.check_wifi:
+      /*      case R.id.check_wifi:
                 int i = mWifiAdmin.checkState(WiFiActivity.this);
 
-                break;
+                break;*/
             case R.id.open_wifi:
                 mWifiAdmin.openWifi(WiFiActivity.this);
+                mWifiAdmin.startScan(WiFiActivity.this);
 
+                mWifiList = mWifiAdmin.getWifiList();
+                if (mWifiList != null) {
+                    mlistView.setAdapter(new WiFiAdapter(this, mWifiList));
+                    new Utility().setListViewHeightBasedOnChildren(mlistView);
+                }
+
+                mWifiAdmin.getConnectWifiSsid();
                 break;
-            case R.id.close_wifi:
+ /*           case R.id.close_wifi:
                 mWifiAdmin.closeWifi(WiFiActivity.this);
                 mlistView.setAdapter(null);
+                break;*/
 
-
-                break;
-            case R.id.scan_wifi:
+ /*           case R.id.scan_wifi:
                 mWifiAdmin.startScan(WiFiActivity.this);
                 mWifiList = mWifiAdmin.getWifiList();
                 if (mWifiList != null) {
                     mlistView.setAdapter(new WiFiAdapter(this, mWifiList));
                     new Utility().setListViewHeightBasedOnChildren(mlistView);
                 }
-                break;
+                break;*/
             default:
                 break;
         }

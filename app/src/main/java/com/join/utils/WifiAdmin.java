@@ -12,22 +12,39 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Context.WIFI_SERVICE;
+
 public class WifiAdmin {
-    // 定义WifiManager对象   
+    private String TAG = "jjjWifiAdmin";
+    // 管理WiFi的超类
     private WifiManager mWifiManager;
-    // 定义WifiInfo对象     
+    // 可以从这个对象里取到WiFi的名称(SSID) MAC地址等;
     private WifiInfo mWifiInfo;
     // 扫描出的网络连接列表     
     private List<ScanResult> mWifiList;
     // 网络连接列表     
     private List<WifiConfiguration> mWifiConfiguration;
-    // 定义一个WifiLock     
+    // 作用一直保持WiFi的连接,
     WifiLock mWifiLock;
 
 
+    /**
+     * @return WiFi的名称(SSID) MAC地址等;
+     */
+    public String getConnectWifiSsid() {
+
+        WifiInfo mWifiInfo = mWifiManager.getConnectionInfo();
+        //  Log.d(TAG, mWifiInfo.toString());
+        Log.d(TAG, mWifiInfo.getSSID());
+        String ssid = mWifiInfo.getSSID();
+        int length = ssid.length();
+        String substring = ssid.substring(1, length - 1);
+        return substring;
+    }
+
     public WifiAdmin(Context context) {
         // 取得WifiManager对象     
-        mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = (WifiManager) context.getSystemService(WIFI_SERVICE);
         // 取得WifiInfo对象     
         mWifiInfo = mWifiManager.getConnectionInfo();
     }
@@ -69,10 +86,13 @@ public class WifiAdmin {
     public int checkState(Context context) {
         if (mWifiManager.getWifiState() == 0) {
             Toast.makeText(context, "Wifi正在关闭", Toast.LENGTH_SHORT).show();
+            return 0;
         } else if (mWifiManager.getWifiState() == 1) {
             Toast.makeText(context, "Wifi已经关闭", Toast.LENGTH_SHORT).show();
+            return 1;
         } else if (mWifiManager.getWifiState() == 2) {
             Toast.makeText(context, "Wifi正在开启", Toast.LENGTH_SHORT).show();
+            return 2;
         } else if (mWifiManager.getWifiState() == 3) {
             Toast.makeText(context, "Wifi已经开启", Toast.LENGTH_SHORT).show();
             return 3;
@@ -109,10 +129,11 @@ public class WifiAdmin {
     }
 
     /**
-     *  得到配置好的网络
+     * 得到配置好的网络
      */
 
     public List<WifiConfiguration> getConfiguration() {
+
         return mWifiConfiguration;
     }
 
@@ -151,22 +172,34 @@ public class WifiAdmin {
             }
         } else {
             mWifiList = new ArrayList();
+
             for (ScanResult result : results) {
+                //如果WiFi的名称等于空就跳过本次循环,  continue用来结束本次循环   break用来结束整个循环体
                 if (result.SSID == null || result.SSID.length() == 0
                         || result.capabilities.contains("[IBSS]")) {
                     continue;
                 }
+
+
                 boolean found = false;
-                Log.i("MainActivity", "result= " + result.SSID + " capabilities= " + result.capabilities);
+                Log.i(TAG, "result= " + result.SSID + " capabilities= " + result.capabilities);
+
                 for (ScanResult item : mWifiList) {
-                    Log.i("MainActivity", "item= " + item.SSID + " capabilities=" + item.capabilities);
+                    Log.i(TAG, "item= " + item.SSID + " capabilities=" + item.capabilities);
+
                     if (item.SSID.equals(result.SSID) && item.capabilities.equals(result.capabilities)) {
-                        Log.i("MainActivity", "found true");
                         found = true;
                         break;
                     }
                 }
+
                 if (!found) {
+                    String temp = getConnectWifiSsid();
+                    String ssid = result.SSID;
+                    if (ssid.equals(temp)) {
+                        Log.e(TAG, "startScan: " + "jjjjjjjjjjjjjjjjjj");
+                        continue;
+                    }
                     mWifiList.add(result);
                 }
             }
@@ -234,7 +267,6 @@ public class WifiAdmin {
      *
      * @return
      */
-
     public String getWifiInfo() {
         return (mWifiInfo == null) ? "NULL" : mWifiInfo.toString();
     }
@@ -266,8 +298,6 @@ public class WifiAdmin {
     /**
      * 创建wifi热点的。
      */
-
-
     public WifiConfiguration CreateWifiInfo(String SSID, String Password, int Type) {
         WifiConfiguration config = new WifiConfiguration();
         config.allowedAuthAlgorithms.clear();
