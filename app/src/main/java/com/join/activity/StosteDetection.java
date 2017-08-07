@@ -68,33 +68,33 @@ public class StosteDetection extends Activity implements View.OnClickListener, S
 
             case R.id.normal_1:
                 if (!normal_1_tab) {
-                    abnormal_1.setBackgroundResource(R.drawable.a_020);
+                    abnormal_1.setBackgroundResource(R.mipmap.stoste_detection_3);
                     abnormal_1_tab = false;
-                    normal_1.setBackgroundResource(R.drawable.a_019);
+                    normal_1.setBackgroundResource(R.mipmap.stoste_detection_2);
                     normal_1_tab = true;
                 }
                 break;
             case R.id.abnormal_1:
                 if (!abnormal_1_tab) {
-                    normal_1.setBackgroundResource(R.drawable.a_020);
+                    normal_1.setBackgroundResource(R.mipmap.stoste_detection_3);
                     normal_1_tab = false;
-                    abnormal_1.setBackgroundResource(R.drawable.a_019);
+                    abnormal_1.setBackgroundResource(R.mipmap.stoste_detection_2);
                     abnormal_1_tab = true;
                 }
                 break;
             case R.id.normal_2:
                 if (!normal_2_tab) {
-                    abnormal_2.setBackgroundResource(R.drawable.a_020);
+                    abnormal_2.setBackgroundResource(R.mipmap.stoste_detection_3);
                     abnormal_2_tab = false;
-                    normal_2.setBackgroundResource(R.drawable.a_019);
+                    normal_2.setBackgroundResource(R.mipmap.stoste_detection_2);
                     normal_2_tab = true;
                 }
                 break;
             case R.id.abnormal_2:
                 if (!abnormal_2_tab) {
-                    normal_2.setBackgroundResource(R.drawable.a_020);
+                    normal_2.setBackgroundResource(R.mipmap.stoste_detection_3);
                     normal_2_tab = false;
-                    abnormal_2.setBackgroundResource(R.drawable.a_019);
+                    abnormal_2.setBackgroundResource(R.mipmap.stoste_detection_2);
                     abnormal_2_tab = true;
                 }
                 break;

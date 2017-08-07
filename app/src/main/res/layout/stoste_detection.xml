@@ -233,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/a_019"
+                        android:background="@mipmap/stoste_detection_2"
                         android:text="正 常"
                         android:textColor="#b6b7bb"
                         android:textSize="25dp" />
@@ -244,7 +244,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/a_020"
+                        android:background="@mipmap/stoste_detection_3"
                         android:text="异 常"
                         android:textColor="#b6b7bb"
                         android:textSize="25dp" />
@@ -263,7 +263,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/a_019"
+                        android:background="@mipmap/stoste_detection_2"
                         android:text="正 常"
                         android:textColor="#b6b7bb"
                         android:textSize="25dp" />
@@ -274,7 +274,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
-                        android:background="@drawable/a_020"
+                        android:background="@mipmap/stoste_detection_3"
                         android:text="异 常"
                         android:textColor="#b6b7bb"
                         android:textSize="25dp" />
@@ -286,11 +286,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/a_015"
+                    android:background="@mipmap/stoste_detection_1"
                     android:text="开始检测"
                     android:textColor="#fff"
-                    android:textSize="30dp"
-                    app:layout_marginTopPercent="2%w" />
+                    app:layout_marginTopPercent="3%w"
+                    app:layout_textSizePercent="3%w" />
 
             </com.zhy.android.percent.support.PercentLinearLayout>
 
