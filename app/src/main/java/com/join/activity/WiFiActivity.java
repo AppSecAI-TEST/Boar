@@ -42,17 +42,18 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
     private ListView mlistView;
     protected WifiAdmin mWifiAdmin;
     private List<ScanResult> mWifiList;
-    protected String ssid; //WiFi的名称
+    private String ssid; //WiFi的名称
+    private int flagClose;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wifi_setting);
         mWifiAdmin = new WifiAdmin(WiFiActivity.this);
         initViews();
-        IntentFilter filter = new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION);
 
-        registerReceiver(mReceiver, filter);
+
         title_name.setText(mWifiAdmin.getConnectWifiSsid());
+
 
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -100,6 +101,9 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
      * 控件初始化
      */
     private void initViews() {
+        //注册监听WiFi连接的状态
+        IntentFilter filter = new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        registerReceiver(mReceiver, filter);
         // check_wifi = (Button) findViewById(R.id.check_wifi);
         open_wifi = (ImageView) findViewById(R.id.open_wifi);
         //  close_wifi = (Button) findViewById(R.id.close_wifi);
@@ -123,8 +127,11 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
 
                 break;*/
             case R.id.open_wifi:
-                mWifiAdmin.openWifi(WiFiActivity.this);
-                mWifiAdmin.startScan(WiFiActivity.this);
+                flagClose++;
+                if (flagClose%2==0) {
+                    mWifiAdmin.openWifi(WiFiActivity.this);
+                    mWifiAdmin.startScan(WiFiActivity.this);
+                }
 
                 mWifiList = mWifiAdmin.getWifiList();
                 if (mWifiList != null) {

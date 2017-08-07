@@ -83,30 +83,30 @@ public class WindowSelect extends Activity implements View.OnClickListener,Servi
             case R.id.win_2:
                 win_tag_2++;
                 if (win_tag_2 % 2 != 0) {
-                    win_2.setBackgroundResource(R.mipmap.window_select_2);
+                    win_2.setBackgroundResource(R.mipmap.window_select_4);
 
                 } else {
-                    win_2.setBackgroundResource(R.mipmap.window_select_1);
+                    win_2.setBackgroundResource(R.mipmap.window_select_3);
 
                 }
                 break;
             case R.id.win_3:
                 win_tag_3++;
                 if (win_tag_3 % 2 != 0) {
-                    win_3.setBackgroundResource(R.mipmap.window_select_2);
+                    win_3.setBackgroundResource(R.mipmap.window_select_6);
 
                 } else {
-                    win_3.setBackgroundResource(R.mipmap.window_select_1);
+                    win_3.setBackgroundResource(R.mipmap.window_select_5);
 
                 }
                 break;
             case R.id.win_4:
                 win_tag_4++;
                 if (win_tag_4 % 2 != 0) {
-                    win_4.setBackgroundResource(R.mipmap.window_select_2);
+                    win_4.setBackgroundResource(R.mipmap.window_select_8);
 
                 } else {
-                    win_4.setBackgroundResource(R.mipmap.window_select_1);
+                    win_4.setBackgroundResource(R.mipmap.window_select_7);
 
                 }
                 break;
