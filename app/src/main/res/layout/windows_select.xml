@@ -58,7 +58,7 @@
             <com.zhy.android.percent.support.PercentLinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/window_select_3"
+                android:background="@mipmap/window_select_9"
                 android:orientation="horizontal"
                 app:layout_marginLeftPercent="14%w"
                 app:layout_marginTopPercent="7%w">
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/window_select_1"
+                    android:background="@mipmap/window_select_3"
                     app:layout_marginLeftPercent="1%w" />
 
                 <Button
@@ -107,7 +107,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/window_select_4"
+                    android:background="@mipmap/window_select_10"
                     android:text="进仓"
                     android:textColor="#fff"
                     app:layout_textSizePercent="3%w" />
@@ -116,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/window_select_4"
+                    android:background="@mipmap/window_select_10"
                     android:text="出仓"
                     android:textColor="#fff"
                     app:layout_marginLeftPercent="1%w"
@@ -127,7 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/window_select_4"
+                    android:background="@mipmap/window_select_10"
                     android:text="继续"
                     android:textColor="#fff"
                     app:layout_marginLeftPercent="8%w"
@@ -137,7 +137,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@mipmap/window_select_4"
+                    android:background="@mipmap/window_select_10"
                     android:text="返回"
                     android:textColor="#fff"
                     app:layout_marginLeftPercent="1%w"
