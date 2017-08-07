@@ -6,7 +6,6 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.WifiLock;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -34,8 +33,6 @@ public class WifiAdmin {
     public String getConnectWifiSsid() {
 
         WifiInfo mWifiInfo = mWifiManager.getConnectionInfo();
-        //  Log.d(TAG, mWifiInfo.toString());
-        Log.d(TAG, mWifiInfo.getSSID());
         String ssid = mWifiInfo.getSSID();
         int length = ssid.length();
         String substring = ssid.substring(1, length - 1);
@@ -179,25 +176,18 @@ public class WifiAdmin {
                         || result.capabilities.contains("[IBSS]")) {
                     continue;
                 }
-
-
                 boolean found = false;
-                Log.i(TAG, "result= " + result.SSID + " capabilities= " + result.capabilities);
-
                 for (ScanResult item : mWifiList) {
-                    Log.i(TAG, "item= " + item.SSID + " capabilities=" + item.capabilities);
-
                     if (item.SSID.equals(result.SSID) && item.capabilities.equals(result.capabilities)) {
                         found = true;
                         break;
                     }
                 }
-
                 if (!found) {
                     String temp = getConnectWifiSsid();
                     String ssid = result.SSID;
+                    //如果跟连接的WiFi名字一样就不加入mWifiList
                     if (ssid.equals(temp)) {
-                        Log.e(TAG, "startScan: " + "jjjjjjjjjjjjjjjjjj");
                         continue;
                     }
                     mWifiList.add(result);

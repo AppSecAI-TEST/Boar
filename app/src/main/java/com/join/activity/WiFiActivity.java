@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -27,6 +26,7 @@ import android.widget.Toast;
 import com.join.R;
 import com.join.adapter.WiFiAdapter;
 import com.join.utils.WifiAdmin;
+import com.zhy.android.percent.support.PercentLinearLayout;
 
 import java.util.List;
 
@@ -36,7 +36,6 @@ import java.util.List;
 
 public class WiFiActivity extends Activity implements View.OnClickListener {
     private String TAG = "jjjWiFiActivity";
-    private Button check_wifi, close_wifi, scan_wifi;
     private ImageView open_wifi;
     private TextView title_name;
     private ListView mlistView;
@@ -44,16 +43,14 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
     private List<ScanResult> mWifiList;
     private String ssid; //WiFi的名称
     private int flagClose;
+    private PercentLinearLayout open_wifi_ll;
+    private boolean closeThread = true;
+    private int wifiClose;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wifi_setting);
-        mWifiAdmin = new WifiAdmin(WiFiActivity.this);
         initViews();
-
-
-        title_name.setText(mWifiAdmin.getConnectWifiSsid());
-
 
         mlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -91,73 +88,75 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
                 });
                 alert.create();
                 alert.show();
-
             }
         });
-
     }
 
     /**
      * 控件初始化
      */
     private void initViews() {
+        mWifiAdmin = new WifiAdmin(WiFiActivity.this);
         //注册监听WiFi连接的状态
         IntentFilter filter = new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         registerReceiver(mReceiver, filter);
-        // check_wifi = (Button) findViewById(R.id.check_wifi);
         open_wifi = (ImageView) findViewById(R.id.open_wifi);
-        //  close_wifi = (Button) findViewById(R.id.close_wifi);
-        // scan_wifi = (Button) findViewById(R.id.scan_wifi);
         mlistView = (ListView) findViewById(R.id.wifi_list);
-        // check_wifi.setOnClickListener(WiFiActivity.this);
-        open_wifi.setOnClickListener(WiFiActivity.this);
-        // close_wifi.setOnClickListener(WiFiActivity.this);
-        //  scan_wifi.setOnClickListener(WiFiActivity.this);
         title_name = (TextView) findViewById(R.id.title_name);
+        open_wifi_ll = (PercentLinearLayout) findViewById(R.id.open_wifi_ll);
+        open_wifi_ll.setOnClickListener(this);
+        title_name.setText(mWifiAdmin.getConnectWifiSsid());
+        wifiClose = mWifiAdmin.checkState(WiFiActivity.this);
+        if (wifiClose == 3) {
+            open_wifi.setImageResource(R.mipmap.wifi_setting_1);
+            flagClose = 0;
+            mWifiAdmin.startScan(this);
+            mWifiList = mWifiAdmin.getWifiList();
+            if (mWifiList != null) {
+                mlistView.setAdapter(new WiFiAdapter(WiFiActivity.this, mWifiList));
+                new Utility().setListViewHeightBasedOnChildren(mlistView);
+            }
+        } else {
+            open_wifi.setImageResource(R.mipmap.wifi_setting_3);
+            flagClose = 1;
+        }
     }
 
     @Override
     public void onClick(View v) {
-        mWifiAdmin.startScan(WiFiActivity.this);
-        mWifiList = mWifiAdmin.getWifiList();
-        WiFiAdapter myAdapter = new WiFiAdapter(this, mWifiList);
+
         switch (v.getId()) {
-      /*      case R.id.check_wifi:
-                int i = mWifiAdmin.checkState(WiFiActivity.this);
-
-                break;*/
-            case R.id.open_wifi:
+            case R.id.open_wifi_ll:
                 flagClose++;
-                if (flagClose%2==0) {
+                if (flagClose % 2 == 0) {
                     mWifiAdmin.openWifi(WiFiActivity.this);
-                    mWifiAdmin.startScan(WiFiActivity.this);
+                    open_wifi.setImageResource(R.mipmap.wifi_setting_1);
+                    closeThread = true;
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    wifiClose = mWifiAdmin.checkState(WiFiActivity.this);
+
+                    if (wifiClose == 2) {
+                        WifiThread wifiThread = new WifiThread();
+                        wifiThread.start();
+                    }
+
+                } else {
+                    mWifiAdmin.closeWifi(WiFiActivity.this);
+                    mlistView.setAdapter(null);
+                    open_wifi.setImageResource(R.mipmap.wifi_setting_3);
+                    closeThread = false;
                 }
 
-                mWifiList = mWifiAdmin.getWifiList();
-                if (mWifiList != null) {
-                    mlistView.setAdapter(new WiFiAdapter(this, mWifiList));
-                    new Utility().setListViewHeightBasedOnChildren(mlistView);
-                }
-
-                mWifiAdmin.getConnectWifiSsid();
                 break;
- /*           case R.id.close_wifi:
-                mWifiAdmin.closeWifi(WiFiActivity.this);
-                mlistView.setAdapter(null);
-                break;*/
-
- /*           case R.id.scan_wifi:
-                mWifiAdmin.startScan(WiFiActivity.this);
-                mWifiList = mWifiAdmin.getWifiList();
-                if (mWifiList != null) {
-                    mlistView.setAdapter(new WiFiAdapter(this, mWifiList));
-                    new Utility().setListViewHeightBasedOnChildren(mlistView);
-                }
-                break;*/
             default:
                 break;
         }
     }
+
 
     /**
      * 设置listview的高度
@@ -194,8 +193,47 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
                 String wifiSSID = wifiManager.getConnectionInfo().getSSID();
                 Toast.makeText(context, wifiSSID + "连接成功", Toast.LENGTH_LONG).show();
 
+
             }
         }
 
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(mReceiver);
+    }
+
+    class WifiThread extends Thread {
+        @Override
+        public void run() {
+            super.run();
+            while (closeThread) {
+                mWifiAdmin.startScan(WiFiActivity.this);
+                mWifiList = mWifiAdmin.getWifiList();
+                if (mWifiList != null) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mlistView.setAdapter(new WiFiAdapter(WiFiActivity.this, mWifiList));
+                            new Utility().setListViewHeightBasedOnChildren(mlistView);
+                        }
+                    });
+
+                }
+                try {
+                    Thread.sleep(4000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
