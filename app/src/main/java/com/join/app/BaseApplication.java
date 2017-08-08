@@ -12,7 +12,7 @@ import com.join.greenDaoUtils.DaoSession;
  */
 
 public class BaseApplication extends Application {
-
+//
    private static DaoSession daoSession;
     private static Context context;
 

@@ -69,7 +69,7 @@
                     android:background="@mipmap/id_select_1" />
 
                 <TextView
-                    android:id="@+id/input"
+                    android:id="@+id/input_id"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_gravity="center"

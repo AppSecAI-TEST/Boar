@@ -3,7 +3,6 @@ package com.join.activity;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -15,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.join.R;
-import com.join.dialog.ManageDialog;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
 import com.join.utils.PopupWindowUtil;
@@ -58,7 +56,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
         one = (PercentLinearLayout) findViewById(R.id.one);
         one.setOnClickListener(this);
         icon = (ImageView) findViewById(R.id.icon_click);
-        input = (TextView) findViewById(R.id.input);
+        input = (TextView) findViewById(R.id.input_id);
         date = (TextView) findViewById(R.id.date);
         time = (TextView) findViewById(R.id.time);
         affirm = (Button) findViewById(R.id.affirm);
@@ -99,9 +97,9 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
      */
     public void showAlertDialog() {
 
-        ManageDialog.Builder builder = new ManageDialog.Builder(this);
-/*        builder.setMessage("这个就是自定义的提示框");
-        builder.setTitle("提示");*/
+      /*  ManageDialog.Builder builder = new ManageDialog.Builder(this);
+       builder.setMessage("这个就是自定义的提示框");
+        builder.setTitle("提示");
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // 隐藏dialog
@@ -109,15 +107,15 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
             }
         });
 
- /*       builder.setNegativeButton("取消",
+      builder.setNegativeButton("取消",
                 new android.content.DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // 隐藏dialog
                         dialog.dismiss();
                         System.out.println("------------------点击取消----------------");
                     }
-                });*/
-        builder.create().show();
+                });
+        builder.create().show();*/
     }
 
 

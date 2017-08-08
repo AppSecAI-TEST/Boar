@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.Editable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.join.R;
-import com.join.utils.CustomToast;
+import com.join.utils.WifiAdmin;
 
 /**
  * Created by join on 2017/5/9.
@@ -36,9 +35,13 @@ public class ManageDialog extends Dialog {
         private View contentView;
         private DialogInterface.OnClickListener positiveButtonClickListener;
         private DialogInterface.OnClickListener negativeButtonClickListener;
+        private WifiAdmin wifiAdmin;
+        private String ssid;
 
-        public Builder(Context context) {
+        public Builder(Context context, WifiAdmin wifiAdmin, String ssid) {
             this.context = context;
+            this.wifiAdmin = wifiAdmin;
+            this.ssid = ssid;
         }
 
         public Builder setMessage(String message) {
@@ -155,28 +158,19 @@ public class ManageDialog extends Dialog {
                                     EditText viewById = (EditText) layout.findViewById(R.id.input);
                                     Editable text = viewById.getText();
                                     int length = text.length();
+                                    positiveButtonClickListener.onClick(dialog, DialogInterface.BUTTON_POSITIVE);
+                                     wifiAdmin.addNetwork(wifiAdmin.CreateWifiInfo(ssid, text.toString(), 3));
 
-                                    if (length == 11) {
-                                        positiveButtonClickListener.onClick(dialog,
-                                                DialogInterface.BUTTON_POSITIVE);
-                                    }else {
-
-                                        CustomToast.showToast(context,"请输入11位手机号码.....");
-                                    }
-
-                                    //得到输入的内容
-
-                                    Log.e("jjj", length + "");
                                 }
                             });
                 }
-            } /*else {
+            } else {
                 //如果没有确认按钮则隐藏
-             *//*   layout.findViewById(R.id.positiveButton).setVisibility(
-                        View.GONE);*//*
+        /* layout.findViewById(R.id.positiveButton).setVisibility(
+                        View.GONE);*/
             }
             // 设置取消按钮
-            if (negativeButtonText != null) {
+   /*         if (negativeButtonText != null) {
                 ((Button) layout.findViewById(R.id.negativeButton))
                         .setText(negativeButtonText);
                 if (negativeButtonClickListener != null) {
@@ -188,13 +182,13 @@ public class ManageDialog extends Dialog {
                                 }
                             });
                 }
-            } else {
-                //如果没有取消按钮则隐藏
-                layout.findViewById(R.id.negativeButton).setVisibility(
-                        View.GONE);
-            }
+            } else {*/
+            //如果没有取消按钮则隐藏
+            /*    layout.findViewById(R.id.negativeButton).setVisibility(
+                        View.GONE);*/
+            // }
             // 设置消息
-            if (message != null) {
+    /*        if (message != null) {
                 ((TextView) layout.findViewById(R.id.message)).setText(message);
             } else if (contentView != null) {
                 ((LinearLayout) layout.findViewById(R.id.content))
