@@ -64,18 +64,18 @@
         </activity>
 
         <!--精液原液准备检测-->
-        <activity android:name=".activity.StosteDetection">
+        <activity android:name=".activity.StosteDetectionParameter">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.StosteDetection"></action>
+                <action android:name="com.join.StosteDetectionParameter"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <!--稀释精液准备检测-->
-        <activity android:name=".activity.StosteDetectionDiluent">
+        <activity android:name=".activity.DiluentDetectionParameter">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.StosteDetectionDiluent"></action>
+                <action android:name="com.join.DiluentDetectionParameter"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -88,26 +88,26 @@
             </intent-filter>
         </activity>
         <!--开始检测-->
-        <activity android:name=".activity.StosteDetection1">
+        <activity android:name=".activity.StartDetection">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.stostedetection1"></action>
+                <action android:name="com.join.StartDetection"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <!--精液原液详情结果显示-->
-        <activity android:name=".activity.StosteDetection2">
+        <activity android:name=".activity.StosteDetectionResult">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.stostedetection2"></action>
+                <action android:name="com.join.StosteDetectionResult"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <!--稀释精液详情结果显示-->
-        <activity android:name=".activity.StosteDetection22">
+        <activity android:name=".activity.DiluentDetectionResult">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.stostedetection22"></action>
+                <action android:name="com.join.DiluentDetectionResult"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

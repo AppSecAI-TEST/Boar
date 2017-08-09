@@ -39,7 +39,7 @@ import static com.join.R.id.vitality;
  * 精液原液详情结果
  */
 
-public class StosteDetection2 extends Activity implements View.OnClickListener, ServiceConnection {
+public class StosteDetectionResult extends Activity implements View.OnClickListener, ServiceConnection {
     private Button print, bu_return;
     private ImageView icon_1;
     private TextView humidity,
@@ -66,7 +66,7 @@ public class StosteDetection2 extends Activity implements View.OnClickListener, 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.stoste_detection_2);
+        setContentView(R.layout.stoste_detection_result);
         init();
 
     }

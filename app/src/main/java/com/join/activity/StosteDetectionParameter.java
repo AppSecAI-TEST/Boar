@@ -4,102 +4,68 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.join.R;
-import com.join.databinding.StosteDetectionDiluentBinding;
-import com.join.entity.StosteDetectionDiluentE;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
-import com.join.utils.Keyboard2;
+import com.join.utils.Keyboard;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 import java.text.SimpleDateFormat;
 
+
 /**
- * 稀释精液检测参数设置页面
+ * 精液原液检测参数设置
  */
 
-public class StosteDetectionDiluent extends Activity implements View.OnClickListener, ServiceConnection {
-    private Keyboard2 keyboard;
-    private PercentLinearLayout percent;
-    private StosteDetectionDiluentE diluentE;
+public class StosteDetectionParameter extends Activity implements View.OnClickListener, ServiceConnection {
+    private String TAG = "jjjStosteDetection";
+    private PercentLinearLayout id_Gong, id_Gong_2, id_Gong_3, percent;
+    private TextView id_Gong_1, id_ml, time, date;
+    private ImageView icon_1;
+    private Keyboard keyboard;//自定义键盘
     private Button normal_1, abnormal_1, normal_2, abnormal_2, start;
-    private Humidity.HumidityBinder humidityBinder;
     private boolean normal_1_tab = true;
     private boolean abnormal_1_tab = false;
+    private Intent intent;
 
-    private String TAG = "jjjStosteDetectionDiluent";
     private boolean normal_2_tab = true;
     private boolean abnormal_2_tab = false;
-    private Intent intent;
+    private TextView humidity, title;
+    private Humidity.HumidityBinder humidityBinder;
+
     private String dateFormat;
     private String timeFormat;
     private int[] windowSelect;//窗口的标记
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        StosteDetectionDiluentBinding binding = DataBindingUtil.setContentView(this, R.layout.stoste_detection_diluent);
-
-        diluentE = new StosteDetectionDiluentE();
-        binding.setDiluent(this);
-        binding.setDiluentE(diluentE);
-        init();
-        Bundle extras = getIntent().getExtras();
-        windowSelect = extras.getIntArray("windowSelect");
-    }
-
-    private void init() {
-        percent = (PercentLinearLayout) findViewById(R.id.percent);
-        normal_1 = (Button) findViewById(R.id.normal_1);
-        normal_1.setOnClickListener(this);
-
-        abnormal_1 = (Button) findViewById(R.id.abnormal_1);
-        abnormal_1.setOnClickListener(this);
-
-        normal_2 = (Button) findViewById(R.id.normal_2);
-        normal_2.setOnClickListener(this);
-
-        abnormal_2 = (Button) findViewById(R.id.abnormal_2);
-        abnormal_2.setOnClickListener(this);
-        start = (Button) findViewById(R.id.start);
-        start.setOnClickListener(this);
-        intent = new Intent();
-        SimpleDateFormat sdate = new SimpleDateFormat("yyyyMMdd");
-        dateFormat = sdate.format(new java.util.Date());
-        String checkoutDate = dateFormat.substring(0, 4) + "-" + dateFormat.substring(4, 6) + "-" + dateFormat.substring(6, 8);
-        diluentE.setDate(checkoutDate);
-
-        SimpleDateFormat stime = new SimpleDateFormat("hh:mm");
-        timeFormat = stime.format(new java.util.Date());
-        diluentE.setTime(timeFormat);
-
-    }
-
-    public void showDialog(View view) {
-        keyboard = new Keyboard2(StosteDetectionDiluent.this, diluentE, 1);
-        keyboard.showWindow(percent);
-    }
-
-    public void showDialog2(View view) {
-        keyboard = new Keyboard2(StosteDetectionDiluent.this, diluentE, 2);
-        keyboard.showWindow(percent);
-    }
-
-    public void startActivityC(View view) {
-        intent.setAction("com.join.function");
-        startActivity(intent);
-    }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.icon_1:
+                intent.setAction("com.join.function");
+                startActivity(intent);
+                break;
+            case R.id.id_Gong:
+                keyboard = new Keyboard(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 1);
+                keyboard.showWindow(percent);
+                break;
+            case R.id.id_Gong_2:
+                keyboard = new Keyboard(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 2);
+                keyboard.showWindow(percent);
+                break;
+            case R.id.id_Gong_3:
+                keyboard = new Keyboard(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 3);
+                keyboard.showWindow(percent);
+                break;
+
             case R.id.normal_1:
                 if (!normal_1_tab) {
                     abnormal_1.setBackgroundResource(R.mipmap.stoste_detection_3);
@@ -137,11 +103,10 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
                     String color;
                     String smell;
                     String numberGong;
-                    String capacity;
+                    String milliliter;
                     if (normal_1_tab) {
                         color = "正常";
                     } else {
-
                         color = "异常";
                     }
                     if (normal_2_tab) {
@@ -151,29 +116,15 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
                         smell = "异常";
                     }
                     Log.e(TAG, "onClick: " + color + "\n" + smell);
-                    String numberGongTemp = diluentE.getNumber();
-                    String capacityTemp = diluentE.getCapacity();
-                    if (numberGongTemp==null) {
-
-                        numberGong = "00001";
-                    } else {
-                        numberGong = numberGongTemp;
-                    }
-                    if (capacityTemp==null) {
-
-                        capacity = "80ml";
-                    } else {
-                        capacity = capacityTemp;
-                    }
-
-
-                    String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, capacity};
+                    numberGong = id_Gong_1.getText().toString();
+                    milliliter = id_ml.getText().toString();
+                    String[] dataArray = new String[]{color, smell, dateFormat, timeFormat, numberGong, milliliter};
                     Bundle bundle = new Bundle();
                     bundle.putStringArray("data", dataArray);
                     bundle.putIntArray("windowSelect", windowSelect);
                     intent.putExtras(bundle);
-                    intent.setAction("com.join.stostedetection1");
-                    intent.addFlags(2);
+                    intent.setAction("com.join.StartDetection");
+                    intent.addFlags(1);
                     startActivity(intent);
                 } else {
                     CustomToast.showToast(this, "请选择是否正常........");
@@ -183,11 +134,64 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
         }
     }
 
+
+    private void init() {
+        percent = (PercentLinearLayout) findViewById(R.id.percent);
+        intent = new Intent();
+        title = (TextView) findViewById(R.id.title);
+        humidity = (TextView) findViewById(R.id.humidity);
+        date = (TextView) findViewById(R.id.date);
+        time = (TextView) findViewById(R.id.time);
+        id_ml = (TextView) findViewById(R.id.id_ml);
+        id_Gong_1 = (TextView) findViewById(R.id.id_Gong_1);
+        icon_1 = (ImageView) findViewById(R.id.icon_1);
+        icon_1.setOnClickListener(this);
+        id_Gong = (PercentLinearLayout) findViewById(R.id.id_Gong);
+        id_Gong.setOnClickListener(this);
+        id_Gong_2 = (PercentLinearLayout) findViewById(R.id.id_Gong_2);
+        id_Gong_2.setOnClickListener(this);
+        id_Gong_3 = (PercentLinearLayout) findViewById(R.id.id_Gong_3);
+        id_Gong_3.setOnClickListener(this);
+        normal_1 = (Button) findViewById(R.id.normal_1);
+        normal_1.setOnClickListener(this);
+        abnormal_1 = (Button) findViewById(R.id.abnormal_1);
+        abnormal_1.setOnClickListener(this);
+        normal_2 = (Button) findViewById(R.id.normal_2);
+        normal_2.setOnClickListener(this);
+        abnormal_2 = (Button) findViewById(R.id.abnormal_2);
+        abnormal_2.setOnClickListener(this);
+        start = (Button) findViewById(R.id.start);
+        start.setOnClickListener(this);
+
+
+        SimpleDateFormat sdate = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat = sdate.format(new java.util.Date());
+
+        date.setText(dateFormat);
+
+        SimpleDateFormat stime = new SimpleDateFormat("hh:mm");
+        timeFormat = stime.format(new java.util.Date());
+        time.setText(timeFormat);
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.stoste_detection_parameter);
+        init();
+        Bundle extras = getIntent().getExtras();
+        windowSelect = extras.getIntArray("windowSelect");
+
+
+    }
+
+
     @Override
     protected void onResume() {
         super.onResume();
-/*        Intent intentHumidity = new Intent(this, Humidity.class);
+  /*      Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
+
     }
 
     @Override
@@ -202,8 +206,13 @@ public class StosteDetectionDiluent extends Activity implements View.OnClickList
         Humidity humidityClass = humidityBinder.getHumidity();
         humidityClass.setHumidityCallback(new Humidity.HumidityCallback() {
             @Override
-            public void onHumidityChange(String data) {
-                diluentE.setHumidity(data);
+            public void onHumidityChange(final String data) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        humidity.setText(data);
+                    }
+                });
             }
         });
     }

@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.join.R;
-import com.join.databinding.StosteDetection22Binding;
+import com.join.databinding.DiluentDetectionResultBinding;
 import com.join.entity.Result1;
 import com.join.greenDaoUtils.OperationDao;
 import com.join.greenDaoUtils.Storage;
@@ -27,7 +27,7 @@ import java.util.List;
  * 稀释精液检测详情结果
  */
 
-public class StosteDetection22 extends Activity implements ServiceConnection {
+public class DiluentDetectionResult extends Activity implements ServiceConnection {
     private String TAG = "jjjStosteDetection22";
     private Result1 result1;
     private String[] stosteDetectionData;
@@ -38,7 +38,7 @@ public class StosteDetection22 extends Activity implements ServiceConnection {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StosteDetection22Binding binding = DataBindingUtil.setContentView(this, R.layout.stoste_detection_2_2);
+        DiluentDetectionResultBinding binding = DataBindingUtil.setContentView(this, R.layout.diluent_detection_result);
         result1 = new Result1();
         binding.setResult1(result1);
         binding.setActivity(this);

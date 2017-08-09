@@ -129,12 +129,12 @@ public class WindowSelect extends Activity implements View.OnClickListener,Servi
 
                     bundle.putIntArray("windowSelect", winArray);
                     intent.putExtras(bundle);
-                    intent.setAction("com.join.StosteDetection");
+                    intent.setAction("com.join.StosteDetectionParameter");
                     startActivity(intent);
                 } else if (flags == 2) {
                     bundle.putIntArray("windowSelect", winArray);
                     intent.putExtras(bundle);
-                    intent.setAction("com.join.StosteDetectionDiluent");
+                    intent.setAction("com.join.DiluentDetectionParameter");
                     startActivity(intent);
                 }
                 break;

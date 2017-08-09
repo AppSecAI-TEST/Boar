@@ -6,11 +6,11 @@
 
         <import type="com.join.entity.Result1" />
 
-        <import type="com.join.activity.StosteDetection22" />
+        <import type="com.join.activity.DiluentDetectionResult" />
 
         <variable
             name="activity"
-            type="StosteDetection22" />
+            type="DiluentDetectionResult" />
 
         <variable
             name="result1"

@@ -33,7 +33,7 @@ import com.zhy.android.percent.support.PercentLinearLayout;
 /**
  * 开始检测
  */
-public class StosteDetection1 extends Activity implements View.OnClickListener, ServiceConnection,
+public class StartDetection extends Activity implements View.OnClickListener, ServiceConnection,
         Humidity.CommandCallback, IPictureCallback3, IPictureCallback2, SurfaceHolder.Callback {
     private String TAG = "jjjStosteDetection1";
     private AnimatedCircleLoadingView animatedCircleLoadingView;  //进度条
@@ -76,7 +76,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.stoste_detection_1);
+        setContentView(R.layout.start_detection);
         init();
         startLoading();
         startPercentMockThread();
@@ -163,7 +163,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     bundle.putStringArray("data", stosteDetectionData);
                     bundle.putDoubleArray("arithmetic", arithmeticData5);
                     intent.putExtras(bundle);
-                    intent.setAction("com.join.stostedetection2");
+                    intent.setAction("com.join.StosteDetectionResult");
                     intent.addFlags(1);
                     startActivity(intent);
                 } else if (flag == 2) {
@@ -171,7 +171,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                     bundle.putStringArray("data", stosteDetectionData);
                     bundle.putDoubleArray("arithmetic", arithmeticData5);
                     intent.putExtras(bundle);
-                    intent.setAction("com.join.stostedetection22");
+                    intent.setAction("com.join.DiluentDetectionResult");
                     intent.addFlags(1);
                     startActivity(intent);
                 }

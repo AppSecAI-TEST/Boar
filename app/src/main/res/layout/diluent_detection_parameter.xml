@@ -5,11 +5,11 @@
 
         <import type="com.join.entity.StosteDetectionDiluentE" />
 
-        <import type="com.join.activity.StosteDetectionDiluent"></import>
+        <import type="com.join.activity.DiluentDetectionParameter"></import>
 
         <variable
             name="diluent"
-            type="StosteDetectionDiluent" />
+            type="DiluentDetectionParameter" />
 
         <variable
             name="diluentE"
