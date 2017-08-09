@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:text="平台温度:"
             android:textColor="#fff"
-            app:layout_marginLeftPercent="83%w"
+            app:layout_marginLeftPercent="81%w"
             app:layout_textSizePercent="2.4%w" />
 
         <TextView

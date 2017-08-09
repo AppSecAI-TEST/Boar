@@ -124,9 +124,9 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     protected void onResume() {
         super.onResume();
-   /*     Intent intentHumidity = new Intent(this, Humidity.class);
+        Intent intentHumidity = new Intent(this, Humidity.class);
         intentHumidity.setFlags(1);
-        bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
+        bindService(intentHumidity, this, BIND_AUTO_CREATE);
         arithmetic.setiPictureCallback3(this);
         if (flag == 2) {
             title.setText("稀释精液检测");
@@ -137,7 +137,7 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
     @Override
     protected void onPause() {
         super.onPause();
-      //  unbindService(this);
+          unbindService(this);
         stateThread = false;
         myHandler.sendEmptyMessage(2);
         finish();
@@ -279,11 +279,8 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
             if (temp) {
                 this.tag = tag;
             }
-
-
         }
     }
-
 
     @Override
     public void photoPrepared3(double[] arithmetic, int returnState) {
@@ -499,11 +496,10 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
      * 改变进度的线程
      */
 
+
     private void startPercentMockThread() {
 
         Runnable runnable = new Runnable() {
-            boolean progress = true;
-
             @Override
             public void run() {
                 while (stateThread) {
@@ -512,11 +508,25 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                             if (boolTag) {
                                 Thread.sleep(3000);
                             }
-                            if (!boolTag) {
+                            changePercent(i);
+                            if (i == 100) {
+                                if (state == 1 ||state2 == 1 || state3 == 1 || state4 == 1) {
+                                    stateThread = false;
+                                    Thread.sleep(4000);
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            bu_return.setVisibility(View.GONE);
+                                            bu_enter.setVisibility(View.VISIBLE);
+                                        }
+                                    });
+                                    break;
+                                }
 
-                                if (state == -1 && state2 == -1 && state3 == -1 && state4 == -1) {
+                                if (state == -1 || state2 == -1 || state3 == -1 || state4 == -1) {
                                     //  animatedCircleLoadingView.stopFailure();
-                                    progress = false;
+                                    stateThread = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
@@ -528,24 +538,48 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                } else if (state == -6 && state2 == -6 && state3 == -6 && state4 == -6) {
-                                    //  animatedCircleLoadingView.stopFailure();  bu_enter.setVisibility(View.VISIBLE);
-                                    progress = false;
+
+                                } else if (state == -2 || state2 == -2 || state3 == -2 || state4 == -2) {
+                                    // animatedCircleLoadingView.stopFailure();
                                     stateThread = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
                                             animatedCircleLoadingView.setVisibility(View.GONE);
                                             abnormalShow_layout.setVisibility(View.VISIBLE);
-                                            abnormalShow_1.setText("样本图像背景异常,导致结果异常.");
+                                            abnormalShow_1.setText("数据写入异常");
                                             abnormalShow_2.setText("请重新返回检测!");
                                         }
                                     });
                                     break;
-                                } else if (state == -5 && state2 == -5 && state3 == -5 && state4 == -5) {
+                                } else if (state == -3 || state2 == -3 || state3 == -3 || state4 == -3) {
+                                    // animatedCircleLoadingView.stopFailure();
+                                    stateThread = false;
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            abnormalShow_layout.setVisibility(View.VISIBLE);
+                                            abnormalShow_1.setText("未找到图像或图像文件名不规范.");
+                                            abnormalShow_2.setText("请重新返回检测!");
+                                        }
+                                    });
+                                    break;
+                                } else if (state == -4 || state2 == -4 || state3 == -4 || state4 == -4) {
+                                    //  animatedCircleLoadingView.stopFailure();
+                                    stateThread = false;
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            animatedCircleLoadingView.setVisibility(View.GONE);
+                                            abnormalShow_layout.setVisibility(View.VISIBLE);
+                                            abnormalShow_1.setText("样本图像张数不够,导致结果异常.");
+                                            abnormalShow_2.setText("请重新返回检测!");
+                                        }
+                                    });
+                                    break;
+                                } else if (state == -5 || state2 == -5 || state3 == -5 || state4 == -5) {
                                     // animatedCircleLoadingView.stopFailure();//显示不对的图像
-
-                                    progress = false;
                                     stateThread = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
@@ -558,60 +592,19 @@ public class StosteDetection1 extends Activity implements View.OnClickListener, 
                                         }
                                     });
                                     break;
-                                } else if (state == -4 && state2 == -4 && state3 == -4 && state4 == -4) {
-                                    //  animatedCircleLoadingView.stopFailure();
-                                    progress = false;
+                                } else if (state == -6 || state2 == -6 || state3 == -6 || state4 == -6) {
+                                    //  animatedCircleLoadingView.stopFailure();  bu_enter.setVisibility(View.VISIBLE);
+                                    stateThread = false;
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
                                             animatedCircleLoadingView.setVisibility(View.GONE);
                                             abnormalShow_layout.setVisibility(View.VISIBLE);
-                                            abnormalShow_1.setText("样本图像张数不够,导致结果异常.");
+                                            abnormalShow_1.setText("样本图像背景异常,导致结果异常.");
                                             abnormalShow_2.setText("请重新返回检测!");
                                         }
                                     });
                                     break;
-                                } else if (state == -3 && state2 == -3 && state3 == -3 && state4 == -3) {
-                                    // animatedCircleLoadingView.stopFailure();
-                                    progress = false;
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            animatedCircleLoadingView.setVisibility(View.GONE);
-                                            abnormalShow_layout.setVisibility(View.VISIBLE);
-                                            abnormalShow_1.setText("未找到图像或图像文件名不规范.");
-                                            abnormalShow_2.setText("请重新返回检测!");
-                                        }
-                                    });
-                                    break;
-                                } else if (state == -2 && state2 == -2 && state3 == -2 && state4 == -2) {
-                                    // animatedCircleLoadingView.stopFailure();
-                                    progress = false;
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            animatedCircleLoadingView.setVisibility(View.GONE);
-                                            abnormalShow_layout.setVisibility(View.VISIBLE);
-                                            abnormalShow_1.setText("数据写入异常");
-                                            abnormalShow_2.setText("请重新返回检测!");
-                                        }
-                                    });
-                                    break;
-                                }
-                            }
-
-                            if (progress) {
-                                changePercent(i);
-                                if (i == 100) {
-                                    Thread.sleep(4000);
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            animatedCircleLoadingView.setVisibility(View.GONE);
-                                            bu_return.setVisibility(View.GONE);
-                                            bu_enter.setVisibility(View.VISIBLE);
-                                        }
-                                    });
                                 }
                             }
                         }

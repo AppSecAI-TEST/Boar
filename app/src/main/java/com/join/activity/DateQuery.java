@@ -28,7 +28,7 @@ import java.util.List;
  * Created by join on 2017/6/13.
  */
 
-public class DateQuery extends Activity implements View.OnClickListener,ServiceConnection {
+public class DateQuery extends Activity implements View.OnClickListener, ServiceConnection {
     private String TAG = "jjjDateQuery";
     private ListView listView;
     private Intent intent;
@@ -39,17 +39,18 @@ public class DateQuery extends Activity implements View.OnClickListener,ServiceC
     private Humidity.HumidityBinder humidityBinder;
     private List<com.join.entity.IDQuery> list;
     private int numberTag, numberTag1;
-
+    private String numberTagS, numberTag1S;
     private TextView get_data_1, get_data_2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.date_query);
-        String numberTag = getIntent().getStringExtra("KeyboardDateQueryData1");
-        String numberTag1 = getIntent().getStringExtra("KeyboardDateQueryData2");
+        numberTagS = getIntent().getStringExtra("KeyboardDateQueryData1");
+        numberTag1S = getIntent().getStringExtra("KeyboardDateQueryData2");
         this.numberTag = Integer.valueOf(numberTag);
         this.numberTag1 = Integer.valueOf(numberTag1);
+
         init();
 
     }
@@ -64,8 +65,10 @@ public class DateQuery extends Activity implements View.OnClickListener,ServiceC
         bu_return = (Button) findViewById(R.id.bu_return);
         bu_return.setOnClickListener(this);
         listView = (ListView) findViewById(R.id.lv_content);
-        get_data_1.setText(numberTag+"");
-        get_data_2.setText(numberTag1+"");
+        String substring = numberTagS.substring(0, 4)+"/"+numberTagS.substring(4,6)+"/"+numberTagS.substring(6,8);
+        String substring2 = numberTag1S.substring(0, 4)+"/"+numberTag1S.substring(4,6)+"/"+numberTag1S.substring(6,8);
+        get_data_1.setText(substring);
+        get_data_2.setText(substring2);
         list = new ArrayList<>();
         List<Storage> storages = OperationDao.queryLoveDate(numberTag, numberTag1);
         int size = storages.size();
@@ -134,17 +137,20 @@ public class DateQuery extends Activity implements View.OnClickListener,ServiceC
                 break;
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
    /*     Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
     }
+
     @Override
     protected void onPause() {
         super.onPause();
-      //  unbindService(this);
+        //  unbindService(this);
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;

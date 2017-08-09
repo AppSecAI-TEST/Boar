@@ -114,54 +114,21 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
         int lengthFather_2 = buffer2.length();
 
         switch (v.getId()) {
-          /*  case R.id.input_1:
-                //buffer.delete(0, lengthFather_1);
-                selectTag = 1;
-                bu_0.setEnabled(true);
-                bu_1.setEnabled(true);
-                bu_2.setEnabled(true);
-                bu_3.setEnabled(true);
-                bu_4.setEnabled(true);
-                bu_5.setEnabled(true);
-                bu_6.setEnabled(true);
-                bu_7.setEnabled(true);
-                bu_8.setEnabled(true);
-                bu_9.setEnabled(true);
-                delete.setEnabled(true);
-                bu_w.setEnabled(true);
-
-                break;
-            case R.id.input_2:
-                //  buffer.delete(0, lengthFather_1);
-                selectTag = 2;
-                bu_0.setEnabled(true);
-                bu_1.setEnabled(true);
-                bu_2.setEnabled(true);
-                bu_3.setEnabled(true);
-                bu_4.setEnabled(true);
-                bu_5.setEnabled(true);
-                bu_6.setEnabled(true);
-                bu_7.setEnabled(true);
-                bu_8.setEnabled(true);
-                bu_9.setEnabled(true);
-                delete.setEnabled(true);
-                bu_w.setEnabled(true);
-                break;*/
             case R.id.bu_0:
-
-
                 Log.e(TAG, "onClick: " + selectTag);
 
                 if (selectTag == 1) {
                     if (lengthFather_1 != 8) {
                         buffer.append("0");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
                 if (selectTag == 2) {
                     if (lengthFather_2 != 8) {
                         buffer2.append("0");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
                 break;
@@ -171,12 +138,14 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("1");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
                 if (selectTag == 2) {
                     if (lengthFather_2 != 8) {
                         buffer2.append("1");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -187,6 +156,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("2");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -194,6 +164,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_2 != 8) {
                         buffer2.append("2");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -204,6 +175,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("3");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -211,6 +183,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_2 != 8) {
                         buffer2.append("3");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -221,6 +194,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("4");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -228,6 +202,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_2 != 8) {
                         buffer2.append("4");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
                 break;
@@ -237,6 +212,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("5");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -244,6 +220,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_2 != 8) {
                         buffer2.append("5");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
                 break;
@@ -253,12 +230,14 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("6");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
                 if (selectTag == 2) {
                     if (lengthFather_2 != 8) {
                         buffer2.append("6");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -269,6 +248,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("7");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -276,6 +256,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_2 != 8) {
                         buffer2.append("7");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
                 break;
@@ -285,6 +266,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("8");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -292,6 +274,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_2 != 8) {
                         buffer2.append("8");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
                 break;
@@ -301,6 +284,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_1 != 8) {
                         buffer.append("9");
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(lengthFather_1 + 1);//将光标移至文字末尾
                     }
                 }
 
@@ -308,6 +292,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                     if (lengthFather_2 != 8) {
                         buffer2.append("9");
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(lengthFather_2 + 1);//将光标移至文字末尾
                     }
                 }
                 break;
@@ -318,6 +303,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                         int length = buffer.length();
                         buffer.delete(length - 1, length);
                         input_1.setText(buffer.toString());
+                        input_1.setSelection(length - 1);//将光标移至文字末尾
                     }
                 } else if (selectTag == 2) {
                     if (lengthFather_2 > 0) {
@@ -325,11 +311,11 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                         int length = buffer2.length();
                         buffer2.delete(length - 1, length);
                         input_2.setText(buffer2.toString());
+                        input_2.setSelection(length - 1);//将光标移至文字末尾
                     }
                 }
                 break;
             case R.id.out:
-
                 if (selectTag == 1) {
                     if (lengthFather_1 >= 0) {
                         Log.e(TAG, "onClick: " + selectTag);
@@ -342,7 +328,6 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                         Log.e(TAG, "onClick: " + selectTag);
                         buffer2.delete(0, lengthFather_2);
                         input_2.setText(null);
-
                     }
                 }
                 if (popupWindow != null) {
@@ -350,7 +335,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                 }
                 break;
             case R.id.bu_w:
-                if (lengthFather_1 > 0 && lengthFather_2 > 0) {
+                if (lengthFather_1 ==8 && lengthFather_2 ==8) {
                     Log.e(TAG, "onClick: " + selectTag);
                     if (popupWindow != null) {
                         popupWindow.dismiss();
@@ -376,6 +361,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
         switch (v.getId()) {
             case R.id.input_1:
                 selectTag = 1;
+                input_1.setCursorVisible(true);//显示光标
                 bu_0.setEnabled(true);
                 bu_1.setEnabled(true);
                 bu_2.setEnabled(true);
@@ -392,6 +378,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
                 break;
             case R.id.input_2:
                 //  buffer.delete(0, lengthFather_1);
+
                 selectTag = 2;
                 bu_0.setEnabled(true);
                 bu_1.setEnabled(true);

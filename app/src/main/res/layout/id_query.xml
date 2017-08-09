@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="按公猪ID/批号ID查询"
+                android:text="按公猪ID/批号ID"
                 android:textColor="#fff"
                 app:layout_marginLeftPercent="38%w"
                 app:layout_textSizePercent="3%w" />
@@ -34,7 +34,7 @@
                 android:layout_gravity="center"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                app:layout_marginLeftPercent="16%w"
+                app:layout_marginLeftPercent="20%w"
                 app:layout_textSizePercent="2.6%w" />
 
             <TextView
@@ -81,7 +81,7 @@
                         android:layout_gravity="center"
                         android:text="ID:"
                         app:layout_marginLeftPercent="4%w"
-                        app:layout_textSizePercent="4%w" />
+                        app:layout_textSizePercent="3%w" />
 
                     <TextView
                         android:id="@+id/get_data"
@@ -104,7 +104,7 @@
                     android:background="@mipmap/id_query_2"
                     android:text="数据导出"
                     android:textColor="#f4f4f4"
-                    app:layout_marginLeftPercent="15%w"
+                    app:layout_marginLeftPercent="18%w"
                     app:layout_textSizePercent="2.6%w" />
 
                 <Button
@@ -115,7 +115,7 @@
                     android:background="@mipmap/id_query_2"
                     android:text="返回"
                     android:textColor="#f4f4f4"
-                    app:layout_marginLeftPercent="5%w"
+                    app:layout_marginLeftPercent="4%w"
                     app:layout_textSizePercent="2.6%w" />
 
                 <!--2.2.1-->
@@ -126,7 +126,7 @@
                 android:layout_height="0dp"
                 android:background="@drawable/background_white_3"
                 android:orientation="vertical"
-                app:layout_heightPercent="59%h"
+                app:layout_heightPercent="62%h"
                 app:layout_marginLeftPercent="2%w"
                 app:layout_marginTopPercent="4%w"
                 app:layout_widthPercent="97%w">
@@ -143,11 +143,10 @@
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:gravity="center"
-
                         android:text="日期"
                         android:textColor="#089285"
                         app:layout_heightPercent="100%h"
-                        app:layout_textSizePercent="3.2%w"
+                        app:layout_textSizePercent="3%w"
                         app:layout_widthPercent="15%w" />
 
                     <View
@@ -162,7 +161,7 @@
                         android:text="时间"
                         android:textColor="#089285"
                         app:layout_heightPercent="100%h"
-                        app:layout_textSizePercent="3.2%w"
+                        app:layout_textSizePercent="3%w"
                         app:layout_widthPercent="11%w" />
 
 
@@ -178,7 +177,7 @@
                         android:text="类型"
                         android:textColor="#089285"
                         app:layout_heightPercent="100%h"
-                        app:layout_textSizePercent="3.2%w"
+                        app:layout_textSizePercent="3%w"
                         app:layout_widthPercent="12%w" />
 
 
@@ -226,7 +225,7 @@
                         android:text="活力"
                         android:textColor="#089285"
                         app:layout_heightPercent="100%h"
-                        app:layout_textSizePercent="3.2%w"
+                        app:layout_textSizePercent="3%w"
                         app:layout_widthPercent="10%w" />
 
 
@@ -242,7 +241,7 @@
                         android:text="活率"
                         android:textColor="#089285"
                         app:layout_heightPercent="100%h"
-                        app:layout_textSizePercent="3.2%w"
+                        app:layout_textSizePercent="3%w"
                         app:layout_widthPercent="10%w" />
 
 
@@ -258,7 +257,7 @@
                         android:text="操作员"
                         android:textColor="#089285"
                         app:layout_heightPercent="100%h"
-                        app:layout_textSizePercent="3.2%w"
+                        app:layout_textSizePercent="3%w"
                         app:layout_widthPercent="10%w" />
 
 
@@ -275,7 +274,7 @@
                         android:text="结果"
                         android:textColor="#089285"
                         app:layout_heightPercent="100%h"
-                        app:layout_textSizePercent="3.2%w"
+                        app:layout_textSizePercent="3%w"
                         app:layout_widthPercent="10%w" />
 
 
@@ -292,7 +291,7 @@
                         android:text=""
                         android:textColor="#089285"
                         app:layout_heightPercent="100%h"
-                        app:layout_textSizePercent="3.2%w"
+                        app:layout_textSizePercent="3%w"
                         app:layout_widthPercent="10%w" />
 
 

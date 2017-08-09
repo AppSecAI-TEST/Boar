@@ -32,10 +32,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="355dp"
                 android:text="平台温度:"
                 android:textColor="#fff"
-                app:layout_marginLeftPercent="27%w"
+                app:layout_marginLeftPercent="24%w"
                 app:layout_textSizePercent="2.6%w" />
 
             <TextView
@@ -75,12 +74,13 @@
                     app:layout_widthPercent="97%w">
 
                     <com.zhy.android.percent.support.PercentLinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:background="@mipmap/date_query_1"
                         android:orientation="horizontal"
                         app:layout_marginLeftPercent="1.5%w"
-                        app:layout_marginTopPercent="1%w">
+                        app:layout_marginTopPercent="1%w"
+                        app:layout_widthPercent="50%w">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -88,7 +88,7 @@
                             android:layout_gravity="center"
                             android:text="日期:"
                             app:layout_marginLeftPercent="1%w"
-                            app:layout_textSizePercent="3%w" />
+                            app:layout_textSizePercent="6%w" />
 
                         <TextView
                             android:id="@+id/get_data_1"
@@ -97,16 +97,16 @@
                             android:layout_gravity="center"
                             android:text="2017/02/03"
                             android:textColor="#078d82"
-                            app:layout_marginLeftPercent="1%w"
-                            app:layout_textSizePercent="2.8%w" />
+                            app:layout_marginLeftPercent="4%w"
+                            app:layout_textSizePercent="4%w" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="至"
-                            app:layout_marginLeftPercent="4%w"
-                            app:layout_textSizePercent="3%w" />
+                            app:layout_marginLeftPercent="16%w"
+                            app:layout_textSizePercent="5%w" />
 
                         <TextView
                             android:id="@+id/get_data_2"
@@ -115,8 +115,8 @@
                             android:layout_gravity="center"
                             android:text="2017/02/03"
                             android:textColor="#078d82"
-                            app:layout_marginLeftPercent="2%w"
-                            app:layout_textSizePercent="2.8%w" />
+                            app:layout_marginLeftPercent="5%w"
+                            app:layout_textSizePercent="4%w" />
                     </com.zhy.android.percent.support.PercentLinearLayout>
 
                     <Button
@@ -170,7 +170,7 @@
                             android:text="日期"
                             android:textColor="#089285"
                             app:layout_heightPercent="100%h"
-                            app:layout_textSizePercent="3.2%w"
+                            app:layout_textSizePercent="3%w"
                             app:layout_widthPercent="15%w" />
 
                         <View
@@ -185,7 +185,7 @@
                             android:text="时间"
                             android:textColor="#089285"
                             app:layout_heightPercent="100%h"
-                            app:layout_textSizePercent="3.2%w"
+                            app:layout_textSizePercent="3%w"
                             app:layout_widthPercent="11%w" />
 
 
@@ -201,7 +201,7 @@
                             android:text="类型"
                             android:textColor="#089285"
                             app:layout_heightPercent="100%h"
-                            app:layout_textSizePercent="3.2%w"
+                            app:layout_textSizePercent="3%w"
                             app:layout_widthPercent="12%w" />
 
 
@@ -249,7 +249,7 @@
                             android:text="活力"
                             android:textColor="#089285"
                             app:layout_heightPercent="100%h"
-                            app:layout_textSizePercent="3.2%w"
+                            app:layout_textSizePercent="3%w"
                             app:layout_widthPercent="10%w" />
 
 
@@ -265,7 +265,7 @@
                             android:text="活率"
                             android:textColor="#089285"
                             app:layout_heightPercent="100%h"
-                            app:layout_textSizePercent="3.2%w"
+                            app:layout_textSizePercent="3%w"
                             app:layout_widthPercent="10%w" />
 
 
@@ -281,7 +281,7 @@
                             android:text="操作员"
                             android:textColor="#089285"
                             app:layout_heightPercent="100%h"
-                            app:layout_textSizePercent="3.2%w"
+                            app:layout_textSizePercent="3%w"
                             app:layout_widthPercent="10%w" />
 
 
@@ -298,7 +298,7 @@
                             android:text="结果"
                             android:textColor="#089285"
                             app:layout_heightPercent="100%h"
-                            app:layout_textSizePercent="3.2%w"
+                            app:layout_textSizePercent="3%w"
                             app:layout_widthPercent="10%w" />
 
 
@@ -315,7 +315,7 @@
                             android:text=""
                             android:textColor="#089285"
                             app:layout_heightPercent="100%h"
-                            app:layout_textSizePercent="3.2%w"
+                            app:layout_textSizePercent="3%w"
                             app:layout_widthPercent="10%w" />
 
 

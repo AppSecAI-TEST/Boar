@@ -51,6 +51,7 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:background="@null"
+                        android:cursorVisible="false"
                         android:hint="例20170603"
                         android:textColorHint="#A1A1A1"
                         android:textCursorDrawable="@null"
