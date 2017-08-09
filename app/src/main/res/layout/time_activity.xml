@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="21"
-                    app:layout_marginTopPercent="18%w"
+                    app:layout_marginTopPercent="16%w"
                     app:layout_textSizePercent="28%w" />
 
                 <TextView
@@ -99,7 +99,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="2017年5月"
-                    app:layout_marginTopPercent="1%w"
+                    app:layout_marginTopPercent="3%w"
                     app:layout_textSizePercent="14%w" />
             </com.zhy.android.percent.support.PercentLinearLayout>
 
