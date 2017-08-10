@@ -3,6 +3,7 @@ package com.join.activity;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.join.R;
+import com.join.dialog.ManageDialog;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
 import com.join.utils.PopupWindowUtil;
@@ -40,7 +42,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.id_select);
         initView();
-
+        showAlertDialog();
     }
 
     @Override
@@ -97,7 +99,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
      */
     public void showAlertDialog() {
 
-      /*  ManageDialog.Builder builder = new ManageDialog.Builder(this);
+       ManageDialog.Builder builder = new ManageDialog.Builder(this,null,null);
        builder.setMessage("这个就是自定义的提示框");
         builder.setTitle("提示");
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -115,7 +117,8 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
                         System.out.println("------------------点击取消----------------");
                     }
                 });
-        builder.create().show();*/
+
+        builder.create().show();
     }
 
 

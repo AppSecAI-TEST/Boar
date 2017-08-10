@@ -5,14 +5,6 @@
     android:layout_height="match_parent">
 
 
-    <ImageView
-        android:id="@+id/icon_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/home"
-        app:layout_marginLeftPercent="2%w"
-        app:layout_marginTopPercent="1%w" />
-
     <com.zhy.android.percent.support.PercentLinearLayout
         android:id="@+id/percent"
         android:layout_width="match_parent"
@@ -156,4 +148,12 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
     </com.zhy.android.percent.support.PercentLinearLayout>
+
+    <ImageView
+        android:id="@+id/icon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/home"
+        app:layout_marginLeftPercent="2%w"
+        app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>

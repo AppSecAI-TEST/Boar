@@ -112,7 +112,7 @@ public class NewCamera {
         @Override
         public void onPreviewFrame(byte[] data, Camera camera) {
             if (saveTag) {
-                Log.e(TAG, "onPreviewFrame: " + "jjjjjjjjjjjjjjjjjjjjjj" + i);
+                Log.e(TAG, "onPreviewFrame: " + "正在保存到内存第:" + i);
                 this.data[i] = data;
                 if (i == this.data.length - 1) {
                     save(camera, this.data, pic_name);

@@ -2,6 +2,7 @@ package com.join.activity;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.join.R;
+import com.join.dialog.PasswordManageDialog;
 import com.join.service.Humidity;
 
 /**
@@ -73,7 +75,7 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
                 startActivity(intent);
                 break;
             case R.id.manage_bu:
-
+                showAlertDialog();
                 break;
             case R.id.about_bu:
 
@@ -84,7 +86,28 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
                 break;
         }
     }
+    public void showAlertDialog() {
 
+        PasswordManageDialog.Builder builder = new PasswordManageDialog.Builder(this);
+/*        builder.setMessage("这个就是自定义的提示框");
+        builder.setTitle("提示");*/
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // 隐藏dialog
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton("取消",
+                new android.content.DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // 隐藏dialog
+                        dialog.dismiss();
+                        System.out.println("------------------点击取消----------------");
+                    }
+                });
+        builder.create().show();
+    }
     @Override
     protected void onResume() {
         super.onResume();
