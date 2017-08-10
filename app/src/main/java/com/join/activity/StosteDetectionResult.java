@@ -233,7 +233,7 @@ public class StosteDetectionResult extends Activity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.icon_1:
                 Intent intent = new Intent();
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
             case R.id.print:

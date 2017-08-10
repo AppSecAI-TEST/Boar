@@ -127,7 +127,7 @@ public class IDQuery extends Activity implements View.OnClickListener, ServiceCo
                 break;
             case R.id.icon_1:
                 Intent intent = new Intent();
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
         }

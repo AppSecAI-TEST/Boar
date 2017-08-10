@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.join.R;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
-import com.join.utils.Keyboard;
+import com.join.utils.KeyboardStoste;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 import java.text.SimpleDateFormat;
@@ -31,7 +31,7 @@ public class StosteDetectionParameter extends Activity implements View.OnClickLi
     private PercentLinearLayout id_Gong, id_Gong_2, id_Gong_3, percent;
     private TextView id_Gong_1, id_ml, time, date;
     private ImageView icon_1;
-    private Keyboard keyboard;//自定义键盘
+    private KeyboardStoste keyboard;//自定义键盘
     private Button normal_1, abnormal_1, normal_2, abnormal_2, start;
     private boolean normal_1_tab = true;
     private boolean abnormal_1_tab = false;
@@ -50,19 +50,19 @@ public class StosteDetectionParameter extends Activity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.icon_1:
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
             case R.id.id_Gong:
-                keyboard = new Keyboard(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 1);
+                keyboard = new KeyboardStoste(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 1);
                 keyboard.showWindow(percent);
                 break;
             case R.id.id_Gong_2:
-                keyboard = new Keyboard(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 2);
+                keyboard = new KeyboardStoste(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 2);
                 keyboard.showWindow(percent);
                 break;
             case R.id.id_Gong_3:
-                keyboard = new Keyboard(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 3);
+                keyboard = new KeyboardStoste(StosteDetectionParameter.this, id_Gong_1, id_ml, time, 3);
                 keyboard.showWindow(percent);
                 break;
 

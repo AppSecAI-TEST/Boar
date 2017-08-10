@@ -17,7 +17,7 @@ import com.join.databinding.DiluentDetectionParameterBinding;
 import com.join.entity.StosteDetectionDiluentE;
 import com.join.service.Humidity;
 import com.join.utils.CustomToast;
-import com.join.utils.Keyboard2;
+import com.join.utils.KeyboardDiluent;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 import java.text.SimpleDateFormat;
@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat;
  */
 
 public class DiluentDetectionParameter extends Activity implements View.OnClickListener, ServiceConnection {
-    private Keyboard2 keyboard;
+    private KeyboardDiluent keyboard;
     private PercentLinearLayout percent;
     private StosteDetectionDiluentE diluentE;
     private Button normal_1, abnormal_1, normal_2, abnormal_2, start;
@@ -83,17 +83,17 @@ public class DiluentDetectionParameter extends Activity implements View.OnClickL
     }
 
     public void showDialog(View view) {
-        keyboard = new Keyboard2(DiluentDetectionParameter.this, diluentE, 1);
+        keyboard = new KeyboardDiluent(DiluentDetectionParameter.this, diluentE, 1);
         keyboard.showWindow(percent);
     }
 
     public void showDialog2(View view) {
-        keyboard = new Keyboard2(DiluentDetectionParameter.this, diluentE, 2);
+        keyboard = new KeyboardDiluent(DiluentDetectionParameter.this, diluentE, 2);
         keyboard.showWindow(percent);
     }
 
     public void startActivityC(View view) {
-        intent.setAction("com.join.function");
+        intent.setAction("com.join.Function");
         startActivity(intent);
     }
 

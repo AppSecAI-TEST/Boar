@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.join"
-  >
+    package="com.join">
     <!--android:installLocation="preferExternal"-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
@@ -58,7 +57,7 @@
         <activity android:name=".activity.Function">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.function"></action>
+                <action android:name="com.join.Function"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -145,15 +144,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <!--系统时间,管理员设置-->
 
-        <!--        <activity android:name=".activity.SystemSet1">
-                    <intent-filter>
-                        //http://www.cnblogs.com/feng9exe/p/5699233.html
-                        <action android:name="com.join.SystemSet1"></action>
-                        <category android:name="android.intent.category.DEFAULT" />
-                    </intent-filter>
-                </activity>-->
         <!--载波片选择-->
         <activity android:name=".activity.WindowSelect">
             <intent-filter>
@@ -163,10 +154,10 @@
             </intent-filter>
         </activity>
         <!--wifi-->
-        <activity android:name=".activity.WiFiActivity">
+        <activity android:name=".activity.WiFiSetting">
             <intent-filter>
                 //http://www.cnblogs.com/feng9exe/p/5699233.html
-                <action android:name="com.join.WiFiActivity"></action>
+                <action android:name="com.join.WiFiSetting"></action>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

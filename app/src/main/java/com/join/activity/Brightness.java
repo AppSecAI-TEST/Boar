@@ -26,7 +26,7 @@ import static com.join.R.layout.brightness;
  */
 
 public class Brightness extends Activity implements ServiceConnection {
-    private String TAG="jjjBrightness";
+    private String TAG = "jjjBrightness";
     private BubbleSeekBar bar;
     private ImageView icon_1;
     private TextView humidity;
@@ -42,13 +42,13 @@ public class Brightness extends Activity implements ServiceConnection {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
             }
         });
-        bar= (BubbleSeekBar) findViewById(R.id.bar);
+        bar = (BubbleSeekBar) findViewById(R.id.bar);
         bar.getConfigBuilder()
-                  .bubbleTextSize(50)
+                .bubbleTextSize(50)
                 .build();
 
         bar.setOnProgressChangedListener(new BubbleSeekBar.OnProgressChangedListenerAdapter() {
@@ -60,10 +60,10 @@ public class Brightness extends Activity implements ServiceConnection {
             @Override
             public void getProgressOnActionUp(int progress, float progressFloat) {
                 String s = String.format(Locale.CHINA, "onActionUp int:%d, float:%.1f", progress, progressFloat);
-                Log.e(TAG, "getProgressOnActionUp: "+s +"\n");
+                Log.e(TAG, "getProgressOnActionUp: " + s + "\n");
 
-                    Settings.System.putInt(getContentResolver(),Settings.System.SCREEN_BRIGHTNESS_MODE,Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-                    Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,progress);
+                Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+                Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_BRIGHTNESS, progress);
 
                 int anInt = 0;
                 try {
@@ -83,17 +83,20 @@ public class Brightness extends Activity implements ServiceConnection {
             }
         });
     }
+
     @Override
     protected void onResume() {
         super.onResume();
      /*   Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
     }
+
     @Override
     protected void onPause() {
         super.onPause();
-       // unbindService(this);
+        // unbindService(this);
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;

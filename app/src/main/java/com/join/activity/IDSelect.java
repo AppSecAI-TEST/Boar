@@ -82,7 +82,7 @@ public class IDSelect extends Activity implements View.OnClickListener, ServiceC
                     editor.putString("operator", input.getText().toString());
                     editor.commit();
                     Intent intent = new Intent();
-                    intent.setAction("com.join.function");
+                    intent.setAction("com.join.Function");
                     startActivity(intent);
                 } else {
                     CustomToast.showToast(this, "请选择管理员ID......");

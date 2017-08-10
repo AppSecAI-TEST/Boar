@@ -71,7 +71,7 @@ public class ParameterSetting extends Activity implements ServiceConnection {
     }
 
     public void returnFunction(View view) {
-        intent.setAction("com.join.function");
+        intent.setAction("com.join.Function");
         startActivity(intent);
     }
 

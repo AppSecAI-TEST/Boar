@@ -61,7 +61,7 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
                 startActivity(intent);
                 break;
             case R.id.wifi_bu:
-                intent.setAction("com.join.WiFiActivity");
+                intent.setAction("com.join.WiFiSetting");
                 startActivity(intent);
                 break;
             case R.id.brightness_bu:
@@ -79,7 +79,7 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
 
                 break;
             case R.id.icon_1:
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
         }

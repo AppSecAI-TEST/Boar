@@ -14,7 +14,7 @@ import com.join.R;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 
-public class Keyboard implements View.OnClickListener {
+public class KeyboardStoste implements View.OnClickListener {
     private Button bu_0, bu_1, bu_2, bu_3, bu_4, bu_5, bu_6, bu_7, bu_8, bu_9, bu_w, delete, out;
     private int tag;
     private TextView input, id_Gong_1, id_ml, time, tv_id;
@@ -22,7 +22,7 @@ public class Keyboard implements View.OnClickListener {
     private View view;
     private PopupWindow popupWindow;
 
-    public Keyboard(Context context, TextView id_Gong, TextView id_ml, TextView time, int tag) {
+    public KeyboardStoste(Context context, TextView id_Gong, TextView id_ml, TextView time, int tag) {
         this.context = context;
         this.id_Gong_1 = id_Gong;
         this.id_ml = id_ml;
@@ -90,9 +90,10 @@ public class Keyboard implements View.OnClickListener {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 
         int xPos = windowManager.getDefaultDisplay().getWidth();
+        int height = windowManager.getDefaultDisplay().getHeight();
         Log.i("coder", "xPos:" + xPos);
         //以parent 为开始的x,y轴
-        popupWindow.showAsDropDown(parent, -1280, -752);
+        popupWindow.showAsDropDown(parent, -xPos, -height);
 
 
     }

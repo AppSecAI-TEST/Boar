@@ -54,7 +54,7 @@ public class DiluentDetectionResult extends Activity implements ServiceConnectio
     }
 
     public void returnFunction(View view) {
-        intent.setAction("com.join.function");
+        intent.setAction("com.join.Function");
         startActivity(intent);
     }
 

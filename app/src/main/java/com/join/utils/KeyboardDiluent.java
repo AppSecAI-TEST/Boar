@@ -15,7 +15,7 @@ import com.join.entity.StosteDetectionDiluentE;
 import com.zhy.android.percent.support.PercentLinearLayout;
 
 
-public class Keyboard2 implements View.OnClickListener {
+public class KeyboardDiluent implements View.OnClickListener {
     private Button bu_0, bu_1, bu_2, bu_3, bu_4, bu_5, bu_6, bu_7, bu_8, bu_9, bu_w, delete, out;
     private TextView input, tv_id;
     private Context context;
@@ -25,7 +25,7 @@ public class Keyboard2 implements View.OnClickListener {
     private int tag;
 
 
-    public Keyboard2(Context context, StosteDetectionDiluentE e, int tag) {
+    public KeyboardDiluent(Context context, StosteDetectionDiluentE e, int tag) {
         this.context = context;
         this.diluentE = e;
         this.tag = tag;
@@ -88,9 +88,10 @@ public class Keyboard2 implements View.OnClickListener {
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 
         int xPos = windowManager.getDefaultDisplay().getWidth();
+        int height = windowManager.getDefaultDisplay().getHeight();
         Log.i("coder", "xPos:" + xPos);
         //以parent 为开始的x,y轴
-        popupWindow.showAsDropDown(parent, -1280, -752);
+        popupWindow.showAsDropDown(parent, -xPos, -height);
 
     }
 

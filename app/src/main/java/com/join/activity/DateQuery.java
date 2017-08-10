@@ -132,7 +132,7 @@ public class DateQuery extends Activity implements View.OnClickListener, Service
                 break;
             case R.id.icon_1:
                 intent = new Intent();
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
         }

@@ -33,7 +33,7 @@ public class TimeSetting extends Activity implements View.OnClickListener, Servi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.time_activity);
+        setContentView(R.layout.time_setting);
         initView();
         SimpleDateFormat sDateFormat = new SimpleDateFormat("yyyy年MM月");
         String tateFormat = sDateFormat.format(new java.util.Date());
@@ -118,7 +118,7 @@ public class TimeSetting extends Activity implements View.OnClickListener, Servi
                 break;
 
             case R.id.icon_1:
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
         }

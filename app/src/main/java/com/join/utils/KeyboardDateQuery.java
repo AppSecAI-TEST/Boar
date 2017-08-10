@@ -76,7 +76,7 @@ public class KeyboardDateQuery implements View.OnClickListener, View.OnTouchList
         if (popupWindow == null) {
             LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            view = layoutInflater.inflate(R.layout.keyboard_date, null);
+            view = layoutInflater.inflate(R.layout.keyboard_date_query, null);
             PercentLinearLayout pl = (PercentLinearLayout) view.findViewById(R.id.percent);
             pl.getBackground().setAlpha(180);
             init();

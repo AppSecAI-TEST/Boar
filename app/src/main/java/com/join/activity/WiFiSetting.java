@@ -37,9 +37,9 @@ import java.util.List;
  *
  */
 
-public class WiFiActivity extends Activity implements View.OnClickListener {
+public class WiFiSetting extends Activity implements View.OnClickListener {
     private String TAG = "jjjWiFiActivity";
-    private ImageView open_wifi, tile_icon;
+    private ImageView open_wifi, tile_icon, icon_1;
     private TextView title_name;
     private ListView mlistView;
     protected WifiAdmin mWifiAdmin;
@@ -59,27 +59,27 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-               AlertDialog.Builder alert = new AlertDialog.Builder(WiFiActivity.this);
+                AlertDialog.Builder alert = new AlertDialog.Builder(WiFiSetting.this);
                 ssid = mWifiList.get(position).SSID;
                 alert.setTitle(ssid);
                 alert.setMessage("输入密码");
-                final EditText et_password = new EditText(WiFiActivity.this);
+                final EditText et_password = new EditText(WiFiSetting.this);
                 final SharedPreferences preferences = getSharedPreferences("wifi_password", Context.MODE_PRIVATE);
-               et_password.setText(preferences.getString(ssid, ""));
-               alert.setView(et_password);
+                et_password.setText(preferences.getString(ssid, ""));
+                alert.setView(et_password);
 
-              alert.setPositiveButton("连接", new DialogInterface.OnClickListener() {
+                alert.setPositiveButton("连接", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String pw = et_password.getText().toString();
                         if (null == pw || pw.length() < 8) {
-                            Toast.makeText(WiFiActivity.this, "密码至少8位", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(WiFiSetting.this, "密码至少8位", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         SharedPreferences.Editor editor = preferences.edit();
                         editor.putString(ssid, pw);
                         editor.commit();
-                        Log.e(TAG, "onClick: "+"jjjjjjjjjjjj" + et_password.getText().toString());
+                        Log.e(TAG, "onClick: " + "jjjjjjjjjjjj" + et_password.getText().toString());
                         mWifiAdmin.addNetwork(mWifiAdmin.CreateWifiInfo(ssid, et_password.getText().toString(), 3));
                     }
                 });
@@ -101,7 +101,7 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
      * 控件初始化
      */
     private void initViews() {
-        mWifiAdmin = new WifiAdmin(WiFiActivity.this);
+        mWifiAdmin = new WifiAdmin(WiFiSetting.this);
         //注册监听WiFi连接的状态
         IntentFilter filter = new IntentFilter(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         registerReceiver(mReceiver, filter);
@@ -112,7 +112,9 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
         open_wifi_ll.setOnClickListener(this);
         tile_icon = (ImageView) findViewById(R.id.title_icon);
         title_name.setText(mWifiAdmin.getConnectWifiSsid());
-        wifiClose = mWifiAdmin.checkState(WiFiActivity.this);
+        wifiClose = mWifiAdmin.checkState(WiFiSetting.this);
+        icon_1 = (ImageView) findViewById(R.id.icon_1);
+        icon_1.setOnClickListener(this);
         if (wifiClose == 3) {
             tile_icon.setVisibility(View.VISIBLE);
             open_wifi.setImageResource(R.mipmap.wifi_setting_1);
@@ -120,7 +122,7 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
             mWifiAdmin.startScan(this);
             mWifiList = mWifiAdmin.getWifiList();
             if (mWifiList != null) {
-                mlistView.setAdapter(new WiFiAdapter(WiFiActivity.this, mWifiList));
+                mlistView.setAdapter(new WiFiAdapter(WiFiSetting.this, mWifiList));
                 new Utility().setListViewHeightBasedOnChildren(mlistView);
             }
         } else {
@@ -138,14 +140,14 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
                 flagClose++;
                 if (flagClose % 2 == 0) {
                     open_wifi.setImageResource(R.mipmap.wifi_setting_1);
-                    mWifiAdmin.openWifi(WiFiActivity.this);
+                    mWifiAdmin.openWifi(WiFiSetting.this);
                     closeThread = true;
                     try {
                         Thread.sleep(2000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    wifiClose = mWifiAdmin.checkState(WiFiActivity.this);
+                    wifiClose = mWifiAdmin.checkState(WiFiSetting.this);
 
                     if (wifiClose == 2) {
                         WifiThread wifiThread = new WifiThread();
@@ -156,11 +158,17 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
                     open_wifi.setImageResource(R.mipmap.wifi_setting_3);
                     title_name.setText("查看可用网络,请打开WiFi");
                     tile_icon.setVisibility(View.GONE);
-                    mWifiAdmin.closeWifi(WiFiActivity.this);
+                    mWifiAdmin.closeWifi(WiFiSetting.this);
                     mlistView.setAdapter(null);
                     closeThread = false;
                 }
                 break;
+            case R.id.icon_1:
+                Intent intent = new Intent();
+                intent.setAction("com.join.Function");
+                startActivity(intent);
+                break;
+
             default:
                 break;
         }
@@ -227,13 +235,13 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
         public void run() {
             super.run();
             while (closeThread) {
-                mWifiAdmin.startScan(WiFiActivity.this);
+                mWifiAdmin.startScan(WiFiSetting.this);
                 mWifiList = mWifiAdmin.getWifiList();
                 if (mWifiList != null) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mlistView.setAdapter(new WiFiAdapter(WiFiActivity.this, mWifiList));
+                            mlistView.setAdapter(new WiFiAdapter(WiFiSetting.this, mWifiList));
                             new Utility().setListViewHeightBasedOnChildren(mlistView);
                         }
                     });
@@ -246,12 +254,13 @@ public class WiFiActivity extends Activity implements View.OnClickListener {
             }
         }
     }
+
     /**
      * 最初版的手机号输入当做密码
      */
     public void showAlertDialog() {
 
-        ManageDialog.Builder builder = new ManageDialog.Builder(this,mWifiAdmin,ssid);
+        ManageDialog.Builder builder = new ManageDialog.Builder(this, mWifiAdmin, ssid);
 /*        builder.setMessage("这个就是自定义的提示框");
         builder.setTitle("提示");*/
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {

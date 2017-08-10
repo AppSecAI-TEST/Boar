@@ -154,7 +154,7 @@ public class StartDetection extends Activity implements View.OnClickListener, Se
         switch (v.getId()) {
             case R.id.icon_1:
                 boolTag1 = false;
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
             case R.id.bu_enter:

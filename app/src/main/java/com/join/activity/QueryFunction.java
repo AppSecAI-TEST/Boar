@@ -83,7 +83,7 @@ public class QueryFunction extends Activity implements View.OnClickListener, Ser
 
                 break;
             case R.id.icon:
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
            /* case R.id.bu_copy:

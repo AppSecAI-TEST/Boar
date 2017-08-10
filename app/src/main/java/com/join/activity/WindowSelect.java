@@ -19,9 +19,9 @@ import com.join.service.Humidity;
  *
  */
 
-public class WindowSelect extends Activity implements View.OnClickListener,ServiceConnection {
+public class WindowSelect extends Activity implements View.OnClickListener, ServiceConnection {
     private String TAG = "jjjWindowSelect";
-    private Button continue_ws ,win_1,win_2,win_3,win_4;
+    private Button continue_ws, win_1, win_2, win_3, win_4, return_upper;
     private ImageView icon_1;
     private int win_tag_1, win_tag_2, win_tag_3, win_tag_4;
     private int flags;
@@ -36,12 +36,14 @@ public class WindowSelect extends Activity implements View.OnClickListener,Servi
         initView();
         flags = getIntent().getFlags();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
 /*        Intent intentHumidity = new Intent(this, Humidity.class);
         bindService(intentHumidity, this, BIND_AUTO_CREATE);*/
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -62,6 +64,8 @@ public class WindowSelect extends Activity implements View.OnClickListener,Servi
         icon_1.setOnClickListener(this);
         continue_ws = (Button) findViewById(R.id.continue_ws);
         continue_ws.setOnClickListener(this);
+        return_upper = (Button) findViewById(R.id.return_upper);
+        return_upper.setOnClickListener(this);
         intent = new Intent();
 
     }
@@ -140,12 +144,15 @@ public class WindowSelect extends Activity implements View.OnClickListener,Servi
                 break;
 
             case R.id.icon_1:
-                intent.setAction("com.join.function");
+                intent.setAction("com.join.Function");
                 startActivity(intent);
                 break;
-
+            case R.id.return_upper:
+                finish();
+                break;
         }
     }
+
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         humidityBinder = (Humidity.HumidityBinder) service;

@@ -5,6 +5,14 @@
     android:layout_height="match_parent">
 
 
+    <ImageView
+        android:id="@+id/icon_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/home"
+        app:layout_marginLeftPercent="2%w"
+        app:layout_marginTopPercent="1%w" />
+
     <com.zhy.android.percent.support.PercentLinearLayout
         android:id="@+id/percent"
         android:layout_width="match_parent"
@@ -37,7 +45,7 @@
                 android:text="平台温度:"
                 android:textColor="#fff"
                 android:textSize="25dp"
-                app:layout_marginLeftPercent="30%w" />
+                app:layout_marginLeftPercent="28%w" />
 
             <TextView
                 android:id="@+id/humidity"
@@ -134,6 +142,7 @@
                     app:layout_textSizePercent="3%w" />
 
                 <Button
+                    android:id="@+id/return_upper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -147,12 +156,4 @@
         </com.zhy.android.percent.support.PercentLinearLayout>
 
     </com.zhy.android.percent.support.PercentLinearLayout>
-
-    <ImageView
-        android:id="@+id/icon_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/home"
-        app:layout_marginLeftPercent="2%w"
-        app:layout_marginTopPercent="1%w" />
 </com.zhy.android.percent.support.PercentFrameLayout>
