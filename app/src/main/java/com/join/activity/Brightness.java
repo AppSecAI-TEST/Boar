@@ -19,8 +19,6 @@ import com.join.service.Humidity;
 
 import java.util.Locale;
 
-import static com.join.R.layout.brightness;
-
 /**
  * Created by Administrator on 2017/7/18 0018.
  */
@@ -35,7 +33,7 @@ public class Brightness extends Activity implements ServiceConnection {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(brightness);
+        setContentView(R.layout.brightness);
         humidity = (TextView) findViewById(R.id.humidity);
         icon_1 = (ImageView) findViewById(R.id.icon_1);
         icon_1.setOnClickListener(new View.OnClickListener() {

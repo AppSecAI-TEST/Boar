@@ -3,7 +3,6 @@ package com.join.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +34,15 @@ public class PasswordManageDialog extends Dialog {
         private View contentView;
         private OnClickListener positiveButtonClickListener;
         private OnClickListener negativeButtonClickListener;
+        private ObtainPassword obtainPassword;
+
+        public void setObtainPassword(ObtainPassword obtainPassword) {
+            this.obtainPassword = obtainPassword;
+        }
+
+        public interface ObtainPassword {
+            void getPassword(String pa);
+        }
 
         public Builder(Context context) {
             this.context = context;
@@ -137,7 +145,7 @@ public class PasswordManageDialog extends Dialog {
             pl.getBackground().setAlpha(150);
             //View v = layout.findViewById(R.id.title);
             //设置背景透明度
-          //  v.getBackground().setAlpha(150);
+            //  v.getBackground().setAlpha(150);
             //关联布局
             dialog.addContentView(layout, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             // 设置标题
@@ -154,8 +162,9 @@ public class PasswordManageDialog extends Dialog {
                             .setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
                                     EditText viewById = (EditText) layout.findViewById(R.id.input);
-                                    Editable text = viewById.getText();
-                                    int length = text.length();
+                                    String text = viewById.getText().toString();
+                                    if (obtainPassword!=null)
+                                    obtainPassword.getPassword(text);
                                     positiveButtonClickListener.onClick(dialog, DialogInterface.BUTTON_POSITIVE);
 
 
@@ -168,13 +177,13 @@ public class PasswordManageDialog extends Dialog {
                         View.GONE);*/
             }
             // 设置取消按钮
-         if (negativeButtonText != null) {
+            if (negativeButtonText != null) {
                 ((Button) layout.findViewById(R.id.negativeButton)).setText(negativeButtonText);
                 if (negativeButtonClickListener != null) {
                     ((Button) layout.findViewById(R.id.negativeButton))
                             .setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
-                                    negativeButtonClickListener.onClick(dialog,DialogInterface.BUTTON_NEGATIVE);
+                                    negativeButtonClickListener.onClick(dialog, DialogInterface.BUTTON_NEGATIVE);
                                 }
                             });
                 }

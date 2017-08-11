@@ -180,6 +180,15 @@
             </intent-filter>
         </activity>
 
+
+        <!--密码设置-->
+        <activity android:name=".activity.PasswordManager">
+            <intent-filter>
+                //http://www.cnblogs.com/feng9exe/p/5699233.html
+                <action android:name="com.join.PasswordManager"></action>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <service android:name=".service.Humidity"></service>
     </application>
 

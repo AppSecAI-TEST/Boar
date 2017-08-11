@@ -8,6 +8,7 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -86,13 +87,22 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
                 break;
         }
     }
+
     public void showAlertDialog() {
 
-        PasswordManageDialog.Builder builder = new PasswordManageDialog.Builder(this);
+        final PasswordManageDialog.Builder builder = new PasswordManageDialog.Builder(this);
+        builder.setObtainPassword(new PasswordManageDialog.Builder.ObtainPassword() {
+            @Override
+            public void getPassword(String pa) {
+                Log.e("jjjj", "getPassword: " + pa);
+            }
+        });
 /*        builder.setMessage("这个就是自定义的提示框");
         builder.setTitle("提示");*/
         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
+                intent.setAction("com.join.PasswordManager");
+                startActivity(intent);
                 // 隐藏dialog
                 dialog.dismiss();
             }
@@ -108,6 +118,7 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
                 });
         builder.create().show();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -118,7 +129,7 @@ public class SystemSet extends Activity implements View.OnClickListener, Service
     @Override
     protected void onPause() {
         super.onPause();
-     //   unbindService(this);
+        //   unbindService(this);
     }
 
     @Override
